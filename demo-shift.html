@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>サンプルデモ｜シフト作成・希望休</title>
+<meta name="description" content="小規模現場向けの週間シフトと希望休のポートフォリオサンプル。">
+<style>
+:root {
+    --bg: #f4f7f8;
+    --surface: #ffffff;
+    --surface-2: #f8fbfb;
+    --ink: #1a2b2e;
+    --ink-muted: #5a6b6e;
+    --ink-faint: #8a9a9d;
+    --line: #e2eaeb;
+    --line-strong: #c9d6d8;
+    --accent: #0d9488;
+    --accent-hover: #0f766e;
+    --accent-soft: #ccfbf1;
+    --accent-ink: #115e59;
+    --warn-soft: #fff7ed;
+    --warn-ink: #9a3412;
+    --warn-border: #fed7aa;
+    --danger: #b91c1c;
+    --danger-soft: #fef2f2;
+    --ok-soft: #ecfdf5;
+    --ok-ink: #047857;
+    --radius: 14px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 2px rgba(26, 43, 46, 0.04), 0 8px 24px rgba(26, 43, 46, 0.06);
+    --shadow-sm: 0 1px 2px rgba(26, 43, 46, 0.05);
+    --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "Yu Gothic", Meiryo, system-ui, -apple-system, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --max: 920px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; opacity: 0.45; }
+  h1, h2, h3 { margin: 0; line-height: 1.3; font-weight: 700; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  a { color: var(--accent); }
+  .wrap {
+    width: min(100% - 1.5rem, var(--max));
+    margin-inline: auto;
+    padding-bottom: 3rem;
+  }
+  .banner {
+    background: linear-gradient(135deg, #0f766e 0%, #0d9488 55%, #14b8a6 100%);
+    color: #fff;
+    padding: 1.1rem 0 1.25rem;
+  }
+  .banner .wrap { padding-bottom: 0; }
+  .banner-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.92;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.22);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    margin-bottom: 0.65rem;
+  }
+  .banner h1 {
+    font-size: clamp(1.25rem, 4vw, 1.65rem);
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+  }
+  .banner p {
+    font-size: 0.92rem;
+    opacity: 0.92;
+    max-width: 38rem;
+  }
+  .banner-note {
+    margin-top: 0.7rem;
+    display: inline-block;
+    font-size: 0.8rem;
+    background: rgba(0,0,0,0.18);
+    padding: 0.3rem 0.65rem;
+    border-radius: 8px;
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.6rem;
+    margin: -1.1rem 0 1.25rem;
+    position: relative;
+    z-index: 1;
+  }
+  .feature {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 0.85rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .feature strong {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--accent-ink);
+    margin-bottom: 0.15rem;
+  }
+  .feature span {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+  }
+  .hero-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(244, 247, 248, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    margin: 0 -0.75rem 1rem;
+    padding: 0.65rem 0.75rem;
+  }
+  .hero-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    justify-content: space-between;
+  }
+  .hero-metric { display: flex; flex-direction: column; gap: 0.1rem; }
+  .hero-metric .label {
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    font-weight: 600;
+  }
+  .hero-metric .value {
+    font-size: clamp(1.15rem, 3.5vw, 1.45rem);
+    font-weight: 800;
+    color: var(--accent-ink);
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.28rem 0.7rem;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.1rem 1.15rem;
+    margin-bottom: 1rem;
+  }
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+  }
+  .card-head h2 { font-size: 1.02rem; }
+  .card-head .sub {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    margin-top: 0.2rem;
+    font-weight: 400;
+  }
+  .field { display: flex; flex-direction: column; gap: 0.28rem; }
+  .field label {
+    font-size: 0.78rem;
+    font-weight: 650;
+    color: var(--ink-muted);
+  }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    border-radius: 9px;
+    padding: 0.55rem 0.7rem;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .field textarea { min-height: 5rem; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    border-radius: 9px;
+    border: 1px solid transparent;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.88rem;
+    font-weight: 650;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.05s;
+  }
+  .btn:active:not(:disabled) { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover:not(:disabled) { background: var(--accent-hover); }
+  .btn-ghost {
+    background: var(--surface);
+    border-color: var(--line-strong);
+    color: var(--ink);
+  }
+  .btn-ghost:hover:not(:disabled) { background: var(--surface-2); }
+  .btn-danger {
+    background: var(--danger-soft);
+    color: var(--danger);
+    border-color: #fecaca;
+  }
+  .btn-danger:hover:not(:disabled) { background: #fee2e2; }
+  .btn-sm { padding: 0.35rem 0.65rem; font-size: 0.78rem; }
+  .btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.85rem;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 0.85rem;
+  }
+  .chip {
+    border: 1px solid var(--line-strong);
+    background: var(--surface-2);
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+  .chip[aria-pressed="true"] {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+  .chip:hover { border-color: var(--accent); }
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    min-width: 480px;
+  }
+  th, td {
+    padding: 0.55rem 0.65rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  th {
+    background: var(--surface-2);
+    color: var(--ink-muted);
+    font-weight: 650;
+    font-size: 0.75rem;
+  }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; }
+  tr.clickable { cursor: pointer; }
+  tr.clickable:hover td { background: #f8fffe; }
+  .item-list { display: flex; flex-direction: column; gap: 0.65rem; }
+  .item-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    padding: 0.75rem;
+  }
+  .item-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+  }
+  .item-card-top .title { font-size: 0.9rem; font-weight: 700; }
+  .item-meta { font-size: 0.78rem; color: var(--ink-muted); }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+    white-space: nowrap;
+  }
+  .badge-ok { background: var(--ok-soft); color: var(--ok-ink); }
+  .badge-warn { background: var(--warn-soft); color: var(--warn-ink); }
+  .badge-muted { background: var(--surface); color: var(--ink-muted); border: 1px solid var(--line); }
+  .badge-accent { background: var(--accent-soft); color: var(--accent-ink); }
+  .badge-danger { background: var(--danger-soft); color: var(--danger); }
+  .check-list { display: flex; flex-direction: column; gap: 0.4rem; }
+  .check-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    padding: 0.4rem 0.55rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .check-row input { width: 1.05rem; height: 1.05rem; accent-color: var(--accent); }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  .photo-slot {
+    aspect-ratio: 1;
+    border: 1px dashed var(--line-strong);
+    border-radius: 10px;
+    background: linear-gradient(145deg, #f0fdfa, #ffffff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    color: var(--ink-faint);
+    font-size: 0.72rem;
+    font-weight: 650;
+    text-align: center;
+    padding: 0.4rem;
+  }
+  .photo-slot.filled {
+    border-style: solid;
+    border-color: #99f6e4;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+  }
+  .photo-slot .icon { font-size: 1.25rem; line-height: 1; }
+  .toast {
+    display: none;
+    margin-top: 0.55rem;
+    font-size: 0.82rem;
+    font-weight: 650;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    border-radius: 8px;
+    padding: 0.45rem 0.7rem;
+  }
+  .toast.show { display: block; }
+  .footnote {
+    margin-top: 1.5rem;
+    padding: 1rem 1.1rem;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+  }
+  .footnote h3 {
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .footnote ul {
+    margin: 0.4rem 0 0;
+    padding-left: 1.15rem;
+  }
+  .footnote li { margin-bottom: 0.2rem; }
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .empty {
+    text-align: center;
+    padding: 1.25rem 0.75rem;
+    color: var(--ink-faint);
+    font-size: 0.88rem;
+  }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); border: 0;
+  }
+
+  .week-grid {
+    display: grid;
+    grid-template-columns: 88px repeat(7, minmax(52px, 1fr));
+    gap: 2px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.72rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--line);
+    min-width: 100%;
+  }
+  .week-cell {
+    background: var(--surface);
+    padding: 0.4rem 0.3rem;
+    min-height: 2.6rem;
+    text-align: center;
+  }
+  .week-cell.head {
+    background: var(--surface-2);
+    font-weight: 700;
+    color: var(--ink-muted);
+    min-height: auto;
+  }
+  .week-cell.name {
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding-left: 0.5rem;
+    background: var(--surface-2);
+  }
+  .week-cell.shift {
+    cursor: pointer;
+    font-weight: 650;
+    color: var(--accent-ink);
+    background: #f0fdfa;
+  }
+  .week-cell.shift.off {
+    color: var(--ink-faint);
+    background: var(--surface);
+    font-weight: 500;
+  }
+  .week-cell.shift.wish {
+    background: var(--warn-soft);
+    color: var(--warn-ink);
+  }
+  .week-cell.shift:hover { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 0.65rem;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+  }
+  .legend span::before {
+    content: "";
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 3px;
+    margin-right: 0.3rem;
+    vertical-align: -1px;
+  }
+  .leg-on::before { background: #f0fdfa; border: 1px solid #99f6e4; }
+  .leg-off::before { background: #fff; border: 1px solid var(--line); }
+  .leg-wish::before { background: var(--warn-soft); border: 1px solid var(--warn-border); }
+
+</style>
+</head>
+<body>
+  <header class="banner">
+    <div class="wrap">
+      <div class="banner-kicker">PORTFOLIO SAMPLE</div>
+      <h1>サンプルデモ｜シフト作成・希望休</h1>
+      <p>美容院・歯科・福祉・カフェなど、複数スタッフの週シフトをタップで組み立てるデモです。希望休と公開メモまでまとめました。</p>
+      <div class="banner-note">※ ポートフォリオ用サンプルです。自動シフト最適化や通知は含みません。</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="features" aria-label="できること">
+      <div class="feature"><strong>週ビュー</strong><span>7日×スタッフの簡易表</span></div>
+      <div class="feature"><strong>希望休</strong><span>タップで出勤／休／希望休</span></div>
+      <div class="feature"><strong>複数スタッフ</strong><span>美容・歯科・福祉・飲食</span></div>
+      <div class="feature"><strong>公開メモ</strong><span>掲示用の一文を編集</span></div>
+    </section>
+
+    <div class="hero-bar" aria-live="polite">
+      <div class="hero-inner">
+        <div class="hero-metric">
+          <span class="label">今週の出勤コマ数</span>
+          <span class="value" id="metricShifts">0</span>
+        </div>
+        <div class="hero-meta">
+          <span class="pill" id="metricWish">希望休 0</span>
+          <span class="pill" id="metricWeek">2026-10-27 週</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2>1. 対象週</h2>
+          <p class="sub">週の開始日（月曜想定）</p>
+        </div>
+      </div>
+      <div class="field" style="max-width:220px;">
+        <label for="weekStart">週開始日</label>
+        <input id="weekStart" type="date" value="2026-10-27">
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2>2. シフト表（タップで切替）</h2>
+          <p class="sub">出勤 → 休み → 希望休 → 出勤</p>
+        </div>
+      </div>
+      <div class="week-grid" id="weekGrid" aria-label="週間シフト"></div>
+      <div class="legend">
+        <span class="leg-on">出勤</span>
+        <span class="leg-off">休み</span>
+        <span class="leg-wish">希望休</span>
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn btn-ghost" id="btnResetWeek">サンプルに戻す</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2>3. 希望休一覧</h2>
+          <p class="sub">スタッフからの希望を一覧表示</p>
+        </div>
+      </div>
+      <div class="item-list" id="wishList"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2>4. 公開用メモ</h2>
+          <p class="sub">店舗掲示・LINE共有用の一文</p>
+        </div>
+      </div>
+      <div class="field">
+        <label for="publicMemo">メモ</label>
+        <textarea id="publicMemo">【今週のシフト】週明けは美容・歯科が手厚め。水曜は福祉施設の入浴介助あり。カフェは土日優先で調整しています。希望休の追加は月曜正午まで。</textarea>
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="btnCopyMemo">メモをコピー</button>
+      </div>
+      <div class="toast" id="toast" role="status">メモをコピーしました</div>
+    </section>
+
+    <aside class="footnote">
+      <h3>このデモについて</h3>
+      <p>小規模現場向けのシフト作成・希望休デモです。週表をタップして出勤／休み／希望休を切り替え、公開メモをコピーできるイメージです。</p>
+      <ul>
+        <li>時間帯の細かい割当や自動公平配置は未実装です</li>
+        <li>データはこのブラウザ内のみで動き、サーバー送信はありません</li>
+        <li>ホームページ掲載用のデモとしてご利用ください</li>
+      </ul>
+    </aside>
+  </main>
+
+<script>
+
+(function () {
+  "use strict";
+  var days = ["月","火","水","木","金","土","日"];
+  var staff = [
+    { id: "a", name: "佐藤", shop: "美容院" },
+    { id: "b", name: "田中", shop: "歯科" },
+    { id: "c", name: "鈴木", shop: "福祉" },
+    { id: "d", name: "山本", shop: "カフェ" },
+    { id: "e", name: "伊藤", shop: "カフェ" }
+  ];
+  // status: on | off | wish
+  var defaultGrid = {
+    a: ["on","on","off","on","on","wish","off"],
+    b: ["on","on","on","off","on","off","off"],
+    c: ["off","on","on","on","wish","off","off"],
+    d: ["off","on","on","on","on","on","on"],
+    e: ["on","off","on","on","off","on","on"]
+  };
+  var grid = JSON.parse(JSON.stringify(defaultGrid));
+
+  function cycle(s) {
+    return s === "on" ? "off" : s === "off" ? "wish" : "on";
+  }
+  function label(s) {
+    return s === "on" ? "出勤" : s === "wish" ? "希望休" : "—";
+  }
+  function cls(s) {
+    return "week-cell shift" + (s === "off" ? " off" : s === "wish" ? " wish" : "");
+  }
+  function addDays(iso, n) {
+    var d = new Date(iso + "T12:00:00");
+    d.setDate(d.getDate() + n);
+    var m = String(d.getMonth()+1).padStart(2,"0");
+    var day = String(d.getDate()).padStart(2,"0");
+    return d.getFullYear() + "-" + m + "-" + day;
+  }
+  function copyText(t) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(t);
+    }
+    var ta = document.createElement("textarea");
+    ta.value = t; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+    return Promise.resolve();
+  }
+
+  function render() {
+    var start = document.getElementById("weekStart").value || "2026-10-27";
+    document.getElementById("metricWeek").textContent = start + " 週";
+    var html = '<div class="week-cell head"></div>';
+    days.forEach(function (d, i) {
+      html += '<div class="week-cell head">' + d + '<br><span style="font-weight:500">' + addDays(start, i).slice(5) + '</span></div>';
+    });
+    var onCount = 0, wishCount = 0;
+    staff.forEach(function (s) {
+      html += '<div class="week-cell name">' + s.name + '<br><span style="font-weight:500;color:var(--ink-faint)">' + s.shop + '</span></div>';
+      grid[s.id].forEach(function (st, i) {
+        if (st === "on") onCount++;
+        if (st === "wish") wishCount++;
+        html += '<button type="button" class="' + cls(st) + '" data-sid="' + s.id + '" data-day="' + i + '">' + label(st) + '</button>';
+      });
+    });
+    document.getElementById("weekGrid").innerHTML = html;
+    document.getElementById("metricShifts").textContent = String(onCount);
+    document.getElementById("metricWish").textContent = "希望休 " + wishCount;
+
+    var wishes = [];
+    staff.forEach(function (s) {
+      grid[s.id].forEach(function (st, i) {
+        if (st === "wish") {
+          wishes.push({ name: s.name, shop: s.shop, date: addDays(start, i), day: days[i] });
+        }
+      });
+    });
+    var box = document.getElementById("wishList");
+    if (!wishes.length) {
+      box.innerHTML = '<div class="empty">今週の希望休はありません</div>';
+    } else {
+      box.innerHTML = wishes.map(function (w) {
+        return '<article class="item-card"><div class="item-card-top"><div><div class="title">' +
+          w.name + '（' + w.shop + '）</div><div class="item-meta">' + w.date + '（' + w.day + '）</div></div>' +
+          '<span class="badge badge-warn">希望休</span></div></article>';
+      }).join("");
+    }
+  }
+
+  render();
+  document.getElementById("weekStart").addEventListener("change", render);
+  document.getElementById("weekGrid").addEventListener("click", function (e) {
+    var btn = e.target.closest("[data-sid]");
+    if (!btn) return;
+    var sid = btn.getAttribute("data-sid");
+    var day = +btn.getAttribute("data-day");
+    grid[sid][day] = cycle(grid[sid][day]);
+    render();
+  });
+  document.getElementById("btnResetWeek").addEventListener("click", function () {
+    grid = JSON.parse(JSON.stringify(defaultGrid));
+    render();
+  });
+  document.getElementById("btnCopyMemo").addEventListener("click", function () {
+    var t = document.getElementById("publicMemo").value;
+    copyText(t).then(function () {
+      var toast = document.getElementById("toast");
+      toast.classList.add("show");
+      setTimeout(function () { toast.classList.remove("show"); }, 1600);
+    });
+  });
+})();
+
+</script>
+</body>
+</html>

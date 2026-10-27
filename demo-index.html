@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>サンプルデモ一覧｜業務改善アプリ</title>
+<meta name="description" content="ホームページ掲載用の業務改善アプリ・ポートフォリオサンプル一覧。">
+<style>
+  :root {
+    --bg: #f4f7f8;
+    --surface: #ffffff;
+    --surface-2: #f8fbfb;
+    --ink: #1a2b2e;
+    --ink-muted: #5a6b6e;
+    --line: #e2eaeb;
+    --line-strong: #c9d6d8;
+    --accent: #0d9488;
+    --accent-hover: #0f766e;
+    --accent-soft: #ccfbf1;
+    --accent-ink: #115e59;
+    --radius: 14px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 2px rgba(26, 43, 46, 0.04), 0 8px 24px rgba(26, 43, 46, 0.06);
+    --shadow-sm: 0 1px 2px rgba(26, 43, 46, 0.05);
+    --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "Yu Gothic", Meiryo, system-ui, -apple-system, sans-serif;
+    --max: 920px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  h1, h2 { margin: 0; line-height: 1.3; font-weight: 700; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  .wrap {
+    width: min(100% - 1.5rem, var(--max));
+    margin-inline: auto;
+    padding-bottom: 3rem;
+  }
+  .banner {
+    background: linear-gradient(135deg, #0f766e 0%, #0d9488 55%, #14b8a6 100%);
+    color: #fff;
+    padding: 1.1rem 0 1.25rem;
+  }
+  .banner .wrap { padding-bottom: 0; }
+  .banner-kicker {
+    display: inline-flex;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.92;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.22);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    margin-bottom: 0.65rem;
+  }
+  .banner h1 {
+    font-size: clamp(1.25rem, 4vw, 1.65rem);
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+  }
+  .banner p { font-size: 0.92rem; opacity: 0.92; max-width: 38rem; }
+  .banner-note {
+    margin-top: 0.7rem;
+    display: inline-block;
+    font-size: 0.8rem;
+    background: rgba(0,0,0,0.18);
+    padding: 0.3rem 0.65rem;
+    border-radius: 8px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.1rem 1.15rem;
+    transition: border-color 0.15s, transform 0.1s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    min-height: 100%;
+  }
+  a.card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px rgba(13, 148, 136, 0.12);
+    transform: translateY(-1px);
+  }
+  a.card:active { transform: translateY(0); }
+  .tag {
+    display: inline-flex;
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+  }
+  .card h2 { font-size: 1.05rem; }
+  .card p { font-size: 0.86rem; color: var(--ink-muted); flex: 1; }
+  .go {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .footnote {
+    margin-top: 1.5rem;
+    padding: 1rem 1.1rem;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+  }
+  .footnote h3 {
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin: 0 0 0.4rem;
+  }
+</style>
+</head>
+<body>
+  <header class="banner">
+    <div class="wrap">
+      <div class="banner-kicker">PORTFOLIO SAMPLE</div>
+      <h1>サンプルデモ一覧｜業務改善アプリ</h1>
+      <p>ホームページ掲載用の業務ツール試作です。パート給与・日報・シフト・予約・在庫を、オフラインでそのまま開けます。</p>
+      <div class="banner-note">※ すべてブラウザ内デモです。サーバー送信はありません。</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <a class="card" href="part-time-payroll-demo.html">
+        <span class="tag">給与</span>
+        <h2>パート時給・月次給与計算</h2>
+        <p>複数人・複数日の勤怠から月次明細と振込CSVまで。美容院／歯科／福祉／カフェの例入り。</p>
+        <span class="go">デモを開く →</span>
+      </a>
+      <a class="card" href="demo-daily-report.html">
+        <span class="tag">日報</span>
+        <h2>日報・作業報告</h2>
+        <p>スタッフ切替・チェックリスト・写真ダミー・日報一覧。現場のその場入力イメージ。</p>
+        <span class="go">デモを開く →</span>
+      </a>
+      <a class="card" href="demo-shift.html">
+        <span class="tag">シフト</span>
+        <h2>シフト作成・希望休</h2>
+        <p>週ビューをタップして出勤／休み／希望休を切替。公開用メモのコピーも可能。</p>
+        <span class="go">デモを開く →</span>
+      </a>
+      <a class="card" href="demo-booking.html">
+        <span class="tag">予約</span>
+        <h2>簡易予約・受付</h2>
+        <p>日時・メニュー・お客様名・ステータス。本日の受付ボードとして使えます。</p>
+        <span class="go">デモを開く →</span>
+      </a>
+      <a class="card" href="demo-inventory.html">
+        <span class="tag">在庫</span>
+        <h2>在庫・備品管理</h2>
+        <p>残数・発注点アラート・入出庫ログ。足りない品をすぐ把握するデモ。</p>
+        <span class="go">デモを開く →</span>
+      </a>
+    </div>
+
+    <aside class="footnote">
+      <h3>この一覧について</h3>
+      <p>個人事業・小規模現場向けの業務改善アプリを、同じ見た目で揃えたポートフォリオサンプルです。埋め込みやリンク用に単体HTMLで配布できます。</p>
+    </aside>
+  </main>
+</body>
+</html>

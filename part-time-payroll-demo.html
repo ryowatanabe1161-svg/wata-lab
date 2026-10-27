@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>サンプルデモ｜パート時給・月次給与計算</title>
+<meta name="description" content="美容院・歯科医院・福祉施設・カフェなど、個人事業／小規模現場のパート給与（週の勤務がバラつくケース）をまとめて試せるポートフォリオサンプル。税・社保は未対応。">
+<style>
+  :root {
+    --bg: #f4f7f8;
+    --surface: #ffffff;
+    --surface-2: #f8fbfb;
+    --ink: #1a2b2e;
+    --ink-muted: #5a6b6e;
+    --ink-faint: #8a9a9d;
+    --line: #e2eaeb;
+    --line-strong: #c9d6d8;
+    --accent: #0d9488;
+    --accent-hover: #0f766e;
+    --accent-soft: #ccfbf1;
+    --accent-ink: #115e59;
+    --warn-soft: #fff7ed;
+    --warn-ink: #9a3412;
+    --danger: #b91c1c;
+    --danger-soft: #fef2f2;
+    --radius: 14px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 2px rgba(26, 43, 46, 0.04), 0 8px 24px rgba(26, 43, 46, 0.06);
+    --shadow-sm: 0 1px 2px rgba(26, 43, 46, 0.05);
+    --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "Yu Gothic", Meiryo, system-ui, -apple-system, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --max: 920px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; opacity: 0.45; }
+  h1, h2, h3 { margin: 0; line-height: 1.3; font-weight: 700; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  a { color: var(--accent); }
+
+  .wrap {
+    width: min(100% - 1.5rem, var(--max));
+    margin-inline: auto;
+    padding-bottom: 3rem;
+  }
+
+  /* Demo banner */
+  .banner {
+    background: linear-gradient(135deg, #0f766e 0%, #0d9488 55%, #14b8a6 100%);
+    color: #fff;
+    padding: 1.1rem 0 1.25rem;
+  }
+  .banner .wrap { padding-bottom: 0; }
+  .banner-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.92;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.22);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    margin-bottom: 0.65rem;
+  }
+  .banner h1 {
+    font-size: clamp(1.25rem, 4vw, 1.65rem);
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+  }
+  .banner p {
+    font-size: 0.92rem;
+    opacity: 0.92;
+    max-width: 38rem;
+  }
+  .banner-note {
+    margin-top: 0.7rem;
+    display: inline-block;
+    font-size: 0.8rem;
+    background: rgba(0,0,0,0.18);
+    padding: 0.3rem 0.65rem;
+    border-radius: 8px;
+  }
+
+  /* Feature strip */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.6rem;
+    margin: -1.1rem 0 1.25rem;
+    position: relative;
+    z-index: 1;
+  }
+  .feature {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 0.85rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .feature strong {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--accent-ink);
+    margin-bottom: 0.15rem;
+  }
+  .feature span {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+  }
+
+  /* Sticky hero metrics */
+  .hero-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(244, 247, 248, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    margin: 0 -0.75rem 1rem;
+    padding: 0.65rem 0.75rem;
+  }
+  .hero-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    justify-content: space-between;
+  }
+  .hero-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .hero-metric .label {
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    font-weight: 600;
+  }
+  .hero-metric .value {
+    font-size: clamp(1.15rem, 3.5vw, 1.45rem);
+    font-weight: 800;
+    color: var(--accent-ink);
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.28rem 0.7rem;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.1rem 1.15rem;
+    margin-bottom: 1rem;
+  }
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+  }
+  .card-head h2 {
+    font-size: 1.02rem;
+  }
+  .card-head .sub {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    margin-top: 0.2rem;
+    font-weight: 400;
+  }
+
+  /* Forms */
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+  }
+  .field label {
+    font-size: 0.78rem;
+    font-weight: 650;
+    color: var(--ink-muted);
+  }
+  .field input {
+    width: 100%;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    border-radius: 9px;
+    padding: 0.55rem 0.7rem;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .field input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    border-radius: 9px;
+    border: 1px solid transparent;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.88rem;
+    font-weight: 650;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.05s;
+  }
+  .btn:active:not(:disabled) { transform: translateY(1px); }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover:not(:disabled) { background: var(--accent-hover); }
+  .btn-ghost {
+    background: var(--surface);
+    border-color: var(--line-strong);
+    color: var(--ink);
+  }
+  .btn-ghost:hover:not(:disabled) { background: var(--surface-2); }
+  .btn-danger {
+    background: var(--danger-soft);
+    color: var(--danger);
+    border-color: #fecaca;
+  }
+  .btn-danger:hover:not(:disabled) { background: #fee2e2; }
+  .btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.85rem;
+  }
+  .btn-block { width: 100%; }
+
+  /* Staff chips */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 0.85rem;
+  }
+  .chip {
+    border: 1px solid var(--line-strong);
+    background: var(--surface-2);
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+  .chip[aria-pressed="true"] {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+  .chip:hover { border-color: var(--accent); }
+
+  /* Summary table */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    min-width: 520px;
+  }
+  th, td {
+    padding: 0.55rem 0.65rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  th {
+    background: var(--surface-2);
+    color: var(--ink-muted);
+    font-weight: 650;
+    font-size: 0.75rem;
+  }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; }
+  tr.active-row td {
+    background: #f0fdfa;
+  }
+  tr.clickable { cursor: pointer; }
+  tr.clickable:hover td { background: #f8fffe; }
+
+  /* Day cards */
+  .day-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .day-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    padding: 0.75rem;
+  }
+  .day-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+  .day-card-top .day-title {
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+  .day-pay {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent-ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Payslip */
+  .payslip {
+    background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 40%);
+    border: 1px solid #99f6e4;
+    border-radius: var(--radius);
+    padding: 1.1rem 1.15rem;
+  }
+  .payslip-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed #99f6e4;
+  }
+  .payslip-head h3 {
+    font-size: 1rem;
+  }
+  .payslip-head .period {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    margin-top: 0.15rem;
+  }
+  .payslip-total {
+    text-align: right;
+  }
+  .payslip-total .label {
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    font-weight: 600;
+  }
+  .payslip-total .amount {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--accent-ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .payslip-rows {
+    display: grid;
+    gap: 0.4rem;
+  }
+  .payslip-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.88rem;
+    padding: 0.25rem 0;
+  }
+  .payslip-row .k { color: var(--ink-muted); }
+  .payslip-row .v {
+    font-weight: 650;
+    font-variant-numeric: tabular-nums;
+  }
+  .payslip-row.em {
+    margin-top: 0.35rem;
+    padding-top: 0.55rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+  }
+  .payslip-row.em .k, .payslip-row.em .v {
+    color: var(--accent-ink);
+    font-weight: 800;
+  }
+  .payslip-note {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--warn-ink);
+    background: var(--warn-soft);
+    border-radius: 8px;
+    padding: 0.45rem 0.65rem;
+  }
+
+  /* CSV area */
+  .csv-preview {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    line-height: 1.45;
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: var(--radius-sm);
+    padding: 0.75rem;
+    overflow-x: auto;
+    white-space: pre;
+    max-height: 9rem;
+    margin-top: 0.55rem;
+  }
+  .toast {
+    display: none;
+    margin-top: 0.55rem;
+    font-size: 0.82rem;
+    font-weight: 650;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    border-radius: 8px;
+    padding: 0.45rem 0.7rem;
+  }
+  .toast.show { display: block; }
+
+  /* Footnote */
+  .footnote {
+    margin-top: 1.5rem;
+    padding: 1rem 1.1rem;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+  }
+  .footnote h3 {
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .footnote ul {
+    margin: 0.4rem 0 0;
+    padding-left: 1.15rem;
+  }
+  .footnote li { margin-bottom: 0.2rem; }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+</style>
+</head>
+<body>
+  <header class="banner">
+    <div class="wrap">
+      <div class="banner-kicker">PORTFOLIO SAMPLE</div>
+      <h1>サンプルデモ｜パート時給・月次給与計算</h1>
+      <p>美容院・歯科医院・福祉施設・カフェなど、個人事業・小規模現場向けの複数例です。週の勤務がバラつくパート給与を、日次勤怠から月次明細・振込CSVまでまとめます。</p>
+      <div class="banner-note">※ ポートフォリオ用サンプルです。税・社会保険の控除は未対応です。</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="features" aria-label="できること">
+      <div class="feature"><strong>複数業種の例</strong><span>美容／歯科／福祉／飲食</span></div>
+      <div class="feature"><strong>月次まとめ</strong><span>日別勤怠から自動集計</span></div>
+      <div class="feature"><strong>給与明細</strong><span>基本給・残業・交通費</span></div>
+      <div class="feature"><strong>振込CSV</strong><span>月次／日次をワンクリック</span></div>
+    </section>
+
+    <div class="hero-bar" aria-live="polite">
+      <div class="hero-inner">
+        <div class="hero-metric">
+          <span class="label">今月の支給合計（税・社保未控除）</span>
+          <span class="value" id="totalGross">0円</span>
+        </div>
+        <div class="hero-meta">
+          <span class="pill" id="staffCountPill">0名</span>
+          <span class="pill" id="periodPill">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. 対象月 -->
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2>1. 対象月</h2>
+          <p class="sub">締めたい月を指定します</p>
+        </div>
+      </div>
+      <div class="field" style="max-width: 220px;">
+        <label for="period">対象月（YYYY-MM）</label>
+        <input id="period" type="month" value="2026-10" autocomplete="off">
+      </div>
+    </section>
+
+    <!-- 2. スタッフ一覧サマリー -->
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2>2. スタッフ一覧サマリー</h2>
+          <p class="sub">行をタップすると編集対象が切り替わります</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>氏名</th>
+              <th class="num">日数</th>
+              <th class="num">有給h</th>
+              <th class="num">基本給</th>
+              <th class="num">残業</th>
+              <th class="num">交通</th>
+              <th class="num">合計</th>
+            </tr>
+          </thead>
+          <tbody id="summaryBody"></tbody>
+        </table>
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="btnAddStaff">＋ 人を追加</button>
+        <button type="button" class="btn btn-danger" id="btnRemoveStaff">この人を削除</button>
+      </div>
+    </section>
+
+    <!-- 3. スタッフ切替 -->
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2>3. 編集するスタッフ</h2>
+          <p class="sub">チップで切り替え</p>
+        </div>
+      </div>
+      <div class="chips" id="staffChips" role="group" aria-label="スタッフ切替"></div>
+
+      <!-- 4. 編集 -->
+      <h3 style="font-size:0.92rem;margin:0.4rem 0 0.75rem;">4. 基本情報・振込先</h3>
+      <div class="grid-2">
+        <div class="field">
+          <label for="name">氏名</label>
+          <input id="name" type="text" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="role">業種・役割（例）</label>
+          <input id="role" type="text" placeholder="例：美容院アシスタント" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="hourly">時給（円）</label>
+          <input id="hourly" type="number" min="0" step="10" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="otRate">残業割増倍率</label>
+          <input id="otRate" type="number" min="1" step="0.05" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="transport">交通費／月（円）</label>
+          <input id="transport" type="number" min="0" step="100" inputmode="numeric">
+        </div>
+      </div>
+      <div class="grid-3" style="margin-top:0.75rem;">
+        <div class="field">
+          <label for="bank">銀行</label>
+          <input id="bank" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="branch">支店</label>
+          <input id="branch" type="text">
+        </div>
+        <div class="field">
+          <label for="account">口座番号</label>
+          <input id="account" type="text" inputmode="numeric" autocomplete="off">
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 日ごとの勤怠 -->
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2>5. 日ごとの勤怠</h2>
+          <p class="sub">出勤〜退勤時間・休憩・残業を日別に入力</p>
+        </div>
+      </div>
+      <div class="day-list" id="dayList"></div>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="btnAddDay">＋ 日を追加</button>
+      </div>
+    </section>
+
+    <!-- 6. 給与明細 -->
+    <section class="card" style="padding:0;border:none;box-shadow:none;background:transparent;">
+      <div class="payslip" id="payslip">
+        <div class="payslip-head">
+          <div>
+            <h3 id="payslipName">給与明細</h3>
+            <p class="period" id="payslipPeriod">対象月 —</p>
+          </div>
+          <div class="payslip-total">
+            <div class="label">支給合計</div>
+            <div class="amount" id="payslipGross">0円</div>
+          </div>
+        </div>
+        <div class="payslip-rows" id="payslipRows"></div>
+        <div class="payslip-note">税・社会保険は控除していません。実運用では別途ルールを追加します。</div>
+      </div>
+    </section>
+
+    <!-- 7. CSV -->
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2>7. 振込・検算用CSV</h2>
+          <p class="sub">月次サマリーは振込用、日次明細は検算用</p>
+        </div>
+      </div>
+      <div>
+        <strong style="font-size:0.86rem;">月次サマリーCSV</strong>
+        <pre class="csv-preview" id="summaryCsvPreview" aria-live="polite"></pre>
+        <div class="btn-row" style="margin-top:0.55rem;">
+          <button type="button" class="btn btn-primary" id="btnCopySummary">月次CSVをコピー</button>
+        </div>
+        <div class="toast" id="toastSummary" role="status">月次CSVをコピーしました</div>
+      </div>
+      <div style="margin-top:1.1rem;">
+        <strong style="font-size:0.86rem;">日次明細CSV</strong>
+        <pre class="csv-preview" id="detailCsvPreview" aria-live="polite"></pre>
+        <div class="btn-row" style="margin-top:0.55rem;">
+          <button type="button" class="btn btn-ghost" id="btnCopyDetail">日次CSVをコピー</button>
+        </div>
+        <div class="toast" id="toastDetail" role="status">日次CSVをコピーしました</div>
+      </div>
+      <textarea id="copyFallback" class="sr-only" aria-hidden="true" tabindex="-1"></textarea>
+    </section>
+
+    <aside class="footnote">
+      <h3>このデモについて</h3>
+      <p>個人事業・小規模現場向けに、業種の違うパートさんを複数人まとめたサンプルです（美容院／歯科医院／福祉施設／カフェ）。週の勤務時間が月によって変動しても、日次勤怠の積み上げで月次支給を出せるイメージとしてご覧ください。</p>
+      <ul>
+        <li>計算式：（勤務時間 − 休憩分÷60）× 時給 ＋ 残業時間 × 時給 × 割増倍率 ＋ 月額交通費</li>
+        <li>税・社会保険・控除・端数処理ルールは未実装です</li>
+        <li>データはこのブラウザ内のみで動き、サーバー送信はありません</li>
+      </ul>
+    </aside>
+  </main>
+
+<script>
+(function () {
+  "use strict";
+
+  function uid() {
+    return String(Date.now()) + Math.random().toString(16).slice(2, 8);
+  }
+
+  function parseNum(s) {
+    var n = Number(String(s == null ? "" : s).replace(/,/g, ""));
+    return Number.isFinite(n) ? n : 0;
+  }
+
+  function yen(n) {
+    return Math.round(n).toLocaleString("ja-JP") + "円";
+  }
+
+  function yenPlain(n) {
+    return String(Math.round(n));
+  }
+
+  function newDay(partial) {
+    return Object.assign({
+      id: uid(),
+      date: "2026-10-01",
+      hours: "8",
+      breakMin: "60",
+      otHours: "0"
+    }, partial || {});
+  }
+
+  function newStaff(partial) {
+    return Object.assign({
+      id: uid(),
+      name: "",
+      role: "",
+      hourly: "1100",
+      otRate: "1.25",
+      transport: "0",
+      bank: "",
+      branch: "",
+      account: "",
+      days: [newDay()]
+    }, partial || {});
+  }
+
+  function calcDay(hourly, otRate, d) {
+    var workH = parseNum(d.hours);
+    var brH = parseNum(d.breakMin) / 60;
+    var paidH = Math.max(0, workH - brH);
+    var otH = Math.max(0, parseNum(d.otHours));
+    var basePay = hourly * paidH;
+    var otPay = hourly * otRate * otH;
+    return { paidH: paidH, otH: otH, basePay: basePay, otPay: otPay, dayPay: basePay + otPay };
+  }
+
+  function calcStaff(s) {
+    var hourly = parseNum(s.hourly);
+    var otRate = parseNum(s.otRate) || 1.25;
+    var commute = Math.max(0, parseNum(s.transport));
+    var paidH = 0, otH = 0, basePay = 0, otPay = 0;
+    var dayRows = s.days.map(function (d) {
+      var r = calcDay(hourly, otRate, d);
+      paidH += r.paidH;
+      otH += r.otH;
+      basePay += r.basePay;
+      otPay += r.otPay;
+      return { d: d, r: r };
+    });
+    var workPay = basePay + otPay;
+    var gross = workPay + commute;
+    var displayName = (s.name || "").trim() || "（氏名未入力）";
+    var displayRole = (s.role || "").trim();
+    return {
+      paidH: paidH,
+      otH: otH,
+      basePay: basePay,
+      otPay: otPay,
+      commute: commute,
+      workPay: workPay,
+      gross: gross,
+      displayName: displayName,
+      displayRole: displayRole,
+      dayRows: dayRows,
+      dayCount: s.days.length
+    };
+  }
+
+  var state = {
+    period: "2026-10",
+    editId: "",
+    staff: [
+      newStaff({
+        name: "高橋みお",
+        role: "美容院アシスタント",
+        hourly: "1200",
+        otRate: "1.25",
+        transport: "3000",
+        bank: "みずほ銀行",
+        branch: "青山支店",
+        account: "1122334",
+        days: [
+          newDay({ date: "2026-10-02", hours: "7", breakMin: "45", otHours: "0" }),
+          newDay({ date: "2026-10-04", hours: "8", breakMin: "60", otHours: "1" }),
+          newDay({ date: "2026-10-08", hours: "6", breakMin: "30", otHours: "0" }),
+          newDay({ date: "2026-10-11", hours: "8", breakMin: "60", otHours: "0.5" }),
+          newDay({ date: "2026-10-18", hours: "7.5", breakMin: "45", otHours: "0" })
+        ]
+      }),
+      newStaff({
+        name: "中村あかり",
+        role: "歯科医院 受付・助手",
+        hourly: "1250",
+        otRate: "1.25",
+        transport: "3500",
+        bank: "三菱UFJ銀行",
+        branch: "新宿支店",
+        account: "5566778",
+        days: [
+          newDay({ date: "2026-10-01", hours: "8", breakMin: "60", otHours: "0" }),
+          newDay({ date: "2026-10-03", hours: "7", breakMin: "45", otHours: "0" }),
+          newDay({ date: "2026-10-07", hours: "8", breakMin: "60", otHours: "1" }),
+          newDay({ date: "2026-10-10", hours: "5", breakMin: "0", otHours: "0" }),
+          newDay({ date: "2026-10-15", hours: "8", breakMin: "60", otHours: "0" })
+        ]
+      }),
+      newStaff({
+        name: "山本健太",
+        role: "福祉施設パート",
+        hourly: "1150",
+        otRate: "1.25",
+        transport: "4000",
+        bank: "三井住友銀行",
+        branch: "川崎支店",
+        account: "3344556",
+        days: [
+          newDay({ date: "2026-10-01", hours: "6", breakMin: "30", otHours: "0" }),
+          newDay({ date: "2026-10-05", hours: "8", breakMin: "60", otHours: "0.5" }),
+          newDay({ date: "2026-10-09", hours: "7", breakMin: "45", otHours: "0" }),
+          newDay({ date: "2026-10-14", hours: "6.5", breakMin: "30", otHours: "0" }),
+          newDay({ date: "2026-10-20", hours: "8", breakMin: "60", otHours: "1" })
+        ]
+      }),
+      newStaff({
+        name: "伊藤さくら",
+        role: "カフェ／飲食パート",
+        hourly: "1100",
+        otRate: "1.25",
+        transport: "2500",
+        bank: "りそな銀行",
+        branch: "梅田支店",
+        account: "9988776",
+        days: [
+          newDay({ date: "2026-10-02", hours: "5", breakMin: "0", otHours: "0" }),
+          newDay({ date: "2026-10-06", hours: "6.5", breakMin: "30", otHours: "0.5" }),
+          newDay({ date: "2026-10-12", hours: "4", breakMin: "0", otHours: "0" }),
+          newDay({ date: "2026-10-19", hours: "7", breakMin: "45", otHours: "1" }),
+          newDay({ date: "2026-10-25", hours: "5.5", breakMin: "30", otHours: "0" })
+        ]
+      })
+    
+    ]
+  };
+
+  state.editId = state.staff[0].id;
+
+  var el = {
+    period: document.getElementById("period"),
+    totalGross: document.getElementById("totalGross"),
+    staffCountPill: document.getElementById("staffCountPill"),
+    periodPill: document.getElementById("periodPill"),
+    summaryBody: document.getElementById("summaryBody"),
+    staffChips: document.getElementById("staffChips"),
+    name: document.getElementById("name"),
+    role: document.getElementById("role"),
+    hourly: document.getElementById("hourly"),
+    otRate: document.getElementById("otRate"),
+    transport: document.getElementById("transport"),
+    bank: document.getElementById("bank"),
+    branch: document.getElementById("branch"),
+    account: document.getElementById("account"),
+    dayList: document.getElementById("dayList"),
+    payslipName: document.getElementById("payslipName"),
+    payslipPeriod: document.getElementById("payslipPeriod"),
+    payslipGross: document.getElementById("payslipGross"),
+    payslipRows: document.getElementById("payslipRows"),
+    summaryCsvPreview: document.getElementById("summaryCsvPreview"),
+    detailCsvPreview: document.getElementById("detailCsvPreview"),
+    toastSummary: document.getElementById("toastSummary"),
+    toastDetail: document.getElementById("toastDetail"),
+    copyFallback: document.getElementById("copyFallback"),
+    btnAddStaff: document.getElementById("btnAddStaff"),
+    btnRemoveStaff: document.getElementById("btnRemoveStaff"),
+    btnAddDay: document.getElementById("btnAddDay"),
+    btnCopySummary: document.getElementById("btnCopySummary"),
+    btnCopyDetail: document.getElementById("btnCopyDetail")
+  };
+
+  function currentStaff() {
+    return state.staff.find(function (s) { return s.id === state.editId; }) || state.staff[0];
+  }
+
+  function rows() {
+    return state.staff.map(function (s) {
+      return { s: s, r: calcStaff(s) };
+    });
+  }
+
+  function buildSummaryCsv(rs) {
+    var header = "対象月,氏名,業種・役割,勤務日数,有給時間合計,基本給,残業代,交通費,支給合計,銀行,支店,口座番号";
+    var lines = rs.map(function (x) {
+      return [
+        state.period,
+        x.r.displayName,
+        x.r.displayRole,
+        String(x.r.dayCount),
+        x.r.paidH.toFixed(2),
+        yenPlain(x.r.basePay),
+        yenPlain(x.r.otPay),
+        yenPlain(x.r.commute),
+        yenPlain(x.r.gross),
+        x.s.bank,
+        x.s.branch,
+        x.s.account
+      ].join(",");
+    });
+    return [header].concat(lines).join("\n") + "\n";
+  }
+
+  function buildDetailCsv(rs) {
+    var header = "対象月,氏名,業種・役割,日付,出勤〜退勤h,休憩分,有給h,残業h,基本給,残業代,日次小計";
+    var lines = [];
+    rs.forEach(function (x) {
+      x.r.dayRows.forEach(function (dr) {
+        lines.push([
+          state.period,
+          x.r.displayName,
+          x.r.displayRole,
+          dr.d.date,
+          dr.d.hours,
+          dr.d.breakMin,
+          dr.r.paidH.toFixed(2),
+          String(dr.r.otH),
+          yenPlain(dr.r.basePay),
+          yenPlain(dr.r.otPay),
+          yenPlain(dr.r.dayPay)
+        ].join(","));
+      });
+    });
+    return [header].concat(lines).join("\n") + "\n";
+  }
+
+  function updateCurrent(patch) {
+    var cur = currentStaff();
+    if (!cur) return;
+    state.staff = state.staff.map(function (s) {
+      return s.id === cur.id ? Object.assign({}, s, patch) : s;
+    });
+    render();
+  }
+
+  function updateDay(dayId, patch) {
+    var cur = currentStaff();
+    if (!cur) return;
+    state.staff = state.staff.map(function (s) {
+      if (s.id !== cur.id) return s;
+      return Object.assign({}, s, {
+        days: s.days.map(function (d) {
+          return d.id === dayId ? Object.assign({}, d, patch) : d;
+        })
+      });
+    });
+    render();
+  }
+
+  function copyText(text, toastEl) {
+    function show() {
+      toastEl.classList.add("show");
+      window.clearTimeout(toastEl._t);
+      toastEl._t = window.setTimeout(function () {
+        toastEl.classList.remove("show");
+      }, 2000);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(show).catch(function () {
+        fallbackCopy(text, show);
+      });
+    } else {
+      fallbackCopy(text, show);
+    }
+  }
+
+  function fallbackCopy(text, show) {
+    try {
+      el.copyFallback.value = text;
+      el.copyFallback.classList.remove("sr-only");
+      el.copyFallback.focus();
+      el.copyFallback.select();
+      var ok = document.execCommand("copy");
+      el.copyFallback.classList.add("sr-only");
+      if (ok) {
+        show();
+      } else {
+        window.alert("コピーできませんでした。下のCSVテキストを長押しして選択・コピーしてください。");
+      }
+    } catch (e) {
+      window.alert("コピーできませんでした。下のCSVテキストを長押しして選択・コピーしてください。");
+    }
+  }
+
+  function render() {
+    var cur = currentStaff();
+    if (!cur) return;
+    var rs = rows();
+    var total = rs.reduce(function (sum, x) { return sum + x.r.gross; }, 0);
+    var curCalc = calcStaff(cur);
+
+    el.period.value = state.period;
+    el.totalGross.textContent = yen(total);
+    el.staffCountPill.textContent = state.staff.length + "名";
+    el.periodPill.textContent = state.period;
+
+    // summary table
+    el.summaryBody.innerHTML = rs.map(function (x) {
+      var active = x.s.id === cur.id ? " active-row" : "";
+      return (
+        '<tr class="clickable' + active + '" data-id="' + x.s.id + '">' +
+          "<td>" + escapeHtml(x.r.displayName) + (x.s.id === cur.id ? " ←" : "") +
+            (x.r.displayRole ? '<div style="font-size:0.72rem;color:#5a6b6e;font-weight:500;margin-top:0.1rem;">' + escapeHtml(x.r.displayRole) + "</div>" : "") +
+          "</td>" +
+          '<td class="num">' + x.r.dayCount + "</td>" +
+          '<td class="num">' + x.r.paidH.toFixed(1) + "</td>" +
+          '<td class="num">' + yen(x.r.basePay) + "</td>" +
+          '<td class="num">' + yen(x.r.otPay) + "</td>" +
+          '<td class="num">' + yen(x.r.commute) + "</td>" +
+          '<td class="num"><strong>' + yen(x.r.gross) + "</strong></td>" +
+        "</tr>"
+      );
+    }).join("");
+
+    // chips
+    el.staffChips.innerHTML = state.staff.map(function (s) {
+      var label = (s.name || "").trim() || "（未入力）";
+      var role = (s.role || "").trim();
+      var pressed = s.id === cur.id ? "true" : "false";
+      return '<button type="button" class="chip" data-id="' + s.id + '" aria-pressed="' + pressed + '">' +
+        escapeHtml(label) + (role ? "｜" + escapeHtml(role) : "") + "</button>";
+    }).join("");
+
+    // form fields (avoid fighting focused input by only setting when not focused)
+    setIfNotFocused(el.name, cur.name);
+    setIfNotFocused(el.role, cur.role || "");
+    setIfNotFocused(el.hourly, cur.hourly);
+    setIfNotFocused(el.otRate, cur.otRate);
+    setIfNotFocused(el.transport, cur.transport);
+    setIfNotFocused(el.bank, cur.bank);
+    setIfNotFocused(el.branch, cur.branch);
+    setIfNotFocused(el.account, cur.account);
+
+    el.btnRemoveStaff.disabled = state.staff.length <= 1;
+
+    // days
+    el.dayList.innerHTML = curCalc.dayRows.map(function (item, idx) {
+      var d = item.d;
+      var r = item.r;
+      return (
+        '<article class="day-card" data-day-id="' + d.id + '">' +
+          '<div class="day-card-top">' +
+            '<div class="day-title">勤務日 ' + (idx + 1) + '</div>' +
+            '<div class="day-pay">日次 ' + yen(r.dayPay) + "（有給 " + r.paidH.toFixed(2) + "h）</div>" +
+          "</div>" +
+          '<div class="grid-2">' +
+            '<div class="field"><label>日付</label><input type="date" data-field="date" value="' + attr(d.date) + '"></div>' +
+            '<div class="field"><label>出勤〜退勤（時間）</label><input type="number" min="0" step="0.25" inputmode="decimal" data-field="hours" value="' + attr(d.hours) + '"></div>' +
+            '<div class="field"><label>休憩（分）</label><input type="number" min="0" step="5" inputmode="numeric" data-field="breakMin" value="' + attr(d.breakMin) + '"></div>' +
+            '<div class="field"><label>残業（時間）</label><input type="number" min="0" step="0.25" inputmode="decimal" data-field="otHours" value="' + attr(d.otHours) + '"></div>' +
+          "</div>" +
+          '<div class="btn-row">' +
+            '<button type="button" class="btn btn-danger btn-day-remove" ' +
+              (cur.days.length <= 1 ? "disabled" : "") + ">この日を削除</button>" +
+          "</div>" +
+        "</article>"
+      );
+    }).join("");
+
+    // payslip
+    el.payslipName.textContent = curCalc.displayName + " さんの給与明細";
+    el.payslipPeriod.textContent = "対象月 " + state.period + (curCalc.displayRole ? " ／ " + curCalc.displayRole : "");
+    el.payslipGross.textContent = yen(curCalc.gross);
+    el.payslipRows.innerHTML = [
+      row("勤務日数", curCalc.dayCount + "日"),
+      row("有給時間合計", curCalc.paidH.toFixed(2) + "時間"),
+      row("残業時間合計", curCalc.otH.toFixed(2) + "時間"),
+      row("基本給", yen(curCalc.basePay)),
+      row("残業代", yen(curCalc.otPay)),
+      row("交通費（月額）", yen(curCalc.commute)),
+      '<div class="payslip-row em"><span class="k">支給合計</span><span class="v">' + yen(curCalc.gross) + "</span></div>"
+    ].join("");
+
+    // csv
+    var summaryCsv = buildSummaryCsv(rs);
+    var detailCsv = buildDetailCsv(rs);
+    el.summaryCsvPreview.textContent = summaryCsv.trim();
+    el.detailCsvPreview.textContent = detailCsv.trim();
+    el._summaryCsv = summaryCsv;
+    el._detailCsv = detailCsv;
+  }
+
+  function row(k, v) {
+    return '<div class="payslip-row"><span class="k">' + k + '</span><span class="v">' + v + "</span></div>";
+  }
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function attr(s) {
+    return escapeHtml(s == null ? "" : s);
+  }
+
+  function setIfNotFocused(input, value) {
+    if (document.activeElement === input) return;
+    input.value = value;
+  }
+
+  // Events
+  el.period.addEventListener("change", function () {
+    state.period = el.period.value || "2026-10";
+    render();
+  });
+
+  ["name", "role", "hourly", "otRate", "transport", "bank", "branch", "account"].forEach(function (key) {
+    el[key].addEventListener("input", function () {
+      var patch = {};
+      patch[key] = el[key].value;
+      updateCurrent(patch);
+    });
+  });
+
+  el.summaryBody.addEventListener("click", function (e) {
+    var tr = e.target.closest("tr[data-id]");
+    if (!tr) return;
+    state.editId = tr.getAttribute("data-id");
+    render();
+  });
+
+  el.staffChips.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-id]");
+    if (!btn) return;
+    state.editId = btn.getAttribute("data-id");
+    render();
+  });
+
+  el.btnAddStaff.addEventListener("click", function () {
+    var s = newStaff({
+      name: "新規パート",
+      role: "小規模現場パート",
+      days: [newDay({ date: state.period + "-01" })]
+    });
+    state.staff.push(s);
+    state.editId = s.id;
+    render();
+  });
+
+  el.btnRemoveStaff.addEventListener("click", function () {
+    if (state.staff.length <= 1) return;
+    var cur = currentStaff();
+    state.staff = state.staff.filter(function (s) { return s.id !== cur.id; });
+    state.editId = state.staff[0].id;
+    render();
+  });
+
+  el.btnAddDay.addEventListener("click", function () {
+    var cur = currentStaff();
+    var last = cur.days[cur.days.length - 1];
+    var nextDate = last ? last.date : state.period + "-01";
+    updateCurrent({
+      days: cur.days.concat([newDay({ date: nextDate })])
+    });
+  });
+
+  el.dayList.addEventListener("input", function (e) {
+    var input = e.target;
+    if (!input.matches("input[data-field]")) return;
+    var card = input.closest("[data-day-id]");
+    if (!card) return;
+    var dayId = card.getAttribute("data-day-id");
+    var field = input.getAttribute("data-field");
+    var patch = {};
+    patch[field] = input.value;
+    updateDay(dayId, patch);
+  });
+
+  el.dayList.addEventListener("click", function (e) {
+    var btn = e.target.closest(".btn-day-remove");
+    if (!btn) return;
+    var card = btn.closest("[data-day-id]");
+    if (!card) return;
+    var dayId = card.getAttribute("data-day-id");
+    var cur = currentStaff();
+    if (cur.days.length <= 1) return;
+    updateCurrent({
+      days: cur.days.filter(function (d) { return d.id !== dayId; })
+    });
+  });
+
+  el.btnCopySummary.addEventListener("click", function () {
+    copyText(el._summaryCsv || "", el.toastSummary);
+  });
+
+  el.btnCopyDetail.addEventListener("click", function () {
+    copyText(el._detailCsv || "", el.toastDetail);
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

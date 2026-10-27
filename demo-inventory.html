@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>サンプルデモ｜在庫・備品管理</title>
+<meta name="description" content="小規模現場向けの在庫・備品・発注点アラートのポートフォリオサンプル。">
+<style>
+:root {
+    --bg: #f4f7f8;
+    --surface: #ffffff;
+    --surface-2: #f8fbfb;
+    --ink: #1a2b2e;
+    --ink-muted: #5a6b6e;
+    --ink-faint: #8a9a9d;
+    --line: #e2eaeb;
+    --line-strong: #c9d6d8;
+    --accent: #0d9488;
+    --accent-hover: #0f766e;
+    --accent-soft: #ccfbf1;
+    --accent-ink: #115e59;
+    --warn-soft: #fff7ed;
+    --warn-ink: #9a3412;
+    --warn-border: #fed7aa;
+    --danger: #b91c1c;
+    --danger-soft: #fef2f2;
+    --ok-soft: #ecfdf5;
+    --ok-ink: #047857;
+    --radius: 14px;
+    --radius-sm: 10px;
+    --shadow: 0 1px 2px rgba(26, 43, 46, 0.04), 0 8px 24px rgba(26, 43, 46, 0.06);
+    --shadow-sm: 0 1px 2px rgba(26, 43, 46, 0.05);
+    --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "Yu Gothic", Meiryo, system-ui, -apple-system, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --max: 920px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; opacity: 0.45; }
+  h1, h2, h3 { margin: 0; line-height: 1.3; font-weight: 700; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  a { color: var(--accent); }
+  .wrap {
+    width: min(100% - 1.5rem, var(--max));
+    margin-inline: auto;
+    padding-bottom: 3rem;
+  }
+  .banner {
+    background: linear-gradient(135deg, #0f766e 0%, #0d9488 55%, #14b8a6 100%);
+    color: #fff;
+    padding: 1.1rem 0 1.25rem;
+  }
+  .banner .wrap { padding-bottom: 0; }
+  .banner-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.92;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.22);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    margin-bottom: 0.65rem;
+  }
+  .banner h1 {
+    font-size: clamp(1.25rem, 4vw, 1.65rem);
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+  }
+  .banner p {
+    font-size: 0.92rem;
+    opacity: 0.92;
+    max-width: 38rem;
+  }
+  .banner-note {
+    margin-top: 0.7rem;
+    display: inline-block;
+    font-size: 0.8rem;
+    background: rgba(0,0,0,0.18);
+    padding: 0.3rem 0.65rem;
+    border-radius: 8px;
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.6rem;
+    margin: -1.1rem 0 1.25rem;
+    position: relative;
+    z-index: 1;
+  }
+  .feature {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 0.85rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .feature strong {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--accent-ink);
+    margin-bottom: 0.15rem;
+  }
+  .feature span {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+  }
+  .hero-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(244, 247, 248, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    margin: 0 -0.75rem 1rem;
+    padding: 0.65rem 0.75rem;
+  }
+  .hero-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    justify-content: space-between;
+  }
+  .hero-metric { display: flex; flex-direction: column; gap: 0.1rem; }
+  .hero-metric .label {
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    font-weight: 600;
+  }
+  .hero-metric .value {
+    font-size: clamp(1.15rem, 3.5vw, 1.45rem);
+    font-weight: 800;
+    color: var(--accent-ink);
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.28rem 0.7rem;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.1rem 1.15rem;
+    margin-bottom: 1rem;
+  }
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+  }
+  .card-head h2 { font-size: 1.02rem; }
+  .card-head .sub {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    margin-top: 0.2rem;
+    font-weight: 400;
+  }
+  .field { display: flex; flex-direction: column; gap: 0.28rem; }
+  .field label {
+    font-size: 0.78rem;
+    font-weight: 650;
+    color: var(--ink-muted);
+  }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    border-radius: 9px;
+    padding: 0.55rem 0.7rem;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .field textarea { min-height: 5rem; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    border-radius: 9px;
+    border: 1px solid transparent;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.88rem;
+    font-weight: 650;
+    transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.05s;
+  }
+  .btn:active:not(:disabled) { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover:not(:disabled) { background: var(--accent-hover); }
+  .btn-ghost {
+    background: var(--surface);
+    border-color: var(--line-strong);
+    color: var(--ink);
+  }
+  .btn-ghost:hover:not(:disabled) { background: var(--surface-2); }
+  .btn-danger {
+    background: var(--danger-soft);
+    color: var(--danger);
+    border-color: #fecaca;
+  }
+  .btn-danger:hover:not(:disabled) { background: #fee2e2; }
+  .btn-sm { padding: 0.35rem 0.65rem; font-size: 0.78rem; }
+  .btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.85rem;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 0.85rem;
+  }
+  .chip {
+    border: 1px solid var(--line-strong);
+    background: var(--surface-2);
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+  .chip[aria-pressed="true"] {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+  .chip:hover { border-color: var(--accent); }
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    min-width: 480px;
+  }
+  th, td {
+    padding: 0.55rem 0.65rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  th {
+    background: var(--surface-2);
+    color: var(--ink-muted);
+    font-weight: 650;
+    font-size: 0.75rem;
+  }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; }
+  tr.clickable { cursor: pointer; }
+  tr.clickable:hover td { background: #f8fffe; }
+  .item-list { display: flex; flex-direction: column; gap: 0.65rem; }
+  .item-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    padding: 0.75rem;
+  }
+  .item-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+  }
+  .item-card-top .title { font-size: 0.9rem; font-weight: 700; }
+  .item-meta { font-size: 0.78rem; color: var(--ink-muted); }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+    white-space: nowrap;
+  }
+  .badge-ok { background: var(--ok-soft); color: var(--ok-ink); }
+  .badge-warn { background: var(--warn-soft); color: var(--warn-ink); }
+  .badge-muted { background: var(--surface); color: var(--ink-muted); border: 1px solid var(--line); }
+  .badge-accent { background: var(--accent-soft); color: var(--accent-ink); }
+  .badge-danger { background: var(--danger-soft); color: var(--danger); }
+  .check-list { display: flex; flex-direction: column; gap: 0.4rem; }
+  .check-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    padding: 0.4rem 0.55rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .check-row input { width: 1.05rem; height: 1.05rem; accent-color: var(--accent); }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  .photo-slot {
+    aspect-ratio: 1;
+    border: 1px dashed var(--line-strong);
+    border-radius: 10px;
+    background: linear-gradient(145deg, #f0fdfa, #ffffff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    color: var(--ink-faint);
+    font-size: 0.72rem;
+    font-weight: 650;
+    text-align: center;
+    padding: 0.4rem;
+  }
+  .photo-slot.filled {
+    border-style: solid;
+    border-color: #99f6e4;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+  }
+  .photo-slot .icon { font-size: 1.25rem; line-height: 1; }
+  .toast {
+    display: none;
+    margin-top: 0.55rem;
+    font-size: 0.82rem;
+    font-weight: 650;
+    color: var(--accent-ink);
+    background: var(--accent-soft);
+    border-radius: 8px;
+    padding: 0.45rem 0.7rem;
+  }
+  .toast.show { display: block; }
+  .footnote {
+    margin-top: 1.5rem;
+    padding: 1rem 1.1rem;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+  }
+  .footnote h3 {
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .footnote ul {
+    margin: 0.4rem 0 0;
+    padding-left: 1.15rem;
+  }
+  .footnote li { margin-bottom: 0.2rem; }
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .empty {
+    text-align: center;
+    padding: 1.25rem 0.75rem;
+    color: var(--ink-faint);
+    font-size: 0.88rem;
+  }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); border: 0;
+  }
+
+  .stock-bar {
+    height: 6px;
+    background: var(--line);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 0.45rem;
+  }
+  .stock-bar > span {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 999px;
+  }
+  .stock-bar.low > span { background: #ea580c; }
+
+</style>
+</head>
+<body>
+  <header class="banner">
+    <div class="wrap">
+      <div class="banner-kicker">PORTFOLIO SAMPLE</div>
+      <h1>サンプルデモ｜在庫・備品管理</h1>
+      <p>残数と発注点を一覧し、足りない品をすぐ把握するデモです。入出庫ボタンと簡易ログまで試せます。</p>
+      <div class="banner-note">※ ポートフォリオ用サンプルです。発注書・仕入先連携は含みません。</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="features" aria-label="できること">
+      <div class="feature"><strong>品目管理</strong><span>残数と発注点を一覧</span></div>
+      <div class="feature"><strong>アラート</strong><span>発注点割れをハイライト</span></div>
+      <div class="feature"><strong>入出庫</strong><span>＋/− で残数を更新</span></div>
+      <div class="feature"><strong>簡易ログ</strong><span>直近の動きを記録</span></div>
+    </section>
+
+    <div class="hero-bar" aria-live="polite">
+      <div class="hero-inner">
+        <div class="hero-metric">
+          <span class="label">発注が必要な品目</span>
+          <span class="value" id="metricAlert">0</span>
+        </div>
+        <div class="hero-meta">
+          <span class="pill" id="metricItems">品目 0</span>
+          <span class="pill" id="metricLogs">ログ 0</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2>1. 在庫一覧</h2>
+          <p class="sub">発注点以下はオレンジ表示</p>
+        </div>
+        <div class="filter-row" style="margin:0;">
+          <select id="filterCat" style="border:1px solid var(--line-strong);border-radius:9px;padding:0.4rem 0.65rem;background:var(--surface);">
+            <option value="">全カテゴリ</option>
+            <option>美容</option>
+            <option>歯科</option>
+            <option>福祉</option>
+            <option>カフェ</option>
+            <option>共通</option>
+          </select>
+          <label style="display:flex;align-items:center;gap:0.35rem;font-size:0.82rem;font-weight:650;color:var(--ink-muted);">
+            <input type="checkbox" id="onlyAlert" style="accent-color:var(--accent);"> 要発注のみ
+          </label>
+        </div>
+      </div>
+      <div class="item-list" id="itemList"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2>2. 品目を追加</h2>
+          <p class="sub">備品・消耗品の登録</p>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="field">
+          <label for="itName">品目名</label>
+          <input id="itName" type="text" placeholder="例：カラー剤 6番">
+        </div>
+        <div class="field">
+          <label for="itCat">カテゴリ</label>
+          <select id="itCat">
+            <option>美容</option>
+            <option>歯科</option>
+            <option>福祉</option>
+            <option>カフェ</option>
+            <option>共通</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="itUnit">単位</label>
+          <input id="itUnit" type="text" value="個">
+        </div>
+        <div class="field">
+          <label for="itQty">初期残数</label>
+          <input id="itQty" type="number" min="0" step="1" value="10" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="itReorder">発注点</label>
+          <input id="itReorder" type="number" min="0" step="1" value="3" inputmode="numeric">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="btnAddItem">品目を追加</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2>3. 入出庫ログ</h2>
+          <p class="sub">直近の増減履歴</p>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm" id="btnCopyLog">ログをコピー</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>時刻</th>
+              <th>品目</th>
+              <th>内容</th>
+              <th class="num">増減</th>
+              <th class="num">残</th>
+            </tr>
+          </thead>
+          <tbody id="logBody"></tbody>
+        </table>
+      </div>
+      <div class="toast" id="toast" role="status">ログをコピーしました</div>
+    </section>
+
+    <aside class="footnote">
+      <h3>このデモについて</h3>
+      <p>美容院・歯科・福祉・カフェなどで使う消耗品・備品の残数管理デモです。発注点アラートと入出庫ログで「今なにが足りないか」を見える化します。</p>
+      <ul>
+        <li>発注書作成・仕入先連携・バーコードは未実装です</li>
+        <li>データはこのブラウザ内のみで動き、サーバー送信はありません</li>
+        <li>ホームページ掲載用のデモとしてご利用ください</li>
+      </ul>
+    </aside>
+  </main>
+
+<script>
+
+(function () {
+  "use strict";
+  function uid() { return String(Date.now()) + Math.random().toString(16).slice(2, 6); }
+  function nowStr() {
+    var d = new Date();
+    return String(d.getMonth()+1).padStart(2,"0") + "/" + String(d.getDate()).padStart(2,"0") + " " +
+      String(d.getHours()).padStart(2,"0") + ":" + String(d.getMinutes()).padStart(2,"0");
+  }
+  var items = [
+    { id: "i1", name: "カラー剤 6番", cat: "美容", unit: "本", qty: 2, reorder: 3, max: 12 },
+    { id: "i2", name: "滅菌パック", cat: "歯科", unit: "箱", qty: 5, reorder: 2, max: 10 },
+    { id: "i3", name: "使い捨て手袋 M", cat: "共通", unit: "箱", qty: 1, reorder: 2, max: 8 },
+    { id: "i4", name: "入浴介助用シート", cat: "福祉", unit: "枚", qty: 40, reorder: 20, max: 100 },
+    { id: "i5", name: "コーヒー豆（ブレンド）", cat: "カフェ", unit: "kg", qty: 1.5, reorder: 2, max: 5 },
+    { id: "i6", name: "ペーパータオル", cat: "共通", unit: "袋", qty: 6, reorder: 3, max: 12 }
+  ];
+  var logs = [
+    { id: "l1", time: "10/28 09:12", name: "カラー剤 6番", note: "施術使用", delta: -1, qty: 2 },
+    { id: "l2", time: "10/28 08:40", name: "コーヒー豆（ブレンド）", note: "開店準備", delta: -0.5, qty: 1.5 },
+    { id: "l3", time: "10/27 17:20", name: "使い捨て手袋 M", note: "補充入庫", delta: 2, qty: 1 }
+  ];
+
+  function isLow(it) { return it.qty <= it.reorder; }
+
+  function renderItems() {
+    var cat = document.getElementById("filterCat").value;
+    var only = document.getElementById("onlyAlert").checked;
+    var list = items.filter(function (it) {
+      if (cat && it.cat !== cat) return false;
+      if (only && !isLow(it)) return false;
+      return true;
+    });
+    document.getElementById("metricAlert").textContent = String(items.filter(isLow).length);
+    document.getElementById("metricItems").textContent = "品目 " + items.length;
+    document.getElementById("metricLogs").textContent = "ログ " + logs.length;
+
+    var box = document.getElementById("itemList");
+    if (!list.length) {
+      box.innerHTML = '<div class="empty">該当する品目がありません</div>';
+      return;
+    }
+    box.innerHTML = list.map(function (it) {
+      var pct = Math.max(0, Math.min(100, Math.round((it.qty / (it.max || it.reorder * 3 || 1)) * 100)));
+      var low = isLow(it);
+      return '<article class="item-card">' +
+        '<div class="item-card-top">' +
+          '<div><div class="title">' + it.name + '</div>' +
+          '<div class="item-meta">' + it.cat + '｜発注点 ' + it.reorder + it.unit + '</div></div>' +
+          (low ? '<span class="badge badge-warn">要発注</span>' : '<span class="badge badge-ok">余裕あり</span>') +
+        '</div>' +
+        '<div style="font-size:1.05rem;font-weight:800;color:var(--accent-ink);font-variant-numeric:tabular-nums;">' +
+          it.qty + '<span style="font-size:0.78rem;font-weight:650;color:var(--ink-muted);margin-left:0.2rem;">' + it.unit + '</span></div>' +
+        '<div class="stock-bar' + (low ? ' low' : '') + '"><span style="width:' + pct + '%"></span></div>' +
+        '<div class="btn-row" style="margin-top:0.65rem;">' +
+          '<button type="button" class="btn btn-ghost btn-sm" data-delta="-1" data-id="' + it.id + '">−1 出庫</button>' +
+          '<button type="button" class="btn btn-primary btn-sm" data-delta="1" data-id="' + it.id + '">＋1 入庫</button>' +
+          '<button type="button" class="btn btn-danger btn-sm" data-del="' + it.id + '">削除</button>' +
+        '</div></article>';
+    }).join("");
+  }
+
+  function renderLogs() {
+    var body = document.getElementById("logBody");
+    if (!logs.length) {
+      body.innerHTML = '<tr><td colspan="5" class="empty">ログはまだありません</td></tr>';
+      return;
+    }
+    body.innerHTML = logs.map(function (l) {
+      var sign = l.delta > 0 ? "+" + l.delta : String(l.delta);
+      return '<tr><td>' + l.time + '</td><td>' + l.name + '</td><td>' + l.note +
+        '</td><td class="num">' + sign + '</td><td class="num">' + l.qty + '</td></tr>';
+    }).join("");
+  }
+
+  function adjust(id, delta) {
+    var it = items.find(function (x) { return x.id === id; });
+    if (!it) return;
+    var next = Math.round((it.qty + delta) * 100) / 100;
+    if (next < 0) next = 0;
+    it.qty = next;
+    logs.unshift({
+      id: uid(),
+      time: nowStr(),
+      name: it.name,
+      note: delta > 0 ? "手動入庫" : "手動出庫",
+      delta: delta,
+      qty: it.qty
+    });
+    renderItems();
+    renderLogs();
+  }
+
+  renderItems();
+  renderLogs();
+
+  document.getElementById("filterCat").addEventListener("change", renderItems);
+  document.getElementById("onlyAlert").addEventListener("change", renderItems);
+  document.getElementById("itemList").addEventListener("click", function (e) {
+    var del = e.target.closest("[data-del]");
+    if (del) {
+      var id = del.getAttribute("data-del");
+      items = items.filter(function (x) { return x.id !== id; });
+      renderItems();
+      return;
+    }
+    var btn = e.target.closest("[data-delta]");
+    if (!btn) return;
+    adjust(btn.getAttribute("data-id"), +btn.getAttribute("data-delta"));
+  });
+  document.getElementById("btnAddItem").addEventListener("click", function () {
+    var name = document.getElementById("itName").value.trim();
+    if (!name) { document.getElementById("itName").focus(); return; }
+    var qty = +document.getElementById("itQty").value || 0;
+    var reorder = +document.getElementById("itReorder").value || 0;
+    items.unshift({
+      id: uid(),
+      name: name,
+      cat: document.getElementById("itCat").value,
+      unit: document.getElementById("itUnit").value || "個",
+      qty: qty,
+      reorder: reorder,
+      max: Math.max(qty, reorder * 3, 1)
+    });
+    logs.unshift({ id: uid(), time: nowStr(), name: name, note: "品目追加", delta: qty, qty: qty });
+    document.getElementById("itName").value = "";
+    renderItems();
+    renderLogs();
+  });
+  document.getElementById("btnCopyLog").addEventListener("click", function () {
+    var text = "時刻,品目,内容,増減,残\n" + logs.map(function (l) {
+      return [l.time, l.name, l.note, l.delta, l.qty].join(",");
+    }).join("\n");
+    var done = function () {
+      var t = document.getElementById("toast");
+      t.classList.add("show");
+      setTimeout(function () { t.classList.remove("show"); }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, done);
+    } else {
+      done();
+    }
+  });
+})();
+
+</script>
+</body>
+</html>
