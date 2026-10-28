@@ -970,6 +970,8 @@ a.demo:hover .go{background:#f58c65;color:#fff;border-color:#f58c65}
 .hero-art, .solution-visual, .before-after, .studio-art{isolation:isolate}
 .solution-visual-copy, .before-after-head, .before-after-foot, .hero-art-caption{position:relative;z-index:1}
 .mobile-cta{z-index:55}
+:root{--fixed-bar-h:72px}
+@media (max-width:760px){.hero-copy .btn,.hero-demo-strip .cta-row .btn{scroll-margin-bottom:calc(var(--fixed-bar-h) + 24px)}}
 header{z-index:60}
 @media(max-width:850px){
   body{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
@@ -1472,15 +1474,17 @@ body{
   function onScroll(){
     if(header){ header.classList.toggle('is-scrolled', window.scrollY > 12); }
     if(cta){
+      var barH = cta.offsetHeight ? cta.offsetHeight + 12 : 72;
+      document.documentElement.style.setProperty('--fixed-bar-h', barH + 'px');
       var near = false;
       if(contact){
         var rect = contact.getBoundingClientRect();
         near = rect.top < window.innerHeight - 80;
       }
       if(!near){
-        document.querySelectorAll('.mid-cta, .cta-band, .contact .line-btn, .solution-bridge a, a.line-btn').forEach(function(el){
+        document.querySelectorAll('.mid-cta, .cta-band, .contact .line-btn, .solution-bridge a, a.line-btn, .hero-copy .btn, .hero-demo-strip .cta-row .btn').forEach(function(el){
           var r = el.getBoundingClientRect();
-          if(r.bottom > window.innerHeight - 110 && r.top < window.innerHeight - 8) near = true;
+          if(r.bottom > window.innerHeight - (barH + 16) && r.top < window.innerHeight - 8) near = true;
         });
       }
       cta.classList.toggle('hide', near);
