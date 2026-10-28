@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>サンプルデモ一覧｜WATA LAB</title>
-<meta name="description" content="個人店・教室・小さな施設向けの業務アプリ・くらし・ゲームの触れるサンプル一覧。">
+<meta name="description" content="WATA LABの触れるサンプル一覧。個人店・教室・小さな施設向け。見て・触って、使えそうか確かめられます。">
 <meta name="theme-color" content="#172b3e">
 <style>
 :root{
@@ -73,6 +73,49 @@ a.card:hover{transform:translateY(-4px);border-color:#b7e5d8;box-shadow:0 22px 4
 }
 .footnote h3{font-size:.92rem;color:var(--ink);margin:0 0 .45rem;font-weight:900}
 a:focus-visible{outline:3px solid #f58c65;outline-offset:3px}
+
+.card .preview{
+  height:86px;border-radius:14px;margin:-.15rem -.1rem .35rem;
+  background:
+    radial-gradient(circle at 85% 20%,rgba(255,224,171,.85),transparent 28%),
+    linear-gradient(145deg,#e8f5f1 0%,#fff8ef 55%,#f0f4f1 100%);
+  border:1px solid #e2e6e0;position:relative;overflow:hidden;
+}
+.card .preview:after{
+  content:"";position:absolute;left:12px;top:14px;width:46%;height:14px;border-radius:6px;background:#fff;box-shadow:0 8px 0 #d7ebe5, 0 20px 0 #ffe8dc;
+}
+.card .preview:before{
+  content:"";position:absolute;right:14px;bottom:12px;width:28%;height:28px;border-radius:10px;background:#172b3e;opacity:.9;
+}
+.card[href*="payroll"] .preview{background:linear-gradient(145deg,#d9ebe3,#fff8ef)}
+.card[href*="daily"] .preview{background:linear-gradient(145deg,#e7e7fa,#eef7f3)}
+.card[href*="shift"] .preview{background:linear-gradient(145deg,#ffe5d5,#eef7f3)}
+.card[href*="booking"] .preview{background:linear-gradient(145deg,#ffebbc,#e7e7fa)}
+.card[href*="inventory"] .preview{background:linear-gradient(145deg,#d9ebe3,#ffe5d5)}
+.card[href*="kondate"] .preview{background:linear-gradient(145deg,#c5e5db,#fff8ef)}
+.card[href*="diet"] .preview{background:linear-gradient(145deg,#e7e7fa,#d9ebe3)}
+.card[href*="smash"] .preview{background:linear-gradient(145deg,#172b3e,#0d9488)}
+.card[href*="chatbot"] .preview{background:linear-gradient(145deg,#5c3d2e,#c4784a)}
+.card[href*="smash"] .preview:before{background:#f58c65}
+.card[href*="smash"] .preview:after{box-shadow:0 8px 0 #f58c65, 0 20px 0 #ffe0ab}
+.cta-band{
+  margin-top:1.75rem;padding:1.35rem 1.3rem;border-radius:20px;color:#fff;
+  background:linear-gradient(135deg,#172b3e,#1a4550 55%,#0d9488);
+  display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
+  box-shadow:0 18px 36px -20px rgba(23,43,62,.45);
+}
+.cta-band strong{display:block;font-size:1.05rem;margin-bottom:.25rem}
+.cta-band p{margin:0;font-size:.86rem;opacity:.9;line-height:1.6}
+.cta-band a{
+  background:#f58c65;color:#fff;font-weight:900;border-radius:999px;padding:.85rem 1.2rem;
+  box-shadow:0 4px 0 #d97957;white-space:nowrap;
+}
+.filters span{transition:transform .15s, background .15s}
+.filters span:hover{transform:translateY(-1px);background:#fff}
+@media (prefers-reduced-motion: reduce){
+  .card{transition:none}
+}
+
 </style>
 </head>
 <body>
@@ -81,7 +124,7 @@ a:focus-visible{outline:3px solid #f58c65;outline-offset:3px}
     <a class="back" href="index.html#demos">← WATA LABへ戻る</a>
     <div class="kicker">SAMPLE DEMOS</div>
     <h1>触って試せるデモ</h1>
-    <p>個人店・教室・小さな施設向けの見本です。各カードに「誰向け・困りごと」あり。開いたら上の案内から。</p>
+    <p>ホームページの説得材料になる見本です。各カードに「誰向け・困りごと」あり。開いたら上の案内から触ってみてください。</p>
     <div class="note">※ ブラウザ内のデモです。サーバーには送りません。／サンプル・架空</div>
   </div>
 </header>
@@ -90,20 +133,27 @@ a:focus-visible{outline:3px solid #f58c65;outline-offset:3px}
     <span>業務</span><span>くらし</span><span>ゲーム</span><span>チャット</span>
   </div>
   <div class="grid">
-    <a class="card" href="part-time-payroll-demo.html"><span class="tag">給与</span><h2>パート給与の計算</h2><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p class="how">①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-daily-report.html"><span class="tag">日報</span><h2>日報・作業報告</h2><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p class="how">①スタッフを選ぶ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-shift.html"><span class="tag">シフト</span><h2>シフト・希望休</h2><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p class="how">①週を選ぶ → ②マスをタップで切替 → ③メモをコピー。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-booking.html"><span class="tag">予約</span><h2>簡易予約・受付</h2><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p class="how">①予約を追加 → ②来店に変更 → ③完了まで進めます。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-inventory.html"><span class="tag">在庫</span><h2>在庫・備品管理</h2><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p class="how">①＋／−で増減 → ②要発注（オレンジ）を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-kondate/"><span class="tag">献立</span><h2>わたらぼクッキング</h2><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p class="how">下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-diet.html"><span class="tag">減量</span><h2>わたらぼダイエットアプリ</h2><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p class="how">①ホームで状況 → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-smash.html"><span class="tag">ゲーム</span><h2>わたらぼスマッシュ</h2><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p class="how">タップで壊す。コンボで得点アップ。ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-chatbot.html"><span class="tag">チャット</span><h2>店舗チャットボット見本</h2><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p class="how">架空カフェ。①ボタンを押す → ②返事を見る。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="part-time-payroll-demo.html"><div class="preview" aria-hidden="true"></div><span class="tag">給与</span><h2>パート給与の計算</h2><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p class="how">①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-daily-report.html"><div class="preview" aria-hidden="true"></div><span class="tag">日報</span><h2>日報・作業報告</h2><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p class="how">①スタッフを選ぶ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-shift.html"><div class="preview" aria-hidden="true"></div><span class="tag">シフト</span><h2>シフト・希望休</h2><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p class="how">①週を選ぶ → ②マスをタップで切替 → ③メモをコピー。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-booking.html"><div class="preview" aria-hidden="true"></div><span class="tag">予約</span><h2>簡易予約・受付</h2><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p class="how">①予約を追加 → ②来店に変更 → ③完了まで進めます。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-inventory.html"><div class="preview" aria-hidden="true"></div><span class="tag">在庫</span><h2>在庫・備品管理</h2><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p class="how">①＋／−で増減 → ②要発注（オレンジ）を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-kondate/"><div class="preview" aria-hidden="true"></div><span class="tag">献立</span><h2>わたらぼクッキング</h2><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p class="how">下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-diet.html"><div class="preview" aria-hidden="true"></div><span class="tag">減量</span><h2>わたらぼダイエットアプリ</h2><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p class="how">①ホームで状況 → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-smash.html"><div class="preview" aria-hidden="true"></div><span class="tag">ゲーム</span><h2>わたらぼスマッシュ</h2><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p class="how">タップで壊す。コンボで得点アップ。ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-chatbot.html"><div class="preview" aria-hidden="true"></div><span class="tag">チャット</span><h2>店舗チャットボット見本</h2><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p class="how">架空カフェ。①ボタンを押す → ②返事を見る。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
   </div>
   <aside class="footnote">
     <h3>この一覧について</h3>
     <p>個人・個人経営・小さな店や施設を想定した業務アプリと、くらし向け・ミニゲームの見本です。どれも単体のHTMLで開けます。データは端末内だけ／サーバーには送りません。</p>
   </aside>
+  <div class="cta-band">
+    <div>
+      <strong>使えそうだったら、公式LINEへ。</strong>
+      <p>相談・見積は無料。サンプルを見た感想だけでも大丈夫です。</p>
+    </div>
+    <a href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談 ↗</a>
+  </div>
 </main>
 </body>
 </html>
