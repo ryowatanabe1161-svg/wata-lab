@@ -430,24 +430,142 @@
   }
   .stock-bar.low > span { background: #ea580c; }
 
+
+  /* --- clarity polish --- */
+  .demo-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .demo-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.28);
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .demo-nav a:hover { background: rgba(255,255,255,0.28); }
+  .howto {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1rem 1.1rem;
+    margin: -0.95rem 0 1.15rem;
+    position: relative;
+    z-index: 2;
+  }
+  .howto-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--accent-ink);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .howto > p {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .howto .hint {
+    margin-top: 0.4rem;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+  .step-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.7rem;
+  }
+  .step-flow span {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    font-size: 0.8rem;
+    font-weight: 750;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+  }
+  .step-flow .arrow {
+    background: transparent;
+    color: #8a9a9d;
+    padding: 0.35rem 0.15rem;
+    font-weight: 700;
+  }
+  .btn {
+    min-height: 44px !important;
+    padding: 0.7rem 1.15rem !important;
+    font-size: 0.94rem !important;
+    border-radius: 11px !important;
+  }
+  .chip {
+    min-height: 42px !important;
+    padding: 0.55rem 1.05rem !important;
+    font-size: 0.92rem !important;
+  }
+  .empty {
+    text-align: center !important;
+    padding: 1.5rem 1.1rem !important;
+    color: var(--ink-muted) !important;
+    font-size: 0.92rem !important;
+    background: var(--surface-2) !important;
+    border: 1px dashed var(--line-strong) !important;
+    border-radius: var(--radius-sm) !important;
+    line-height: 1.55 !important;
+  }
+  .field input,
+  .field select,
+  .field textarea,
+  input[type="month"],
+  input[type="date"],
+  input[type="time"],
+  input[type="number"],
+  input[type="text"],
+  select,
+  textarea {
+    min-height: 44px;
+    font-size: 16px;
+  }
+  .field textarea,
+  textarea { min-height: 100px; }
+  .card-head h2 { font-size: 1.05rem; }
+  .card-head .sub { font-size: 0.86rem; }
+
 </style>
 </head>
 <body>
   <header class="banner">
     <div class="wrap">
-      <div class="banner-kicker">PORTFOLIO SAMPLE</div>
-      <h1>サンプルデモ｜在庫・備品管理</h1>
-      <p>残数と発注点を一覧し、足りない品をすぐ把握するデモです。入出庫ボタンと簡易ログまで試せます。</p>
-      <div class="banner-note">※ ポートフォリオ用サンプルです。発注書・仕入先連携は含みません。</div>
+      <div class="demo-nav">
+        <a href="index.html#demos">← サンプル一覧へ</a>
+        <a href="demo-index.html">デモ一覧</a>
+      </div>
+      <div class="banner-kicker">業務サンプル</div>
+      <h1>在庫・備品管理</h1>
+      <p>残数と発注点を一覧。足りない品はオレンジでわかります。</p>
+      <div class="banner-note">触って試せるデモです</div>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="features" aria-label="できること">
-      <div class="feature"><strong>品目管理</strong><span>残数と発注点を一覧</span></div>
-      <div class="feature"><strong>アラート</strong><span>発注点割れをハイライト</span></div>
-      <div class="feature"><strong>入出庫</strong><span>＋/− で残数を更新</span></div>
-      <div class="feature"><strong>簡易ログ</strong><span>直近の動きを記録</span></div>
+    <section class="howto" aria-label="このデモでできること">
+      <div class="howto-title">このデモでできること</div>
+      <p>残数を見て、＋／−で入出庫。発注点を下回るとアラートになります。</p>
+      <p class="hint">使い方：一覧の＋／−を押す → 要発注だけ見るならチェック → 必要なら品目を追加</p>
     </section>
 
     <div class="hero-bar" aria-live="polite">
@@ -467,7 +585,7 @@
       <div class="card-head">
         <div>
           <h2>1. 在庫一覧</h2>
-          <p class="sub">発注点以下はオレンジ表示</p>
+          <p class="sub">足りない品はオレンジ。＋で入庫、−で出庫</p>
         </div>
         <div class="filter-row" style="margin:0;">
           <select id="filterCat" style="border:1px solid var(--line-strong);border-radius:9px;padding:0.4rem 0.65rem;background:var(--surface);">
@@ -490,7 +608,7 @@
       <div class="card-head">
         <div>
           <h2>2. 品目を追加</h2>
-          <p class="sub">備品・消耗品の登録</p>
+          <p class="sub">新しい備品・消耗品を登録</p>
         </div>
       </div>
       <div class="grid-3">
@@ -530,7 +648,7 @@
       <div class="card-head">
         <div>
           <h2>3. 入出庫ログ</h2>
-          <p class="sub">直近の増減履歴</p>
+          <p class="sub">さっき動かした履歴がここに残ります</p>
         </div>
         <button type="button" class="btn btn-ghost btn-sm" id="btnCopyLog">ログをコピー</button>
       </div>
@@ -602,7 +720,7 @@
 
     var box = document.getElementById("itemList");
     if (!list.length) {
-      box.innerHTML = '<div class="empty">該当する品目がありません</div>';
+      box.innerHTML = '<div class="empty"><strong>該当する品目がありません</strong>絞り込みを外すか、下から品目を追加してください</div>';
       return;
     }
     box.innerHTML = list.map(function (it) {
@@ -628,7 +746,7 @@
   function renderLogs() {
     var body = document.getElementById("logBody");
     if (!logs.length) {
-      body.innerHTML = '<tr><td colspan="5" class="empty">ログはまだありません</td></tr>';
+      body.innerHTML = '<tr><td colspan="5" class="empty"><strong>ログはまだありません</strong>上の一覧で＋／−を押すとここに残ります</td></tr>';
       return;
     }
     body.innerHTML = logs.map(function (l) {

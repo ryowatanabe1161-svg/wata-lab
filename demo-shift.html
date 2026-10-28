@@ -483,24 +483,142 @@
   .leg-off::before { background: #fff; border: 1px solid var(--line); }
   .leg-wish::before { background: var(--warn-soft); border: 1px solid var(--warn-border); }
 
+
+  /* --- clarity polish --- */
+  .demo-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .demo-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.28);
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .demo-nav a:hover { background: rgba(255,255,255,0.28); }
+  .howto {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1rem 1.1rem;
+    margin: -0.95rem 0 1.15rem;
+    position: relative;
+    z-index: 2;
+  }
+  .howto-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--accent-ink);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .howto > p {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .howto .hint {
+    margin-top: 0.4rem;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+  .step-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.7rem;
+  }
+  .step-flow span {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    font-size: 0.8rem;
+    font-weight: 750;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+  }
+  .step-flow .arrow {
+    background: transparent;
+    color: #8a9a9d;
+    padding: 0.35rem 0.15rem;
+    font-weight: 700;
+  }
+  .btn {
+    min-height: 44px !important;
+    padding: 0.7rem 1.15rem !important;
+    font-size: 0.94rem !important;
+    border-radius: 11px !important;
+  }
+  .chip {
+    min-height: 42px !important;
+    padding: 0.55rem 1.05rem !important;
+    font-size: 0.92rem !important;
+  }
+  .empty {
+    text-align: center !important;
+    padding: 1.5rem 1.1rem !important;
+    color: var(--ink-muted) !important;
+    font-size: 0.92rem !important;
+    background: var(--surface-2) !important;
+    border: 1px dashed var(--line-strong) !important;
+    border-radius: var(--radius-sm) !important;
+    line-height: 1.55 !important;
+  }
+  .field input,
+  .field select,
+  .field textarea,
+  input[type="month"],
+  input[type="date"],
+  input[type="time"],
+  input[type="number"],
+  input[type="text"],
+  select,
+  textarea {
+    min-height: 44px;
+    font-size: 16px;
+  }
+  .field textarea,
+  textarea { min-height: 100px; }
+  .card-head h2 { font-size: 1.05rem; }
+  .card-head .sub { font-size: 0.86rem; }
+
 </style>
 </head>
 <body>
   <header class="banner">
     <div class="wrap">
-      <div class="banner-kicker">PORTFOLIO SAMPLE</div>
-      <h1>サンプルデモ｜シフト作成・希望休</h1>
-      <p>美容院・歯科・福祉・カフェなど、複数スタッフの週シフトをタップで組み立てるデモです。希望休と公開メモまでまとめました。</p>
-      <div class="banner-note">※ ポートフォリオ用サンプルです。自動シフト最適化や通知は含みません。</div>
+      <div class="demo-nav">
+        <a href="index.html#demos">← サンプル一覧へ</a>
+        <a href="demo-index.html">デモ一覧</a>
+      </div>
+      <div class="banner-kicker">業務サンプル</div>
+      <h1>シフト・希望休</h1>
+      <p>週の表をタップするだけで、出勤・休み・希望休を切り替えられます。</p>
+      <div class="banner-note">触って試せるデモです</div>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="features" aria-label="できること">
-      <div class="feature"><strong>週ビュー</strong><span>7日×スタッフの簡易表</span></div>
-      <div class="feature"><strong>希望休</strong><span>タップで出勤／休／希望休</span></div>
-      <div class="feature"><strong>複数スタッフ</strong><span>美容・歯科・福祉・飲食</span></div>
-      <div class="feature"><strong>公開メモ</strong><span>掲示用の一文を編集</span></div>
+    <section class="howto" aria-label="このデモでできること">
+      <div class="howto-title">このデモでできること</div>
+      <p>マスをタップするたびに「出勤 → 休み → 希望休」と切り替わります。</p>
+      <p class="hint">使い方：週を選ぶ → 表をタップ → 必要なら下のメモをコピー</p>
     </section>
 
     <div class="hero-bar" aria-live="polite">
@@ -519,8 +637,8 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>1. 対象週</h2>
-          <p class="sub">週の開始日（月曜想定）</p>
+          <h2>1. どの週？</h2>
+          <p class="sub">週の始まり（月曜）を選びます</p>
         </div>
       </div>
       <div class="field" style="max-width:220px;">
@@ -533,7 +651,7 @@
       <div class="card-head">
         <div>
           <h2>2. シフト表（タップで切替）</h2>
-          <p class="sub">出勤 → 休み → 希望休 → 出勤</p>
+          <p class="sub">マスを押す：出勤 → 休み → 希望休 → 出勤</p>
         </div>
       </div>
       <div class="week-grid" id="weekGrid" aria-label="週間シフト"></div>
@@ -550,8 +668,8 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>3. 希望休一覧</h2>
-          <p class="sub">スタッフからの希望を一覧表示</p>
+          <h2>3. 希望休の一覧</h2>
+          <p class="sub">希望休にしたマスがここに出ます</p>
         </div>
       </div>
       <div class="item-list" id="wishList"></div>
@@ -560,8 +678,8 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>4. 公開用メモ</h2>
-          <p class="sub">店舗掲示・LINE共有用の一文</p>
+          <h2>4. みんなに見せるメモ</h2>
+          <p class="sub">店内掲示やLINE共有用。コピーできます</p>
         </div>
       </div>
       <div class="field">
@@ -664,7 +782,7 @@
     });
     var box = document.getElementById("wishList");
     if (!wishes.length) {
-      box.innerHTML = '<div class="empty">今週の希望休はありません</div>';
+      box.innerHTML = '<div class="empty"><strong>今週の希望休はまだありません</strong>上の表でマスをタップして「希望休」にしてみてください</div>';
     } else {
       box.innerHTML = wishes.map(function (w) {
         return '<article class="item-card"><div class="item-card-top"><div><div class="title">' +

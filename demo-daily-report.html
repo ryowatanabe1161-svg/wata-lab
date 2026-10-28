@@ -420,24 +420,142 @@
   .report-body { font-size: 0.84rem; color: var(--ink); white-space: pre-wrap; margin-top: 0.35rem; }
   .checks-mini { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.45rem; }
 
+
+  /* --- clarity polish --- */
+  .demo-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .demo-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.28);
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .demo-nav a:hover { background: rgba(255,255,255,0.28); }
+  .howto {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1rem 1.1rem;
+    margin: -0.95rem 0 1.15rem;
+    position: relative;
+    z-index: 2;
+  }
+  .howto-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--accent-ink);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .howto > p {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .howto .hint {
+    margin-top: 0.4rem;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+  .step-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.7rem;
+  }
+  .step-flow span {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    font-size: 0.8rem;
+    font-weight: 750;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+  }
+  .step-flow .arrow {
+    background: transparent;
+    color: #8a9a9d;
+    padding: 0.35rem 0.15rem;
+    font-weight: 700;
+  }
+  .btn {
+    min-height: 44px !important;
+    padding: 0.7rem 1.15rem !important;
+    font-size: 0.94rem !important;
+    border-radius: 11px !important;
+  }
+  .chip {
+    min-height: 42px !important;
+    padding: 0.55rem 1.05rem !important;
+    font-size: 0.92rem !important;
+  }
+  .empty {
+    text-align: center !important;
+    padding: 1.5rem 1.1rem !important;
+    color: var(--ink-muted) !important;
+    font-size: 0.92rem !important;
+    background: var(--surface-2) !important;
+    border: 1px dashed var(--line-strong) !important;
+    border-radius: var(--radius-sm) !important;
+    line-height: 1.55 !important;
+  }
+  .field input,
+  .field select,
+  .field textarea,
+  input[type="month"],
+  input[type="date"],
+  input[type="time"],
+  input[type="number"],
+  input[type="text"],
+  select,
+  textarea {
+    min-height: 44px;
+    font-size: 16px;
+  }
+  .field textarea,
+  textarea { min-height: 100px; }
+  .card-head h2 { font-size: 1.05rem; }
+  .card-head .sub { font-size: 0.86rem; }
+
 </style>
 </head>
 <body>
   <header class="banner">
     <div class="wrap">
-      <div class="banner-kicker">PORTFOLIO SAMPLE</div>
-      <h1>サンプルデモ｜日報・作業報告</h1>
-      <p>現場のその場入力を想定した日報デモです。スタッフ切替・チェックリスト・写真欄（ダミー）・一覧まで、ホームページ掲載用にまとめています。</p>
-      <div class="banner-note">※ ポートフォリオ用サンプルです。写真はダミー表示のみで、実ファイルは保存しません。</div>
+      <div class="demo-nav">
+        <a href="index.html#demos">← サンプル一覧へ</a>
+        <a href="demo-index.html">デモ一覧</a>
+      </div>
+      <div class="banner-kicker">業務サンプル</div>
+      <h1>日報・作業報告</h1>
+      <p>その場で書いて、一覧で振り返る。現場向けのシンプルな日報です。</p>
+      <div class="banner-note">触って試せるデモです（写真はダミー表示）</div>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="features" aria-label="できること">
-      <div class="feature"><strong>スタッフ選択</strong><span>現場の誰が報告か切替</span></div>
-      <div class="feature"><strong>チェックリスト</strong><span>閉店／清掃／申し送り</span></div>
-      <div class="feature"><strong>写真欄（ダミー）</strong><span>添付イメージを表示</span></div>
-      <div class="feature"><strong>日報一覧</strong><span>その日の報告を振り返り</span></div>
+    <section class="howto" aria-label="このデモでできること">
+      <div class="howto-title">このデモでできること</div>
+      <p>スタッフを選んで日報を書くと、一覧に残ります。</p>
+      <p class="hint">使い方：スタッフを選ぶ → 内容とチェックを入れる →「日報を追加」</p>
     </section>
 
     <div class="hero-bar" aria-live="polite">
@@ -456,8 +574,8 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>1. 報告するスタッフ</h2>
-          <p class="sub">チップで切り替え</p>
+          <h2>1. 誰の日報？</h2>
+          <p class="sub">丸いボタンでスタッフを切り替え</p>
         </div>
       </div>
       <div class="chips" id="staffChips" role="group" aria-label="スタッフ切替"></div>
@@ -467,7 +585,7 @@
       <div class="card-head">
         <div>
           <h2>2. 日報を書く</h2>
-          <p class="sub">テキスト・チェック・写真（ダミー）</p>
+          <p class="sub">内容・チェックリスト・写真（ダミー）を入れて追加</p>
         </div>
       </div>
       <div class="grid-2" style="margin-bottom:0.75rem;">
@@ -508,7 +626,7 @@
       <div class="card-head">
         <div>
           <h2>3. 日報一覧</h2>
-          <p class="sub">サンプル＋いま追加した分</p>
+          <p class="sub">追加した日報がここに並びます</p>
         </div>
         <div class="filter-row" style="margin:0;">
           <select id="filterShop" class="btn btn-ghost" style="padding:0.4rem 0.65rem;">
@@ -618,7 +736,7 @@
 
     var box = document.getElementById("reportList");
     if (!list.length) {
-      box.innerHTML = '<div class="empty">該当する日報がありません</div>';
+      box.innerHTML = '<div class="empty"><strong>まだ日報がありません</strong>上で書いて「日報を追加」してみてください</div>';
       return;
     }
     box.innerHTML = list.map(function (r) {

@@ -493,24 +493,147 @@
     clip: rect(0,0,0,0);
     border: 0;
   }
+
+  /* --- clarity polish --- */
+  .demo-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .demo-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.28);
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .demo-nav a:hover { background: rgba(255,255,255,0.28); }
+  .howto {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1rem 1.1rem;
+    margin: -0.95rem 0 1.15rem;
+    position: relative;
+    z-index: 2;
+  }
+  .howto-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--accent-ink);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+  .howto > p {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .howto .hint {
+    margin-top: 0.4rem;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+  .step-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.7rem;
+  }
+  .step-flow span {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    font-size: 0.8rem;
+    font-weight: 750;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+  }
+  .step-flow .arrow {
+    background: transparent;
+    color: #8a9a9d;
+    padding: 0.35rem 0.15rem;
+    font-weight: 700;
+  }
+  .btn {
+    min-height: 44px !important;
+    padding: 0.7rem 1.15rem !important;
+    font-size: 0.94rem !important;
+    border-radius: 11px !important;
+  }
+  .chip {
+    min-height: 42px !important;
+    padding: 0.55rem 1.05rem !important;
+    font-size: 0.92rem !important;
+  }
+  .empty {
+    text-align: center !important;
+    padding: 1.5rem 1.1rem !important;
+    color: var(--ink-muted) !important;
+    font-size: 0.92rem !important;
+    background: var(--surface-2) !important;
+    border: 1px dashed var(--line-strong) !important;
+    border-radius: var(--radius-sm) !important;
+    line-height: 1.55 !important;
+  }
+  .field input,
+  .field select,
+  .field textarea,
+  input[type="month"],
+  input[type="date"],
+  input[type="time"],
+  input[type="number"],
+  input[type="text"],
+  select,
+  textarea {
+    min-height: 44px;
+    font-size: 16px;
+  }
+  .field textarea,
+  textarea { min-height: 100px; }
+  .card-head h2 { font-size: 1.05rem; }
+  .card-head .sub { font-size: 0.86rem; }
+
 </style>
 </head>
 <body>
   <header class="banner">
     <div class="wrap">
-      <div class="banner-kicker">PORTFOLIO SAMPLE</div>
-      <h1>サンプルデモ｜パート時給・月次給与計算</h1>
-      <p>美容院・歯科医院・福祉施設・カフェなど、個人事業・小規模現場向けの複数例です。週の勤務がバラつくパート給与を、日次勤怠から月次明細・振込CSVまでまとめます。</p>
-      <div class="banner-note">※ ポートフォリオ用サンプルです。税・社会保険の控除は未対応です。</div>
+      <div class="demo-nav">
+        <a href="index.html#demos">← サンプル一覧へ</a>
+        <a href="demo-index.html">デモ一覧</a>
+      </div>
+      <div class="banner-kicker">業務サンプル</div>
+      <h1>パート給与の計算</h1>
+      <p>勤務時間と時給から、今月の支給額・明細・振込用CSVまでまとめて確認できます。</p>
+      <div class="banner-note">触って試せるデモです（税・社保は未対応）</div>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="features" aria-label="できること">
-      <div class="feature"><strong>複数業種の例</strong><span>美容／歯科／福祉／飲食</span></div>
-      <div class="feature"><strong>月次まとめ</strong><span>日別勤怠から自動集計</span></div>
-      <div class="feature"><strong>給与明細</strong><span>基本給・残業・交通費</span></div>
-      <div class="feature"><strong>振込CSV</strong><span>月次／日次をワンクリック</span></div>
+    <section class="howto" aria-label="このデモでできること">
+      <div class="howto-title">このデモでできること</div>
+      <p>スタッフの勤怠を入れると、給与明細と振込用CSVが自動で出ます。</p>
+      <p class="hint">使い方：対象月を選ぶ → スタッフを選んで勤怠を入力 → 下の明細・CSVを見る</p>
+      <div class="step-flow" aria-hidden="true">
+        <span>① 入力</span><span class="arrow">→</span>
+        <span>② 自動計算</span><span class="arrow">→</span>
+        <span>③ 明細・CSV</span>
+      </div>
     </section>
 
     <div class="hero-bar" aria-live="polite">
@@ -530,8 +653,8 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>1. 対象月</h2>
-          <p class="sub">締めたい月を指定します</p>
+          <h2>① 対象月を選ぶ</h2>
+          <p class="sub">まず締めたい月を選びます</p>
         </div>
       </div>
       <div class="field" style="max-width: 220px;">
@@ -544,8 +667,8 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>2. スタッフ一覧サマリー</h2>
-          <p class="sub">行をタップすると編集対象が切り替わります</p>
+          <h2>② スタッフ別の合計（自動）</h2>
+          <p class="sub">行をタップすると、その人を編集できます</p>
         </div>
       </div>
       <div class="table-wrap">
@@ -574,14 +697,14 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>3. 編集するスタッフ</h2>
-          <p class="sub">チップで切り替え</p>
+          <h2>① スタッフを選ぶ</h2>
+          <p class="sub">下の丸いボタンで切り替え</p>
         </div>
       </div>
       <div class="chips" id="staffChips" role="group" aria-label="スタッフ切替"></div>
 
       <!-- 4. 編集 -->
-      <h3 style="font-size:0.92rem;margin:0.4rem 0 0.75rem;">4. 基本情報・振込先</h3>
+      <h3 style="font-size:0.95rem;margin:0.5rem 0 0.75rem;">① 基本情報・振込先</h3>
       <div class="grid-2">
         <div class="field">
           <label for="name">氏名</label>
@@ -624,8 +747,8 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>5. 日ごとの勤怠</h2>
-          <p class="sub">出勤〜退勤時間・休憩・残業を日別に入力</p>
+          <h2>① 日ごとの勤怠を入力</h2>
+          <p class="sub">出勤〜退勤・休憩・残業を日ごとに入れる</p>
         </div>
       </div>
       <div class="day-list" id="dayList"></div>
@@ -639,7 +762,7 @@
       <div class="payslip" id="payslip">
         <div class="payslip-head">
           <div>
-            <h3 id="payslipName">給与明細</h3>
+            <h3 id="payslipName">③ 給与明細（自動）</h3>
             <p class="period" id="payslipPeriod">対象月 —</p>
           </div>
           <div class="payslip-total">
@@ -656,8 +779,8 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>7. 振込・検算用CSV</h2>
-          <p class="sub">月次サマリーは振込用、日次明細は検算用</p>
+          <h2>③ 振込・検算用CSV</h2>
+          <p class="sub">月次＝振込用／日次＝検算用。コピーして使えます</p>
         </div>
       </div>
       <div>
@@ -681,7 +804,7 @@
 
     <aside class="footnote">
       <h3>このデモについて</h3>
-      <p>個人事業・小規模現場向けに、業種の違うパートさんを複数人まとめたサンプルです（美容院／歯科医院／福祉施設／カフェ）。週の勤務時間が月によって変動しても、日次勤怠の積み上げで月次支給を出せるイメージとしてご覧ください。</p>
+      <p>小さな店・施設向けのパート給与イメージです。日ごとの勤務を積み上げて、今月の支給額をすぐ確認できます。</p>
       <ul>
         <li>計算式：（勤務時間 − 休憩分÷60）× 時給 ＋ 残業時間 × 時給 × 割増倍率 ＋ 月額交通費</li>
         <li>税・社会保険・控除・端数処理ルールは未実装です</li>
@@ -1077,7 +1200,7 @@
     }).join("");
 
     // payslip
-    el.payslipName.textContent = curCalc.displayName + " さんの給与明細";
+    el.payslipName.textContent = "③ " + curCalc.displayName + " さんの給与明細";
     el.payslipPeriod.textContent = "対象月 " + state.period + (curCalc.displayRole ? " ／ " + curCalc.displayRole : "");
     el.payslipGross.textContent = yen(curCalc.gross);
     el.payslipRows.innerHTML = [
