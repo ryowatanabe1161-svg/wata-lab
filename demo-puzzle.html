@@ -3,29 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
-<meta name="description" content="わたらぼパズル — 広告の合間に出るような、タップでそろえる軽いマッチ3パズル（ポートフォリオサンプル）。">
+<meta name="description" content="わたらぼパズル — 隣のマスを入れ替えてそろえる軽いマッチ3（ポートフォリオサンプル）。">
 <title>わたらぼパズル｜WATA LAB</title>
 <style>
 :root{
   --cream:#f7f6ef;--navy:#172b3e;--teal:#0d9488;--teal-soft:#d7ebe5;
-  --orange:#f58c65;--muted:#586677;--line:#e4e7e3;--white:#fff;
+  --orange:#f58c65;--muted:#586677;--line:#e4e7e3;
   --c0:#ff6b8a;--c1:#4ecdc4;--c2:#ffe66d;--c3:#a78bfa;--c4:#74b9ff;--c5:#55efc4;
   --safe-b:env(safe-area-inset-bottom,0px);
+  --size:7;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;overscroll-behavior:none}
 body{
-  background:linear-gradient(165deg,#f7f6ef 0%,#e8f5f1 45%,#f7f6ef 100%);
+  background:linear-gradient(165deg,#f7f6ef 0%,#e8f5f1 50%,#f7f6ef 100%);
   color:var(--navy);
   font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,system-ui,sans-serif;
   display:flex;flex-direction:column;align-items:center;
-  min-height:100dvh;padding:12px 12px calc(16px + var(--safe-b));
+  min-height:100dvh;padding:10px 10px calc(14px + var(--safe-b));
   user-select:none;-webkit-user-select:none;
 }
 a{color:inherit;text-decoration:none}
 .topbar{
-  width:min(100%,420px);display:flex;align-items:center;justify-content:space-between;
-  gap:10px;margin-bottom:10px;
+  width:min(100%,440px);display:flex;align-items:center;justify-content:space-between;
+  gap:10px;margin-bottom:8px;
 }
 .brand{display:flex;align-items:center;gap:8px;font-weight:900;font-size:15px;letter-spacing:-.3px}
 .brand .mark{
@@ -36,112 +37,136 @@ a{color:inherit;text-decoration:none}
   font-size:12px;font-weight:800;color:var(--muted);background:#fff;
   border:1px solid var(--line);border-radius:999px;padding:7px 12px;
 }
-.back:hover{border-color:#c9ded5;color:var(--navy)}
 .shell{
-  width:min(100%,420px);background:#fff;border:1px solid var(--line);
-  border-radius:22px;box-shadow:0 10px 30px #172b3e12,0 1px 0 #edf0eb;
-  padding:16px 14px 18px;position:relative;overflow:hidden;
+  width:min(100%,440px);background:#fff;border:1px solid var(--line);
+  border-radius:22px;box-shadow:0 10px 30px #172b3e12;
+  padding:12px 12px 14px;position:relative;overflow:hidden;
 }
 .shell:before{
   content:"";position:absolute;right:-40px;top:-50px;width:140px;height:140px;
   background:#d7ebe580;border-radius:50%;pointer-events:none;
 }
-header.hud{position:relative;z-index:1;text-align:center;margin-bottom:12px}
+header.hud{position:relative;z-index:1;text-align:center;margin-bottom:6px}
 .kicker{
   display:inline-block;font-size:10px;font-weight:800;letter-spacing:2px;
-  color:#0a7a70;background:var(--teal-soft);border-radius:999px;padding:4px 10px;margin-bottom:8px;
+  color:#0a7a70;background:var(--teal-soft);border-radius:999px;padding:3px 10px;margin-bottom:6px;
 }
-h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height:1.25}
-.tip{margin:0;font-size:11px;color:var(--muted);line-height:1.5}
+h1{margin:0 0 2px;font-size:clamp(20px,5.5vw,24px);letter-spacing:-1px;line-height:1.25}
+.sample-note{margin:0;font-size:10px;color:var(--muted)}
 .stats{
-  position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:14px 0 12px;
+  position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin:10px 0 10px;
 }
 .stat{
-  background:var(--cream);border:1px solid var(--line);border-radius:14px;
-  padding:10px 8px;text-align:center;
+  background:var(--cream);border:1px solid var(--line);border-radius:12px;
+  padding:8px 6px;text-align:center;
 }
-.stat label{display:block;font-size:10px;font-weight:800;color:var(--muted);letter-spacing:.5px;margin-bottom:2px}
-.stat b{font-size:22px;font-weight:900;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.stat label{display:block;font-size:10px;font-weight:800;color:var(--muted);letter-spacing:.4px;margin-bottom:1px}
+.stat b{font-size:20px;font-weight:900;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
 .stat.moves b.warn{color:#e17055}
 .board-wrap{
   position:relative;z-index:1;aspect-ratio:1;width:100%;
   background:linear-gradient(180deg,#1a3a48,#0f2a35);
-  border-radius:18px;padding:8px;box-shadow:inset 0 2px 8px #0004,0 6px 0 #0a1f28;
+  border-radius:18px;padding:10px;box-shadow:inset 0 2px 8px #0004,0 5px 0 #0a1f28;
   touch-action:none;
 }
 #board{
-  display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);
-  gap:5px;width:100%;height:100%;
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  grid-template-rows:repeat(7,1fr);
+  gap:7px;width:100%;height:100%;
 }
 .tile{
-  border:none;padding:0;border-radius:12px;cursor:pointer;
-  position:relative;transition:transform .12s ease,box-shadow .12s ease,opacity .15s;
-  box-shadow:0 3px 0 rgba(0,0,0,.22),inset 0 2px 0 rgba(255,255,255,.35);
+  border:none;padding:0;border-radius:14px;cursor:pointer;
+  position:relative;
+  transition:transform .12s ease,box-shadow .12s ease,opacity .15s,filter .12s;
+  box-shadow:0 4px 0 rgba(0,0,0,.25),inset 0 2px 0 rgba(255,255,255,.4);
   appearance:none;-webkit-appearance:none;
   min-width:0;min-height:0;
+  will-change:transform;
 }
-.tile:active{transform:scale(.94)}
 .tile.selected{
-  transform:scale(1.08);z-index:2;
-  box-shadow:0 0 0 3px #fff,0 0 0 5px #ffd36b,0 4px 0 rgba(0,0,0,.25);
-  animation:pulse .7s ease-in-out infinite;
+  transform:scale(1.12);z-index:3;
+  box-shadow:0 0 0 4px #fff,0 0 0 8px #ffd36b,0 6px 16px rgba(255,211,107,.55);
+  animation:pulse .65s ease-in-out infinite;
+  filter:brightness(1.08);
 }
-.tile.matched{
-  animation:pop .28s ease-out forwards;
-  pointer-events:none;
+.tile.matched{animation:pop .3s ease-out forwards;pointer-events:none}
+.tile.bounce{animation:bounce .35s ease}
+.tile.drag-ghost{
+  opacity:.45;transform:scale(.92);
 }
-.tile.falling{transition:transform .18s cubic-bezier(.2,.8,.2,1)}
 .tile:focus-visible{outline:3px solid #ffd36b;outline-offset:2px}
-@keyframes pulse{0%,100%{transform:scale(1.08)}50%{transform:scale(1.12)}}
-@keyframes pop{0%{transform:scale(1);opacity:1}60%{transform:scale(1.25);opacity:.8}100%{transform:scale(.2);opacity:0}}
-.shine{
-  position:absolute;inset:18% 22% auto;height:28%;border-radius:999px;
-  background:rgba(255,255,255,.38);pointer-events:none;
+@keyframes pulse{0%,100%{transform:scale(1.12)}50%{transform:scale(1.18)}}
+@keyframes pop{0%{transform:scale(1);opacity:1}55%{transform:scale(1.3);opacity:.85}100%{transform:scale(.15);opacity:0}}
+@keyframes bounce{
+  0%{transform:translate(0,0)}
+  25%{transform:translate(-6px,0)}
+  50%{transform:translate(6px,0)}
+  75%{transform:translate(-3px,0)}
+  100%{transform:translate(0,0)}
 }
-.controls{position:relative;z-index:1;display:flex;gap:8px;margin-top:14px}
+.shine{
+  position:absolute;inset:16% 20% auto;height:26%;border-radius:999px;
+  background:rgba(255,255,255,.4);pointer-events:none;
+}
+.tipbar{
+  position:relative;z-index:1;margin-top:10px;
+  background:#fff8e8;border:1.5px solid #ffd89a;border-radius:12px;
+  padding:10px 12px;font-size:13px;font-weight:800;color:#5a4520;
+  line-height:1.45;text-align:center;
+}
+.tipbar strong{color:#c46e51}
+.controls{position:relative;z-index:1;display:flex;gap:8px;margin-top:10px}
 .btn{
-  flex:1;border:none;border-radius:14px;padding:14px 12px;font-weight:900;font-size:14px;
+  flex:1;border:none;border-radius:14px;padding:13px 12px;font-weight:900;font-size:14px;
   font-family:inherit;cursor:pointer;transition:transform .12s,box-shadow .12s;
 }
 .btn:active{transform:translateY(2px)}
-.btn.primary{
-  background:var(--orange);color:#fff;box-shadow:0 5px 0 #d97957;
-}
+.btn.primary{background:var(--orange);color:#fff;box-shadow:0 5px 0 #d97957}
 .btn.primary:active{box-shadow:0 2px 0 #d97957}
-.btn.ghost{
-  background:var(--cream);color:var(--navy);border:1px solid var(--line);box-shadow:none;
-}
-.howto{
-  position:relative;z-index:1;margin:12px 0 0;font-size:12px;color:var(--muted);
-  text-align:center;line-height:1.55;
-}
+.btn.ghost{background:var(--cream);color:var(--navy);border:1px solid var(--line)}
 .overlay{
-  position:absolute;inset:0;z-index:10;background:rgba(23,43,62,.72);
-  backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;
-  padding:20px;border-radius:22px;opacity:0;pointer-events:none;transition:opacity .2s;
+  position:absolute;inset:0;z-index:20;background:rgba(23,43,62,.78);
+  backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;
+  padding:18px;border-radius:22px;opacity:0;pointer-events:none;transition:opacity .2s;
 }
 .overlay.show{opacity:1;pointer-events:auto}
 .panel{
-  background:#fff;border-radius:20px;padding:28px 22px 22px;text-align:center;
-  width:min(100%,300px);box-shadow:0 16px 40px #0003;
-  transform:scale(.92);transition:transform .2s;
+  background:#fff;border-radius:20px;padding:24px 20px 18px;text-align:center;
+  width:min(100%,320px);box-shadow:0 16px 40px #0003;
+  transform:scale(.94);transition:transform .2s;
 }
 .overlay.show .panel{transform:scale(1)}
-.panel .emoji{font-size:42px;line-height:1;margin-bottom:8px}
-.panel h2{margin:0 0 8px;font-size:24px;letter-spacing:-.5px}
-.panel p{margin:0 0 6px;font-size:14px;color:var(--muted)}
-.panel .scoreline{font-size:18px;font-weight:900;color:var(--navy);margin:12px 0 18px}
+.panel .emoji{font-size:40px;line-height:1;margin-bottom:6px}
+.panel h2{margin:0 0 10px;font-size:22px;letter-spacing:-.5px}
+.panel .howto-steps{
+  text-align:left;background:var(--cream);border-radius:14px;padding:12px 14px;
+  margin:0 0 14px;font-size:13px;line-height:1.65;color:var(--navy);font-weight:700;
+}
+.panel .howto-steps li{margin:0 0 6px}
+.panel .howto-steps li:last-child{margin:0}
+.panel p{margin:0 0 6px;font-size:14px;color:var(--muted);line-height:1.5}
+.panel .scoreline{font-size:18px;font-weight:900;color:var(--navy);margin:10px 0 16px}
 .panel .btn{width:100%}
 .toast{
-  position:fixed;left:50%;bottom:calc(24px + var(--safe-b));transform:translateX(-50%) translateY(20px);
-  background:var(--navy);color:#fff;font-size:13px;font-weight:800;padding:10px 16px;
-  border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:50;white-space:nowrap;
+  position:fixed;left:50%;bottom:calc(22px + var(--safe-b));transform:translateX(-50%) translateY(18px);
+  background:var(--navy);color:#fff;font-size:13px;font-weight:800;padding:11px 18px;
+  border-radius:999px;opacity:0;pointer-events:none;transition:.22s;z-index:50;white-space:nowrap;
+  max-width:90vw;overflow:hidden;text-overflow:ellipsis;
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.drag-finger{
+  position:fixed;width:56px;height:56px;border-radius:16px;pointer-events:none;z-index:40;
+  box-shadow:0 8px 20px rgba(0,0,0,.28),inset 0 2px 0 rgba(255,255,255,.4);
+  display:none;transform:translate(-50%,-50%) scale(1.15);
+}
+.drag-finger .shine{
+  inset:16% 20% auto;height:26%;
+}
 @media(min-width:480px){
-  .tile{border-radius:14px}
-  #board{gap:6px}
-  .board-wrap{padding:10px}
+  #board{gap:8px}
+  .board-wrap{padding:12px}
+  .tile{border-radius:16px}
 }
 </style>
 </head>
@@ -155,25 +180,44 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
     <header class="hud">
       <span class="kicker">PORTFOLIO SAMPLE</span>
       <h1>わたらぼパズル</h1>
-      <p class="tip">WATA LAB のポートフォリオ用サンプルです。データは端末内のみ。</p>
+      <p class="sample-note">WATA LAB のポートフォリオ用サンプル</p>
     </header>
 
     <div class="stats" aria-live="polite">
       <div class="stat"><label>スコア</label><b id="score">0</b></div>
-      <div class="stat moves"><label>残り手数</label><b id="moves">25</b></div>
-      <div class="stat"><label>目標</label><b id="goal">1200</b></div>
+      <div class="stat moves"><label>残り手数</label><b id="moves">30</b></div>
+      <div class="stat"><label>目標</label><b id="goal">800</b></div>
     </div>
 
     <div class="board-wrap" id="boardWrap">
-      <div id="board" role="grid" aria-label="8×8のパズル盤面"></div>
+      <div id="board" role="grid" aria-label="7×7のパズル盤面"></div>
+    </div>
+
+    <div class="tipbar" id="tipbar" role="status">
+      <strong>遊び方：</strong>隣のマスを<strong>スワイプ</strong>か<strong>2回タップ</strong>で入れ替え → 同じ色が<strong>3つ以上</strong>つながると消える
     </div>
 
     <div class="controls">
       <button type="button" class="btn ghost" id="btnHint">ヒント</button>
       <button type="button" class="btn primary" id="btnRestart">やり直し</button>
     </div>
-    <p class="howto">隣どうしのタイルを順番にタップして入れ替え。<br>同じ色を3つ以上そろえると消えます。</p>
 
+    <!-- Start howto -->
+    <div class="overlay show" id="startOverlay" aria-hidden="false">
+      <div class="panel" role="dialog" aria-modal="true" aria-labelledby="startTitle">
+        <div class="emoji" aria-hidden="true">🧩</div>
+        <h2 id="startTitle">遊び方</h2>
+        <ol class="howto-steps">
+          <li>隣のマスを<strong>2つタップ</strong>して入れ替え<br><span style="font-weight:600;color:#586677;font-size:12px">（または指でスワイプ）</span></li>
+          <li>同じ色が<strong>3つ以上</strong>つながると消える</li>
+          <li>目標スコアを目指そう！</li>
+        </ol>
+        <p style="font-size:12px;margin-bottom:14px">手が大きい人でも押しやすいマスにしています。</p>
+        <button type="button" class="btn primary" id="btnStart">スタート</button>
+      </div>
+    </div>
+
+    <!-- End overlay -->
     <div class="overlay" id="overlay" aria-hidden="true">
       <div class="panel" role="dialog" aria-modal="true" aria-labelledby="ovTitle">
         <div class="emoji" id="ovEmoji">🎉</div>
@@ -185,26 +229,32 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
     </div>
   </div>
 
+  <div class="drag-finger" id="dragFinger" aria-hidden="true"><span class="shine"></span></div>
   <div class="toast" id="toast" role="status"></div>
 
 <script>
 (function(){
-  const SIZE = 8;
+  const SIZE = 7;
   const COLORS = ['var(--c0)','var(--c1)','var(--c2)','var(--c3)','var(--c4)','var(--c5)'];
-  const MOVES_START = 25;
-  const GOAL = 1200;
-  const MATCH_BASE = 30;
+  const MOVES_START = 30;
+  const GOAL = 800;
+  const MATCH_BASE = 40;
+  const SWIPE_MIN = 18;
 
   const boardEl = document.getElementById('board');
+  const boardWrap = document.getElementById('boardWrap');
   const scoreEl = document.getElementById('score');
   const movesEl = document.getElementById('moves');
   const goalEl = document.getElementById('goal');
   const overlay = document.getElementById('overlay');
+  const startOverlay = document.getElementById('startOverlay');
   const ovTitle = document.getElementById('ovTitle');
   const ovMsg = document.getElementById('ovMsg');
   const ovScore = document.getElementById('ovScore');
   const ovEmoji = document.getElementById('ovEmoji');
   const toast = document.getElementById('toast');
+  const tipbar = document.getElementById('tipbar');
+  const dragFinger = document.getElementById('dragFinger');
 
   goalEl.textContent = String(GOAL);
 
@@ -214,18 +264,26 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
   let selected = null;
   let busy = false;
   let ended = false;
+  let started = false;
   let toastTimer = null;
+  let tileEls = [];
+
+  // pointer / drag state
+  let ptr = null;
 
   function rndColor(){ return Math.floor(Math.random() * COLORS.length); }
+  function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 
   function showToast(msg){
     toast.textContent = msg;
     toast.classList.add('show');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(()=> toast.classList.remove('show'), 1400);
+    toastTimer = setTimeout(()=> toast.classList.remove('show'), 1500);
   }
 
-  function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+  function setTip(html){
+    tipbar.innerHTML = html;
+  }
 
   function createEmpty(){
     return Array.from({length:SIZE}, () => Array(SIZE).fill(0));
@@ -260,14 +318,12 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
       for (let c = 0; c < SIZE; c++){
         const v = g[r][c];
         if (v < 0) continue;
-        // horizontal
         let c2 = c;
         while (c2 + 1 < SIZE && g[r][c2+1] === v) c2++;
         if (c2 - c + 1 >= 3){
           for (let k = c; k <= c2; k++) mark[r][k] = true;
           found = true;
         }
-        // vertical
         let r2 = r;
         while (r2 + 1 < SIZE && g[r2+1][c] === v) r2++;
         if (r2 - r + 1 >= 3){
@@ -285,16 +341,36 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
     return n;
   }
 
+  function adjacent(a, b){
+    return Math.abs(a.r - b.r) + Math.abs(a.c - b.c) === 1;
+  }
+
+  function swapCells(a, b){
+    const t = grid[a.r][a.c];
+    grid[a.r][a.c] = grid[b.r][b.c];
+    grid[b.r][b.c] = t;
+  }
+
+  function cellFromPoint(x, y){
+    const el = document.elementFromPoint(x, y);
+    if (!el) return null;
+    const tile = el.closest ? el.closest('.tile') : null;
+    if (!tile || !boardEl.contains(tile)) return null;
+    return { r: +tile.dataset.r, c: +tile.dataset.c, el: tile };
+  }
+
   function render(opts){
     opts = opts || {};
     boardEl.innerHTML = '';
+    tileEls = [];
     for (let r = 0; r < SIZE; r++){
+      tileEls[r] = [];
       for (let c = 0; c < SIZE; c++){
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'tile';
         btn.setAttribute('role','gridcell');
-        btn.setAttribute('aria-label', (r+1)+'行'+(c+1)+'列');
+        btn.setAttribute('aria-label', (r+1)+'行'+(c+1)+'列のマス');
         const v = grid[r][c];
         if (v < 0){
           btn.style.visibility = 'hidden';
@@ -307,9 +383,10 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
         }
         if (selected && selected.r === r && selected.c === c) btn.classList.add('selected');
         if (opts.matched && opts.matched[r][c]) btn.classList.add('matched');
+        if (opts.bounce && opts.bounce.some(p => p.r===r && p.c===c)) btn.classList.add('bounce');
         btn.dataset.r = r;
         btn.dataset.c = c;
-        btn.addEventListener('click', onTileClick);
+        tileEls[r][c] = btn;
         boardEl.appendChild(btn);
       }
     }
@@ -318,50 +395,28 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
     movesEl.classList.toggle('warn', moves <= 5);
   }
 
-  function adjacent(a, b){
-    return Math.abs(a.r - b.r) + Math.abs(a.c - b.c) === 1;
-  }
-
-  function swapCells(a, b){
-    const t = grid[a.r][a.c];
-    grid[a.r][a.c] = grid[b.r][b.c];
-    grid[b.r][b.c] = t;
-  }
-
-  async function onTileClick(e){
-    if (busy || ended) return;
-    const r = +e.currentTarget.dataset.r;
-    const c = +e.currentTarget.dataset.c;
-    const cell = { r, c };
-
-    if (!selected){
-      selected = cell;
+  async function trySwap(from, to){
+    if (busy || ended || !started) return;
+    if (!adjacent(from, to)){
+      selected = to;
       render();
-      return;
-    }
-    if (selected.r === r && selected.c === c){
-      selected = null;
-      render();
-      return;
-    }
-    if (!adjacent(selected, cell)){
-      selected = cell;
-      render();
+      setTip('<strong>隣のマス</strong>を選んでね（上下左右だけ）');
+      showToast('隣のマスを選んでね');
       return;
     }
 
     busy = true;
-    const from = selected;
     selected = null;
-    swapCells(from, cell);
+    swapCells(from, to);
     render();
-    await sleep(80);
+    await sleep(90);
 
     let { mark, found } = findMatches(grid);
     if (!found){
-      swapCells(from, cell);
-      render();
-      showToast('そろわないよ');
+      swapCells(from, to);
+      render({ bounce: [from, to] });
+      showToast('そろわないので戻したよ');
+      setTip('<strong>遊び方：</strong>同じ色が<strong>3つ以上</strong>つながるように入れ替えてね');
       busy = false;
       return;
     }
@@ -373,12 +428,12 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
       const n = countMarked(mark);
       score += n * MATCH_BASE * combo;
       render({ matched: mark });
-      await sleep(280);
-      // clear
+      if (combo === 1) setTip('いいね！同じ色が消えたよ ✨');
+      else setTip('コンボ！ ×' + combo + ' 🎉');
+      await sleep(300);
       for (let rr = 0; rr < SIZE; rr++)
         for (let cc = 0; cc < SIZE; cc++)
           if (mark[rr][cc]) grid[rr][cc] = -1;
-      // gravity
       for (let cc = 0; cc < SIZE; cc++){
         let write = SIZE - 1;
         for (let rr = SIZE - 1; rr >= 0; rr--){
@@ -391,13 +446,105 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
         for (let rr = write; rr >= 0; rr--) grid[rr][cc] = rndColor();
       }
       render();
-      await sleep(160);
+      await sleep(150);
       ({ mark, found } = findMatches(grid));
     }
 
     render();
+    setTip('<strong>遊び方：</strong>隣のマスを<strong>スワイプ</strong>か<strong>2回タップ</strong>で入れ替え → 同じ色が<strong>3つ以上</strong>');
     checkEnd();
     busy = false;
+  }
+
+  function onPointerDown(e){
+    if (busy || ended || !started) return;
+    if (e.button != null && e.button !== 0) return;
+    const cell = cellFromPoint(e.clientX, e.clientY);
+    if (!cell) return;
+    e.preventDefault();
+    ptr = {
+      id: e.pointerId,
+      startX: e.clientX,
+      startY: e.clientY,
+      from: { r: cell.r, c: cell.c },
+      dragged: false,
+      color: COLORS[grid[cell.r][cell.c]]
+    };
+    try { boardWrap.setPointerCapture(e.pointerId); } catch (_){}
+  }
+
+  function onPointerMove(e){
+    if (!ptr || ptr.id !== e.pointerId) return;
+    const dx = e.clientX - ptr.startX;
+    const dy = e.clientY - ptr.startY;
+    if (!ptr.dragged && (Math.abs(dx) > 8 || Math.abs(dy) > 8)){
+      ptr.dragged = true;
+      selected = null;
+      const fromEl = tileEls[ptr.from.r] && tileEls[ptr.from.r][ptr.from.c];
+      if (fromEl) fromEl.classList.add('drag-ghost');
+      dragFinger.style.display = 'block';
+      dragFinger.style.background = ptr.color;
+    }
+    if (ptr.dragged){
+      dragFinger.style.left = e.clientX + 'px';
+      dragFinger.style.top = e.clientY + 'px';
+    }
+  }
+
+  async function onPointerUp(e){
+    if (!ptr || ptr.id !== e.pointerId) return;
+    const info = ptr;
+    ptr = null;
+    dragFinger.style.display = 'none';
+    try { boardWrap.releasePointerCapture(e.pointerId); } catch (_){}
+
+    if (busy || ended || !started) return;
+
+    if (info.dragged){
+      const dx = e.clientX - info.startX;
+      const dy = e.clientY - info.startY;
+      let to = null;
+      if (Math.abs(dx) >= SWIPE_MIN || Math.abs(dy) >= SWIPE_MIN){
+        if (Math.abs(dx) > Math.abs(dy)){
+          to = { r: info.from.r, c: info.from.c + (dx > 0 ? 1 : -1) };
+        } else {
+          to = { r: info.from.r + (dy > 0 ? 1 : -1), c: info.from.c };
+        }
+        if (to.r < 0 || to.r >= SIZE || to.c < 0 || to.c >= SIZE) to = null;
+      }
+      render();
+      if (to) await trySwap(info.from, to);
+      else {
+        showToast('隣へスワイプしてね');
+        setTip('<strong>ヒント：</strong>マスを押したまま<strong>上下左右</strong>にスワイプ');
+      }
+      return;
+    }
+
+    // tap select / swap
+    const cell = info.from;
+    if (!selected){
+      selected = cell;
+      render();
+      setTip('光っているマスの<strong>隣</strong>をタップ（またはスワイプ）して入れ替え');
+      return;
+    }
+    if (selected.r === cell.r && selected.c === cell.c){
+      selected = null;
+      render();
+      setTip('<strong>遊び方：</strong>隣のマスを<strong>スワイプ</strong>か<strong>2回タップ</strong>で入れ替え');
+      return;
+    }
+    const from = selected;
+    selected = null;
+    await trySwap(from, cell);
+  }
+
+  function onPointerCancel(e){
+    if (!ptr || ptr.id !== e.pointerId) return;
+    ptr = null;
+    dragFinger.style.display = 'none';
+    render();
   }
 
   function checkEnd(){
@@ -422,24 +569,6 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
     }
   }
 
-  function restart(){
-    score = 0;
-    moves = MOVES_START;
-    selected = null;
-    busy = false;
-    ended = false;
-    overlay.classList.remove('show');
-    overlay.setAttribute('aria-hidden','true');
-    grid = fillNoMatch();
-    // ensure at least one possible move eventually via reshuffle if needed
-    let tries = 0;
-    while (!hasAnyMove() && tries < 30){
-      grid = fillNoMatch();
-      tries++;
-    }
-    render();
-  }
-
   function hasAnyMove(){
     for (let r = 0; r < SIZE; r++){
       for (let c = 0; c < SIZE; c++){
@@ -460,7 +589,37 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
     return false;
   }
 
+  function newBoard(){
+    grid = fillNoMatch();
+    let tries = 0;
+    while (!hasAnyMove() && tries < 40){
+      grid = fillNoMatch();
+      tries++;
+    }
+  }
+
+  function restart(keepStart){
+    score = 0;
+    moves = MOVES_START;
+    selected = null;
+    busy = false;
+    ended = false;
+    ptr = null;
+    dragFinger.style.display = 'none';
+    overlay.classList.remove('show');
+    overlay.setAttribute('aria-hidden','true');
+    if (!keepStart){
+      started = true;
+      startOverlay.classList.remove('show');
+      startOverlay.setAttribute('aria-hidden','true');
+    }
+    newBoard();
+    render();
+    setTip('<strong>遊び方：</strong>隣のマスを<strong>スワイプ</strong>か<strong>2回タップ</strong>で入れ替え → 同じ色が<strong>3つ以上</strong>');
+  }
+
   function hint(){
+    if (!started) return;
     if (busy || ended) return;
     for (let r = 0; r < SIZE; r++){
       for (let c = 0; c < SIZE; c++){
@@ -474,7 +633,8 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
           if (ok){
             selected = {r,c};
             render();
-            showToast('ここを動かしてみて');
+            showToast('光っているマスを動かして');
+            setTip('このマスを<strong>隣へスワイプ</strong>（または隣をタップ）');
             return;
           }
         }
@@ -483,11 +643,28 @@ h1{margin:0 0 4px;font-size:clamp(22px,6vw,26px);letter-spacing:-1px;line-height
     showToast('手がないかも…やり直し？');
   }
 
-  document.getElementById('btnRestart').addEventListener('click', restart);
-  document.getElementById('btnHint').addEventListener('click', hint);
-  document.getElementById('ovBtn').addEventListener('click', restart);
+  function startGame(){
+    started = true;
+    startOverlay.classList.remove('show');
+    startOverlay.setAttribute('aria-hidden','true');
+    showToast('がんばって！');
+    setTip('<strong>遊び方：</strong>隣のマスを<strong>スワイプ</strong>か<strong>2回タップ</strong>で入れ替え');
+  }
 
-  restart();
+  boardWrap.addEventListener('pointerdown', onPointerDown);
+  boardWrap.addEventListener('pointermove', onPointerMove);
+  boardWrap.addEventListener('pointerup', onPointerUp);
+  boardWrap.addEventListener('pointercancel', onPointerCancel);
+
+  document.getElementById('btnRestart').addEventListener('click', function(){ restart(false); });
+  document.getElementById('btnHint').addEventListener('click', hint);
+  document.getElementById('ovBtn').addEventListener('click', function(){ restart(false); });
+  document.getElementById('btnStart').addEventListener('click', startGame);
+
+  // prepare board behind start overlay
+  started = false;
+  newBoard();
+  render();
 })();
 </script>
 </body>
