@@ -63,13 +63,35 @@ a:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-of
 .price-card .incl li{margin-bottom:6px;line-height:1.5}
 .price-card .incl strong{color:var(--navy)}
 @media(max-width:850px){.price-grid{grid-template-columns:1fr}}
+
+.exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.exp{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 20px;display:flex;flex-direction:column;min-height:0;box-shadow:0 1px 0 #edf0eb}
+.exp .badge{display:inline-block;align-self:flex-start;border-radius:99px;padding:5px 12px;font-size:11px;font-weight:800;margin-bottom:12px;background:var(--teal)}
+.exp:nth-child(2) .badge{background:#d9ebe3}
+.exp:nth-child(3) .badge{background:#ffe5d5}
+.exp:nth-child(4) .badge{background:#e7e7fa}
+.exp h3{font-size:17px;margin:0 0 10px;line-height:1.45}
+.exp p{font-size:13px;color:var(--muted);margin:0;flex:1;line-height:1.7}
+.exp-note{margin-top:20px;font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+@media(max-width:850px){.exp-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:550px){.exp-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header><nav aria-label="メインメニュー"><a href="#top" class="logo">WATA <span>LAB.</span><small>ワタラボ</small></a><div class="navlinks"><a href="#services">できること</a><a href="#demos">サンプル</a><a href="#pricing">料金</a><a href="#examples">こんな相談</a><a href="#flow">制作の流れ</a><a class="chip" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINE ↗</a></div></nav></header>
+<header><nav aria-label="メインメニュー"><a href="#top" class="logo">WATA <span>LAB.</span><small>ワタラボ</small></a><div class="navlinks"><a href="#services">できること</a><a href="#experience">制作経験</a><a href="#demos">サンプル</a><a href="#pricing">料金</a><a href="#examples">こんな相談</a><a href="#flow">制作の流れ</a><a class="chip" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINE ↗</a></div></nav></header>
 <main id="top">
 <div class="wrap hero"><div><span class="tag">個人・個人経営・小さな店や施設向け</span><h1>「つくりたい」を、<br><em>いっしょに形に。</em></h1><p class="lead">美容院・教室・飲食など、ひとりや少人数でやっているお店・施設の手助けになります。<br>ホームページも、毎日の集計・予約・シフトも。「こんなのあったらいいな」を、分かりやすい料金で形にします。</p><div class="actions"><a class="btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する ↗</a><a class="btn secondary" href="#demos">サンプルを見る ↓</a></div></div><div class="visual" role="img" aria-label="ウェブサイトとアプリの制作をイメージしたイラスト"><div class="mock"><div class="bar"><i></i><i></i><i></i></div><div class="inside"><small>HELLO FROM WATA LAB</small><strong>アイデアが、<br>動き出す。</strong><div class="line"></div><div class="line short"></div><div class="shape">✦</div></div></div><div class="sticker">できた！</div></div></div>
-<section id="services" class="section white"><div class="wrap"><div class="intro"><span class="eyebrow">WHAT WE MAKE</span><h2>こんなことが、できます。</h2><p>対象は、個人・個人経営・小さな教室やお店・施設です。難しい専門用語は不要。「サイトがほしい」「予約や給与の手間を減らしたい」など、普段の言葉で大丈夫。スマホでもPCでも同じ画面で使えます。</p></div><div class="grid4"><article class="service"><div class="icon" aria-hidden="true">▤</div><h3>ホームページ制作</h3><p>個人店・教室・小さな施設の紹介サイト。メニュー・営業時間・予約導線まで、スマホで見やすく。</p></article><article class="service"><div class="icon" aria-hidden="true">⚙</div><h3>業務の仕組みづくり</h3><p>給与・日報・シフト・在庫など。表計算や紙・LINEで散らかっている作業を、小さな仕組みに。</p></article><article class="service"><div class="icon" aria-hidden="true">▣</div><h3>アプリ制作</h3><p>予約受付・店舗チャット・記録アプリなど。少人数の現場で毎日使えるシンプルな形に。</p></article><article class="service"><div class="icon" aria-hidden="true">✦</div><h3>ゲーム制作</h3><p>待ち時間やイベント向けのミニゲーム。説明なしで触れる、軽く遊べるものを。</p></article></div></div></section>
+<section id="services" class="section white"><div class="wrap"><div class="intro"><span class="eyebrow">WHAT WE MAKE</span><h2>こんなことが、できます。</h2><p>対象は、個人・個人経営・小さな教室やお店・施設です。難しい専門用語は不要。「サイトがほしい」「予約や給与の手間を減らしたい」など、普段の言葉で大丈夫。スマホでもPCでも同じ画面で使えます。</p></div><div class="grid4"><article class="service"><div class="icon" aria-hidden="true">▤</div><h3>ホームページ制作</h3><p>個人店・教室・小さな施設の紹介サイト。メニュー・営業時間・予約導線まで、スマホで見やすく。</p></article><article class="service"><div class="icon" aria-hidden="true">⚙</div><h3>業務の仕組みづくり</h3><p>日報や月報、記録の管理、予定表、Excelの集計や変換など。現場の流れを大切にしながら、小さな仕組みに。</p></article><article class="service"><div class="icon" aria-hidden="true">▣</div><h3>アプリ制作</h3><p>予約受付・店舗チャット・記録アプリなど。少人数の現場で毎日使えるシンプルな形に。</p></article><article class="service"><div class="icon" aria-hidden="true">✦</div><h3>ゲーム制作</h3><p>待ち時間やイベント向けのミニゲーム。説明なしで触れる、軽く遊べるものを。</p></article></div></div></section>
+
+<section id="experience" class="section"><div class="wrap"><div class="intro"><span class="eyebrow">EXPERIENCE</span><h2>制作経験</h2><p>毎日の仕事に合った、小さな仕組みづくり。現場で使う業務の流れを大切にしながら、使いやすい形を一緒に考えます。</p></div>
+<div class="exp-grid">
+<article class="exp"><span class="badge">実用化済み</span><h3>日報・月報の仕組み</h3><p>毎日の記録を月ごとのまとめ・報告につなぐ仕組み。現場で実用化。</p></article>
+<article class="exp"><span class="badge">実用化済み</span><h3>利用・活動記録の管理</h3><p>来所・帰宅・活動内容を入力・確認できるブラウザ型。現場で実用化（改修継続中）。</p></article>
+<article class="exp"><span class="badge">ほぼ完成</span><h3>予定・業務管理</h3><p>予定・担当・案内をまとめる業務手帳型。</p></article>
+<article class="exp"><span class="badge">開発・検証</span><h3>Excel日報の変換</h3><p>既存のExcelから記録を読み取り、テキスト化するツール。</p></article>
+</div>
+<p class="exp-note">いずれも<strong>現場での制作経験</strong>です。外部への納品社数の表記ではありません。触ってみられる見本は<a href="#demos" style="color:#c46e51;font-weight:800;text-decoration:underline">サンプル</a>へ。</p>
+</div></section>
 <section id="demos" class="section"><div class="wrap"><div class="intro"><span class="eyebrow">TRY THE DEMOS</span><h2>触ってみられるサンプル。</h2><p>個人店・教室・小さな施設を想定した見本です。各カードに「誰向け・何の困りごと」を書いてあります。開いたら上の案内どおりに触るとすぐ分かります。</p></div>
 <div class="demos">
 <a class="demo" href="part-time-payroll-demo.html"><span class="badge">給与</span><h3>パート給与の計算</h3><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p>①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
@@ -94,7 +116,7 @@ a:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-of
 </div>
 <div class="price-note"><strong>見積の流れ・ご案内</strong><ul><li><strong>①相談（無料）</strong> → <strong>②範囲の確認</strong> → <strong>③見積（無料）</strong> → 合意してから制作。</li><li>表示はいずれも<strong>税別</strong>の目安です。正式金額は内容を聞いたあとに提示します。</li><li><strong>含む／含まない</strong>は上の例が基本。追加の改修や機能は別途ご案内します。</li><li>相談だけ・見積だけでも大丈夫です。<a href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener" style="color:#c46e51;font-weight:800;text-decoration:underline">公式LINE</a>へどうぞ。</li></ul></div>
 </div></section>
-<section id="faq" class="section white"><div class="wrap faq"><div class="intro"><span class="eyebrow">FAQ</span><h2>よくあるご質問</h2></div><details><summary>どんな人が相談していますか？</summary><p>個人・個人経営・小さな教室やお店・施設の方が中心です。美容院、飲食、教室、サロンなど。「大掛かりな会社向けシステム」より、現場で毎日使う小さな仕組みのご相談が多いです。</p></details><details><summary>まだイメージが固まっていないのですが？</summary><p>大丈夫です。「サイトがほしい」「予約が面倒」「給与計算がつらい」など、困りごとだけでも構いません。一緒に整理します。</p></details><details><summary>費用はいくらかかりますか？</summary><p><a href="#pricing" style="color:#c46e51;font-weight:800;text-decoration:underline">料金の目安</a>をご覧ください。相談・見積までは無料。制作に入る前に、含むもの／含まないものと金額をはっきりお伝えします。</p></details><details><summary>小さな修正だけでもお願いできますか？</summary><p>内容によりますが、小さなご相談も歓迎です。対応できるかはお話を聞いて確認します。</p></details><details><summary>サンプルと同じものを作れますか？</summary><p>見本をベースに、お店のやり方に合わせて作れます。まったく同じではなく、必要なところだけに絞ることもできます。</p></details></div></section>
+<section id="faq" class="section white"><div class="wrap faq"><div class="intro"><span class="eyebrow">FAQ</span><h2>よくあるご質問</h2></div><details><summary>どんな人が相談していますか？</summary><p>個人・個人経営・小さな教室やお店・施設の方が中心です。美容院、飲食、教室、サロンなど。「大掛かりな会社向けシステム」より、現場で毎日使う小さな仕組みのご相談が多いです。</p></details><details><summary>まだイメージが固まっていないのですが？</summary><p>大丈夫です。「サイトがほしい」「予約が面倒」「給与計算がつらい」など、困りごとだけでも構いません。一緒に整理します。</p></details><details><summary>費用はいくらかかりますか？</summary><p><a href="#pricing" style="color:#c46e51;font-weight:800;text-decoration:underline">料金の目安</a>をご覧ください。相談・見積までは無料。制作に入る前に、含むもの／含まないものと金額をはっきりお伝えします。</p></details><details><summary>小さな修正だけでもお願いできますか？</summary><p>内容によりますが、小さなご相談も歓迎です。対応できるかはお話を聞いて確認します。</p></details><details><summary>職場で使ってきた仕組みですか？</summary><p>はい。現場での制作経験です。外部への納品社数の表記ではありません。</p></details><details><summary>サンプルと同じものを作れますか？</summary><p>見本をベースに、お店のやり方に合わせて作れます。まったく同じではなく、必要なところだけに絞ることもできます。</p></details></div></section>
 <section id="contact" class="section"><div class="wrap"><div class="contact"><span class="eyebrow">CONTACT</span><h2>個人店・教室の「ちょっと困った」から。</h2><p>相談だけ・見積だけでも大歓迎。サンプルを見て「うちでも使えそう」と思ったら、そのままどうぞ。<br><strong>渡辺に気軽にご相談ください。</strong><br><span style="display:inline-block;margin-top:10px;color:#ffb89a;font-weight:800">📩 連絡先は公式LINEです（相談・見積無料）</span></p><div class="line-box"><a class="line-btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する ↗</a><div class="qr-card"><img src="line-qr.png" alt="WATA LAB 公式LINEのQRコード" width="160" height="160" loading="lazy"><small>スマホならボタン、PCならQRでもOK</small></div></div></div><p class="contact-note">※ ご相談・お問い合わせは公式LINEで受け付けています。</p></div></section>
 </main>
 <footer><div class="wrap footerline"><div><a href="#top" class="logo">WATA <span>LAB.</span><small>ワタラボ</small></a><p>個人・個人経営・小さな店や施設向けのものづくり相談室。</p></div><small>© 2026 WATA LAB. All rights reserved.</small></div></footer>
