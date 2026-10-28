@@ -975,3 +975,24 @@ body[data-route="today"] .view > .page { max-width: 448px; margin: 0 auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .art-svg .a-steam { opacity: 0.6; }
 }
+
+
+/* WATA LAB quality polish v2 */
+:root {
+  --shadow: 0 2px 12px rgba(92, 60, 30, 0.08);
+  --shadow-lg: 0 14px 34px rgba(92, 60, 30, 0.16);
+  --radius: 18px;
+}
+.app-header {
+  border-bottom: 1px solid rgba(234, 223, 206, 0.85);
+}
+.card {
+  border: 1px solid rgba(234, 223, 206, 0.7);
+}
+.btn-primary {
+  box-shadow: 0 5px 0 var(--primary-dark);
+}
+.btn-primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--primary-dark);
+}

@@ -8,17 +8,17 @@
 <style>
 
   :root {
-    --bg: #f4f7f8;
+    --bg: #f3f6f4;
     --surface: #ffffff;
-    --surface-2: #f8fbfb;
-    --ink: #1a2b2e;
-    --ink-muted: #5a6b6e;
-    --ink-faint: #8a9a9d;
-    --line: #e2eaeb;
-    --line-strong: #c9d6d8;
+    --surface-2: #f7faf8;
+    --ink: #172b3e;
+    --ink-muted: #586677;
+    --ink-faint: #8494a3;
+    --line: #e2e8e4;
+    --line-strong: #c9d5cf;
     --accent: #0d9488;
     --accent-hover: #0f766e;
-    --accent-soft: #ccfbf1;
+    --accent-soft: #d7ebe5;
     --accent-ink: #115e59;
     --warn-soft: #fff7ed;
     --warn-ink: #9a3412;
@@ -27,10 +27,12 @@
     --danger-soft: #fef2f2;
     --ok-soft: #ecfdf5;
     --ok-ink: #047857;
-    --radius: 14px;
-    --radius-sm: 10px;
-    --shadow: 0 1px 2px rgba(26, 43, 46, 0.04), 0 8px 24px rgba(26, 43, 46, 0.06);
-    --shadow-sm: 0 1px 2px rgba(26, 43, 46, 0.05);
+    --radius: 16px;
+    --radius-sm: 11px;
+    --shadow: 0 1px 0 rgba(23, 43, 62, 0.04), 0 10px 28px -18px rgba(23, 43, 62, 0.22);
+    --shadow-sm: 0 1px 2px rgba(23, 43, 62, 0.05);
+    --shadow-hover: 0 14px 32px -16px rgba(23, 43, 62, 0.2);
+    --radius-lg: 18px;
     --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "Yu Gothic", Meiryo, system-ui, -apple-system, sans-serif;
     --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
     --max: 920px;
@@ -42,8 +44,9 @@
     font-family: var(--font);
     color: var(--ink);
     background: var(--bg);
-    line-height: 1.55;
+    line-height: 1.6;
     font-size: 15px;
+    -webkit-font-smoothing: antialiased;
   }
   button, input, select, textarea { font: inherit; color: inherit; }
   button { cursor: pointer; }
@@ -409,7 +412,7 @@
     text-align: center;
     padding: 1.25rem 0.75rem;
     color: var(--ink-faint);
-    font-size: 0.88rem;
+    font-size: 0.9rem;
   }
   .sr-only {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -589,8 +592,96 @@
   }
 
 
-.howto .for-whom{font-size:0.82rem;font-weight:650;color:#115e59;background:#ccfbf1;border:1px solid #99f6e4;border-radius:10px;padding:0.55rem 0.7rem;margin:0.35rem 0 0.65rem;line-height:1.45}
+.howto .for-whom{font-size:0.84rem;font-weight:700;color:#115e59;background:#e7f7f2;border:1px solid #b7e5d8;border-radius:12px;padding:0.65rem 0.8rem;margin:0.4rem 0 0.7rem;line-height:1.5}
 .howto .for-whom strong{font-weight:800}
+.howto .for-whom strong{font-weight:800}
+
+/* WATA LAB quality polish v2 */
+
+  .howto {
+    background: linear-gradient(180deg, #ffffff 0%, #f7faf8 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg, 18px);
+    box-shadow: var(--shadow);
+    padding: 1.15rem 1.2rem 1.2rem;
+    margin: -0.75rem 0 1.25rem;
+    position: relative;
+    z-index: 2;
+  }
+  .howto::before {
+    content: "";
+    position: absolute; left: 0; top: 12px; bottom: 12px; width: 4px;
+    border-radius: 0 4px 4px 0; background: var(--accent);
+  }
+  .howto-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--accent-ink);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+
+  .empty {
+    text-align: center;
+    padding: 1.6rem 1rem;
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+    background: var(--surface-2);
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    line-height: 1.55;
+  }
+  .empty strong { display: block; color: var(--ink); font-size: 0.95rem; margin-bottom: 0.25rem; }
+
+
+  .btn {
+    border-radius: 12px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    transition: transform 0.12s, box-shadow 0.12s, background 0.12s;
+  }
+  .btn-primary {
+    box-shadow: 0 4px 0 #0a7a70;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+  .btn-primary:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #0a7a70;
+  }
+
+
+  .card, .panel, .sheet, .stat-card {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+
+
+  .banner {
+    background: linear-gradient(145deg, #0f766e 0%, #0d9488 48%, #14b8a6 100%);
+    padding: 1.15rem 0 1.55rem;
+  }
+  .banner h1 {
+    font-size: clamp(1.35rem, 4.5vw, 1.85rem);
+    letter-spacing: -0.03em;
+    font-weight: 800;
+  }
+  .banner p { opacity: 0.94; max-width: 36rem; line-height: 1.55; }
+  .banner-kicker {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.28);
+    letter-spacing: 0.08em;
+  }
+  .banner-note {
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    font-weight: 650;
+  }
+
 </style>
 </head>
 <body>
