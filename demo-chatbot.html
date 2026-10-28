@@ -701,6 +701,66 @@ html,body{max-width:100%;overflow-x:clip}
 .composer{display:flex;flex-wrap:wrap;gap:8px}
 .composer input,.composer textarea{flex:1 1 140px;min-width:0}
 
+
+
+/* ===== WATA LAB quality polish v9 — contemporary chrome ===== */
+:root{
+  --wl-font:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,-apple-system,"Segoe UI",Meiryo,sans-serif;
+  --wl-shadow:0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(23,43,62,.04), 0 12px 32px -18px rgba(23,43,62,.26);
+  --wl-shadow-hover:0 1px 0 rgba(255,255,255,.95), 0 16px 36px -14px rgba(23,43,62,.3);
+  --wl-radius:18px;
+  --wl-ease:cubic-bezier(.22,.7,.25,1);
+}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--wl-font)!important;letter-spacing:.01em}
+.banner,.top,.app-header{
+  background:linear-gradient(145deg,#1a2b4a 0%,#1a4550 44%,#0d9488 100%)!important;
+  box-shadow:0 18px 36px -22px rgba(23,43,62,.48)!important;
+}
+.banner h1,.top h1,.app-header h1{letter-spacing:-.04em!important;font-feature-settings:"palt" 1}
+.howto,.howto-strip,.card,.panel,.feature,.item-card,.staff-card,.day-card,.inv-card,.book-card,.report-card,.tile{
+  border-radius:var(--wl-radius)!important;
+  box-shadow:var(--wl-shadow)!important;
+}
+.card,.panel,.feature,.book-card,.inv-card,.report-card,.item-card{
+  border:1px solid rgba(226,230,224,.95)!important;
+  transition:transform .18s var(--wl-ease),box-shadow .18s,border-color .18s!important;
+}
+@media(hover:hover){
+  a.card:hover,.feature:hover,.book-card:hover,.inv-card:hover,.report-card:hover{
+    transform:translateY(-3px);box-shadow:var(--wl-shadow-hover)!important;border-color:#b7e5d8!important;
+  }
+}
+.btn-primary,.composer button,button.primary,button.accent,button[type="submit"].primary,.featured .go{
+  border-radius:13px!important;
+  box-shadow:0 1px 0 rgba(255,255,255,.25) inset, 0 4px 0 rgba(15,118,110,.32)!important;
+  transition:transform .12s var(--wl-ease), box-shadow .12s, filter .12s!important;
+}
+.btn-primary:active:not(:disabled),.composer button:active:not(:disabled),button.primary:active:not(:disabled){
+  transform:translateY(2px)!important;
+}
+.hero-bar{
+  background:rgba(251,250,245,.88)!important;
+  backdrop-filter:blur(16px) saturate(1.2)!important;
+  -webkit-backdrop-filter:blur(16px) saturate(1.2)!important;
+}
+.wl-coach .panel{
+  border-radius:22px!important;
+  box-shadow:0 28px 56px -20px rgba(0,0,0,.48)!important;
+  border:1px solid rgba(232,235,230,.9)!important;
+}
+.wl-demo-hero{
+  border-radius:20px!important;
+  box-shadow:var(--wl-shadow)!important;
+  border-color:#e8e4dc!important;
+}
+.chip,.quick .chip,.filters button,.back,.demo-nav a{
+  transition:transform .12s var(--wl-ease), background .15s, border-color .15s, filter .15s!important;
+}
+.chip:active,.quick .chip:active,.filters button:active{transform:scale(.97)}
+input,select,textarea{border-radius:12px!important}
+.empty{border-radius:16px!important}
+
 </style>
 </head>
 <body>
