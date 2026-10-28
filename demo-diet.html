@@ -304,56 +304,161 @@ td.empty:before, tr .empty:before { content:none!important; display:none!importa
 }
 
 
-/* ===== WATA LAB quality polish v6 ===== */
+/* ===== WATA LAB quality polish v7 ===== */
 .wl-coach{
-  position:fixed;inset:0;z-index:80;background:rgba(15,28,41,.55);
+  position:fixed;inset:0;z-index:80;background:rgba(15,28,41,.58);
   display:flex;align-items:flex-end;justify-content:center;padding:18px;
   opacity:0;pointer-events:none;transition:opacity .25s ease;
 }
 .wl-coach.show{opacity:1;pointer-events:auto}
 .wl-coach .panel{
-  width:min(100%,420px);background:#fff;color:#172b3e;border-radius:22px;
-  padding:22px 20px 18px;box-shadow:0 24px 48px -18px rgba(0,0,0,.45);
-  transform:translateY(12px);transition:transform .25s cubic-bezier(.22,.7,.25,1);
+  width:min(100%,440px);background:#fff;color:#172b3e;border-radius:24px;
+  padding:24px 20px 18px;box-shadow:0 28px 56px -18px rgba(0,0,0,.5);
+  transform:translateY(14px);transition:transform .28s cubic-bezier(.22,.7,.25,1);
+  border:1px solid #e8ebe6;
 }
 .wl-coach.show .panel{transform:translateY(0)}
-.wl-coach .kicker{font-size:11px;font-weight:900;letter-spacing:.08em;color:#c46e51;margin-bottom:8px}
-.wl-coach h2{margin:0 0 8px;font-size:1.15rem;letter-spacing:-.03em}
+.wl-coach .kicker{font-size:11px;font-weight:900;letter-spacing:.1em;color:#c46e51;margin-bottom:8px}
+.wl-coach h2{margin:0 0 8px;font-size:1.18rem;letter-spacing:-.03em}
 .wl-coach p{margin:0 0 14px;font-size:.9rem;color:#4f5f70;line-height:1.7}
 .wl-coach .steps{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
 .wl-coach .steps span{
   background:#eef7f3;border:1px solid #c9ded5;color:#1f5c4a;
-  border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:800;
+  border-radius:999px;padding:7px 12px;font-size:11.5px;font-weight:800;
 }
 .wl-coach .actions{display:flex;gap:8px}
 .wl-coach button{
-  flex:1;appearance:none;border:none;border-radius:14px;min-height:48px;
+  flex:1;appearance:none;border:none;border-radius:14px;min-height:50px;
   font-family:inherit;font-weight:900;font-size:14px;cursor:pointer;
 }
 .wl-coach .go{background:#f58c65;color:#fff;box-shadow:0 4px 0 #d97957}
 .wl-coach .skip{background:#f3f5f1;color:#172b3e;border:1px solid #e2e6e0!important}
-.wl-pulse{animation:wlPulse 1.4s ease-in-out 3}
+.wl-pulse{animation:wlPulse 1.35s ease-in-out 3}
 @keyframes wlPulse{
   0%,100%{box-shadow:0 4px 0 rgba(15,118,110,.35)}
-  50%{box-shadow:0 0 0 6px rgba(245,140,101,.28),0 4px 0 rgba(15,118,110,.35)}
+  50%{box-shadow:0 0 0 7px rgba(245,140,101,.3),0 4px 0 rgba(15,118,110,.35)}
 }
 .wl-toast{
-  position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
-  background:#172b3e;color:#fff;padding:12px 18px;border-radius:999px;
+  position:fixed;left:50%;bottom:max(24px, env(safe-area-inset-bottom));
+  transform:translateX(-50%) translateY(20px);
+  background:#172b3e;color:#fff;padding:13px 20px;border-radius:999px;
   font-size:13px;font-weight:800;z-index:90;opacity:0;pointer-events:none;
-  transition:opacity .2s, transform .2s;box-shadow:0 16px 32px -16px rgba(0,0,0,.45);
-  max-width:min(92vw,420px);text-align:center;
+  transition:opacity .2s, transform .2s;box-shadow:0 16px 32px -14px rgba(0,0,0,.5);
+  max-width:min(92vw,440px);text-align:center;
 }
 .wl-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* v7 visual hard-upgrade */
+.wl-sample-strip{
+  background:linear-gradient(90deg,#172b3e,#1a4550 55%,#0f766e);
+  color:#fff;font-size:12.5px;font-weight:800;letter-spacing:.02em;
+  padding:10px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,.12);
+}
+.wl-sample-strip strong{
+  display:inline-block;background:rgba(245,140,101,.95);color:#fff;
+  border-radius:999px;padding:2px 10px;margin-right:8px;font-size:11px;letter-spacing:.04em;
+}
+.banner{
+  background:linear-gradient(145deg,#142536 0%,#1a4550 42%,#0d9488 100%)!important;
+  box-shadow:0 18px 40px -22px rgba(23,43,62,.55)!important;
+  padding-bottom:1.65rem!important;
+}
+.banner h1{letter-spacing:-.035em!important;text-shadow:0 1px 0 rgba(0,0,0,.12)}
+.banner p{opacity:.95!important;line-height:1.75!important;max-width:40rem}
+.banner-kicker,.kicker{
+  background:rgba(255,255,255,.16)!important;border:1px solid rgba(255,255,255,.28)!important;
+  backdrop-filter:blur(6px);
+}
+.banner-note,.note{
+  background:rgba(0,0,0,.28)!important;border:1px solid rgba(255,255,255,.18)!important;
+  border-radius:12px!important;font-weight:700!important;
+}
+.demo-nav a,.back,.back-lab{
+  background:rgba(255,255,255,.14)!important;border:1px solid rgba(255,255,255,.28)!important;
+  backdrop-filter:blur(6px);font-weight:800!important;
+}
+.howto,.howto-strip{
+  background:linear-gradient(180deg,#fff,#f4faf7)!important;
+  border:1px solid #d5e6df!important;
+  border-radius:22px!important;
+  box-shadow:0 14px 36px -22px rgba(23,43,62,.28)!important;
+  padding:1.15rem 1.15rem 1.05rem!important;
+  margin:1.1rem 0 1.25rem!important;
+}
+.howto-title{
+  color:#c46e51!important;font-weight:900!important;letter-spacing:.06em!important;font-size:.72rem!important;
+}
+.for-whom{
+  background:#eef7f3!important;border:1px solid #c9ded5!important;border-radius:14px!important;
+  padding:.65rem .8rem!important;font-size:.86rem!important;line-height:1.55!important;
+}
+.howto .steps span,.step-flow span:not(.arrow){
+  background:#172b3e!important;color:#fff!important;border:none!important;
+  box-shadow:0 3px 0 #0f1f2e!important;
+}
+.step-flow .arrow{color:#0d9488!important;font-weight:900!important}
+.card,.panel,.panel-card,.box,.section-card{
+  border-radius:20px!important;
+  box-shadow:0 1px 0 rgba(255,255,255,.9), 0 16px 36px -22px rgba(23,43,62,.28)!important;
+  border-color:#e2e6e0!important;
+  transition:transform .18s cubic-bezier(.22,.7,.25,1), box-shadow .18s!important;
+}
+.card:hover,.panel:hover{transform:translateY(-2px)}
+button.btn-primary,.btn-primary,button.primary,.btn.primary,.composer button[type="submit"],
+button.primary-btn,#btnSave,.line-btn,.cta-band a{
+  border-radius:14px!important;font-weight:900!important;
+  box-shadow:0 4px 0 rgba(15,118,110,.35)!important;
+  transition:transform .12s, box-shadow .12s, filter .12s!important;
+}
+button.btn-primary:hover,.btn-primary:hover,button.primary:hover,.btn.primary:hover,#btnSave:hover{
+  transform:translateY(1px);filter:brightness(1.03);
+  box-shadow:0 2px 0 rgba(15,118,110,.35)!important;
+}
+button, .chip, .btn, select, input, textarea{
+  transition:border-color .15s, box-shadow .15s, background .15s, transform .12s;
+}
+input:focus, select:focus, textarea:focus, button:focus-visible, a:focus-visible, .chip:focus-visible{
+  outline:3px solid #f58c65!important;outline-offset:2px!important;
+}
+.hero-bar,.hero-metric,.stat,.kpi,.summary-card{
+  border-radius:18px!important;
+  box-shadow:0 10px 28px -20px rgba(23,43,62,.3)!important;
+}
+.empty{
+  background:
+    radial-gradient(circle at 50% 30%,rgba(13,148,136,.1),transparent 45%),
+    linear-gradient(180deg,#fff,#f7faf8)!important;
+  border:1px dashed #c9ded5!important;
+  border-radius:20px!important;padding:2rem 1.2rem!important;
+}
+.wl-footer-cta{
+  margin:2rem auto 1.5rem;width:min(100% - 1.5rem, 920px);
+  padding:1.25rem 1.2rem;border-radius:22px;color:#fff;
+  background:linear-gradient(135deg,#172b3e,#1a4550 55%,#0d9488);
+  display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
+  box-shadow:0 18px 40px -20px rgba(23,43,62,.45);
+}
+.wl-footer-cta strong{display:block;font-size:1.02rem;margin-bottom:.2rem}
+.wl-footer-cta p{margin:0;font-size:.84rem;opacity:.9;line-height:1.55}
+.wl-footer-cta a{
+  background:#f58c65;color:#fff;font-weight:900;border-radius:999px;padding:.8rem 1.15rem;
+  box-shadow:0 4px 0 #d97957;text-decoration:none;white-space:nowrap;
+}
 .sample-banner,.sample-strip{position:relative}
+@media (max-width:550px){
+  .howto,.howto-strip{border-radius:18px!important;margin:0.85rem 0 1rem!important}
+  .wl-footer-cta{border-radius:18px;padding:1.05rem 1rem}
+  .wl-footer-cta a{width:100%;text-align:center}
+}
 @media (prefers-reduced-motion: reduce){
   .wl-pulse{animation:none}
-  .wl-coach,.wl-coach .panel,.wl-toast{transition:none}
+  .wl-coach,.wl-coach .panel,.wl-toast,.card,.panel{transition:none!important}
 }
 
 </style>
 </head>
 <body>
+  <div class="wl-sample-strip"><strong>サンプル／架空</strong>触って試せる見本です。データは端末内だけ／サーバーには送りません。</div>
 <header data-demo="1"><span>🥗 わたらぼダイエットアプリ</span><small id="hdrDate"></small></header>
 <div id="demoBanner" style="background:#7a3b2e;color:#fff;padding:9px 12px;font-size:12px;font-weight:800;line-height:1.45;text-align:center"><span style="background:rgba(255,255,255,.2);padding:2px 8px;border-radius:999px;margin-right:6px;font-size:11px">サンプル</span>ポートフォリオ用です。実在の個人データは使いません。</div>
 <div style="background:#fff8e6;color:#6a5a3a;padding:10px 14px;font-size:13px;font-weight:700;line-height:1.5;border-bottom:1px solid #f0e6c8">
@@ -1414,22 +1519,40 @@ var rt,lastW=window.innerWidth;window.addEventListener('resize',function(){if(wi
 </script>
 
 <script>
-/* WATA LAB demo UX v6 */
+/* WATA LAB demo UX v7 */
 (function(){
-  if(window.__wlDemoV6) return; window.__wlDemoV6 = true;
-  var key = 'wl-demo-coach:' + (location.pathname.split('/').pop() || 'index');
+  if(window.__wlDemoV7) return; window.__wlDemoV7 = true;
+  var key = 'wl-demo-coach-v7:' + (location.pathname.split('/').pop() || 'index');
   function $(s, r){ return (r||document).querySelector(s); }
   function toast(msg){
     var t = $('.wl-toast');
     if(!t){ t=document.createElement('div'); t.className='wl-toast'; t.setAttribute('role','status'); document.body.appendChild(t); }
     t.textContent = msg; t.classList.add('show');
-    clearTimeout(t._tm); t._tm=setTimeout(function(){ t.classList.remove('show'); }, 1800);
+    clearTimeout(t._tm); t._tm=setTimeout(function(){ t.classList.remove('show'); }, 1900);
   }
   window.wlToast = toast;
+
+  // Ensure visible サンプル／架空 strip
+  if(!$('.wl-sample-strip') && !$('.sample-banner')){
+    var strip=document.createElement('div');
+    strip.className='wl-sample-strip';
+    strip.innerHTML='<strong>サンプル／架空</strong>触って試せる見本です。データは端末内だけ／サーバーには送りません。';
+    document.body.insertBefore(strip, document.body.firstChild);
+  }
+
+  // Footer CTA once
+  if(!$('.wl-footer-cta') && !location.pathname.includes('demo-index')){
+    var foot=document.createElement('div');
+    foot.className='wl-footer-cta';
+    foot.innerHTML='<div><strong>使えそうだったら、公式LINEへ。</strong><p>相談・見積は無料。サンプル感想だけでも大丈夫です。</p></div>'+
+      '<a href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談 ↗</a>';
+    document.body.appendChild(foot);
+  }
+
   function seen(){ try{ return localStorage.getItem(key)==='1'; }catch(e){ return false; } }
   function mark(){ try{ localStorage.setItem(key,'1'); }catch(e){} }
   function primaryBtn(){
-    return $('button.btn-primary, .composer button, button.primary, .btn.primary, #btnSave, #startBtn, button[type="submit"]');
+    return $('button.btn-primary, .composer button, button.primary, .btn.primary, #btnSave, #startBtn, button[type="submit"], .quick .chip, .chip-row .chip');
   }
   function stepsFromHowto(){
     var nodes = document.querySelectorAll('.howto .steps span, .howto-strip .steps span, .step-flow span:not(.arrow)');
@@ -1444,9 +1567,9 @@ var rt,lastW=window.innerWidth;window.addEventListener('resize',function(){if(wi
     if(!steps.length) steps = ['① 案内どおりに触る','② 結果を見る','③ 一覧へ戻る'];
     var el=document.createElement('div'); el.className='wl-coach'; el.id='wlCoach';
     el.innerHTML = '<div class="panel" role="dialog" aria-modal="true" aria-label="デモの始め方">'+
-      '<div class="kicker">SAMPLE / はじめ方</div>'+
+      '<div class="kicker">SAMPLE／架空 · はじめ方</div>'+
       '<h2>'+title.replace(/</g,'')+'</h2>'+
-      '<p>'+forWhom.replace(/</g,'').slice(0,120)+'</p>'+
+      '<p>'+forWhom.replace(/</g,'').slice(0,140)+'</p>'+
       '<div class="steps">'+steps.map(function(s){return '<span>'+s.replace(/</g,'')+'</span>';}).join('')+'</div>'+
       '<div class="actions"><button type="button" class="skip" data-wl="skip">とばす</button>'+
       '<button type="button" class="go" data-wl="go">触ってみる</button></div></div>';
@@ -1460,23 +1583,14 @@ var rt,lastW=window.innerWidth;window.addEventListener('resize',function(){if(wi
       setTimeout(function(){ el.remove(); }, 220);
       if(a==='go'){
         var b=primaryBtn();
-        if(b){ b.classList.add('wl-pulse'); b.focus({preventScroll:false}); }
+        if(b){ b.classList.add('wl-pulse'); try{b.focus({preventScroll:false});}catch(err){} }
         toast('オレンジの案内どおりに触ってみてください');
       }
     });
   }
-  // enhance native toasts if present
-  document.addEventListener('click', function(e){
-    var b=e.target.closest('button, .chip, .btn');
-    if(!b) return;
-    if(b.matches('.btn-primary, button.primary, .btn.primary, #btnSave') || (b.type==='submit' && b.closest('.composer'))){
-      // light feedback; demos may also show own toast
-    }
-  }, true);
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', buildCoach);
   else buildCoach();
 })();
 </script>
-
 </body>
 </html>
