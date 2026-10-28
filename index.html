@@ -181,7 +181,7 @@ h1 em:after{
 .meter{height:8px;background:#e8efe9;border-radius:99px;overflow:hidden;margin-top:8px}
 .meter span{display:block;height:100%;width:68%;background:linear-gradient(90deg,var(--teal-deep),#5aaa90);border-radius:99px}
 .float-card{
-  position:absolute;z-index:4;background:#fff;border:1px solid var(--line);
+  position:absolute;z-index:4;background:#fff;border:1px solid var(--line);pointer-events:none;
   border-radius:14px;padding:10px 12px;font-size:12px;font-weight:800;
   box-shadow:0 12px 28px -14px rgba(23,43,62,.4);color:var(--navy);
 }
@@ -951,6 +951,17 @@ a.demo:hover .go{background:#f58c65;color:#fff;border-color:#f58c65}
   .demo-preview.has-art{height:108px}
 }
 
+
+/* overlap hygiene */
+.hero-art, .solution-visual, .before-after, .studio-art{isolation:isolate}
+.solution-visual-copy, .before-after-head, .before-after-foot, .hero-art-caption{position:relative;z-index:1}
+.mobile-cta{z-index:55}
+header{z-index:60}
+@media(max-width:850px){
+  body{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+  .mid-cta, .cta-band, #contact .contact{scroll-margin-bottom:110px}
+}
+
 </style>
 </head>
 <body>
@@ -1283,9 +1294,18 @@ a.demo:hover .go{background:#f58c65;color:#fff;border-color:#f58c65}
   var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
   function onScroll(){
     if(header){ header.classList.toggle('is-scrolled', window.scrollY > 12); }
-    if(cta && contact){
-      var rect = contact.getBoundingClientRect();
-      var near = rect.top < window.innerHeight - 80;
+    if(cta){
+      var near = false;
+      if(contact){
+        var rect = contact.getBoundingClientRect();
+        near = rect.top < window.innerHeight - 80;
+      }
+      if(!near){
+        document.querySelectorAll('.mid-cta, .cta-band, .contact .line-btn, .solution-bridge a, a.line-btn').forEach(function(el){
+          var r = el.getBoundingClientRect();
+          if(r.bottom > window.innerHeight - 110 && r.top < window.innerHeight - 8) near = true;
+        });
+      }
       cta.classList.toggle('hide', near);
     }
     var y = window.scrollY + 100;

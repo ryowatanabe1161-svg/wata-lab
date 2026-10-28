@@ -195,9 +195,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .card,.panel,.feature,.item-card,.staff-card,.day-card,.inv-card,.book-card,.report-card{
   box-shadow:var(--wl-shadow)!important;
 }
-.card:hover,.panel:hover,.feature:hover,.book-card:hover,.inv-card:hover,.report-card:hover{
+.card:hover,.feature:hover,.book-card:hover,.inv-card:hover,.report-card:hover{
   box-shadow:var(--wl-shadow-hover)!important;border-color:#b7e5d8;
 }
+.overlay .panel:hover,.wl-coach .panel:hover{box-shadow:var(--wl-shadow)!important;border-color:transparent;transform:none!important}
 a.card:hover{transform:translateY(-4px)}
 .btn,.chip,button.primary,button.accent,.btn-primary,.composer button,.quick .chip,button[type="submit"]{
   transition:transform .12s var(--wl-ease),box-shadow .12s,background .12s,border-color .12s!important;
@@ -244,7 +245,7 @@ input:focus,select:focus,textarea:focus{
   transition:background .15s,transform .12s,border-color .15s,filter .15s;
   border-radius:999px!important;
 }
-.demo-nav a:hover,.back:hover,.back-lab:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.banner .demo-nav a:hover,.banner .back:hover,.banner .back-lab:hover,.top .back:hover,.app-header .back:hover{filter:brightness(1.08);transform:translateY(-1px)}
 .hero-bar{
   background:rgba(247,246,239,.96)!important;
   border-bottom:1px solid #e2e6e0!important;
@@ -264,7 +265,8 @@ input:focus,select:focus,textarea:focus{
   border-radius:16px!important;box-shadow:var(--wl-shadow)!important;
   transition:transform .18s var(--wl-ease), box-shadow .18s;
 }
-.stat:hover,.kpi:hover,.summary-card:hover{transform:translateY(-2px);box-shadow:var(--wl-shadow-hover)!important}
+.kpi:hover,.summary-card:hover{transform:translateY(-2px);box-shadow:var(--wl-shadow-hover)!important}
+.shell .stat:hover,.hud .stat:hover,.wl-game .stat:hover{transform:none!important;box-shadow:none!important}
 table{border-collapse:separate;border-spacing:0}
 th{font-weight:800;letter-spacing:.02em}
 tr{transition:background .12s}
@@ -296,7 +298,7 @@ td.empty:before, tr .empty:before { content:none!important; display:none!importa
 
 /* ===== WATA LAB quality polish v7 ===== */
 .wl-coach{
-  position:fixed;inset:0;z-index:80;background:rgba(15,28,41,.58);
+  position:fixed;inset:0;z-index:100;background:rgba(12,22,34,.88);
   display:flex;align-items:flex-end;justify-content:center;padding:18px;
   opacity:0;pointer-events:none;transition:opacity .25s ease;
 }
@@ -329,7 +331,7 @@ td.empty:before, tr .empty:before { content:none!important; display:none!importa
   50%{box-shadow:0 0 0 7px rgba(245,140,101,.3),0 4px 0 rgba(15,118,110,.35)}
 }
 .wl-toast{
-  position:fixed;left:50%;bottom:max(24px, env(safe-area-inset-bottom));
+  position:fixed;left:50%;bottom:max(24px, calc(env(safe-area-inset-bottom, 0px) + var(--wl-toast-lift, 0px)));
   transform:translateX(-50%) translateY(20px);
   background:#172b3e;color:#fff;padding:13px 20px;border-radius:999px;
   font-size:13px;font-weight:800;z-index:90;opacity:0;pointer-events:none;
@@ -363,7 +365,7 @@ td.empty:before, tr .empty:before { content:none!important; display:none!importa
   background:rgba(0,0,0,.28)!important;border:1px solid rgba(255,255,255,.18)!important;
   border-radius:12px!important;font-weight:700!important;
 }
-.demo-nav a,.back,.back-lab{
+.banner .demo-nav a,.banner .back,.banner .back-lab,.top .back,.app-header .back,.hero-bar .back{
   background:rgba(255,255,255,.14)!important;border:1px solid rgba(255,255,255,.28)!important;
   backdrop-filter:blur(6px);font-weight:800!important;
 }
@@ -393,7 +395,8 @@ td.empty:before, tr .empty:before { content:none!important; display:none!importa
   border-color:#e2e6e0!important;
   transition:transform .18s cubic-bezier(.22,.7,.25,1), box-shadow .18s!important;
 }
-.card:hover,.panel:hover{transform:translateY(-2px)}
+.card:hover{transform:translateY(-2px)}
+.overlay .panel:hover,.wl-coach .panel:hover{transform:none}
 button.btn-primary,.btn-primary,button.primary,.btn.primary,.composer button[type="submit"],
 button.primary-btn,#btnSave,.line-btn,.cta-band a{
   border-radius:14px!important;font-weight:900!important;
@@ -444,6 +447,75 @@ input:focus, select:focus, textarea:focus, button:focus-visible, a:focus-visible
   .wl-pulse{animation:none}
   .wl-coach,.wl-coach .panel,.wl-toast,.card,.panel{transition:none!important}
 }
+
+
+
+/* ===== sticky LINE + coach clearance v7.2 ===== */
+:root{
+  --wl-line-bar-h: 0px;
+  --wl-toast-lift: 0px;
+}
+.wl-footer-cta{
+  position:fixed!important;
+  left:12px;right:12px;
+  bottom:calc(10px + env(safe-area-inset-bottom,0px));
+  z-index:70;
+  margin:0!important;
+  width:auto!important;
+  max-width:920px;
+  margin-inline:auto!important;
+  padding:12px 14px!important;
+  border-radius:18px!important;
+  box-shadow:0 16px 36px -12px rgba(23,43,62,.55)!important;
+}
+.wl-footer-cta p{display:none}
+@media(min-width:640px){
+  .wl-footer-cta{left:50%;right:auto;transform:translateX(-50%);width:min(100% - 24px, 720px)!important}
+  .wl-footer-cta p{display:block;font-size:.8rem}
+}
+body.wl-has-linebar{
+  padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))!important;
+}
+body.wl-game{
+  padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))!important;
+}
+body.wl-game .wl-footer-cta,
+body.wl-game .wl-coach,
+body.wl-game #wlCoach{display:none!important;pointer-events:none!important}
+/* Coach sits ABOVE sticky LINE bar */
+.wl-coach{
+  position:fixed;inset:0;z-index:120!important;
+  background:rgba(12,22,34,.9)!important;
+  display:flex;align-items:flex-end;justify-content:center;
+  padding:16px 16px calc(96px + env(safe-area-inset-bottom,0px))!important;
+  opacity:0;pointer-events:none;transition:opacity .2s ease;
+}
+.wl-coach.show{opacity:1;pointer-events:auto}
+.wl-coach .panel{
+  width:min(100%,440px);max-height:min(70vh,560px);overflow:auto;
+  margin-bottom:0!important;
+  transform:translateY(10px);transition:transform .25s cubic-bezier(.22,.7,.25,1);
+}
+.wl-coach.show .panel{transform:translateY(0)!important}
+body:has(.wl-coach.show) .wl-footer-cta,
+body.wl-coach-open .wl-footer-cta{
+  opacity:0!important;pointer-events:none!important;visibility:hidden!important;
+}
+.wl-toast{
+  z-index:130!important;
+  bottom:max(24px, calc(env(safe-area-inset-bottom,0px) + var(--wl-toast-lift, 0px)))!important;
+}
+body.wl-has-linebar{
+  --wl-toast-lift: 84px;
+}
+body.wl-coach-open{
+  --wl-toast-lift: 24px;
+}
+
+
+.wl-coach .steps{margin-top:12px!important;margin-bottom:18px!important;gap:8px!important}
+.wl-coach h2{margin-bottom:10px!important}
+.wl-coach p{margin-bottom:4px!important}
 
 </style>
 </head>
@@ -668,11 +740,17 @@ input:focus, select:focus, textarea:focus, button:focus-visible, a:focus-visible
 </script>
 
 <script>
-/* WATA LAB demo UX v7 */
+/* WATA LAB demo UX v7.2 — sticky LINE + coach clearance */
 (function(){
   if(window.__wlDemoV7) return; window.__wlDemoV7 = true;
-  var key = 'wl-demo-coach-v7:' + (location.pathname.split('/').pop() || 'index');
+  var page = (location.pathname.split('/').pop() || 'index').split('?')[0];
+  var key = 'wl-demo-coach-v7:' + page;
+  var isGame = /^(demo-smash|demo-puzzle)\.html$/.test(page)
+    || document.body.classList.contains('wl-game')
+    || !!document.querySelector('#c, #startOv, #startOverlay');
   function $(s, r){ return (r||document).querySelector(s); }
+  if(isGame) document.body.classList.add('wl-game');
+
   function toast(msg){
     var t = $('.wl-toast');
     if(!t){ t=document.createElement('div'); t.className='wl-toast'; t.setAttribute('role','status'); document.body.appendChild(t); }
@@ -681,61 +759,97 @@ input:focus, select:focus, textarea:focus, button:focus-visible, a:focus-visible
   }
   window.wlToast = toast;
 
-  // Ensure visible サンプル／架空 strip
-  if(!$('.wl-sample-strip') && !$('.sample-banner')){
+  if(!$('.wl-sample-strip') && !$('.sample-banner') && !$('.sample-strip')){
     var strip=document.createElement('div');
     strip.className='wl-sample-strip';
     strip.innerHTML='<strong>サンプル／架空</strong>触って試せる見本です。データは端末内だけ／サーバーには送りません。';
     document.body.insertBefore(strip, document.body.firstChild);
   }
 
-  // Footer CTA once
-  if(!$('.wl-footer-cta') && !location.pathname.includes('demo-index')){
+  function killCoach(){
+    document.body.classList.remove('wl-coach-open');
+    document.querySelectorAll('.wl-coach, #wlCoach').forEach(function(el){
+      el.classList.remove('show');
+      el.remove();
+    });
+  }
+
+  function addFooter(){
+    if(isGame) return;
+    if($('.wl-footer-cta') || location.pathname.includes('demo-index')) return;
     var foot=document.createElement('div');
     foot.className='wl-footer-cta';
+    foot.setAttribute('role','complementary');
     foot.innerHTML='<div><strong>使えそうだったら、公式LINEへ。</strong><p>相談・見積は無料。サンプル感想だけでも大丈夫です。</p></div>'+
       '<a href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談 ↗</a>';
     document.body.appendChild(foot);
+    document.body.classList.add('wl-has-linebar');
+    document.documentElement.style.setProperty('--wl-toast-lift', '84px');
   }
 
   function seen(){ try{ return localStorage.getItem(key)==='1'; }catch(e){ return false; } }
   function mark(){ try{ localStorage.setItem(key,'1'); }catch(e){} }
   function primaryBtn(){
-    return $('button.btn-primary, .composer button, button.primary, .btn.primary, #btnSave, #startBtn, button[type="submit"], .quick .chip, .chip-row .chip');
+    return $('button.btn-primary, .composer button, button.primary, .btn.primary, #btnSave, #btnStart, #startBtn, button[type="submit"], .quick .chip, .chip-row .chip');
   }
   function stepsFromHowto(){
-    var nodes = document.querySelectorAll('.howto .steps span, .howto-strip .steps span, .step-flow span:not(.arrow)');
-    var out=[]; nodes.forEach(function(n){ var t=n.textContent.trim(); if(t && t!=='→') out.push(t); });
+    var nodes = document.querySelectorAll('.howto > .steps span, .howto-strip .steps span');
+    if(!nodes.length) nodes = document.querySelectorAll('.howto .steps span');
+    if(!nodes.length) nodes = document.querySelectorAll('.step-flow span:not(.arrow)');
+    var out=[], seen={};
+    nodes.forEach(function(n){
+      var t=n.textContent.trim();
+      if(!t || t==='→' || seen[t]) return;
+      seen[t]=1; out.push(t);
+    });
     return out.slice(0,4);
   }
+
+  function dismissCoach(el, go){
+    if(!el) return;
+    el.classList.remove('show');
+    document.body.classList.remove('wl-coach-open');
+    mark();
+    setTimeout(function(){
+      if(el && el.parentNode) el.remove();
+      addFooter();
+    }, 180);
+    if(go){
+      var b=primaryBtn();
+      if(b){ b.classList.add('wl-pulse'); try{b.focus({preventScroll:false});}catch(err){} }
+      toast('オレンジの案内どおりに触ってみてください');
+    }
+  }
+
   function buildCoach(){
-    if(seen()) return;
+    // Games: never coach, never sticky LINE (keeps smash/puzzle playable)
+    if(isGame){ killCoach(); return; }
+    if(seen()){ addFooter(); return; }
+    killCoach();
     var title = (document.querySelector('h1')||{}).textContent || 'このデモの使い方';
-    var forWhom = (document.querySelector('.for-whom')||{}).textContent || 'サンプル／架空です。端末内だけで動きます。';
+    var forWhomEl = document.querySelector('.for-whom');
+    var forWhom = forWhomEl ? forWhomEl.textContent : 'サンプル／架空です。端末内だけで動きます。';
     var steps = stepsFromHowto();
     if(!steps.length) steps = ['① 案内どおりに触る','② 結果を見る','③ 一覧へ戻る'];
     var el=document.createElement('div'); el.className='wl-coach'; el.id='wlCoach';
     el.innerHTML = '<div class="panel" role="dialog" aria-modal="true" aria-label="デモの始め方">'+
       '<div class="kicker">SAMPLE／架空 · はじめ方</div>'+
       '<h2>'+title.replace(/</g,'')+'</h2>'+
-      '<p>'+forWhom.replace(/</g,'').slice(0,140)+'</p>'+
+      '<p>'+String(forWhom).replace(/</g,'').slice(0,140)+'</p>'+
       '<div class="steps">'+steps.map(function(s){return '<span>'+s.replace(/</g,'')+'</span>';}).join('')+'</div>'+
       '<div class="actions"><button type="button" class="skip" data-wl="skip">とばす</button>'+
       '<button type="button" class="go" data-wl="go">触ってみる</button></div></div>';
     document.body.appendChild(el);
+    document.body.classList.add('wl-coach-open');
     requestAnimationFrame(function(){ el.classList.add('show'); });
     el.addEventListener('click', function(e){
-      var a=e.target.getAttribute('data-wl');
-      if(!a && e.target!==el) return;
-      el.classList.remove('show');
-      mark();
-      setTimeout(function(){ el.remove(); }, 220);
-      if(a==='go'){
-        var b=primaryBtn();
-        if(b){ b.classList.add('wl-pulse'); try{b.focus({preventScroll:false});}catch(err){} }
-        toast('オレンジの案内どおりに触ってみてください');
-      }
+      var btn = e.target.closest('[data-wl]');
+      if(btn){ dismissCoach(el, btn.getAttribute('data-wl')==='go'); return; }
+      if(e.target === el){ dismissCoach(el, false); }
     });
+    // Escape to dismiss
+    function onKey(ev){ if(ev.key==='Escape'){ dismissCoach(el,false); document.removeEventListener('keydown', onKey); } }
+    document.addEventListener('keydown', onKey);
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', buildCoach);
   else buildCoach();
