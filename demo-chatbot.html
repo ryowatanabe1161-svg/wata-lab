@@ -664,6 +664,15 @@ body.wl-has-linebar{
   --fixed-bar-h: 96px;
   padding-bottom: calc(var(--fixed-bar-h) + 28px + env(safe-area-inset-bottom,0px)) !important;
 }
+body.wl-has-linebar .composer{
+  padding-bottom: calc(12px + env(safe-area-inset-bottom,0px)) !important;
+  position: relative;
+  z-index: 2;
+}
+body.wl-has-linebar .quick{
+  position: relative;
+  z-index: 2;
+}
 body.wl-has-linebar .footer-note,
 body.wl-has-linebar .footnote,
 body.wl-has-linebar aside.footnote{
@@ -787,14 +796,14 @@ input,select,textarea{border-radius:12px!important}
     </div>
   </div>
 
-  <main class="chat"
   <figure class="wl-demo-hero square" aria-hidden="true">
     <picture>
       <source srcset="assets/chatbot-devices.webp" type="image/webp">
       <img src="assets/chatbot-devices.jpg" width="1100" height="1100" alt="" loading="lazy" decoding="async">
     </picture>
   </figure>
- id="chat" aria-live="polite"></main>
+
+  <main class="chat" id="chat" aria-live="polite"></main>
 
   <div class="quick" id="quick"></div>
 
@@ -810,6 +819,10 @@ input,select,textarea{border-radius:12px!important}
   const quick = document.getElementById('quick');
   const form = document.getElementById('form');
   const input = document.getElementById('input');
+  if (!chat || !quick || !form || !input) {
+    console.error('[WATA LAB] chatbot DOM missing', {chat:!!chat, quick:!!quick, form:!!form, input:!!input});
+    return;
+  }
 
   const FAQ = [
     {
