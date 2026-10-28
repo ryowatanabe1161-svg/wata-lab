@@ -769,11 +769,78 @@ section[id],#top{scroll-margin-top:84px}
 }
 .studio-art picture,.studio-art img{
   display:block;width:100%;height:auto;border-radius:18px;
-  aspect-ratio:1400 / 700;object-fit:cover;background:#d9efe8;
+  aspect-ratio:1400 / 700;object-fit:cover;object-position:center 40%;background:#d9efe8;
+}
+.studio-caption{
+  margin:14px 4px 0;font-size:12.5px;font-weight:800;color:var(--muted);letter-spacing:.2px;line-height:1.6;
 }
 @media(max-width:850px){
   .studio{grid-template-columns:1fr;gap:28px}
-  .studio-art{max-width:560px;margin:0 auto;box-shadow:12px 14px 0 #dfeae4, var(--shadow-lg)}
+  .studio-art{max-width:560px;margin:0 auto;box-shadow:12px 14px 0 #dfeae4, var(--shadow-lg);padding:10px}
+  .studio-caption{text-align:center}
+}
+
+/* Solution visual under pains (store → phone) */
+.solution-visual{
+  margin-top:28px;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;
+  background:#fff;border:1px solid var(--line);border-radius:28px;padding:18px 18px 18px 20px;
+  box-shadow:var(--shadow-lg);
+}
+.solution-visual-art{
+  position:relative;border-radius:22px;overflow:hidden;
+  background:linear-gradient(155deg,#c5e5db,#fff8ef 60%,#d9efe8);
+  padding:10px;
+  box-shadow:10px 12px 0 #e8f0eb;
+}
+.solution-visual-art picture,.solution-visual-art img{
+  display:block;width:100%;height:auto;border-radius:16px;
+  aspect-ratio:1448 / 1086;object-fit:cover;object-position:center;background:#d9efe8;
+}
+.solution-visual-copy{padding:6px 8px 6px 0}
+.solution-visual-copy .eyebrow{display:inline-block;margin-bottom:8px}
+.solution-visual-copy h3{
+  margin:0 0 10px;font-size:clamp(20px,2.4vw,26px);letter-spacing:-.6px;line-height:1.4;color:var(--navy);
+}
+.solution-visual-copy p{
+  margin:0;font-size:14.5px;color:#4a5a6a;line-height:1.85;font-weight:650;
+}
+.solution-visual-copy .caption{
+  margin-top:14px;padding-top:12px;border-top:1px dashed #dce3de;
+  font-size:13px;font-weight:900;color:var(--teal-deep);letter-spacing:.1px;line-height:1.65;
+}
+@media(max-width:850px){
+  .solution-visual{grid-template-columns:1fr;gap:16px;padding:14px}
+  .solution-visual-art{box-shadow:8px 10px 0 #e8f0eb;max-width:520px;margin:0 auto;width:100%}
+  .solution-visual-copy{padding:4px 4px 2px;text-align:center}
+  .solution-visual-copy .caption{border-top:none;padding-top:0;margin-top:10px}
+}
+@media(max-width:550px){
+  .solution-visual{margin-top:22px;border-radius:22px;padding:12px}
+  .solution-visual-art{padding:8px;border-radius:18px}
+  .solution-visual-art img{border-radius:12px}
+  .hero-art{margin-top:4px}
+  .studio-art{padding:8px;border-radius:22px}
+  .studio-art img{border-radius:14px}
+}
+
+/* Image polish: hero + shared frames */
+.hero-art{
+  position:relative;width:100%;max-width:540px;margin:4px auto 0;z-index:1;
+}
+.hero-art picture,.hero-art img{
+  display:block;width:100%;height:auto;
+  border-radius:22px;
+  box-shadow:0 22px 40px rgba(23,43,62,.22), 0 0 0 1px rgba(255,255,255,.35);
+  object-fit:cover;object-position:center 45%;aspect-ratio:1600 / 711;background:#d9efe8;
+}
+.hero-art-caption{
+  margin:12px 2px 0;text-align:center;font-size:11.5px;font-weight:800;color:rgba(23,43,62,.62);letter-spacing:.2px;
+}
+.visual.v6{padding:20px 16px 22px}
+@media(max-width:550px){
+  .hero-art-caption{font-size:11px;margin-top:10px}
+  .visual.v6{padding:12px 10px 14px}
 }
 
 </style>
@@ -822,8 +889,9 @@ section[id],#top{scroll-margin-top:84px}
       <div class="hero-art">
         <picture>
           <source srcset="assets/hero-desk.webp" type="image/webp">
-          <img src="assets/hero-desk.jpg" width="1600" height="711" alt="WATA LABの制作イメージイラスト" decoding="async" fetchpriority="high">
+          <img src="assets/hero-desk.jpg" width="1600" height="711" alt="机の上でホームページや小さな仕組みを作っているイメージイラスト" decoding="async" fetchpriority="high">
         </picture>
+        <p class="hero-art-caption">個人店・教室向けの、ものづくり相談室</p>
       </div>
     </div>
   </div>
@@ -844,6 +912,20 @@ section[id],#top{scroll-margin-top:84px}
         <article class="pain"><div class="pain-num">06</div><div><p>大きなシステムは要らない。現場で毎日使える小さな仕組みがほしい</p><div class="pain-sol">中小規模・無理のない仕組みが専門です</div></div></article>
       </div>
       <div class="pain-foot">その悩み、<span>身近なサイズで・分かりやすい料金で・触れるサンプルから</span>、一緒にほどけます。</div>
+      <figure class="solution-visual reveal">
+        <div class="solution-visual-art">
+          <picture>
+            <source srcset="assets/store-phone.webp" type="image/webp">
+            <img src="assets/store-phone.jpg" width="1448" height="1086" alt="小さな店の困りごとが、スマホで使える仕組みにつながるイメージイラスト" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <figcaption class="solution-visual-copy">
+          <span class="eyebrow">SOLUTION</span>
+          <h3>小さな店の困りごとを、<br>スマホで使える仕組みに。</h3>
+          <p>紙やExcel・電話メモで散らかった毎日を、現場の流れに合った小さな画面へ。まずは見本を触って、「うちでも使えそう」を確かめてから相談できます。</p>
+          <p class="caption">個人・個人経営・小さな教室やお店向け。大掛かりなシステムではなく、毎日使うサイズで。</p>
+        </figcaption>
+      </figure>
       <div class="solution-bridge reveal">
         <div>
           <strong>悩み → 見本 → 相談、の順で大丈夫。</strong>
@@ -1018,8 +1100,9 @@ section[id],#top{scroll-margin-top:84px}
       <div class="studio-art">
         <picture>
           <source srcset="assets/hero-desk-alt.webp" type="image/webp">
-          <img src="assets/hero-desk-alt.jpg" width="1400" height="700" alt="WATA LABの作業デスクの雰囲気イラスト" loading="lazy" decoding="async">
+          <img src="assets/hero-desk-alt.jpg" width="1400" height="700" alt="ノートPCとコーヒーのある作業デスクの雰囲気イラスト" loading="lazy" decoding="async">
         </picture>
+        <p class="studio-caption">机ひとつから始まる、あたたかいものづくりの場所。</p>
       </div>
     </div>
   </section>
