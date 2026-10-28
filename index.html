@@ -843,6 +843,61 @@ section[id],#top{scroll-margin-top:84px}
   .visual.v6{padding:12px 10px 14px}
 }
 
+/* Before → After bridge */
+#before-after.section{padding-top:28px;padding-bottom:40px}
+.before-after{
+  background:#fff;border:1px solid var(--line);border-radius:28px;padding:22px 22px 18px;
+  box-shadow:var(--shadow-lg);overflow:hidden;
+}
+.before-after-head{
+  display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between;
+  margin-bottom:16px;
+}
+.before-after-head .eyebrow{display:inline-block}
+.before-after-head h2{
+  margin:8px 0 0;font-size:clamp(22px,2.8vw,30px);letter-spacing:-.7px;line-height:1.35;
+}
+.before-after-head p{
+  margin:0;max-width:380px;font-size:13.5px;color:#4a5a6a;line-height:1.75;font-weight:650;
+}
+.before-after-art{
+  border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#ffe8d6,#e8f5f1);
+  padding:8px;box-shadow:inset 0 0 0 1px rgba(23,43,62,.04);
+}
+.before-after-art picture,.before-after-art img{
+  display:block;width:100%;height:auto;border-radius:14px;
+  aspect-ratio:1600 / 703;object-fit:cover;object-position:center;background:#f3ebe3;
+}
+.before-after-labels{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;
+}
+.before-after-labels span{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:12.5px;font-weight:900;padding:10px 12px;border-radius:14px;letter-spacing:.2px;
+}
+.before-after-labels .before{
+  background:#fff4ec;color:#9a4e2a;border:1px solid #f0d5c0;
+}
+.before-after-labels .after{
+  background:#e8f5f1;color:var(--teal-deep);border:1px solid #c5e5db;
+}
+.before-after-foot{
+  margin:14px 2px 0;font-size:13px;font-weight:800;color:var(--muted);line-height:1.7;text-align:center;
+}
+@media(max-width:850px){
+  .before-after{padding:16px 14px 14px;border-radius:24px}
+  .before-after-head{margin-bottom:12px}
+  .before-after-head p{max-width:none}
+}
+@media(max-width:550px){
+  #before-after.section{padding-top:12px;padding-bottom:28px}
+  .before-after{padding:12px;border-radius:20px}
+  .before-after-art{padding:6px;border-radius:16px}
+  .before-after-art img{border-radius:12px}
+  .before-after-labels{grid-template-columns:1fr;gap:8px}
+  .before-after-foot{font-size:12.5px;text-align:left}
+}
+
 </style>
 </head>
 <body>
@@ -933,6 +988,31 @@ section[id],#top{scroll-margin-top:84px}
         </div>
         <a href="#demos">触れるサンプルへ ↓</a>
       </div>
+    </div>
+  </section>
+
+  <section id="before-after" class="section white">
+    <div class="wrap">
+      <figure class="before-after reveal">
+        <div class="before-after-head">
+          <div>
+            <span class="eyebrow">BEFORE → AFTER</span>
+            <h2>現場の手間を、小さな仕組みに。</h2>
+          </div>
+          <p>散らかった紙・Excel・メモが、ひとつにまとまった画面へ。大掛かりにせず、毎日使うサイズで整えます。</p>
+        </div>
+        <div class="before-after-art">
+          <picture>
+            <source srcset="assets/before-after.webp" type="image/webp">
+            <img src="assets/before-after.jpg" width="1600" height="703" alt="紙やExcelが散らかった状態から、整理されたダッシュボードへ変わるイメージイラスト" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="before-after-labels" aria-hidden="true">
+          <span class="before">BEFORE · 紙・Excel・メモが散らばる</span>
+          <span class="after">AFTER · ひとつの画面で確認・入力</span>
+        </div>
+        <figcaption class="before-after-foot">イメージです。実際の画面はお店のやり方に合わせて作ります。<a class="linkish" href="#demos">触れるサンプル</a>で雰囲気を確認できます。</figcaption>
+      </figure>
     </div>
   </section>
 
