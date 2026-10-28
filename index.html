@@ -1044,6 +1044,7 @@ body{
   display:block;background:var(--cream);border:1px solid var(--line);border-radius:16px;
   padding:10px 10px 12px;text-align:center;font-size:11.5px;font-weight:800;
   box-shadow:var(--shadow);transition:transform .18s var(--ease),border-color .18s;
+  text-decoration:none;color:inherit;
 }
 .quick-demos a:hover{transform:translateY(-2px);border-color:#c9ded5}
 .quick-demos img,.quick-demos picture{
@@ -1051,12 +1052,45 @@ body{
   background:#e8f0ed;
 }
 .quick-demos span{display:block;color:var(--navy);line-height:1.35}
-@media(max-width:550px){
+.quick-demos .qd-meta{display:none}
+@media(max-width:760px){
   .hero-demo-strip{margin-top:8px}
-  .hero-demo-strip .inner{padding:18px 16px;border-radius:22px}
-  .phone-mock{width:min(100%,240px);box-shadow:10px 12px 0 rgba(215,235,229,.85), var(--shadow)}
-  .quick-demos{gap:8px}
-  .quick-demos a{padding:8px;font-size:10.5px;border-radius:12px}
+  .hero-demo-strip .inner{padding:18px 16px;border-radius:22px;gap:0}
+  /* Phone mock duplicates the booking preview on mobile and makes the strip very tall */
+  .hero-demo-strip .phone-mock{display:none}
+  .quick-demos{
+    grid-template-columns:1fr;
+    gap:10px;
+    margin-top:16px;
+  }
+  .quick-demos a{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-align:left;
+    padding:10px 14px 10px 10px;
+    font-size:14px;
+    border-radius:16px;
+  }
+  .quick-demos a:after{
+    content:"→";
+    color:var(--teal-deep);
+    font-weight:900;
+    font-size:15px;
+    margin-left:auto;
+    flex-shrink:0;
+  }
+  .quick-demos picture{
+    width:92px;flex-shrink:0;margin-bottom:0;border-radius:12px;overflow:hidden;
+  }
+  .quick-demos img{
+    width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:0;border-radius:12px;
+  }
+  .quick-demos .qd-text{flex:1;min-width:0}
+  .quick-demos span{font-size:14.5px;font-weight:800;letter-spacing:-.2px}
+  .quick-demos .qd-meta{
+    display:block;margin-top:3px;font-size:11.5px;font-weight:700;color:var(--muted);line-height:1.4;
+  }
 }
 
 /* Services as 3 blocks */
@@ -1177,9 +1211,9 @@ body{
           <a class="btn secondary" href="demo-booking.html">予約デモを開く →</a>
         </div>
         <div class="quick-demos" aria-label="人気のサンプル">
-          <a href="part-time-payroll-demo.html"><picture><source srcset="assets/thumb-payroll.webp" type="image/webp"><img src="assets/thumb-payroll.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span>パート給与</span></a>
-          <a href="demo-shift.html"><picture><source srcset="assets/thumb-shift.webp" type="image/webp"><img src="assets/thumb-shift.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span>シフト</span></a>
-          <a href="demo-booking.html"><picture><source srcset="assets/thumb-booking.webp" type="image/webp"><img src="assets/thumb-booking.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span>予約</span></a>
+          <a href="part-time-payroll-demo.html"><picture><source srcset="assets/thumb-payroll.webp" type="image/webp"><img src="assets/thumb-payroll.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="qd-text"><span>パート給与</span><span class="qd-meta">勤怠から支給額まで</span></span></a>
+          <a href="demo-shift.html"><picture><source srcset="assets/thumb-shift.webp" type="image/webp"><img src="assets/thumb-shift.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="qd-text"><span>シフト</span><span class="qd-meta">週の配置をひと目で</span></span></a>
+          <a href="demo-booking.html"><picture><source srcset="assets/thumb-booking.webp" type="image/webp"><img src="assets/thumb-booking.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="qd-text"><span>予約</span><span class="qd-meta">枠の空きをそのまま確認</span></span></a>
         </div>
       </div>
       <div class="phone-mock" aria-hidden="true">
