@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+<meta name="description" content="わたらぼスマッシュ — タップで壊すワンタップ物理のカジュアルゲーム（ポートフォリオサンプル）。">
+<meta name="theme-color" content="#0f1f2e">
+<title>わたらぼスマッシュ｜WATA LAB</title>
+<style>
+:root{
+  --navy:#0f1f2e;--teal:#14b8a6;--orange:#ff7a45;--gold:#ffd36b;
+  --cream:#f7f6ef;--muted:#8aa0b0;--line:#1e3348;
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overscroll-behavior:none;touch-action:none}
+body{
+  background:var(--navy);color:#fff;
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,system-ui,sans-serif;
+  display:flex;flex-direction:column;align-items:center;
+  min-height:100dvh;user-select:none;-webkit-user-select:none;
+  padding:8px 8px calc(10px + var(--safe-b));
+}
+a{color:inherit;text-decoration:none}
+.topbar{
+  width:min(100%,420px);display:flex;align-items:center;justify-content:space-between;
+  gap:8px;margin-bottom:6px;z-index:5;
+}
+.brand{display:flex;align-items:center;gap:8px;font-weight:900;font-size:14px;letter-spacing:-.3px}
+.brand .mark{
+  width:26px;height:26px;border-radius:8px;background:var(--orange);
+  color:#fff;display:grid;place-items:center;font-size:13px;box-shadow:0 3px 0 #c4562a;
+}
+.back{
+  font-size:12px;font-weight:800;color:#c8d6e0;background:#1a2f42;
+  border:1px solid #2a455c;border-radius:999px;padding:7px 12px;min-height:36px;
+  display:inline-flex;align-items:center;
+}
+.shell{
+  width:min(100%,420px);flex:1;display:flex;flex-direction:column;min-height:0;
+  background:#132838;border:1px solid #1e3a50;border-radius:20px;
+  box-shadow:0 12px 40px #0006;overflow:hidden;position:relative;
+}
+.hud{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;
+  padding:10px 10px 6px;position:relative;z-index:3;
+}
+.stat{
+  background:#0c1a26;border:1px solid #1e3a50;border-radius:12px;
+  padding:7px 6px;text-align:center;
+}
+.stat label{display:block;font-size:9px;font-weight:800;color:var(--muted);letter-spacing:.5px}
+.stat b{font-size:18px;font-weight:900;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.stat b.combo{color:var(--gold)}
+.stat b.warn{color:#ff6b6b}
+.stage-wrap{
+  flex:1;position:relative;min-height:280px;margin:0 8px 8px;
+  border-radius:16px;overflow:hidden;
+  background:linear-gradient(180deg,#1a3d52 0%,#0d2433 55%,#081820 100%);
+  box-shadow:inset 0 0 0 2px #1e4a60,0 6px 0 #061018;
+  touch-action:none;cursor:pointer;
+}
+#c{display:block;width:100%;height:100%;touch-action:none}
+.hint-float{
+  position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);
+  pointer-events:none;text-align:center;z-index:4;
+  animation:bob 1.4s ease-in-out infinite;
+  transition:opacity .35s;
+}
+.hint-float.hide{opacity:0}
+.hint-float .finger{
+  width:56px;height:56px;margin:0 auto 8px;border-radius:50%;
+  background:rgba(255,122,69,.85);border:3px solid #fff;
+  box-shadow:0 0 0 8px rgba(255,122,69,.25),0 8px 20px #0005;
+  display:grid;place-items:center;font-size:22px;
+}
+.hint-float p{margin:0;font-size:15px;font-weight:900;text-shadow:0 2px 8px #000a}
+@keyframes bob{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% + 8px))}}
+.controls{display:flex;gap:8px;padding:0 10px 10px;position:relative;z-index:3}
+.btn{
+  flex:1;border:none;border-radius:14px;padding:13px 12px;font-weight:900;font-size:14px;
+  font-family:inherit;cursor:pointer;min-height:48px;
+  transition:transform .1s,box-shadow .1s;
+}
+.btn:active{transform:translateY(2px)}
+.btn.primary{background:var(--orange);color:#fff;box-shadow:0 5px 0 #c4562a}
+.btn.primary:active{box-shadow:0 2px 0 #c4562a}
+.btn.ghost{background:#1a2f42;color:#c8d6e0;border:1px solid #2a455c}
+.overlay{
+  position:absolute;inset:0;z-index:20;background:rgba(8,18,28,.82);
+  backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;
+  padding:16px;opacity:0;pointer-events:none;transition:opacity .22s;
+}
+.overlay.show{opacity:1;pointer-events:auto}
+.panel{
+  background:#fff;color:#172b3e;border-radius:20px;padding:22px 18px 16px;text-align:center;
+  width:min(100%,300px);box-shadow:0 16px 40px #0005;
+  transform:scale(.94);transition:transform .22s;
+}
+.overlay.show .panel{transform:scale(1)}
+.panel .emoji{font-size:38px;line-height:1;margin-bottom:4px}
+.panel h2{margin:0 0 8px;font-size:22px;letter-spacing:-.5px}
+.panel .howto{
+  text-align:left;background:#f4f7f8;border-radius:12px;padding:12px 14px;
+  margin:0 0 12px;font-size:13px;line-height:1.65;font-weight:700;
+}
+.panel .howto li{margin:0 0 5px}
+.panel .howto li:last-child{margin:0}
+.panel p{margin:0 0 6px;font-size:13px;color:#586677;line-height:1.5}
+.panel .scoreline{font-size:17px;font-weight:900;color:#172b3e;margin:8px 0 14px}
+.panel .btn{width:100%;margin-top:4px}
+.panel .sample{font-size:10px;color:#8aa0b0;margin-top:10px}
+.combo-pop{
+  position:absolute;left:50%;top:18%;transform:translateX(-50%);
+  font-size:28px;font-weight:900;color:var(--gold);text-shadow:0 3px 0 #8a5a00,0 0 20px #ffd36b88;
+  pointer-events:none;z-index:6;opacity:0;
+}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><span class="mark" aria-hidden="true">💥</span>わたらぼスマッシュ</div>
+    <a class="back" href="demo-index.html">← サンプル一覧へ</a>
+  </div>
+
+  <div class="shell" id="shell">
+    <div class="hud">
+      <div class="stat"><label>スコア</label><b id="score">0</b></div>
+      <div class="stat"><label>コンボ</label><b id="combo" class="combo">×1</b></div>
+      <div class="stat"><label>ベスト</label><b id="best">0</b></div>
+    </div>
+
+    <div class="stage-wrap" id="stage">
+      <canvas id="c"></canvas>
+      <div class="hint-float" id="hint">
+        <div class="finger" aria-hidden="true">👆</div>
+        <p>タップで壊す！</p>
+      </div>
+      <div class="combo-pop" id="comboPop"></div>
+    </div>
+
+    <div class="controls">
+      <button type="button" class="btn ghost" id="btnPause">一時停止</button>
+      <button type="button" class="btn primary" id="btnRestart">もう一度</button>
+    </div>
+
+    <div class="overlay show" id="startOv">
+      <div class="panel">
+        <div class="emoji">💥</div>
+        <h2>わたらぼスマッシュ</h2>
+        <ol class="howto">
+          <li>落ちてくるブロックを<strong>タップで壊す</strong></li>
+          <li>連続で壊すと<strong>コンボ</strong>で得点アップ</li>
+          <li>地面に着いたらゲームオーバー</li>
+        </ol>
+        <p>ワンタップ物理のカジュアルゲーム見本です。</p>
+        <button type="button" class="btn primary" id="btnStart">スタート</button>
+        <p class="sample">※ ポートフォリオ用サンプル</p>
+      </div>
+    </div>
+
+    <div class="overlay" id="pauseOv">
+      <div class="panel">
+        <div class="emoji">⏸</div>
+        <h2>一時停止</h2>
+        <p>続けますか？</p>
+        <button type="button" class="btn primary" id="btnResume" style="margin-top:12px">再開</button>
+        <button type="button" class="btn ghost" id="btnPauseRestart" style="margin-top:8px">最初から</button>
+      </div>
+    </div>
+
+    <div class="overlay" id="overOv">
+      <div class="panel">
+        <div class="emoji">🔥</div>
+        <h2>ゲームオーバー</h2>
+        <div class="scoreline">スコア <span id="finalScore">0</span></div>
+        <p id="bestMsg"></p>
+        <button type="button" class="btn primary" id="btnAgain">もう一度遊ぶ</button>
+        <p class="sample">※ ポートフォリオ用サンプル</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+  const stage = document.getElementById('stage');
+  const elScore = document.getElementById('score');
+  const elCombo = document.getElementById('combo');
+  const elBest = document.getElementById('best');
+  const hint = document.getElementById('hint');
+  const comboPop = document.getElementById('comboPop');
+  const startOv = document.getElementById('startOv');
+  const pauseOv = document.getElementById('pauseOv');
+  const overOv = document.getElementById('overOv');
+
+  const COLORS = [
+    {fill:'#ff6b8a', glow:'#ff8aa3'},
+    {fill:'#4ecdc4', glow:'#7ee8e0'},
+    {fill:'#ffe66d', glow:'#fff0a0'},
+    {fill:'#a78bfa', glow:'#c4b0ff'},
+    {fill:'#74b9ff', glow:'#a0d0ff'},
+    {fill:'#ff9f43', glow:'#ffbb70'},
+  ];
+
+  let W=0, H=0, dpr=1;
+  let blocks=[], particles=[], floatTexts=[], shockwaves=[];
+  let score=0, combo=1, comboTimer=0, best=0, livesMiss=0;
+  let spawnTimer=0, spawnInterval=1.1, elapsed=0;
+  let state='menu'; // menu | play | pause | over
+  let shake=0, hintShown=true, lastTs=0, groundY=0;
+  let raf=0;
+
+  try { best = +localStorage.getItem('wata-smash-best') || 0; } catch(e){}
+  elBest.textContent = best;
+
+  function resize(){
+    const r = stage.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+    W = Math.max(1, Math.floor(r.width));
+    H = Math.max(1, Math.floor(r.height));
+    canvas.width = Math.floor(W * dpr);
+    canvas.height = Math.floor(H * dpr);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    groundY = H - 28;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  if (window.visualViewport) visualViewport.addEventListener('resize', resize);
+
+  function rand(a,b){ return a + Math.random()*(b-a); }
+  function pick(arr){ return arr[(Math.random()*arr.length)|0]; }
+
+  function spawnBlock(){
+    const size = rand(38, 58);
+    const x = rand(size/2 + 8, W - size/2 - 8);
+    const col = pick(COLORS);
+    const kind = Math.random() < 0.18 ? 'bomb' : (Math.random() < 0.12 ? 'gold' : 'normal');
+    blocks.push({
+      x, y: -size,
+      vx: rand(-20, 20),
+      vy: rand(70, 110) + elapsed * 4,
+      w: size, h: size,
+      rot: rand(0, Math.PI*2),
+      vr: rand(-2.2, 2.2),
+      col, kind,
+      hp: kind === 'bomb' ? 1 : 1,
+      wobble: rand(0, Math.PI*2),
+    });
+  }
+
+  function addParticles(x, y, col, n, speed){
+    for (let i=0;i<n;i++){
+      const a = rand(0, Math.PI*2);
+      const s = rand(speed*0.4, speed);
+      particles.push({
+        x, y,
+        vx: Math.cos(a)*s,
+        vy: Math.sin(a)*s - rand(40,120),
+        life: rand(0.35, 0.75),
+        max: 0.75,
+        r: rand(3, 8),
+        col: Math.random()<0.3 ? '#fff' : col,
+        g: 520,
+      });
+    }
+  }
+
+  function addFloat(x, y, text, color){
+    floatTexts.push({x, y, text, color, life: 0.9, vy: -70});
+  }
+
+  function smashAt(px, py){
+    if (state !== 'play') return;
+    let hit = false;
+    const R = 42;
+    for (let i = blocks.length - 1; i >= 0; i--){
+      const b = blocks[i];
+      const dx = b.x - px, dy = b.y - py;
+      const dist = Math.hypot(dx, dy);
+      const hitR = Math.max(b.w, b.h) * 0.55 + R * 0.35;
+      if (dist < hitR){
+        hit = true;
+        destroyBlock(b, i, true);
+      }
+    }
+    // soft miss still makes tiny ripple for feel
+    shockwaves.push({x:px, y:py, r:8, max: hit ? 70 : 36, life: hit ? 0.28 : 0.18, strong: hit});
+    if (hit){
+      shake = Math.min(12, shake + 5 + combo * 0.4);
+      if (navigator.vibrate) try { navigator.vibrate(combo > 4 ? 18 : 10); } catch(e){}
+      if (hintShown){ hint.classList.add('hide'); hintShown = false; }
+    }
+  }
+
+  function destroyBlock(b, idx, byTap){
+    blocks.splice(idx, 1);
+    const base = b.kind === 'gold' ? 50 : (b.kind === 'bomb' ? 30 : 10);
+    if (byTap){
+      comboTimer = 1.15;
+      combo = Math.min(combo + 1, 30);
+      elCombo.textContent = '×' + combo;
+      if (combo >= 3){
+        showComboPop(combo);
+      }
+    }
+    const pts = base * combo;
+    score += pts;
+    elScore.textContent = score;
+    addFloat(b.x, b.y - 10, '+' + pts, b.kind === 'gold' ? '#ffd36b' : '#fff');
+    const n = b.kind === 'bomb' ? 28 : (b.kind === 'gold' ? 22 : 14);
+    addParticles(b.x, b.y, b.col.fill, n, b.kind === 'bomb' ? 380 : 260);
+    shockwaves.push({x:b.x, y:b.y, r:10, max: b.kind==='bomb'?110:80, life:0.35, strong:true});
+
+    if (b.kind === 'bomb'){
+      const victims = [];
+      for (let j = 0; j < blocks.length; j++){
+        const o = blocks[j];
+        if (Math.hypot(o.x - b.x, o.y - b.y) < 95) victims.push(o);
+      }
+      for (const o of victims){
+        const j = blocks.indexOf(o);
+        if (j >= 0) destroyBlock(o, j, true);
+      }
+      shake = Math.min(18, shake + 10);
+    }
+  }
+
+  function showComboPop(c){
+    comboPop.textContent = c + ' COMBO!';
+    comboPop.style.opacity = '1';
+    comboPop.style.transition = 'none';
+    comboPop.style.transform = 'translateX(-50%) scale(0.6)';
+    requestAnimationFrame(()=>{
+      comboPop.style.transition = 'transform .18s ease-out, opacity .5s ease';
+      comboPop.style.transform = 'translateX(-50%) scale(1.15)';
+      setTimeout(()=>{ comboPop.style.opacity = '0'; }, 450);
+    });
+  }
+
+  function resetGame(){
+    blocks = []; particles = []; floatTexts = []; shockwaves = [];
+    score = 0; combo = 1; comboTimer = 0; spawnTimer = 0.2;
+    spawnInterval = 1.05; elapsed = 0; shake = 0; livesMiss = 0;
+    elScore.textContent = '0';
+    elCombo.textContent = '×1';
+    hint.classList.remove('hide');
+    hintShown = true;
+  }
+
+  function startGame(){
+    resetGame();
+    state = 'play';
+    startOv.classList.remove('show');
+    pauseOv.classList.remove('show');
+    overOv.classList.remove('show');
+    lastTs = performance.now();
+  }
+
+  function gameOver(){
+    state = 'over';
+    document.getElementById('finalScore').textContent = score;
+    let msg = '';
+    if (score > best){
+      best = score;
+      try { localStorage.setItem('wata-smash-best', String(best)); } catch(e){}
+      elBest.textContent = best;
+      msg = '新記録！ベスト更新';
+    } else if (best > 0){
+      msg = 'ベスト ' + best;
+    }
+    document.getElementById('bestMsg').textContent = msg;
+    overOv.classList.add('show');
+  }
+
+  function update(dt){
+    if (state !== 'play') return;
+    elapsed += dt;
+    spawnInterval = Math.max(0.38, 1.05 - elapsed * 0.018);
+    spawnTimer -= dt;
+    if (spawnTimer <= 0){
+      spawnBlock();
+      if (elapsed > 12 && Math.random() < 0.35) spawnBlock();
+      if (elapsed > 28 && Math.random() < 0.25) spawnBlock();
+      spawnTimer = spawnInterval * rand(0.75, 1.15);
+    }
+
+    if (comboTimer > 0){
+      comboTimer -= dt;
+      if (comboTimer <= 0){
+        combo = 1;
+        elCombo.textContent = '×1';
+      }
+    }
+
+    for (let i = blocks.length - 1; i >= 0; i--){
+      const b = blocks[i];
+      b.vy += 280 * dt;
+      b.x += b.vx * dt;
+      b.y += b.vy * dt;
+      b.rot += b.vr * dt;
+      b.wobble += dt * 4;
+      // soft wall bounce
+      if (b.x < b.w/2){ b.x = b.w/2; b.vx = Math.abs(b.vx) * 0.6; }
+      if (b.x > W - b.w/2){ b.x = W - b.w/2; b.vx = -Math.abs(b.vx) * 0.6; }
+      if (b.y + b.h/2 >= groundY){
+        // miss — shatter weakly and punish
+        addParticles(b.x, groundY - 8, b.col.fill, 8, 120);
+        blocks.splice(i, 1);
+        combo = 1; comboTimer = 0;
+        elCombo.textContent = '×1';
+        shake = Math.min(14, shake + 6);
+        livesMiss++;
+        if (livesMiss >= 1){ // one miss = over (hypercasual tension)
+          gameOver();
+          return;
+        }
+      }
+    }
+
+    for (let i = particles.length - 1; i >= 0; i--){
+      const p = particles[i];
+      p.vy += p.g * dt;
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+      p.life -= dt;
+      if (p.life <= 0) particles.splice(i, 1);
+    }
+    for (let i = floatTexts.length - 1; i >= 0; i--){
+      const f = floatTexts[i];
+      f.y += f.vy * dt;
+      f.life -= dt;
+      if (f.life <= 0) floatTexts.splice(i, 1);
+    }
+    for (let i = shockwaves.length - 1; i >= 0; i--){
+      const s = shockwaves[i];
+      s.life -= dt;
+      s.r += (s.max - s.r) * Math.min(1, dt * 10);
+      if (s.life <= 0) shockwaves.splice(i, 1);
+    }
+    if (shake > 0) shake = Math.max(0, shake - dt * 28);
+  }
+
+  function roundRect(x,y,w,h,r){
+    const rr = Math.min(r, w/2, h/2);
+    ctx.beginPath();
+    ctx.moveTo(x+rr,y);
+    ctx.arcTo(x+w,y,x+w,y+h,rr);
+    ctx.arcTo(x+w,y+h,x,y+h,rr);
+    ctx.arcTo(x,y+h,x,y,rr);
+    ctx.arcTo(x,y,x+w,y,rr);
+    ctx.closePath();
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    ctx.save();
+    if (shake > 0){
+      ctx.translate((Math.random()-0.5)*shake, (Math.random()-0.5)*shake);
+    }
+
+    // ambient grid / depth
+    ctx.fillStyle = 'rgba(255,255,255,0.03)';
+    for (let y = 40; y < H; y += 36){
+      ctx.fillRect(0, y, W, 1);
+    }
+
+    // ground
+    ctx.fillStyle = '#0a1822';
+    ctx.fillRect(0, groundY, W, H - groundY);
+    ctx.fillStyle = '#14b8a6';
+    ctx.fillRect(0, groundY, W, 3);
+    ctx.fillStyle = 'rgba(20,184,166,0.15)';
+    ctx.fillRect(0, groundY - 18, W, 18);
+
+    // danger zone glow near bottom
+    const g = ctx.createLinearGradient(0, groundY - 80, 0, groundY);
+    g.addColorStop(0, 'rgba(255,80,80,0)');
+    g.addColorStop(1, 'rgba(255,80,80,0.12)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, groundY - 80, W, 80);
+
+    // shockwaves
+    for (const s of shockwaves){
+      const a = Math.max(0, s.life / 0.35);
+      ctx.strokeStyle = s.strong ? `rgba(255,211,107,${a*0.85})` : `rgba(255,255,255,${a*0.35})`;
+      ctx.lineWidth = s.strong ? 3 : 2;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.stroke();
+    }
+
+    // blocks
+    for (const b of blocks){
+      ctx.save();
+      ctx.translate(b.x, b.y);
+      ctx.rotate(b.rot + Math.sin(b.wobble)*0.05);
+      const hw = b.w/2, hh = b.h/2;
+      // shadow
+      ctx.fillStyle = 'rgba(0,0,0,0.25)';
+      roundRect(-hw+3, -hh+5, b.w, b.h, 12);
+      ctx.fill();
+      // body
+      const grad = ctx.createLinearGradient(-hw, -hh, hw, hh);
+      grad.addColorStop(0, b.col.glow);
+      grad.addColorStop(1, b.col.fill);
+      ctx.fillStyle = grad;
+      roundRect(-hw, -hh, b.w, b.h, 12);
+      ctx.fill();
+      // shine
+      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      roundRect(-hw + 8, -hh + 6, b.w * 0.45, b.h * 0.22, 8);
+      ctx.fill();
+      // icon
+      ctx.font = `bold ${Math.floor(b.w*0.42)}px system-ui`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      if (b.kind === 'bomb'){
+        ctx.fillText('💣', 0, 2);
+      } else if (b.kind === 'gold'){
+        ctx.fillText('⭐', 0, 2);
+      } else {
+        ctx.fillStyle = 'rgba(0,0,0,0.18)';
+        ctx.fillText('■', 0, 1);
+      }
+      ctx.restore();
+    }
+
+    // particles
+    for (const p of particles){
+      const a = Math.max(0, p.life / p.max);
+      ctx.globalAlpha = a;
+      ctx.fillStyle = p.col;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r * a, 0, Math.PI*2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    // float texts
+    for (const f of floatTexts){
+      const a = Math.min(1, f.life * 2);
+      ctx.globalAlpha = a;
+      ctx.fillStyle = f.color;
+      ctx.font = 'bold 18px "Hiragino Sans",system-ui,sans-serif';
+      ctx.textAlign = 'center';
+      ctx.strokeStyle = 'rgba(0,0,0,0.45)';
+      ctx.lineWidth = 3;
+      ctx.strokeText(f.text, f.x, f.y);
+      ctx.fillText(f.text, f.x, f.y);
+    }
+    ctx.globalAlpha = 1;
+
+    // idle menu blocks preview
+    if (state === 'menu' && blocks.length === 0){
+      // decorative falling preview
+    }
+
+    ctx.restore();
+  }
+
+  function loop(ts){
+    const dt = Math.min(0.033, (ts - lastTs) / 1000) || 0.016;
+    lastTs = ts;
+    update(dt);
+    draw();
+    raf = requestAnimationFrame(loop);
+  }
+
+  // pointer
+  function onPointer(e){
+    e.preventDefault();
+    if (state !== 'play') return;
+    const r = canvas.getBoundingClientRect();
+    const t = e.touches ? e.touches[0] : e;
+    const x = (t.clientX - r.left) * (W / r.width);
+    const y = (t.clientY - r.top) * (H / r.height);
+    smashAt(x, y);
+  }
+  stage.addEventListener('pointerdown', onPointer, {passive:false});
+  stage.addEventListener('touchstart', onPointer, {passive:false});
+
+  document.getElementById('btnStart').onclick = startGame;
+  document.getElementById('btnAgain').onclick = startGame;
+  document.getElementById('btnRestart').onclick = ()=>{
+    if (state === 'menu'){ startGame(); return; }
+    startGame();
+  };
+  document.getElementById('btnPause').onclick = ()=>{
+    if (state !== 'play') return;
+    state = 'pause';
+    pauseOv.classList.add('show');
+  };
+  document.getElementById('btnResume').onclick = ()=>{
+    pauseOv.classList.remove('show');
+    state = 'play';
+    lastTs = performance.now();
+  };
+  document.getElementById('btnPauseRestart').onclick = startGame;
+
+  // menu preview: a few floating blocks
+  function ensureMenuBlocks(){
+    if (state !== 'menu') return;
+    while (blocks.length < 5) spawnBlock();
+    for (const b of blocks){
+      b.y += 40 * 0.016;
+      b.rot += b.vr * 0.016;
+      if (b.y > groundY + 40){ b.y = -b.h; b.x = rand(b.w/2+8, W-b.w/2-8); b.vy = rand(40,90); }
+    }
+  }
+  setInterval(ensureMenuBlocks, 16);
+
+  lastTs = performance.now();
+  raf = requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
