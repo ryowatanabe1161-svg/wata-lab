@@ -124,7 +124,7 @@ a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
-  <div class="sample-banner"><strong>サンプル</strong>架空のお店です。実在しません。店舗向けチャットボットの見本です。</div>
+  <div class="sample-banner"><strong>サンプル／架空</strong>実在しないお店です。店舗向けチャットボットの見本です。</div>
 
   <header class="top">
     <a class="back" href="demo-index.html">← 一覧</a>
@@ -137,7 +137,14 @@ a{color:inherit;text-decoration:none}
     </div>
   </header>
 
-  <div class="howto">よくある質問を<strong>下のボタン</strong>か、自由入力で聞いてみてください。</div>
+  <div class="howto">
+    <div><strong>試し方</strong>　よくある質問を下のボタンか、自由入力で聞いてみてください。</div>
+    <div class="steps" aria-hidden="true">
+      <span>① ボタンを押す</span>
+      <span>② 返事を見る</span>
+      <span>③ 好きな言葉でもOK</span>
+    </div>
+  </div>
 
   <main class="chat" id="chat" aria-live="polite"></main>
 
@@ -319,7 +326,7 @@ a{color:inherit;text-decoration:none}
   });
 
   renderChips();
-  addBubble('bot', 'こんにちは！架空カフェ「こみちコーヒー」です。\n営業時間・メニュー・予約・アクセスなど、下のボタンかメッセージでどうぞ。\n\n※ これは店舗向けチャットボットの見本です。', true);
+  addBubble('bot', 'こんにちは！架空カフェ「こみちコーヒー」です。\n\n① 下のオレンジのボタンを押す\n② 自動で返事が返ってきます\n③ 「営業時間は？」など自由入力もOK\n\n※ サンプル／架空です。実在しません。', true);
 })();
 </script>
 </body>

@@ -539,6 +539,59 @@
   .card-head h2 { font-size: 1.05rem; }
   .card-head .sub { font-size: 0.86rem; }
 
+
+  .howto {
+    border: 2px solid var(--accent);
+    background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 55%);
+  }
+  .howto-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    background: var(--accent-soft);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    margin-bottom: 0.55rem;
+  }
+  .howto > p { font-size: 1.02rem; }
+  .howto .hint {
+    margin-top: 0.55rem;
+    padding: 0.55rem 0.7rem;
+    background: #fff;
+    border: 1px dashed var(--line-strong);
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 650;
+    color: var(--ink);
+  }
+  .step-flow { margin-top: 0.85rem; gap: 0.4rem; }
+  .step-flow span {
+    font-size: 0.84rem;
+    padding: 0.5rem 0.85rem;
+    box-shadow: 0 1px 0 rgba(13,148,136,0.15);
+  }
+  .card-head h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+  .step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.7rem;
+    height: 1.7rem;
+    padding: 0 0.4rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
 </style>
 </head>
 <body>
@@ -557,9 +610,14 @@
 
   <main class="wrap">
     <section class="howto" aria-label="このデモでできること">
-      <div class="howto-title">このデモでできること</div>
+      <div class="howto-title">まずここを見る</div>
       <p>予約を追加し、本日一覧で「予約→来店→完了」と進められます。</p>
-      <p class="hint">使い方：日時・メニュー・お名前を入れて追加 → 一覧のボタンでステータス変更</p>
+      <p class="hint">やり方：①日時・メニュー・お名前を入れて追加 → ②一覧のボタンでステータス変更</p>
+      <div class="step-flow" aria-hidden="true">
+        <span>① 予約を追加</span><span class="arrow">→</span>
+        <span>② 来店に変更</span><span class="arrow">→</span>
+        <span>③ 完了</span>
+      </div>
     </section>
 
     <div class="hero-bar" aria-live="polite">
@@ -578,7 +636,7 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>1. 予約を追加</h2>
+          <h2><span class="step-badge">1</span>予約を追加</h2>
           <p class="sub">電話や受付で聞いた内容をそのまま入力</p>
         </div>
       </div>
@@ -622,7 +680,7 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>2. 本日の受付一覧</h2>
+          <h2><span class="step-badge">2</span>本日の受付一覧</h2>
           <p class="sub">来店したらステータスを変更</p>
         </div>
         <div class="filter-row" style="margin:0;">

@@ -115,6 +115,24 @@ a{color:inherit;text-decoration:none}
   font-size:28px;font-weight:900;color:var(--gold);text-shadow:0 3px 0 #8a5a00,0 0 20px #ffd36b88;
   pointer-events:none;z-index:6;opacity:0;
 }
+
+.legend-bar{
+  display:flex;flex-wrap:wrap;gap:6px;justify-content:center;
+  padding:0 10px 6px;font-size:10px;font-weight:800;color:#9bb4c6;
+}
+.legend-bar span{
+  background:#0c1a26;border:1px solid #1e3a50;border-radius:999px;
+  padding:4px 8px;letter-spacing:.2px;
+}
+.stat b.lives{color:#ff8aa3;font-size:15px;letter-spacing:1px}
+.panel .howto{font-size:13.5px}
+.panel .howto li{margin:0 0 7px}
+.panel h2{font-size:24px}
+.btn.primary{font-size:15px;min-height:52px}
+.topbar .brand{font-size:15px}
+.hint-float p{font-size:16px}
+.best-line{font-size:11px;font-weight:800;color:#8aa0b0;margin:0 0 8px}
+
 </style>
 </head>
 <body>
@@ -127,7 +145,13 @@ a{color:inherit;text-decoration:none}
     <div class="hud">
       <div class="stat"><label>スコア</label><b id="score">0</b></div>
       <div class="stat"><label>コンボ</label><b id="combo" class="combo">×1</b></div>
-      <div class="stat"><label>ベスト</label><b id="best">0</b></div>
+      <div class="stat"><label>ライフ</label><b id="lives" class="warn">♥♥♥</b></div>
+    </div>
+    <div class="legend-bar" aria-hidden="true">
+      <span>普通 +10</span>
+      <span>⭐ 金 +50</span>
+      <span>💣 爆発</span>
+      <span>地面＝ミス</span>
     </div>
 
     <div class="stage-wrap" id="stage">
@@ -148,13 +172,14 @@ a{color:inherit;text-decoration:none}
       <div class="panel">
         <div class="emoji">💥</div>
         <h2>わたらぼスマッシュ</h2>
+        <p class="best-line">ベスト <span id="bestStart">0</span> ／ ライフ3</p>
         <ol class="howto">
-          <li>落ちてくるブロックを<strong>タップで壊す</strong></li>
-          <li>連続で壊すと<strong>コンボ</strong>で得点アップ</li>
-          <li>地面に着いたらゲームオーバー</li>
+          <li><strong>① タップ</strong> … 落ちるブロックを壊す</li>
+          <li><strong>② コンボ</strong> … 連続で壊すと得点アップ</li>
+          <li><strong>③ ライフ</strong> … 地面に着くと−1。0で終了</li>
+          <li><strong>⭐金</strong>は高得点、<strong>💣</strong>は周囲も壊す</li>
         </ol>
-        <p>ワンタップ物理のカジュアルゲーム見本です。</p>
-        <button type="button" class="btn primary" id="btnStart">スタート</button>
+        <button type="button" class="btn primary" id="btnStart">スタート（タップ）</button>
         <p class="sample">※ ポートフォリオ用サンプル</p>
       </div>
     </div>
@@ -174,7 +199,7 @@ a{color:inherit;text-decoration:none}
         <div class="emoji">🔥</div>
         <h2>ゲームオーバー</h2>
         <div class="scoreline">スコア <span id="finalScore">0</span></div>
-        <p id="bestMsg"></p>
+        <p id="bestMsg" style="font-weight:800;color:#c46e51"></p>
         <button type="button" class="btn primary" id="btnAgain">もう一度遊ぶ</button>
         <p class="sample">※ ポートフォリオ用サンプル</p>
       </div>
@@ -188,7 +213,8 @@ a{color:inherit;text-decoration:none}
   const stage = document.getElementById('stage');
   const elScore = document.getElementById('score');
   const elCombo = document.getElementById('combo');
-  const elBest = document.getElementById('best');
+  const elLives = document.getElementById('lives');
+  const elBestStart = document.getElementById('bestStart');
   const hint = document.getElementById('hint');
   const comboPop = document.getElementById('comboPop');
   const startOv = document.getElementById('startOv');
@@ -206,14 +232,18 @@ a{color:inherit;text-decoration:none}
 
   let W=0, H=0, dpr=1;
   let blocks=[], particles=[], floatTexts=[], shockwaves=[];
-  let score=0, combo=1, comboTimer=0, best=0, livesMiss=0;
+  let score=0, combo=1, comboTimer=0, best=0, lives=3;
   let spawnTimer=0, spawnInterval=1.1, elapsed=0;
   let state='menu'; // menu | play | pause | over
   let shake=0, hintShown=true, lastTs=0, groundY=0;
   let raf=0;
 
   try { best = +localStorage.getItem('wata-smash-best') || 0; } catch(e){}
-  elBest.textContent = best;
+  if (elBestStart) elBestStart.textContent = best;
+  function renderLives(){
+    if (elLives) elLives.textContent = '♥'.repeat(Math.max(0,lives)) + '♡'.repeat(Math.max(0,3-lives));
+  }
+  renderLives();
 
   function resize(){
     const r = stage.getBoundingClientRect();
@@ -344,7 +374,7 @@ a{color:inherit;text-decoration:none}
   function resetGame(){
     blocks = []; particles = []; floatTexts = []; shockwaves = [];
     score = 0; combo = 1; comboTimer = 0; spawnTimer = 0.2;
-    spawnInterval = 1.05; elapsed = 0; shake = 0; livesMiss = 0;
+    spawnInterval = 1.05; elapsed = 0; shake = 0; lives = 3; renderLives();
     elScore.textContent = '0';
     elCombo.textContent = '×1';
     hint.classList.remove('hide');
@@ -367,7 +397,7 @@ a{color:inherit;text-decoration:none}
     if (score > best){
       best = score;
       try { localStorage.setItem('wata-smash-best', String(best)); } catch(e){}
-      elBest.textContent = best;
+      if (elBestStart) elBestStart.textContent = best;
       msg = '新記録！ベスト更新';
     } else if (best > 0){
       msg = 'ベスト ' + best;
@@ -413,8 +443,10 @@ a{color:inherit;text-decoration:none}
         combo = 1; comboTimer = 0;
         elCombo.textContent = '×1';
         shake = Math.min(14, shake + 6);
-        livesMiss++;
-        if (livesMiss >= 1){ // one miss = over (hypercasual tension)
+        lives = Math.max(0, lives - 1);
+        renderLives();
+        addFloat(W/2, groundY - 40, 'MISS −1', '#ff8aa3');
+        if (lives <= 0){
           gameOver();
           return;
         }

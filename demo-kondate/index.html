@@ -14,9 +14,40 @@
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .sample-strip{
+      background:#7a3b2e;color:#fff;text-align:center;
+      font-size:12px;font-weight:800;padding:8px 12px;line-height:1.45;
+    }
+    .sample-strip strong{background:rgba(255,255,255,.2);padding:2px 8px;border-radius:999px;margin-right:6px;font-size:11px}
+    .howto-strip{
+      background:#fff8e6;border-bottom:1px solid #f0e6c8;color:#6a5a3a;
+      padding:10px 14px;font-size:13px;font-weight:700;line-height:1.5;
+    }
+    .howto-strip .steps{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+    .howto-strip .steps span{
+      background:#fff;border:1px solid #e8d9b0;border-radius:999px;
+      padding:4px 10px;font-size:12px;font-weight:800;color:#8a6a20;
+    }
+    .back-lab{
+      display:inline-flex;align-items:center;gap:4px;margin-top:6px;
+      font-size:12px;font-weight:800;color:#c46e51;text-decoration:underline;
+    }
+  </style>
   <title>わたらぼクッキング</title>
 </head>
 <body>
+  <div class="sample-strip"><strong>サンプル</strong>ポートフォリオ用の献立アプリ見本です。データは端末内だけです。</div>
+  <div class="howto-strip">
+    <div><strong>まずここ</strong>　下のタブで画面を切り替え。今日の献立から触ってみてください。</div>
+    <div class="steps" aria-hidden="true">
+      <span>① 今日</span>
+      <span>② 1週間</span>
+      <span>③ 買い物</span>
+      <span>④ 冷蔵庫</span>
+    </div>
+    <a class="back-lab" href="../demo-index.html">← サンプル一覧へ</a>
+  </div>
   <header class="app-header">
     <div class="header-titles">
       <p class="app-logo"><span class="logo-mark" aria-hidden="true">🍳</span><span class="logo-text">わたらぼクッキング</span></p>

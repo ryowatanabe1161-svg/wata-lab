@@ -545,6 +545,59 @@
   .card-head h2 { font-size: 1.05rem; }
   .card-head .sub { font-size: 0.86rem; }
 
+
+  .howto {
+    border: 2px solid var(--accent);
+    background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 55%);
+  }
+  .howto-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    background: var(--accent-soft);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    margin-bottom: 0.55rem;
+  }
+  .howto > p { font-size: 1.02rem; }
+  .howto .hint {
+    margin-top: 0.55rem;
+    padding: 0.55rem 0.7rem;
+    background: #fff;
+    border: 1px dashed var(--line-strong);
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 650;
+    color: var(--ink);
+  }
+  .step-flow { margin-top: 0.85rem; gap: 0.4rem; }
+  .step-flow span {
+    font-size: 0.84rem;
+    padding: 0.5rem 0.85rem;
+    box-shadow: 0 1px 0 rgba(13,148,136,0.15);
+  }
+  .card-head h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+  .step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.7rem;
+    height: 1.7rem;
+    padding: 0 0.4rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
 </style>
 </head>
 <body>
@@ -563,9 +616,14 @@
 
   <main class="wrap">
     <section class="howto" aria-label="このデモでできること">
-      <div class="howto-title">このデモでできること</div>
-      <p>残数を見て、＋／−で入出庫。発注点を下回るとアラートになります。</p>
-      <p class="hint">使い方：一覧の＋／−を押す → 要発注だけ見るならチェック → 必要なら品目を追加</p>
+      <div class="howto-title">まずここを見る</div>
+      <p>残数を見て＋／−で入出庫。発注点を下回るとオレンジになります。</p>
+      <p class="hint">やり方：①一覧の＋／−を押す → ②要発注だけ見るならチェック → ③必要なら品目を追加</p>
+      <div class="step-flow" aria-hidden="true">
+        <span>① ＋／−で増減</span><span class="arrow">→</span>
+        <span>② 要発注を確認</span><span class="arrow">→</span>
+        <span>③ 品目追加</span>
+      </div>
     </section>
 
     <div class="hero-bar" aria-live="polite">
@@ -584,7 +642,7 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>1. 在庫一覧</h2>
+          <h2><span class="step-badge">1</span>在庫一覧</h2>
           <p class="sub">足りない品はオレンジ。＋で入庫、−で出庫</p>
         </div>
         <div class="filter-row" style="margin:0;">
@@ -607,7 +665,7 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>2. 品目を追加</h2>
+          <h2><span class="step-badge">2</span>品目を追加</h2>
           <p class="sub">新しい備品・消耗品を登録</p>
         </div>
       </div>
@@ -647,7 +705,7 @@
     <section class="card">
       <div class="card-head">
         <div>
-          <h2>3. 入出庫ログ</h2>
+          <h2><span class="step-badge">3</span>入出庫ログ</h2>
           <p class="sub">さっき動かした履歴がここに残ります</p>
         </div>
         <button type="button" class="btn btn-ghost btn-sm" id="btnCopyLog">ログをコピー</button>
