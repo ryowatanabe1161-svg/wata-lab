@@ -770,6 +770,53 @@ body{font-family:var(--wl-font)!important;letter-spacing:.01em}
 input,select,textarea{border-radius:12px!important}
 .empty{border-radius:16px!important}
 
+
+/* Chatbot layout: compact hero + usable chat viewport (messages were ~22px tall) */
+.sample-banner,.top,.howto,.wl-demo-hero,.quick,.composer,.footer-note{flex:0 0 auto}
+.howto{
+  margin:0.55rem 0.75rem 0.4rem !important;
+  padding:0.75rem 0.9rem !important;
+}
+.howto .steps{margin-top:8px}
+.wl-demo-hero.wl-chat-hero{
+  width:min(100% - 1.5rem, 560px);
+  margin:0.45rem auto 0.2rem;
+  border-radius:16px;
+}
+.wl-demo-hero.wl-chat-hero picture,
+.wl-demo-hero.wl-chat-hero img{
+  aspect-ratio:16/9;
+  max-height:180px;
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  object-position:center 28%;
+}
+@media(max-width:550px){
+  .wl-demo-hero.wl-chat-hero{
+    width:min(100% - 1.1rem, 100%);
+    margin:0.35rem auto 0.1rem;
+    border-radius:14px;
+  }
+  .wl-demo-hero.wl-chat-hero picture,
+  .wl-demo-hero.wl-chat-hero img{
+    aspect-ratio:2/1;
+    max-height:150px;
+  }
+  .howto{margin:0.4rem 0.55rem 0.3rem !important;padding:0.65rem 0.8rem !important}
+}
+main.chat#chat,.chat#chat{
+  flex:1 1 auto;
+  min-height:min(52vh, 420px);
+  min-height:min(52dvh, 420px);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+body.wl-has-linebar .composer,
+body.wl-has-linebar .quick{
+  background:linear-gradient(180deg,transparent,var(--bg) 28%);
+}
+
 </style>
 </head>
 <body>
@@ -796,10 +843,10 @@ input,select,textarea{border-radius:12px!important}
     </div>
   </div>
 
-  <figure class="wl-demo-hero square" aria-hidden="true">
+  <figure class="wl-demo-hero wl-chat-hero" aria-hidden="true">
     <picture>
       <source srcset="assets/chatbot-devices.webp" type="image/webp">
-      <img src="assets/chatbot-devices.jpg" width="1100" height="1100" alt="" loading="lazy" decoding="async">
+      <img src="assets/chatbot-devices.jpg" width="1100" height="620" alt="" loading="lazy" decoding="async">
     </picture>
   </figure>
 
