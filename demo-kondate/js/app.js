@@ -7,7 +7,7 @@ import { renderRecipes } from './views/recipes.js';
 import { renderFridge } from './views/fridge.js';
 import { closeSheet } from './lib/ui.js';
 
-const APP_NAME = 'デミさんクッキング';
+const APP_NAME = 'わたらぼクッキング';
 
 const ROUTES = {
   today: { title: '今日の献立', render: renderToday },
