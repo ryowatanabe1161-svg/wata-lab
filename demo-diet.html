@@ -150,8 +150,8 @@ ul.ck li span.tip,.tip{display:block;font-size:11px;color:#8a7a55;background:#ff
 </style>
 </head>
 <body>
-<header><span>🥗 かんたんダイエット</span><small id="hdrDate"></small></header>
-<main>
+<header data-demo="1"><span>🥗 かんたんダイエット</span><small id="hdrDate"></small></header>
+<div id="demoBanner" style="background:#fff8e6;color:#8a7a55;padding:8px 12px;font-size:12px;line-height:1.5;border-bottom:1px solid #f0e6c8">📋 ポートフォリオ用サンプルです。実在の個人データは使いません。</div><main>
 <!-- ホーム -->
 <section class="page active" id="p-home">
   <div class="msg"><b id="greet">こんにちは！</b><div id="motto" style="font-size:13px;margin-top:4px"></div></div>
@@ -178,13 +178,13 @@ ul.ck li span.tip,.tip{display:block;font-size:11px;color:#8a7a55;background:#ff
   <div class="card" id="gymHome">
     <h2>🏋️ ジム通い</h2>
     <div class="gstat">
-      <div class="stat p"><div class="v" id="gAnyW">0</div><div class="l">エニタイム鴻巣<br>今週</div></div>
+      <div class="stat p"><div class="v" id="gAnyW">0</div><div class="l">フィットネスクラブ<br>今週</div></div>
       <div class="stat k"><div class="v" id="gKickW">0</div><div class="l">キックボクシング<br>今週</div></div>
       <div class="stat"><div class="v" id="gStreak">0</div><div class="l">連続週<br>(週1回以上)</div></div>
     </div>
     <div class="datebar" style="margin-bottom:6px"><button onclick="shiftMonth(-1)">‹</button><span class="d" id="gMonth"></span><button onclick="shiftMonth(1)">›</button></div>
     <div class="cal" id="gCal"></div>
-    <div class="note" style="margin-top:8px"><span style="color:#7b3fe4">■</span> エニタイム　<span style="color:#e5484d">■</span> キック　今月 <b id="gMonthDays">0</b> 日通いました（連続日数 <b id="gDayStreak">0</b> 日）</div>
+    <div class="note" style="margin-top:8px"><span style="color:#7b3fe4">■</span> ジム　<span style="color:#e5484d">■</span> キック　今月 <b id="gMonthDays">0</b> 日通いました（連続日数 <b id="gDayStreak">0</b> 日）</div>
   </div>
   <div class="card"><h2>体重の推移（最近30日）</h2><canvas id="homeChart" height="160"></canvas></div>
   <div class="card"><h2>今日の記録</h2><ul class="list" id="homeList"></ul></div>
@@ -205,7 +205,7 @@ ul.ck li span.tip,.tip{display:block;font-size:11px;color:#8a7a55;background:#ff
       <div><label>週のトレーニング日数</label><select id="tFreq" onchange="setFreq(this.value)"><option value="3">週3日</option><option value="4">週4日</option><option value="5">週5日</option><option value="6">週6日</option></select></div>
       <div><label>レベル</label><select id="tLevel" onchange="setLevel(this.value)"><option value="beg">初級</option><option value="int">中級</option></select></div></div>
       <label>仕上げの有酸素</label><select id="tCardio" onchange="db.plan.cardio=this.value;save();render();"><option value="">標準（メニューどおり）</option><option value="stair">🪜 ステアマスター</option></select>
-      <div class="note" style="margin-top:8px">エニタイム鴻巣は「胸・肩・三頭 → 背中・二頭 → 脚・腹」の分割を、最近の記録から間隔が空いている部位順に回します。キックボクシング日と休養日も組み込みます。</div></div>
+      <div class="note" style="margin-top:8px">フィットネスクラブは「胸・肩・三頭 → 背中・二頭 → 脚・腹」の分割を、最近の記録から間隔が空いている部位順に回します。キックボクシング日と休養日も組み込みます。</div></div>
     <div class="card"><h2>今日のメニュー</h2><div id="tToday"></div></div>
     <div class="card"><h2>今週のプラン</h2><div id="tWeek"></div></div>
     <div class="card"><h2>最近14日の実績</h2><div id="tRecent"></div></div>
@@ -260,7 +260,7 @@ ul.ck li span.tip,.tip{display:block;font-size:11px;color:#8a7a55;background:#ff
   <div style="font-size:12px;color:var(--sub);margin:2px 2px 4px">ワンタップ記録の時間</div>
   <div class="minseg" id="gMinSeg"><button data-m="30">30分</button><button data-m="45">45分</button><button data-m="60" class="on">60分</button><button data-m="90">90分</button></div>
   <div class="gymcard any">
-    <div class="gt"><span>🏋️ エニタイム鴻巣（筋トレ）</span><small>METs 5</small></div>
+    <div class="gt"><span>🏋️ フィットネスクラブ（筋トレ）</span><small>METs 5</small></div>
     <button class="gymmain" onclick="addGym('any',-1)">ワンタップで記録</button>
     <div class="gsub" id="gsubAny"></div>
     <details class="stairq"><summary>🪜 ステアマスターをマシンの数値で記録</summary>
@@ -343,7 +343,7 @@ ul.ck li span.tip,.tip{display:block;font-size:11px;color:#8a7a55;background:#ff
 
 <script>
 'use strict';
-var KEY='dietApp.v1';
+var KEY='dietApp.wataLabDemo.v1';
 var DEF={profile:{name:'',height:'',goal:'',age:'',sex:'f',target:1800},weights:[],meals:[],exercises:[],workouts:[],customEx:[],meta:{lastBackup:''},plan:{freq:4,level:'beg',cvs:false,cats:[],cardio:'',seeds:{},frozen:{},checks:{},over:{}}};
 var db=load();
 var curDay=today();
@@ -351,7 +351,7 @@ var range=30;
 
 var EXS=[['ウォーキング',3.5],['早歩き',4.3],['ジョギング',7.0],['ランニング',9.8],['サイクリング',6.8],['水泳',7.0],['筋トレ',5.0],['ヨガ',2.5],['ストレッチ',2.3],['ダンス',5.0],['縄跳び',11.0],['階段のぼり',8.0],['家事・掃除',3.3],['ステアマスター',9.0],['その他',4.0]];
 var GYMS={
-  any:{label:'エニタイム鴻巣',main:['筋トレ',5.0],subs:[['マシン筋トレ',4.5],['フリーウェイト',6.0],['ランニングマシン',8.0],['バイク',6.8],['ステアマスター',9.0]]},
+  any:{label:'フィットネスクラブ',main:['筋トレ',5.0],subs:[['マシン筋トレ',4.5],['フリーウェイト',6.0],['ランニングマシン',8.0],['バイク',6.8],['ステアマスター',9.0]]},
   kick:{label:'キックボクシング',main:['キックボクシング',10.0],subs:[['ミット打ち',10.0],['サンドバッグ',7.5],['スパーリング',12.0]]}
 };
 var gymMin=60;var calMonth=null;
@@ -411,7 +411,7 @@ function addEx(){var i=+$('eType').value;var m=num($('eMinIn').value);var c=num(
 function addGym(g,i){var G=GYMS[g];var it=i<0?G.main:G.subs[i];var nm=g==='any'?G.label+'：'+it[0]:(i<0?it[0]:G.label+'：'+it[0]);
   var cal=Math.round(it[1]*bodyW()*gymMin/60*1.05);
   db.exercises.push({id:uid(),date:curDay,name:nm,min:gymMin,cal:cal,gym:g});save();toast(nm+' '+gymMin+'分 (-'+cal+'kcal) を記録 💪');render();}
-function gymOf(e){if(e.gym==='any'||e.gym==='kick')return e.gym;var n=String(e.name||'');if(n.indexOf('エニタイム')>=0)return 'any';if(n.indexOf('キックボクシング')>=0)return 'kick';return null;}
+function gymOf(e){if(e.gym==='any'||e.gym==='kick')return e.gym;var n=String(e.name||'');if(n.indexOf('ジム')>=0)return 'any';if(n.indexOf('キックボクシング')>=0)return 'kick';return null;}
 function gymDays(){var m={};db.exercises.forEach(function(e){var g=gymOf(e);if(!g)return;m[e.date]=m[e.date]||{};m[e.date][g]=true;});return m;}
 function weekStart(d){var x=new Date(d.getFullYear(),d.getMonth(),d.getDate());var w=(x.getDay()+6)%7;x.setDate(x.getDate()-w);return x;}
 function shiftMonth(n){var c=calMonth||parseD(today());calMonth=new Date(c.getFullYear(),c.getMonth()+n,1);renderGym();}
@@ -865,7 +865,7 @@ function renderMealPlan(){var p=dayPlanCache=dayPlan();var tot={k:0,p:0,f:0,c:0}
 
 /* ===== 提案：トレーニング ===== */
 var TPL={3:'GRKRGRR',4:'GRKRGKR',5:'GKRGKGR',6:'GKGRGKG'};
-var SPL={A:{n:'胸・肩・三頭',ic:'💪',c:'a'},B:{n:'背中・二頭',ic:'🦾',c:'a'},C:{n:'脚・腹',ic:'🦵',c:'a'},K:{n:'キックボクシング',ic:'🥊',c:'k'},R:{n:'休養日',ic:'😴',c:'r'},G:{n:'エニタイム',ic:'🏋️',c:'a'}};
+var SPL={A:{n:'胸・肩・三頭',ic:'💪',c:'a'},B:{n:'背中・二頭',ic:'🦾',c:'a'},C:{n:'脚・腹',ic:'🦵',c:'a'},K:{n:'キックボクシング',ic:'🥊',c:'k'},R:{n:'休養日',ic:'😴',c:'r'},G:{n:'ジム',ic:'🏋️',c:'a'}};
 var MENUS={
 A:{beg:[['チェストプレス（マシン）','3セット×12回'],['ペックフライ（マシン）','3×12'],['ショルダープレス（マシン）','3×12'],['サイドレイズ（ダンベル）','3×15'],['トライセプスプッシュダウン（ケーブル）','3×12'],['仕上げ有酸素：ランニングマシン','傾斜8〜10%・時速5km 15分']],
    int:[['ベンチプレス','4×6〜8'],['インクラインダンベルプレス','3×8〜10'],['ケーブルクロスオーバー','3×12'],['ダンベルショルダープレス','4×8〜10'],['サイドレイズ','4×12〜15'],['スカルクラッシャー','3×10'],['仕上げ有酸素：バイクHIIT','20秒全力/40秒ゆっくり×8本']]},
@@ -904,7 +904,7 @@ function toggleCheck(i){var type=todayType(),c=checksFor(type);c.d[i]=!c.d[i];se
   if(menuFor(type).every(function(x,j){return c.d[j];}))toast('全部完了！🎉「完了して記録」で運動ログへ');}
 function loggedPlanToday(type){return dayLogs(today()).some(function(e){return type==='R'?!!e.planRest:splitOf(e)===type;});}
 function logPlan(){var type=todayType(),lv=db.plan.level,t=today();if(loggedPlanToday(type)){toast('今日はもう記録済みです');return;}var e;
-  if('ABC'.indexOf(type)>=0)e={name:'エニタイム鴻巣：'+SPL[type].n,gym:'any',min:lv==='int'?75:60,met:5};
+  if('ABC'.indexOf(type)>=0)e={name:'フィットネスクラブ：'+SPL[type].n,gym:'any',min:lv==='int'?75:60,met:5};
   else if(type==='K')e={name:'キックボクシング',gym:'kick',min:lv==='int'?90:60,met:10};
   else e={name:'ウォーキング（休養日）',min:30,met:3.5};
   var rec={id:uid(),date:t,name:e.name,min:e.min,cal:Math.round(e.met*bodyW()*e.min/60*1.05)};
@@ -917,7 +917,7 @@ function setLevel(v){db.plan.level=v;save();render();}
 function daysAgo(s){if(!s)return '未実施';var n=Math.round((parseD(today())-parseD(s))/864e5);return n===0?'今日':n+'日前';}
 function trainTodayHTML(compact){var type=todayType(),S=SPL[type],m=menuFor(type),c=checksFor(type),done=loggedPlanToday(type);
   var n=m.filter(function(x,j){return c.d[j];}).length;
-  var head=('ABC'.indexOf(type)>=0?'🏋️ エニタイム鴻巣｜'+S.ic+' '+S.n:S.ic+' '+S.n);
+  var head=('ABC'.indexOf(type)>=0?'🏋️ フィットネスクラブ｜'+S.ic+' '+S.n:S.ic+' '+S.n);
   var h='<div class="tth '+S.c+'"><b>'+head+'</b><span>'+n+'/'+m.length+'</span></div>';
   if(!compact&&'ABC'.indexOf(type)>=0){var l=lastDone(today());
     h+='<div class="note" style="margin:6px 0">前回：胸・肩・三頭 '+daysAgo(l.A)+'／背中・二頭 '+daysAgo(l.B)+'／脚・腹 '+daysAgo(l.C)+'<br>→ 間隔がいちばん空いていて、前日と同じ部位にならない「'+S.n+'」を提案しています。</div>';}
@@ -929,7 +929,7 @@ function renderTrain(){$('tFreq').value=db.plan.freq;$('tCardio').value=db.plan.
   $('tToday').innerHTML=trainTodayHTML(false);$('hPlan').innerHTML=trainTodayHTML(true);
   var t=today();$('tWeek').innerHTML=weekPlan().map(function(o){var d=parseD(o.date),w='日月火水木金土'[d.getDay()];var S=SPL[o.type]||SPL.G;var lbl;
     if(o.date<t){lbl=o.done.length?o.done.map(function(s){return SPL[s].ic+' '+SPL[s].n;}).join('・')+' ✓':'<span style="color:#b9c0c5">'+(o.tpl==='R'?'休養':'記録なし')+'</span>';}
-    else lbl=('ABC'.indexOf(o.type)>=0?'エニタイム｜':'')+S.ic+' '+S.n+(o.done.length&&o.date===t?' ✓':'');
+    else lbl=('ABC'.indexOf(o.type)>=0?'ジム｜':'')+S.ic+' '+S.n+(o.done.length&&o.date===t?' ✓':'');
     return '<div class="wk'+(o.date===t?' now':'')+'"><span class="wd">'+(d.getMonth()+1)+'/'+d.getDate()+'('+w+')</span><span class="wl '+S.c+'">'+lbl+'</span></div>';}).join('');
   var cnt={A:0,B:0,C:0,K:0},from=addDays(t,-13);db.exercises.forEach(function(e){if(e.date<from)return;var s=splitOf(e);if(cnt[s]!==undefined)cnt[s]++;});
   $('tRecent').innerHTML='<div class="chips">'+['A','B','C','K'].map(function(s){return '<span class="chip">'+SPL[s].ic+' '+SPL[s].n+' '+cnt[s]+'回</span>';}).join('')+'</div>'+
@@ -954,7 +954,7 @@ var curWid=null,progSel='';
 var EXTIPS={'ダイバージング・ロー・ロウ（PRECOR）':'胸を張り背すじを伸ばしたまま、肘を後ろへゆっくり引き肩甲骨を寄せる。'};
 function exInfo(n){for(var i=0;i<EXLIB.length;i++){if(EXLIB[i][2].indexOf(n)>=0)return {kind:EXLIB[i][1],split:EXLIB[i][3],group:EXLIB[i][0]};}
   var c=(db.customEx||[]).filter(function(x){return x.name===n;})[0];return {kind:c?c.kind:'str',split:'',group:'マイ種目'};}
-function gymName(g){return g==='any'?'エニタイム鴻巣':g==='kick'?'キックボクシング':'その他';}
+function gymName(g){return g==='any'?'フィットネスクラブ':g==='kick'?'キックボクシング':'その他';}
 function gymIcon(g){return g==='any'?'🏋️':g==='kick'?'🥊':'🏃';}
 function dayWorkouts(d){return db.workouts.filter(function(w){return w.date===d;});}
 function curWorkout(){var ws=dayWorkouts(curDay);var w=ws.filter(function(x){return x.id===curWid;})[0];if(!w){w=ws[0]||null;curWid=w?w.id:null;}return w;}
@@ -995,7 +995,7 @@ function wName(w){if(w.gym==='kick')return 'キックボクシング';var parts=
   w.items.forEach(function(it){var s=exInfo(it.name).split;if(s&&'ABC'.indexOf(s)>=0&&!seen[s]){seen[s]=1;parts.push(SPL[s].n);}});
   w.items.forEach(function(it){if(it.kind==='cardio'&&parts.indexOf(it.name)<0)parts.push(it.name);});
   if(!parts.length&&w.items.length)parts.push(w.items[0].name);
-  return (w.gym==='any'?'エニタイム鴻巣：':'')+(parts.join('＋')||'トレーニング');}
+  return (w.gym==='any'?'フィットネスクラブ：':'')+(parts.join('＋')||'トレーニング');}
 function syncWorkout(w,quiet){var e=wEst(w);if(!w.items.length||e.kcal<=0){if(!quiet)toast('セット・時間などを入力してください');return false;}
   var ex=db.exercises.filter(function(x){return x.id===w.exId;})[0];
   if(!ex&&w.gym)ex=db.exercises.filter(function(x){return x.date===w.date&&!x.wid&&gymOf(x)===w.gym;})[0];
@@ -1025,7 +1025,7 @@ function updWkSummary(){var w=curWorkout(),el=$('wkSum');if(!el)return;if(!w){el
 function renderWorkout(force){var ed=$('wkEditor');if(!ed)return;var ae=document.activeElement;var focused=ae&&ed.contains(ae)&&ae.tagName==='INPUT';
   var ws=dayWorkouts(curDay),w=curWorkout();
   $('wkSessions').innerHTML=ws.map(function(x){return '<span class="chip'+(w&&x.id===w.id?' son':'')+'" onclick="pickSession(\''+x.id+'\')">'+gymIcon(x.gym)+' '+gymName(x.gym)+(x.synced?' ✓':'')+'</span>';}).join('')+
-    '<span class="chip ghost" onclick="newSession(\'any\')">＋🏋️ エニタイム</span><span class="chip ghost" onclick="newSession(\'kick\')">＋🥊 キック</span><span class="chip ghost" onclick="newSession(\'\')">＋ その他</span>';
+    '<span class="chip ghost" onclick="newSession(\'any\')">＋🏋️ ジム</span><span class="chip ghost" onclick="newSession(\'kick\')">＋🥊 キック</span><span class="chip ghost" onclick="newSession(\'\')">＋ その他</span>';
   $('wkPlanBtn').style.display=curDay===today()?'':'none';
   var sel=$('wkSel'),sv=sel.value;if(force||!sel.options.length){sel.innerHTML=exOptions();sel.value=sv;}
   $('wkRecent').innerHTML=recentNames().map(function(n){return '<span class="chip" onclick="addExItem(this.getAttribute(\'data-n\'))" data-n="'+esc(n)+'">＋ '+esc(n)+'</span>';}).join('');
