@@ -130,8 +130,11 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
-    margin: 0 -0.75rem 1rem;
+    margin: 0 0 1rem;
     padding: 0.65rem 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .hero-inner {
     display: flex;
@@ -420,7 +423,7 @@
 
   .week-grid {
     display: grid;
-    grid-template-columns: 88px repeat(7, minmax(52px, 1fr));
+    grid-template-columns: minmax(56px, 72px) repeat(7, minmax(0, 1fr));
     gap: 2px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -428,13 +431,19 @@
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
     background: var(--line);
-    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
   .week-cell {
     background: var(--surface);
-    padding: 0.4rem 0.3rem;
+    padding: 0.35rem 0.2rem;
     min-height: 2.6rem;
+    min-width: 0;
     text-align: center;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   .week-cell.head {
     background: var(--surface-2);
@@ -445,9 +454,18 @@
   .week-cell.name {
     text-align: left;
     font-weight: 700;
-    font-size: 0.78rem;
-    padding-left: 0.5rem;
+    font-size: 0.72rem;
+    padding-left: 0.35rem;
+    padding-right: 0.2rem;
     background: var(--surface-2);
+  }
+  @media (max-width: 430px) {
+    .week-grid {
+      font-size: 0.64rem;
+      grid-template-columns: minmax(48px, 58px) repeat(7, minmax(0, 1fr));
+    }
+    .week-cell { padding: 0.3rem 0.12rem; min-height: 2.4rem; }
+    .week-cell.name { font-size: 0.64rem; padding-left: 0.25rem; }
   }
   .week-cell.shift {
     cursor: pointer;
@@ -1194,6 +1212,15 @@ input:focus,select:focus,textarea:focus{
   .wl-demo-hero{border-radius:16px;margin:0.7rem auto 0.25rem;width:min(100% - 1.1rem, 920px)}
 }
 .wl-demo-hero.in-wrap{width:100%;margin:0.85rem 0 1rem}
+
+
+/* BUG-007: no page-level horizontal scroll @375 */
+.hero-bar{margin-left:0!important;margin-right:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important}
+
+html{max-width:100%;overflow-x:clip}
+body{max-width:100%;overflow-x:clip}
+.wrap,main,.card,section,.table-wrap{max-width:100%;min-width:0;box-sizing:border-box}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 
 </style>
 </head>

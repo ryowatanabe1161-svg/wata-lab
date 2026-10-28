@@ -131,8 +131,11 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
-    margin: 0 -0.75rem 1rem;
+    margin: 0 0 1rem;
     padding: 0.65rem 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .hero-inner {
     display: flex;
@@ -284,7 +287,7 @@
     width: 100%;
     border-collapse: collapse;
     font-size: 0.84rem;
-    min-width: 480px;
+    min-width: 0; width: 100%;
   }
   th, td {
     padding: 0.55rem 0.65rem;
@@ -1146,6 +1149,39 @@ body.wl-has-linebar .wrap{
   body.wl-has-linebar{ --fixed-bar-h: 80px; }
 }
 
+
+
+/* BUG-008: keep ①②③ / chips clear of sticky LINE bar @1280 */
+body.wl-has-linebar .howto .steps,
+body.wl-has-linebar .howto .step-flow,
+body.wl-has-linebar #staffChips.chips,
+body.wl-has-linebar .card .chips{
+  scroll-margin-bottom: calc(var(--fixed-bar-h, 80px) + 24px);
+}
+@media (min-width: 1024px){
+  body.wl-has-linebar .howto .steps,
+  body.wl-has-linebar .howto .step-flow{
+    margin-bottom: calc(var(--fixed-bar-h, 80px) + 8px) !important;
+  }
+  /* slightly tighten above so chips sit higher on first screen */
+  body.wl-has-linebar .banner{padding-bottom:0.85rem}
+  body.wl-has-linebar .howto{margin-top:0.7rem!important;margin-bottom:0.85rem!important}
+}
+.wl-footer-cta.wl-bar-away{
+  opacity:0!important;pointer-events:none!important;visibility:hidden!important;
+  transform:translateY(12px);
+}
+
+/* BUG-007: no page-level horizontal scroll @375 */
+.hero-bar{margin-left:0!important;margin-right:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important}
+
+html{max-width:100%;overflow-x:clip}
+body{max-width:100%;overflow-x:clip}
+.wrap,main,.card,section,.table-wrap,.panel{max-width:100%;min-width:0;box-sizing:border-box}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.grid-2,.grid-3{min-width:0}
+.grid-2 > *,.grid-3 > *,.field{min-width:0}
+
 </style>
 </head>
 <body>
@@ -1470,6 +1506,25 @@ body.wl-has-linebar .wrap{
     });
   }
 
+  function syncLineBarClearance(){
+    var foot = $('.wl-footer-cta');
+    if(!foot || !document.body.classList.contains('wl-has-linebar')) return;
+    if(document.body.classList.contains('wl-coach-open')) { foot.classList.add('wl-bar-away'); return; }
+    var wasAway = foot.classList.contains('wl-bar-away');
+    if(wasAway) foot.classList.remove('wl-bar-away');
+    var barH = Math.max(foot.offsetHeight || 0, 64) + 20;
+    document.documentElement.style.setProperty('--fixed-bar-h', barH + 'px');
+    var vh = window.innerHeight || 0;
+    var bandTop = vh - barH;
+    var hide = false;
+    document.querySelectorAll('.howto .steps, .howto .step-flow, #staffChips, .card .chips').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.width < 1 && r.height < 1) return;
+      /* any pixel under sticky bar */
+      if(r.bottom > bandTop && r.top < vh - 2) hide = true;
+    });
+    foot.classList.toggle('wl-bar-away', hide);
+  }
   function addFooter(){
     if(isGame) return;
     if($('.wl-footer-cta') || location.pathname.includes('demo-index')) return;
@@ -1481,6 +1536,12 @@ body.wl-has-linebar .wrap{
     document.body.appendChild(foot);
     document.body.classList.add('wl-has-linebar');
     document.documentElement.style.setProperty('--wl-toast-lift', '84px');
+    syncLineBarClearance();
+    if(!window.__wlBarClearanceBound){
+      window.__wlBarClearanceBound = true;
+      window.addEventListener('scroll', syncLineBarClearance, {passive:true});
+      window.addEventListener('resize', syncLineBarClearance);
+    }
   }
 
   function seen(){ try{ return localStorage.getItem(key)==='1'; }catch(e){ return false; } }

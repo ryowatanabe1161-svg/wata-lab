@@ -1474,17 +1474,38 @@ body{
   function onScroll(){
     if(header){ header.classList.toggle('is-scrolled', window.scrollY > 12); }
     if(cta){
-      var barH = cta.offsetHeight ? cta.offsetHeight + 12 : 72;
+      /* measure bar while visible so height is accurate */
+      var wasHidden = cta.classList.contains('hide');
+      if(wasHidden){ cta.classList.remove('hide'); }
+      var barH = Math.max(cta.offsetHeight || 0, 56) + 20;
+      if(wasHidden){ cta.classList.add('hide'); }
       document.documentElement.style.setProperty('--fixed-bar-h', barH + 'px');
       var near = false;
+      var vh = window.innerHeight || 0;
+      var bandTop = vh - barH - 28; /* generous bottom band */
+      /* BUG-006: while hero LINE CTA is on screen at/near top, hide bottom bar */
+      var heroLine = document.querySelector('.hero-copy .actions .btn.secondary, .hero-copy .btn.secondary');
+      var heroActions = document.querySelector('.hero-copy .actions');
+      if(window.innerWidth <= 850){
+        var probe = heroActions || heroLine;
+        if(probe){
+          var hr = probe.getBoundingClientRect();
+          var inView = hr.bottom > 0 && hr.top < vh;
+          /* any pixel of hero CTA row intersecting the bottom band → hide */
+          if(inView && hr.bottom > bandTop - 8) near = true;
+          /* also: still in upper page with hero CTA visible → keep bar away */
+          if(!near && window.scrollY < 24 && inView && hr.bottom > vh * 0.55) near = true;
+        }
+      }
       if(contact){
         var rect = contact.getBoundingClientRect();
-        near = rect.top < window.innerHeight - 80;
+        if(rect.top < vh - 80) near = true;
       }
       if(!near){
         document.querySelectorAll('.mid-cta, .cta-band, .contact .line-btn, .solution-bridge a, a.line-btn, .hero-copy .btn, .hero-demo-strip .cta-row .btn').forEach(function(el){
           var r = el.getBoundingClientRect();
-          if(r.bottom > window.innerHeight - (barH + 16) && r.top < window.innerHeight - 8) near = true;
+          /* any overlap with bottom band (1px is enough) */
+          if(r.bottom > bandTop && r.top < vh - 4) near = true;
         });
       }
       cta.classList.toggle('hide', near);
