@@ -632,6 +632,115 @@ section[id],#top{scroll-margin-top:84px}
     animation:none!important;transition:none!important;
   }
 }
+
+/* ===== quality v6 — sales-grade ===== */
+.hero-studio{position:relative;width:100%;max-width:460px;height:420px;margin:0 auto;z-index:1}
+.hero-studio svg{width:100%;height:100%;display:block;filter:drop-shadow(0 22px 40px rgba(23,43,62,.22))}
+.hero-studio .orbit{
+  position:absolute;inset:-8% -6%;border-radius:40px;pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 22%,rgba(255,224,171,.55),transparent 28%),
+    radial-gradient(circle at 88% 78%,rgba(47,107,90,.12),transparent 32%);
+}
+.demo-preview{
+  height:92px;border-radius:14px;margin:-2px 0 14px;border:1px solid #e2e6e0;
+  position:relative;overflow:hidden;
+  background:linear-gradient(145deg,#e8f5f1,#fff8ef 55%,#f0f4f1);
+}
+.demo-preview .win{
+  position:absolute;left:10px;top:10px;right:10px;bottom:10px;border-radius:10px;
+  background:#fff;border:1px solid #e8ebe6;box-shadow:0 8px 16px -14px rgba(23,43,62,.35);
+  padding:8px;display:grid;gap:5px;align-content:start;
+}
+.demo-preview .rowbar{height:6px;border-radius:99px;background:#d7ebe5}
+.demo-preview .rowbar.s{width:42%}.demo-preview .rowbar.m{width:68%}.demo-preview .rowbar.l{width:88%}
+.demo-preview .chipmini{
+  position:absolute;right:14px;bottom:14px;background:var(--navy);color:#fff;
+  font-size:9px;font-weight:900;padding:4px 8px;border-radius:999px;
+}
+.demo[href*="payroll"] .demo-preview{background:linear-gradient(145deg,#d9ebe3,#fff8ef)}
+.demo[href*="daily"] .demo-preview{background:linear-gradient(145deg,#e7e7fa,#eef7f3)}
+.demo[href*="shift"] .demo-preview{background:linear-gradient(145deg,#ffe5d5,#eef7f3)}
+.demo[href*="booking"] .demo-preview{background:linear-gradient(145deg,#ffebbc,#e7e7fa)}
+.demo[href*="inventory"] .demo-preview{background:linear-gradient(145deg,#d9ebe3,#ffe5d5)}
+.demo[href*="kondate"] .demo-preview{background:linear-gradient(145deg,#c5e5db,#fff8ef)}
+.demo[href*="diet"] .demo-preview{background:linear-gradient(145deg,#e7e7fa,#d9ebe3)}
+.demo[href*="smash"] .demo-preview{background:linear-gradient(145deg,#172b3e,#0d9488)}
+.demo[href*="chatbot"] .demo-preview{background:linear-gradient(145deg,#5c3d2e,#c4784a)}
+.demo[href*="smash"] .demo-preview .win{background:#0f1f2e;border-color:#1e3a50}
+.demo[href*="smash"] .demo-preview .rowbar{background:#14b8a6}
+.demo[href*="chatbot"] .demo-preview .win{background:#fffdf9;border-color:#e8ddd3}
+.demo[href*="chatbot"] .demo-preview .rowbar{background:#e8ddd3}
+.demo[href*="chatbot"] .demo-preview .chipmini{background:#c4784a}
+
+.pain-sol{
+  margin-top:8px;font-size:12px;font-weight:800;color:var(--teal-deep);
+  display:flex;align-items:flex-start;gap:6px;line-height:1.55;
+}
+.pain-sol:before{content:"→";flex-shrink:0;color:var(--orange);font-weight:900}
+
+.exp .exp-meta{margin-top:14px;padding-top:12px;border-top:1px dashed #dce3de;font-size:12px;font-weight:800;color:var(--teal-deep)}
+.exp .exp-meta span{color:var(--muted);font-weight:700}
+
+.price-card .price-cta{
+  margin-top:16px;display:inline-flex;align-items:center;justify-content:center;
+  background:var(--orange);color:#fff;font-weight:900;font-size:13px;
+  padding:12px 16px;border-radius:14px;box-shadow:0 4px 0 var(--orange-deep);
+  transition:transform .15s,box-shadow .15s;
+}
+.price-card .price-cta:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--orange-deep);color:#fff}
+.price-card.featured .price-cta{width:100%}
+.price-scan{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px;
+}
+.price-scan div{
+  background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;
+  box-shadow:var(--shadow);text-align:center;
+}
+.price-scan b{display:block;font-size:18px;letter-spacing:-.4px;color:var(--teal-deep);margin-top:4px}
+.price-scan span{font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.3px}
+
+.trust-strip{
+  margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+}
+.trust-strip article{
+  background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 16px;
+  box-shadow:var(--shadow);
+}
+.trust-strip h3{margin:0 0 6px;font-size:14px;letter-spacing:-.2px}
+.trust-strip p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.7}
+
+.solution-bridge{
+  margin-top:22px;padding:20px 22px;border-radius:20px;
+  background:linear-gradient(135deg,#172b3e,#1a4550 60%,#2f6b5a);
+  color:#fff;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
+  box-shadow:var(--shadow-lg);
+}
+.solution-bridge strong{display:block;font-size:16px;margin-bottom:4px}
+.solution-bridge p{margin:0;font-size:13px;color:#d5e0e6;line-height:1.65}
+.solution-bridge a{
+  background:var(--orange);color:#fff;font-weight:900;border-radius:999px;
+  padding:12px 18px;box-shadow:0 4px 0 var(--orange-deep);white-space:nowrap;
+}
+
+.visual.v6{
+  background:
+    radial-gradient(circle at 92% 8%,#ffdea1 0 28%,transparent 29%),
+    radial-gradient(circle at 6% 92%,rgba(255,255,255,.75) 0 18%,transparent 19%),
+    linear-gradient(155deg,#b9e0d4 0%,#d9efe8 45%,#a8d5c8 100%);
+  min-height:520px;padding:20px 16px;
+}
+@media(max-width:850px){
+  .price-scan,.trust-strip{grid-template-columns:1fr}
+  .hero-studio{height:340px}
+  .visual.v6{min-height:380px}
+}
+@media(max-width:550px){
+  .hero-studio{height:280px}
+  .solution-bridge a{width:100%;text-align:center}
+  .price-scan{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -655,7 +764,7 @@ section[id],#top{scroll-margin-top:84px}
     <div class="hero-copy reveal in">
       <span class="tag"><i aria-hidden="true"></i>個人・個人経営・小さな店や施設向け</span>
       <h1>「つくりたい」を、<br><em>いっしょに形に。</em></h1>
-      <p class="lead">美容院・教室・飲食など、ひとりや少人数でやっているお店・施設のための相談室です。<br>ホームページも、毎日の集計・予約・シフトも。<strong>触れるサンプル</strong>と<strong>分かりやすい料金</strong>から、無理なく始められます。</p>
+      <p class="lead">美容院・教室・飲食など、ひとりや少人数でやっているお店・施設のための<strong>ものづくり相談室</strong>です。<br>ホームページも、毎日の集計・予約・シフトも。<strong>触れるサンプル</strong>と<strong>分かりやすい料金</strong>から、無理なく始められます。</p>
       <div class="price-chips" aria-label="料金の一例">
         <span>HP <b>3〜8万円〜</b></span>
         <span>業務の仕組み <b>5〜15万円</b></span>
@@ -671,41 +780,61 @@ section[id],#top{scroll-margin-top:84px}
         <span><b>✓</b> 触って試せる</span>
       </div>
     </div>
-    <div class="visual reveal in reveal-delay-1" role="img" aria-label="ウェブサイトと業務アプリの制作イメージ">
+    <div class="visual v6 reveal in reveal-delay-1" role="img" aria-label="ウェブサイトと業務アプリの制作スタジオのイメージ">
       <div class="float-card a"><span>SAMPLE</span>触って試せる</div>
       <div class="float-card b"><span>PRICE</span>HP 3〜8万〜</div>
-      <div class="float-card c"><span>SIZE</span>中小規模向け</div>
-      <div class="mock-stack">
-        <div class="mock main">
-          <div class="bar"><i></i><i></i><i></i></div>
-          <div class="inside">
-            <small>TODAY · 業務ボード</small>
-            <strong>今日の予定と<br>記録が、ひと目で。</strong>
-            <div class="skel l"></div>
-            <div class="skel m"></div>
-            <div class="mini-rows">
-              <div class="mini-row"><span class="dot"></span>日報 3件<span class="pill">済</span></div>
-              <div class="mini-row"><span class="dot o"></span>予約 2件<span class="pill">今日</span></div>
-              <div class="mini-row"><span class="dot y"></span>シフト確認<span class="pill">週</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="mock side">
-          <div class="bar"><i></i><i></i><i></i></div>
-          <div class="inside">
-            <small>HP PREVIEW</small>
-            <strong>お店の顔になるページ</strong>
-            <div class="skel m"></div>
-            <div class="skel s"></div>
-            <div class="meter" aria-hidden="true"><span></span></div>
-          </div>
-        </div>
+      <div class="float-card c"><span>LINE</span>相談・見積無料</div>
+      <div class="hero-studio">
+        <div class="orbit" aria-hidden="true"></div>
+        <svg viewBox="0 0 460 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f3faf7"/></linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#172b3e"/><stop offset="1" stop-color="#1a4550"/></linearGradient>
+            <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#172b3e" flood-opacity=".18"/></filter>
+          </defs>
+          <!-- desk -->
+          <rect x="40" y="330" width="380" height="18" rx="9" fill="#2f6b5a" opacity=".25"/>
+          <!-- main laptop -->
+          <g filter="url(#sh)" transform="translate(48 78) rotate(-4)">
+            <rect width="280" height="198" rx="18" fill="#172b3e"/>
+            <rect x="10" y="10" width="260" height="156" rx="10" fill="url(#g1)"/>
+            <rect x="22" y="24" width="90" height="10" rx="5" fill="#d7ebe5"/>
+            <rect x="22" y="42" width="150" height="16" rx="6" fill="#172b3e" opacity=".85"/>
+            <rect x="22" y="66" width="120" height="8" rx="4" fill="#c9ded5"/>
+            <rect x="22" y="82" width="170" height="8" rx="4" fill="#e8ebe6"/>
+            <g transform="translate(22 104)">
+              <rect width="72" height="42" rx="8" fill="#eef7f3" stroke="#c9ded5"/>
+              <rect x="80" width="72" height="42" rx="8" fill="#fff8ef" stroke="#f0e0c8"/>
+              <rect x="160" width="72" height="42" rx="8" fill="#e7e7fa" stroke="#d4d4ef"/>
+              <text x="12" y="26" font-size="11" font-weight="800" fill="#2f6b5a" font-family="system-ui,sans-serif">日報</text>
+              <text x="92" y="26" font-size="11" font-weight="800" fill="#c46e51" font-family="system-ui,sans-serif">予約</text>
+              <text x="172" y="26" font-size="11" font-weight="800" fill="#5b5bb0" font-family="system-ui,sans-serif">給与</text>
+            </g>
+            <rect x="70" y="176" width="140" height="10" rx="5" fill="#0f1c29"/>
+          </g>
+          <!-- phone -->
+          <g filter="url(#sh)" transform="translate(300 140) rotate(8)">
+            <rect width="108" height="198" rx="22" fill="url(#g2)"/>
+            <rect x="8" y="18" width="92" height="162" rx="12" fill="#fffdf9"/>
+            <circle cx="54" cy="12" r="3" fill="#5a7a8c"/>
+            <rect x="18" y="30" width="72" height="10" rx="5" fill="#ffe0ab"/>
+            <rect x="18" y="48" width="56" height="8" rx="4" fill="#e8ddd3"/>
+            <rect x="18" y="64" width="72" height="36" rx="10" fill="#f5e4d6"/>
+            <rect x="18" y="108" width="72" height="22" rx="11" fill="#c4784a"/>
+            <text x="36" y="123" font-size="9" font-weight="800" fill="#fff" font-family="system-ui,sans-serif">LINE</text>
+            <rect x="40" y="188" width="28" height="4" rx="2" fill="#5a7a8c"/>
+          </g>
+          <!-- badge -->
+          <g transform="translate(70 300)">
+            <rect width="120" height="36" rx="12" fill="#f58c65" stroke="#fff" stroke-width="3"/>
+            <text x="22" y="23" font-size="13" font-weight="900" fill="#fff" font-family="system-ui,sans-serif">できた！</text>
+          </g>
+        </svg>
       </div>
-      <div class="sticker">できた！</div>
     </div>
   </div>
 
-  <section id="pains" class="section white">
+  <section id="pains"<section id="pains" class="section white">
     <div class="wrap">
       <div class="intro">
         <span class="eyebrow">PAIN POINTS</span>
@@ -713,14 +842,21 @@ section[id],#top{scroll-margin-top:84px}
         <p>美容院・教室・飲食・小さな施設でよく聞く声です。どれかひとつでも当てはまったら、そのまま相談して大丈夫です。</p>
       </div>
       <div class="pain-grid reveal">
-        <article class="pain"><div class="pain-num">01</div><p>ホームページがほしいが、何から頼めばいいか分からない</p></article>
-        <article class="pain"><div class="pain-num">02</div><p>制作会社に見積を頼んだら、想定よりずっと高額だった</p></article>
-        <article class="pain"><div class="pain-num">03</div><p>予約・シフト・給与計算が、紙やLINE・Excelで散らかっている</p></article>
-        <article class="pain"><div class="pain-num">04</div><p>日報や集計の転記が毎月つらい。報告書づくりに時間がかかる</p></article>
-        <article class="pain"><div class="pain-num">05</div><p>営業時間やメニューの問い合わせ対応を、少し減らしたい</p></article>
-        <article class="pain"><div class="pain-num">06</div><p>大きなシステムは要らない。現場で毎日使える小さな仕組みがほしい</p></article>
+        <article class="pain"><div class="pain-num">01</div><div><p>ホームページがほしいが、何から頼めばいいか分からない</p><div class="pain-sol">相談から構成まで、渡辺が一緒に整理します</div></div></article>
+        <article class="pain"><div class="pain-num">02</div><div><p>制作会社に見積を頼んだら、想定よりずっと高額だった</p><div class="pain-sol">HP 3〜8万円〜／業務 5〜15万円の目安を先に公開</div></div></article>
+        <article class="pain"><div class="pain-num">03</div><div><p>予約・シフト・給与計算が、紙やLINE・Excelで散らかっている</p><div class="pain-sol"><a class="linkish" href="#demos">サンプル</a>で「うちでも使えそう」を先に確認</div></div></article>
+        <article class="pain"><div class="pain-num">04</div><div><p>日報や集計の転記が毎月つらい。報告書づくりに時間がかかる</p><div class="pain-sol">現場で実用化した日報・月報の制作経験あり</div></div></article>
+        <article class="pain"><div class="pain-num">05</div><div><p>営業時間やメニューの問い合わせ対応を、少し減らしたい</p><div class="pain-sol"><a class="linkish" href="demo-chatbot.html">店舗チャットボット見本</a>を先に触れます</div></div></article>
+        <article class="pain"><div class="pain-num">06</div><div><p>大きなシステムは要らない。現場で毎日使える小さな仕組みがほしい</p><div class="pain-sol">中小規模・無理のない仕組みが専門です</div></div></article>
       </div>
       <div class="pain-foot">その悩み、<span>身近なサイズで・分かりやすい料金で・触れるサンプルから</span>、一緒にほどけます。</div>
+      <div class="solution-bridge reveal">
+        <div>
+          <strong>悩み → 見本 → 相談、の順で大丈夫。</strong>
+          <p>いきなり契約しなくてOK。サンプルを触って、使えそうなら公式LINEへ。</p>
+        </div>
+        <a href="#demos">触れるサンプルへ ↓</a>
+      </div>
     </div>
   </section>
 
@@ -778,12 +914,12 @@ section[id],#top{scroll-margin-top:84px}
         <p>毎日の仕事に合った、小さな仕組みづくり。現場で使う業務の流れを大切にしながら、使いやすい形を一緒に考えます。</p>
       </div>
       <div class="exp-grid reveal">
-        <article class="exp"><span class="badge">実用化済み</span><h3>日報・月報の仕組み</h3><p>毎日の記録を月ごとのまとめ・報告につなぐ仕組み。現場で実用化。</p></article>
-        <article class="exp"><span class="badge">実用化済み</span><h3>利用・活動記録の管理</h3><p>来所・帰宅・活動内容を入力・確認できるブラウザ型。現場で実用化（改修継続中）。</p></article>
-        <article class="exp"><span class="badge">ほぼ完成</span><h3>予定・業務管理</h3><p>予定・担当・案内をまとめる業務手帳型。</p></article>
-        <article class="exp"><span class="badge">開発・検証</span><h3>Excel日報の変換</h3><p>既存のExcelから記録を読み取り、テキスト化するツール。</p></article>
+        <article class="exp"><span class="badge">実用化済み</span><h3>日報・月報の仕組み</h3><p>転記・集計・提出が負担だった現場で、毎日の記録を月ごとのまとめ・報告用帳票につなぐ流れを実用化。</p><div class="exp-meta">扱ったこと <span>入力・集計・印刷</span></div></article>
+        <article class="exp"><span class="badge">実用化済み</span><h3>利用・活動記録の管理</h3><p>来所・帰宅・利用時間・活動内容を、職員が入力・検索できるブラウザ型。現場で実用化（改修継続中）。</p><div class="exp-meta">扱ったこと <span>保存・履歴・複数端末</span></div></article>
+        <article class="exp"><span class="badge">ほぼ完成</span><h3>予定・業務管理</h3><p>予定・担当・シフト・案内がファイルで散らばる状態を、業務手帳感覚のひとつにまとめるアプリ。</p><div class="exp-meta">状態 <span>ほぼ完成・改善継続</span></div></article>
+        <article class="exp"><span class="badge">開発・検証</span><h3>Excel日報の変換</h3><p>様式の違う既存Excelを壊さず読み取り、扱いやすいテキストへ変換するツールを開発・検証。</p><div class="exp-meta">状態 <span>開発・検証事例</span></div></article>
       </div>
-      <p class="exp-note">いずれも<strong>現場での制作経験</strong>です。外部への納品社数の表記ではありません。触ってみられる見本は<a class="linkish" href="#demos">サンプル</a>へ。</p>
+      <p class="exp-note">いずれも<strong>現場での制作経験</strong>です。外部への納品社数の表記ではありません。画面の実名・固有名称は出していません。触ってみられる見本は<a class="linkish" href="#demos">サンプル</a>へ。</p>
     </div>
   </section>
 
@@ -795,15 +931,15 @@ section[id],#top{scroll-margin-top:84px}
         <p>「うちでも使えそう」を先に確かめられる見本です。個人店・教室・小さな施設向け。各カードに誰向け・困りごとがあり、開いたら上の案内どおりに触るとすぐ分かります。</p>
       </div>
       <div class="demos reveal">
-        <a class="demo" href="part-time-payroll-demo.html"><span class="badge">給与</span><h3>パート給与の計算</h3><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p>①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-daily-report.html"><span class="badge">日報</span><h3>日報・作業報告</h3><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p>①スタッフ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-shift.html"><span class="badge">シフト</span><h3>シフト・希望休</h3><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p>①週を選ぶ → ②タップで切替 → ③メモコピー。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-booking.html"><span class="badge">予約</span><h3>簡易予約・受付</h3><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p>①予約追加 → ②来店 → ③完了まで進める。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-inventory.html"><span class="badge">在庫</span><h3>在庫・備品</h3><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p>①＋／−で増減 → ②要発注を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-kondate/"><span class="badge">献立</span><h3>わたらぼクッキング</h3><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p>下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-diet.html"><span class="badge">減量</span><h3>わたらぼダイエットアプリ</h3><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p>①ホーム → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-smash.html"><span class="badge">ゲーム</span><h3>わたらぼスマッシュ</h3><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p>タップで壊す。コンボ・ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-chatbot.html"><span class="badge">チャット</span><h3>店舗チャットボット見本</h3><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p>架空カフェ。①ボタン → ②返事。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="part-time-payroll-demo.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">給与</span></div><span class="badge">給与</span><h3>パート給与の計算</h3><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p>①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-daily-report.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">日報</span></div><span class="badge">日報</span><h3>日報・作業報告</h3><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p>①スタッフ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-shift.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">シフト</span></div><span class="badge">シフト</span><h3>シフト・希望休</h3><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p>①週を選ぶ → ②タップで切替 → ③メモコピー。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-booking.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">予約</span></div><span class="badge">予約</span><h3>簡易予約・受付</h3><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p>①予約追加 → ②来店 → ③完了まで進める。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-inventory.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">在庫</span></div><span class="badge">在庫</span><h3>在庫・備品</h3><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p>①＋／−で増減 → ②要発注を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-kondate/"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">献立</span></div><span class="badge">献立</span><h3>わたらぼクッキング</h3><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p>下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-diet.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">減量</span></div><span class="badge">減量</span><h3>わたらぼダイエットアプリ</h3><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p>①ホーム → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-smash.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">PLAY</span></div><span class="badge">ゲーム</span><h3>わたらぼスマッシュ</h3><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p>タップで壊す。コンボ・ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-chatbot.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">CHAT</span></div><span class="badge">チャット</span><h3>店舗チャットボット見本</h3><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p>架空カフェ。①ボタン → ②返事。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
       </div>
       <p class="demo-note">各カードからデモが開けます。一覧は <a class="linkish" href="demo-index.html">サンプル一覧</a> からもどうぞ。</p>
       <div class="mid-cta reveal">
@@ -840,9 +976,14 @@ section[id],#top{scroll-margin-top:84px}
         <h2>料金の目安</h2>
         <p>個人店・教室・小さな施設向けの料金です。「よくある制作会社の目安」と「うちの目安」を並べています。正式な金額は、内容を聞いたあとに見積でお伝えします（相談・見積までは無料）。</p>
       </div>
+      <div class="price-scan reveal" aria-label="料金サマリー">
+        <div><span>ホームページ</span><b>3〜8万円〜</b></div>
+        <div><span>業務の仕組み</span><b>5〜15万円</b></div>
+        <div><span>相談・見積</span><b>無料</b></div>
+      </div>
       <div class="price-grid reveal">
         <article class="price-card"><span class="badge">ホームページ</span><h3>お店・活動の紹介サイト</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">15〜40万円前後</span><span class="hint">ページ数や写真・デザインの作り込み次第</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">3〜8万円</span><span class="hint">ページ数・写真の量などで前後</span></div></div><p class="blurb">メニュー・営業時間・アクセスが伝わるシンプルなHP。スマホ対応つき。</p><ul class="incl"><li><strong>含む例</strong>：相談・構成・スマホ対応・公開まで・軽い文言修正</li><li><strong>含まない例</strong>：写真撮影・ドメイン／サーバー代・大幅な追加ページ</li></ul></article>
-        <article class="price-card featured"><span class="ribbon">よく相談</span><span class="badge">業務の仕組み</span><h3>給与・日報・予約など</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">20〜80万円前後</span><span class="hint">オーダーメイドの業務システムイメージ</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">5〜15万円</span><span class="hint">範囲による／表計算の代わりになる簡易アプリ</span></div></div><p class="blurb">毎日の入力・集計・記録をラクにする小さな仕組み。必要なところだけ小さく始められます。</p><ul class="incl"><li><strong>含む例</strong>：相談・画面づくり・使い方の簡単な案内・軽い修正</li><li><strong>含まない例</strong>：既存システムとの複雑な連携・大規模な会計ソフト接続</li></ul></article>
+        <article class="price-card featured"><span class="ribbon">よく相談</span><span class="badge">業務の仕組み</span><h3>給与・日報・予約など</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">20〜80万円前後</span><span class="hint">オーダーメイドの業務システムイメージ</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">5〜15万円</span><span class="hint">範囲による／表計算の代わりになる簡易アプリ</span></div></div><p class="blurb">毎日の入力・集計・記録をラクにする小さな仕組み。必要なところだけ小さく始められます。</p><ul class="incl"><li><strong>含む例</strong>：相談・画面づくり・使い方の簡単な案内・軽い修正</li><li><strong>含まない例</strong>：既存システムとの複雑な連携・大規模な会計ソフト接続</li></ul><a class="price-cta" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">この料金で相談する ↗</a></article>
         <article class="price-card"><span class="badge">くらし・ゲーム</span><h3>くらし向けアプリ・ミニゲーム</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">数十万円〜</span><span class="hint">アプリやゲームの開発会社のイメージ</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">要相談</span><span class="hint">サンプルあり／小さく試すところから</span></div></div><p class="blurb">献立・記録アプリ、待ち時間向けミニゲームなど。内容を聞いてからご案内します。</p><ul class="incl"><li><strong>含む例</strong>：相談・試作の確認・公開しやすい形でのお渡し</li><li><strong>含まない例</strong>：アプリストア申請代行・大規模な課金機能（要相談）</li></ul></article>
       </div>
       <div class="price-note"><strong>見積の流れ・ご案内</strong><ul><li><strong>①相談（無料）</strong> → <strong>②範囲の確認</strong> → <strong>③見積（無料）</strong> → 合意してから制作。</li><li>表示はいずれも<strong>税別</strong>の目安です。正式金額は内容を聞いたあとに提示します。</li><li><strong>含む／含まない</strong>は上の例が基本。追加の改修や機能は別途ご案内します。</li><li>相談だけ・見積だけでも大丈夫です。<a class="linkish" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINE</a>へどうぞ。</li></ul></div>
@@ -869,7 +1010,12 @@ section[id],#top{scroll-margin-top:84px}
 
   <section id="contact" class="section">
     <div class="wrap">
-      <div class="contact">
+      <div class="trust-strip reveal" aria-label="安心して相談できる理由">
+        <article><h3>含むものが先に分かる</h3><p>相談・構成・使い方の案内・軽い文言修正まで。含まない例も料金カードに明記。</p></article>
+        <article><h3>契約前に触れる</h3><p>サンプルはブラウザでそのまま。サーバー送信なし。使えそうかを先に確かめられます。</p></article>
+        <article><h3>渡辺に気軽に</h3><p>窓口と制作が分かれません。相談だけ・見積だけでも歓迎。無理な勧誘はありません。</p></article>
+      </div>
+      <div class="contact" style="margin-top:28px">
         <span class="eyebrow">CONTACT</span>
         <h2>まずは公式LINEで、気軽に話してみてください。</h2>
         <p>相談だけ・見積だけでも大歓迎。サンプルを見て「うちでも使えそう」と思ったら、そのままどうぞ。<br><strong>渡辺に気軽にご相談ください。</strong><br><span class="contact-hint">📩 連絡先は公式LINEです（相談・見積無料）</span></p>

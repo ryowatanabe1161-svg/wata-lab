@@ -17,12 +17,12 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
-h1,h2{margin:0;line-height:1.3;font-weight:900;letter-spacing:-.025em}
+h1,h2,h3{margin:0;line-height:1.3;font-weight:900;letter-spacing:-.025em}
 p{margin:0}a{color:inherit;text-decoration:none}
-.wrap{width:min(100% - 1.75rem,1000px);margin-inline:auto;padding-bottom:3.75rem}
+.wrap{width:min(100% - 1.75rem,1040px);margin-inline:auto;padding-bottom:4rem}
 .banner{
   background:linear-gradient(145deg,#172b3e 0%,#1a4550 40%,#0d9488 100%);
-  color:#fff;padding:1.4rem 0 1.7rem;box-shadow:0 16px 32px -20px rgba(23,43,62,.5);
+  color:#fff;padding:1.5rem 0 1.85rem;box-shadow:0 16px 32px -20px rgba(23,43,62,.5);
 }
 .banner .wrap{padding-bottom:0}
 .back{
@@ -35,17 +35,51 @@ p{margin:0}a{color:inherit;text-decoration:none}
   background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);
   padding:.28rem .7rem;border-radius:999px;margin-bottom:.75rem;
 }
-.banner h1{font-size:clamp(1.4rem,4vw,1.9rem);margin-bottom:.5rem}
-.banner p{font-size:.95rem;opacity:.93;max-width:42rem;line-height:1.75}
+.banner h1{font-size:clamp(1.45rem,4vw,2rem);margin-bottom:.5rem}
+.banner p{font-size:.95rem;opacity:.93;max-width:44rem;line-height:1.75}
 .note{
   margin-top:.85rem;display:inline-block;font-size:.8rem;
   background:rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.16);
   padding:.4rem .8rem;border-radius:12px;
 }
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin:1.35rem 0 .25rem}
-.filters span{
+.hero-stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.hero-stats span{
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;padding:6px 12px;font-size:12px;font-weight:800;
+}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:1.4rem 0 .35rem}
+.filters button{
+  appearance:none;font:inherit;cursor:pointer;
   font-size:.75rem;font-weight:800;color:var(--accent-ink);background:var(--accent-soft);
-  border:1px solid #b7e5d8;border-radius:999px;padding:.38rem .75rem;
+  border:1px solid #b7e5d8;border-radius:999px;padding:.42rem .85rem;
+  transition:transform .15s, background .15s, color .15s, border-color .15s;
+}
+.filters button:hover{transform:translateY(-1px);background:#fff}
+.filters button.is-on{background:#172b3e;color:#fff;border-color:#172b3e}
+.featured{
+  margin:1rem 0 1.4rem;padding:1.2rem 1.2rem 1.15rem;border-radius:22px;
+  background:linear-gradient(135deg,#fff,#eef7f3);border:1px solid #c9ded5;
+  box-shadow:var(--shadow);display:grid;gap:12px;
+}
+@media(min-width:720px){.featured{grid-template-columns:1.1fr .9fr;align-items:center}}
+.featured .tag{display:inline-flex;font-size:.72rem;font-weight:800;color:#fff;background:#0d9488;border-radius:999px;padding:.28rem .7rem}
+.featured h2{font-size:1.2rem;margin:.45rem 0 .35rem}
+.featured p{font-size:.9rem;color:var(--muted);line-height:1.7}
+.featured .go{
+  display:inline-flex;margin-top:10px;background:#f58c65;color:#fff;font-weight:900;
+  border-radius:999px;padding:.75rem 1.1rem;box-shadow:0 4px 0 #d97957;
+}
+.featured .mock{
+  height:140px;border-radius:16px;border:1px solid #e2e6e0;position:relative;overflow:hidden;
+  background:linear-gradient(145deg,#d9ebe3,#fff8ef);
+}
+.featured .mock:before{
+  content:"";position:absolute;left:14px;top:16px;width:54%;height:16px;border-radius:8px;background:#fff;
+  box-shadow:0 10px 0 #d7ebe5,0 24px 0 #ffe8dc,0 38px 0 #e7e7fa;
+}
+.featured .mock:after{
+  content:"給与";position:absolute;right:14px;bottom:14px;background:#172b3e;color:#fff;
+  font-size:11px;font-weight:900;padding:6px 10px;border-radius:999px;
 }
 .grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1.1rem}
 @media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
@@ -59,6 +93,7 @@ p{margin:0}a{color:inherit;text-decoration:none}
 }
 .card:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#b7e5d8,#ffe0ab)}
 a.card:hover{transform:translateY(-4px);border-color:#b7e5d8;box-shadow:0 22px 44px -18px rgba(23,43,62,.28)}
+.card.is-hide{display:none}
 .tag{
   display:inline-flex;align-self:flex-start;font-size:.72rem;font-weight:800;
   color:var(--accent-ink);background:var(--accent-soft);border-radius:999px;padding:.25rem .6rem;
@@ -67,25 +102,20 @@ a.card:hover{transform:translateY(-4px);border-color:#b7e5d8;box-shadow:0 22px 4
 .card .for{font-size:.78rem;font-weight:700;color:var(--accent-ink);background:#eef7f3;border:1px solid #c9ded5;border-radius:14px;padding:.55rem .7rem;line-height:1.5}
 .card .how{flex:1;font-size:.88rem;color:var(--muted);line-height:1.7}
 .go{font-size:.86rem;font-weight:900;color:var(--orange)}
-.footnote{
-  margin-top:1.75rem;padding:1.2rem 1.25rem;border:1px dashed #c9d5cf;border-radius:var(--radius);
-  background:var(--surface);font-size:.84rem;color:var(--muted);box-shadow:var(--shadow);line-height:1.75;
-}
-.footnote h3{font-size:.92rem;color:var(--ink);margin:0 0 .45rem;font-weight:900}
-a:focus-visible{outline:3px solid #f58c65;outline-offset:3px}
-
-.card .preview{
-  height:86px;border-radius:14px;margin:-.15rem -.1rem .35rem;
-  background:
-    radial-gradient(circle at 85% 20%,rgba(255,224,171,.85),transparent 28%),
-    linear-gradient(145deg,#e8f5f1 0%,#fff8ef 55%,#f0f4f1 100%);
+.preview{
+  height:92px;border-radius:14px;margin:-.15rem -.1rem .35rem;
+  background:linear-gradient(145deg,#e8f5f1 0%,#fff8ef 55%,#f0f4f1 100%);
   border:1px solid #e2e6e0;position:relative;overflow:hidden;
 }
-.card .preview:after{
-  content:"";position:absolute;left:12px;top:14px;width:46%;height:14px;border-radius:6px;background:#fff;box-shadow:0 8px 0 #d7ebe5, 0 20px 0 #ffe8dc;
+.preview .win{
+  position:absolute;left:10px;top:12px;right:10px;bottom:12px;border-radius:10px;
+  background:#fff;border:1px solid #e8ebe6;padding:8px;display:grid;gap:5px;align-content:start;
 }
-.card .preview:before{
-  content:"";position:absolute;right:14px;bottom:12px;width:28%;height:28px;border-radius:10px;background:#172b3e;opacity:.9;
+.preview .bar{height:6px;border-radius:99px;background:#d7ebe5}
+.preview .bar.s{width:40%}.preview .bar.m{width:66%}.preview .bar.l{width:88%}
+.preview .pill{
+  position:absolute;right:14px;bottom:14px;background:#172b3e;color:#fff;
+  font-size:9px;font-weight:900;padding:4px 8px;border-radius:999px;
 }
 .card[href*="payroll"] .preview{background:linear-gradient(145deg,#d9ebe3,#fff8ef)}
 .card[href*="daily"] .preview{background:linear-gradient(145deg,#e7e7fa,#eef7f3)}
@@ -96,10 +126,18 @@ a:focus-visible{outline:3px solid #f58c65;outline-offset:3px}
 .card[href*="diet"] .preview{background:linear-gradient(145deg,#e7e7fa,#d9ebe3)}
 .card[href*="smash"] .preview{background:linear-gradient(145deg,#172b3e,#0d9488)}
 .card[href*="chatbot"] .preview{background:linear-gradient(145deg,#5c3d2e,#c4784a)}
-.card[href*="smash"] .preview:before{background:#f58c65}
-.card[href*="smash"] .preview:after{box-shadow:0 8px 0 #f58c65, 0 20px 0 #ffe0ab}
+.card[href*="smash"] .preview .win{background:#0f1f2e;border-color:#1e3a50}
+.card[href*="smash"] .preview .bar{background:#14b8a6}
+.card[href*="chatbot"] .preview .win{background:#fffdf9;border-color:#e8ddd3}
+.card[href*="chatbot"] .preview .bar{background:#e8ddd3}
+.card[href*="chatbot"] .preview .pill{background:#c4784a}
+.footnote{
+  margin-top:1.75rem;padding:1.2rem 1.25rem;border:1px dashed #c9d5cf;border-radius:var(--radius);
+  background:var(--surface);font-size:.84rem;color:var(--muted);box-shadow:var(--shadow);line-height:1.75;
+}
+.footnote h3{font-size:.92rem;color:var(--ink);margin:0 0 .45rem;font-weight:900}
 .cta-band{
-  margin-top:1.75rem;padding:1.35rem 1.3rem;border-radius:20px;color:#fff;
+  margin-top:1.75rem;padding:1.4rem 1.3rem;border-radius:20px;color:#fff;
   background:linear-gradient(135deg,#172b3e,#1a4550 55%,#0d9488);
   display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
   box-shadow:0 18px 36px -20px rgba(23,43,62,.45);
@@ -110,50 +148,81 @@ a:focus-visible{outline:3px solid #f58c65;outline-offset:3px}
   background:#f58c65;color:#fff;font-weight:900;border-radius:999px;padding:.85rem 1.2rem;
   box-shadow:0 4px 0 #d97957;white-space:nowrap;
 }
-.filters span{transition:transform .15s, background .15s}
-.filters span:hover{transform:translateY(-1px);background:#fff}
-@media (prefers-reduced-motion: reduce){
-  .card{transition:none}
-}
-
+a:focus-visible,button:focus-visible{outline:3px solid #f58c65;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.card{transition:none}}
 </style>
 </head>
 <body>
 <header class="banner">
   <div class="wrap">
     <a class="back" href="index.html#demos">← WATA LABへ戻る</a>
-    <div class="kicker">SAMPLE DEMOS</div>
+    <div class="kicker">PROOF · SAMPLE DEMOS</div>
     <h1>触って試せるデモ</h1>
-    <p>ホームページの説得材料になる見本です。各カードに「誰向け・困りごと」あり。開いたら上の案内から触ってみてください。</p>
+    <p>ホームページの説得材料になる見本です。個人店・教室・小さな施設向け。「誰向け・困りごと」を見て、開いたら案内どおりに触ってください。</p>
     <div class="note">※ ブラウザ内のデモです。サーバーには送りません。／サンプル・架空</div>
+    <div class="hero-stats" aria-label="この一覧のポイント">
+      <span>業務 5</span><span>くらし 2</span><span>ゲーム 1</span><span>チャット 1</span>
+    </div>
   </div>
 </header>
 <main class="wrap">
-  <div class="filters" aria-label="カテゴリ">
-    <span>業務</span><span>くらし</span><span>ゲーム</span><span>チャット</span>
+  <section class="featured" aria-label="おすすめサンプル">
+    <div>
+      <span class="tag">おすすめ · よく見られる</span>
+      <h2>パート給与の計算</h2>
+      <p>カフェ・美容院など個人店向け。勤怠を入れると明細と振込CSVまで。紙やExcelの給与計算が面倒なときの見本です。</p>
+      <a class="go" href="part-time-payroll-demo.html">このデモを開く →</a>
+    </div>
+    <div class="mock" aria-hidden="true"></div>
+  </section>
+
+  <div class="filters" role="tablist" aria-label="カテゴリで絞り込み">
+    <button type="button" class="is-on" data-filter="all" aria-selected="true">すべて</button>
+    <button type="button" data-filter="biz" aria-selected="false">業務</button>
+    <button type="button" data-filter="life" aria-selected="false">くらし</button>
+    <button type="button" data-filter="game" aria-selected="false">ゲーム</button>
+    <button type="button" data-filter="chat" aria-selected="false">チャット</button>
   </div>
-  <div class="grid">
-    <a class="card" href="part-time-payroll-demo.html"><div class="preview" aria-hidden="true"></div><span class="tag">給与</span><h2>パート給与の計算</h2><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p class="how">①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-daily-report.html"><div class="preview" aria-hidden="true"></div><span class="tag">日報</span><h2>日報・作業報告</h2><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p class="how">①スタッフを選ぶ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-shift.html"><div class="preview" aria-hidden="true"></div><span class="tag">シフト</span><h2>シフト・希望休</h2><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p class="how">①週を選ぶ → ②マスをタップで切替 → ③メモをコピー。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-booking.html"><div class="preview" aria-hidden="true"></div><span class="tag">予約</span><h2>簡易予約・受付</h2><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p class="how">①予約を追加 → ②来店に変更 → ③完了まで進めます。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-inventory.html"><div class="preview" aria-hidden="true"></div><span class="tag">在庫</span><h2>在庫・備品管理</h2><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p class="how">①＋／−で増減 → ②要発注（オレンジ）を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-kondate/"><div class="preview" aria-hidden="true"></div><span class="tag">献立</span><h2>わたらぼクッキング</h2><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p class="how">下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-diet.html"><div class="preview" aria-hidden="true"></div><span class="tag">減量</span><h2>わたらぼダイエットアプリ</h2><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p class="how">①ホームで状況 → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-smash.html"><div class="preview" aria-hidden="true"></div><span class="tag">ゲーム</span><h2>わたらぼスマッシュ</h2><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p class="how">タップで壊す。コンボで得点アップ。ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
-    <a class="card" href="demo-chatbot.html"><div class="preview" aria-hidden="true"></div><span class="tag">チャット</span><h2>店舗チャットボット見本</h2><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p class="how">架空カフェ。①ボタンを押す → ②返事を見る。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
+
+  <div class="grid" id="grid">
+    <a class="card" data-cat="biz" href="part-time-payroll-demo.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">給与</span></div><span class="tag">給与</span><h2>パート給与の計算</h2><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p class="how">①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="biz" href="demo-daily-report.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">日報</span></div><span class="tag">日報</span><h2>日報・作業報告</h2><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p class="how">①スタッフを選ぶ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="biz" href="demo-shift.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">シフト</span></div><span class="tag">シフト</span><h2>シフト・希望休</h2><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p class="how">①週を選ぶ → ②マスをタップで切替 → ③メモをコピー。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="biz" href="demo-booking.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">予約</span></div><span class="tag">予約</span><h2>簡易予約・受付</h2><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p class="how">①予約を追加 → ②来店に変更 → ③完了まで進めます。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="biz" href="demo-inventory.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">在庫</span></div><span class="tag">在庫</span><h2>在庫・備品管理</h2><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p class="how">①＋／−で増減 → ②要発注（オレンジ）を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="life" href="demo-kondate/"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">献立</span></div><span class="tag">献立</span><h2>わたらぼクッキング</h2><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p class="how">下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="life" href="demo-diet.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">減量</span></div><span class="tag">減量</span><h2>わたらぼダイエットアプリ</h2><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p class="how">①ホームで状況 → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="game" href="demo-smash.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">PLAY</span></div><span class="tag">ゲーム</span><h2>わたらぼスマッシュ</h2><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p class="how">タップで壊す。コンボで得点アップ。ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="chat" href="demo-chatbot.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">CHAT</span></div><span class="tag">チャット</span><h2>店舗チャットボット見本</h2><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p class="how">架空カフェ。①ボタンを押す → ②返事を見る。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
   </div>
+
   <aside class="footnote">
     <h3>この一覧について</h3>
-    <p>個人・個人経営・小さな店や施設を想定した業務アプリと、くらし向け・ミニゲームの見本です。どれも単体のHTMLで開けます。データは端末内だけ／サーバーには送りません。</p>
+    <p>個人・個人経営・小さな店や施設を想定した業務アプリと、くらし向け・ミニゲームの見本です。どれも単体のHTMLで開けます。データは端末内だけ／サーバーには送りません。本サイト自体が宣伝ページです。</p>
   </aside>
   <div class="cta-band">
     <div>
       <strong>使えそうだったら、公式LINEへ。</strong>
-      <p>相談・見積は無料。サンプルを見た感想だけでも大丈夫です。</p>
+      <p>相談・見積は無料。サンプルを見た感想だけでも大丈夫です。渡辺に気軽にどうぞ。</p>
     </div>
     <a href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談 ↗</a>
   </div>
 </main>
+<script>
+(function(){
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.filters button'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#grid .card'));
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var f = btn.getAttribute('data-filter');
+      buttons.forEach(function(b){ b.classList.toggle('is-on', b===btn); b.setAttribute('aria-selected', b===btn ? 'true':'false'); });
+      cards.forEach(function(c){
+        var show = f==='all' || c.getAttribute('data-cat')===f;
+        c.classList.toggle('is-hide', !show);
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>

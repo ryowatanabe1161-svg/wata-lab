@@ -279,6 +279,68 @@ td.empty:before, tr .empty:before { content:none!important; display:none!importa
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
+
+
+.menu-card{
+  background:linear-gradient(180deg,#fff,#fff8f2);border:1px solid #e8ddd3;
+  border-radius:14px;padding:10px 12px;margin-top:6px;
+}
+.menu-card .item{display:flex;justify-content:space-between;gap:8px;font-size:13px;font-weight:700;padding:5px 0;border-bottom:1px dashed #f0e4d8}
+.menu-card .item:last-child{border-bottom:none}
+.menu-card .yen{color:#c4784a;font-weight:900;white-space:nowrap}
+.chip.hot{background:#c4784a;color:#fff;border-color:#9a5a32;box-shadow:0 3px 0 #9a5a32}
+.chip:focus-visible{outline:3px solid #f58c65;outline-offset:2px}
+.composer button:focus-visible{outline:3px solid #ffe0ab;outline-offset:2px}
+.quick{padding-bottom:2px}
+.row.bot .bubble.rich{padding-bottom:8px}
+
+/* ===== WATA LAB quality polish v6 ===== */
+.wl-coach{
+  position:fixed;inset:0;z-index:80;background:rgba(15,28,41,.55);
+  display:flex;align-items:flex-end;justify-content:center;padding:18px;
+  opacity:0;pointer-events:none;transition:opacity .25s ease;
+}
+.wl-coach.show{opacity:1;pointer-events:auto}
+.wl-coach .panel{
+  width:min(100%,420px);background:#fff;color:#172b3e;border-radius:22px;
+  padding:22px 20px 18px;box-shadow:0 24px 48px -18px rgba(0,0,0,.45);
+  transform:translateY(12px);transition:transform .25s cubic-bezier(.22,.7,.25,1);
+}
+.wl-coach.show .panel{transform:translateY(0)}
+.wl-coach .kicker{font-size:11px;font-weight:900;letter-spacing:.08em;color:#c46e51;margin-bottom:8px}
+.wl-coach h2{margin:0 0 8px;font-size:1.15rem;letter-spacing:-.03em}
+.wl-coach p{margin:0 0 14px;font-size:.9rem;color:#4f5f70;line-height:1.7}
+.wl-coach .steps{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.wl-coach .steps span{
+  background:#eef7f3;border:1px solid #c9ded5;color:#1f5c4a;
+  border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:800;
+}
+.wl-coach .actions{display:flex;gap:8px}
+.wl-coach button{
+  flex:1;appearance:none;border:none;border-radius:14px;min-height:48px;
+  font-family:inherit;font-weight:900;font-size:14px;cursor:pointer;
+}
+.wl-coach .go{background:#f58c65;color:#fff;box-shadow:0 4px 0 #d97957}
+.wl-coach .skip{background:#f3f5f1;color:#172b3e;border:1px solid #e2e6e0!important}
+.wl-pulse{animation:wlPulse 1.4s ease-in-out 3}
+@keyframes wlPulse{
+  0%,100%{box-shadow:0 4px 0 rgba(15,118,110,.35)}
+  50%{box-shadow:0 0 0 6px rgba(245,140,101,.28),0 4px 0 rgba(15,118,110,.35)}
+}
+.wl-toast{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+  background:#172b3e;color:#fff;padding:12px 18px;border-radius:999px;
+  font-size:13px;font-weight:800;z-index:90;opacity:0;pointer-events:none;
+  transition:opacity .2s, transform .2s;box-shadow:0 16px 32px -16px rgba(0,0,0,.45);
+  max-width:min(92vw,420px);text-align:center;
+}
+.wl-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.sample-banner,.sample-strip{position:relative}
+@media (prefers-reduced-motion: reduce){
+  .wl-pulse{animation:none}
+  .wl-coach,.wl-coach .panel,.wl-toast{transition:none}
+}
+
 </style>
 </head>
 <body>
@@ -385,7 +447,7 @@ td.empty:before, tr .empty:before { content:none!important; display:none!importa
     return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
   }
 
-  function addBubble(who, text, withTime){
+  function addBubble(who, text, withTime, richHtml){
     const row = document.createElement('div');
     row.className = 'row ' + who;
     if (who === 'bot'){
@@ -396,8 +458,9 @@ td.empty:before, tr .empty:before { content:none!important; display:none!importa
       row.appendChild(av);
     }
     const b = document.createElement('div');
-    b.className = 'bubble';
-    b.textContent = text;
+    b.className = 'bubble' + (richHtml ? ' rich' : '');
+    if (richHtml) b.innerHTML = richHtml;
+    else b.textContent = text;
     row.appendChild(b);
     if (withTime){
       const t = document.createElement('span');
@@ -437,25 +500,30 @@ td.empty:before, tr .empty:before { content:none!important; display:none!importa
   function answerFor(text){
     const n = normalize(text);
     for (const item of FAQ){
-      if (item.keys.some(k => n.includes(normalize(k)))) return item.a;
-      if (normalize(item.q) && n.includes(normalize(item.q))) return item.a;
+      if (item.keys.some(k => n.includes(normalize(k))) || (normalize(item.q) && n.includes(normalize(item.q)))){
+        if (item.q.indexOf('おすすめ') >= 0 || item.q.indexOf('メニュー') >= 0){
+          return { text: item.a, rich: '今日のおすすめです。<div class="menu-card"><div class="item"><span>こみちブレンド</span><span class="yen">¥480</span></div><div class="item"><span>季節のフルーツサンド</span><span class="yen">¥650</span></div><div class="item"><span>自家製チーズケーキ</span><span class="yen">¥520</span></div></div><span style="font-size:12px;opacity:.85">アレルギー等はご来店時に（見本）</span>' };
+        }
+        return { text: item.a };
+      }
     }
-    // greeting
     if (/^(こんにちは|こんばんは|おはよう|はじめまして|ハロー|hello|hi)/.test(n) || n.includes('こんにちは')){
-      return 'こんにちは！こみちコーヒーです（架空の店舗です）。\n営業時間・メニュー・予約・アクセスなど、お気軽にどうぞ。';
+      return { text: 'こんにちは！こみちコーヒーです（架空の店舗です）。\n営業時間・メニュー・予約・アクセスなど、お気軽にどうぞ。' };
     }
     if (n.includes('ありがとう') || n.includes('どうも')){
-      return 'どういたしまして。また何かあれば聞いてくださいね。';
+      return { text: 'どういたしまして。また何かあれば聞いてくださいね。' };
     }
-    return DEFAULTS[(Math.random()*DEFAULTS.length)|0];
+    return { text: DEFAULTS[(Math.random()*DEFAULTS.length)|0] };
   }
 
   function botReply(text){
     showTyping();
-    const delay = 450 + Math.random()*500;
+    const delay = 380 + Math.random()*420;
     setTimeout(()=>{
       hideTyping();
-      addBubble('bot', answerFor(text), true);
+      const ans = answerFor(text);
+      addBubble('bot', ans.text, true, ans.rich || null);
+      if (window.wlToast && ans.rich) window.wlToast('メニューカードを表示しました');
     }, delay);
   }
 
@@ -469,12 +537,13 @@ td.empty:before, tr .empty:before { content:none!important; display:none!importa
 
   function renderChips(){
     quick.innerHTML = '';
-    CHIPS.forEach(label=>{
+    CHIPS.forEach((label, i)=>{
       const b = document.createElement('button');
       b.type = 'button';
-      b.className = 'chip';
+      b.className = 'chip' + (i===0 ? ' hot wl-pulse' : '');
       b.textContent = label;
-      b.onclick = ()=> send(label);
+      b.setAttribute('aria-label', label + 'を聞く');
+      b.onclick = ()=> { send(label); if(window.wlToast) window.wlToast('送信しました'); };
       quick.appendChild(b);
     });
   }
@@ -483,10 +552,81 @@ td.empty:before, tr .empty:before { content:none!important; display:none!importa
     e.preventDefault();
     send(input.value);
   });
+  input.addEventListener('keydown', e=>{
+    if(e.key==='Escape'){ input.value=''; input.blur(); }
+  });
 
   renderChips();
-  addBubble('bot', 'こんにちは！架空カフェ「こみちコーヒー」です。\n\n① 下のオレンジのボタンを押す\n② 自動で返事が返ってきます\n③ 「営業時間は？」など自由入力もOK\n\n※ サンプル／架空です。実在しません。', true);
+  addBubble('bot', '', true,
+    'こんにちは！架空カフェ「こみちコーヒー」です。<br><br><strong>①</strong> 下のオレンジのボタンを押す<br><strong>②</strong> 自動で返事が返ってきます<br><strong>③</strong> 「営業時間は？」など自由入力もOK<br><br><span style="font-size:12px;opacity:.85">※ サンプル／架空です。実在しません。サーバーには送りません。</span>');
+  setTimeout(function(){ var c=document.querySelector('.chip.hot'); if(c) c.focus(); }, 400);
 })();
 </script>
+
+<script>
+/* WATA LAB demo UX v6 */
+(function(){
+  if(window.__wlDemoV6) return; window.__wlDemoV6 = true;
+  var key = 'wl-demo-coach:' + (location.pathname.split('/').pop() || 'index');
+  function $(s, r){ return (r||document).querySelector(s); }
+  function toast(msg){
+    var t = $('.wl-toast');
+    if(!t){ t=document.createElement('div'); t.className='wl-toast'; t.setAttribute('role','status'); document.body.appendChild(t); }
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(t._tm); t._tm=setTimeout(function(){ t.classList.remove('show'); }, 1800);
+  }
+  window.wlToast = toast;
+  function seen(){ try{ return localStorage.getItem(key)==='1'; }catch(e){ return false; } }
+  function mark(){ try{ localStorage.setItem(key,'1'); }catch(e){} }
+  function primaryBtn(){
+    return $('button.btn-primary, .composer button, button.primary, .btn.primary, #btnSave, #startBtn, button[type="submit"]');
+  }
+  function stepsFromHowto(){
+    var nodes = document.querySelectorAll('.howto .steps span, .howto-strip .steps span, .step-flow span:not(.arrow)');
+    var out=[]; nodes.forEach(function(n){ var t=n.textContent.trim(); if(t && t!=='→') out.push(t); });
+    return out.slice(0,4);
+  }
+  function buildCoach(){
+    if(seen()) return;
+    var title = (document.querySelector('h1')||{}).textContent || 'このデモの使い方';
+    var forWhom = (document.querySelector('.for-whom')||{}).textContent || 'サンプル／架空です。端末内だけで動きます。';
+    var steps = stepsFromHowto();
+    if(!steps.length) steps = ['① 案内どおりに触る','② 結果を見る','③ 一覧へ戻る'];
+    var el=document.createElement('div'); el.className='wl-coach'; el.id='wlCoach';
+    el.innerHTML = '<div class="panel" role="dialog" aria-modal="true" aria-label="デモの始め方">'+
+      '<div class="kicker">SAMPLE / はじめ方</div>'+
+      '<h2>'+title.replace(/</g,'')+'</h2>'+
+      '<p>'+forWhom.replace(/</g,'').slice(0,120)+'</p>'+
+      '<div class="steps">'+steps.map(function(s){return '<span>'+s.replace(/</g,'')+'</span>';}).join('')+'</div>'+
+      '<div class="actions"><button type="button" class="skip" data-wl="skip">とばす</button>'+
+      '<button type="button" class="go" data-wl="go">触ってみる</button></div></div>';
+    document.body.appendChild(el);
+    requestAnimationFrame(function(){ el.classList.add('show'); });
+    el.addEventListener('click', function(e){
+      var a=e.target.getAttribute('data-wl');
+      if(!a && e.target!==el) return;
+      el.classList.remove('show');
+      mark();
+      setTimeout(function(){ el.remove(); }, 220);
+      if(a==='go'){
+        var b=primaryBtn();
+        if(b){ b.classList.add('wl-pulse'); b.focus({preventScroll:false}); }
+        toast('オレンジの案内どおりに触ってみてください');
+      }
+    });
+  }
+  // enhance native toasts if present
+  document.addEventListener('click', function(e){
+    var b=e.target.closest('button, .chip, .btn');
+    if(!b) return;
+    if(b.matches('.btn-primary, button.primary, .btn.primary, #btnSave') || (b.type==='submit' && b.closest('.composer'))){
+      // light feedback; demos may also show own toast
+    }
+  }, true);
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', buildCoach);
+  else buildCoach();
+})();
+</script>
+
 </body>
 </html>
