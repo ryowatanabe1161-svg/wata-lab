@@ -190,6 +190,21 @@ a.card:hover .go{background:#f58c65;color:#fff;border-color:#f58c65}
   border:1px solid #c9ded5;border-radius:999px;padding:6px 11px;
 }
 
+
+
+/* calendar workspace thumbs */
+.preview.has-art{
+  height:118px!important;padding:0;background:#e8f0ed;
+}
+.preview.has-art picture,.preview.has-art img{
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center 42%;
+}
+.preview.has-art .pill{
+  z-index:2;box-shadow:0 4px 10px rgba(23,43,62,.25);
+}
+.card[href*="shift"] .preview.has-art,
+.card[href*="booking"] .preview.has-art{background:#e8f0ed}
+
 </style>
 </head>
 <body>
@@ -227,8 +242,8 @@ a.card:hover .go{background:#f58c65;color:#fff;border-color:#f58c65}
   <div class="grid" id="grid">
     <a class="card" data-cat="biz" href="part-time-payroll-demo.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">給与</span></div><span class="tag">給与</span><h2>パート給与の計算</h2><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p class="how">①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
     <a class="card" data-cat="biz" href="demo-daily-report.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">日報</span></div><span class="tag">日報</span><h2>日報・作業報告</h2><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p class="how">①スタッフを選ぶ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
-    <a class="card" data-cat="biz" href="demo-shift.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">シフト</span></div><span class="tag">シフト</span><h2>シフト・希望休</h2><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p class="how">①週を選ぶ → ②マスをタップで切替 → ③メモをコピー。</p><span class="go">デモを開く →</span></a>
-    <a class="card" data-cat="biz" href="demo-booking.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">予約</span></div><span class="tag">予約</span><h2>簡易予約・受付</h2><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p class="how">①予約を追加 → ②来店に変更 → ③完了まで進めます。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="biz" href="demo-shift.html"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/calendar.webp" type="image/webp"><img src="assets/calendar.jpg" width="900" height="900" alt="" loading="lazy" decoding="async"></picture><span class="pill">シフト</span></div><span class="tag">シフト</span><h2>シフト・希望休</h2><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p class="how">①週を選ぶ → ②マスをタップで切替 → ③メモをコピー。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="biz" href="demo-booking.html"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/calendar.webp" type="image/webp"><img src="assets/calendar.jpg" width="900" height="900" alt="" loading="lazy" decoding="async"></picture><span class="pill">予約</span></div><span class="tag">予約</span><h2>簡易予約・受付</h2><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p class="how">①予約を追加 → ②来店に変更 → ③完了まで進めます。</p><span class="go">デモを開く →</span></a>
     <a class="card" data-cat="biz" href="demo-inventory.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">在庫</span></div><span class="tag">在庫</span><h2>在庫・備品管理</h2><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p class="how">①＋／−で増減 → ②要発注（オレンジ）を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
     <a class="card" data-cat="life" href="demo-kondate/"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">献立</span></div><span class="tag">献立</span><h2>わたらぼクッキング</h2><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p class="how">下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
     <a class="card" data-cat="life" href="demo-diet.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">減量</span></div><span class="tag">減量</span><h2>わたらぼダイエットアプリ</h2><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p class="how">①ホームで状況 → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>

@@ -924,6 +924,33 @@ a.demo:hover .go{background:#f58c65;color:#fff;border-color:#f58c65}
 .before-after-head h2{position:relative}
 .trust span b{color:#0d9488}
 
+
+
+/* calendar workspace thumbs */
+.demo-preview.has-art{
+  height:118px;padding:0;background:#e8f0ed;
+}
+.demo-preview.has-art picture,.demo-preview.has-art img{
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center 42%;
+}
+.demo-preview.has-art .chipmini{
+  z-index:2;box-shadow:0 4px 10px rgba(23,43,62,.25);
+}
+.demo[href*="shift"] .demo-preview.has-art,
+.demo[href*="booking"] .demo-preview.has-art{background:#e8f0ed}
+.exp.has-art{padding-top:0}
+.exp-art{
+  margin:0 0 16px;border-radius:16px 16px 12px 12px;overflow:hidden;
+  border:1px solid #e2e6e0;aspect-ratio:16/10;background:#e8f0ed;
+}
+.exp-art picture,.exp-art img{
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center 40%;
+}
+.exp.has-art .badge{margin-top:16px}
+@media(max-width:550px){
+  .demo-preview.has-art{height:108px}
+}
+
 </style>
 </head>
 <body>
@@ -1098,7 +1125,7 @@ a.demo:hover .go{background:#f58c65;color:#fff;border-color:#f58c65}
       <div class="exp-grid reveal">
         <article class="exp"><span class="badge">実用化済み</span><h3>日報・月報の仕組み</h3><p>転記・集計・提出が負担だった現場で、毎日の記録を月ごとのまとめ・報告用帳票につなぐ流れを実用化。</p><div class="exp-meta">扱ったこと <span>入力・集計・印刷</span></div></article>
         <article class="exp"><span class="badge">実用化済み</span><h3>利用・活動記録の管理</h3><p>来所・帰宅・利用時間・活動内容を、職員が入力・検索できるブラウザ型。現場で実用化（改修継続中）。</p><div class="exp-meta">扱ったこと <span>保存・履歴・複数端末</span></div></article>
-        <article class="exp"><span class="badge">ほぼ完成</span><h3>予定・業務管理</h3><p>予定・担当・シフト・案内がファイルで散らばる状態を、業務手帳感覚のひとつにまとめるアプリ。</p><div class="exp-meta">状態 <span>ほぼ完成・改善継続</span></div></article>
+        <article class="exp has-art"><div class="exp-art" aria-hidden="true"><picture><source srcset="assets/calendar.webp" type="image/webp"><img src="assets/calendar.jpg" width="900" height="900" alt="" loading="lazy" decoding="async"></picture></div><span class="badge">ほぼ完成</span><h3>予定・業務管理</h3><p>予定・担当・シフト・案内がファイルで散らばる状態を、業務手帳感覚のひとつにまとめるアプリ。</p><div class="exp-meta">状態 <span>ほぼ完成・改善継続</span></div></article>
         <article class="exp"><span class="badge">開発・検証</span><h3>Excel日報の変換</h3><p>様式の違う既存Excelを壊さず読み取り、扱いやすいテキストへ変換するツールを開発・検証。</p><div class="exp-meta">状態 <span>開発・検証事例</span></div></article>
       </div>
       <p class="exp-note">いずれも<strong>現場での制作経験</strong>です。外部への納品社数の表記ではありません。画面の実名・固有名称は出していません。触ってみられる見本は<a class="linkish" href="#demos">サンプル</a>へ。</p>
@@ -1115,8 +1142,8 @@ a.demo:hover .go{background:#f58c65;color:#fff;border-color:#f58c65}
       <div class="demos reveal">
         <a class="demo" href="part-time-payroll-demo.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">給与</span></div><span class="badge">給与</span><h3>パート給与の計算</h3><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p>①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
         <a class="demo" href="demo-daily-report.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">日報</span></div><span class="badge">日報</span><h3>日報・作業報告</h3><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p>①スタッフ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-shift.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">シフト</span></div><span class="badge">シフト</span><h3>シフト・希望休</h3><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p>①週を選ぶ → ②タップで切替 → ③メモコピー。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-booking.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">予約</span></div><span class="badge">予約</span><h3>簡易予約・受付</h3><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p>①予約追加 → ②来店 → ③完了まで進める。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-shift.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/calendar.webp" type="image/webp"><img src="assets/calendar.jpg" width="900" height="900" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">シフト</span></div><span class="badge">シフト</span><h3>シフト・希望休</h3><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p>①週を選ぶ → ②タップで切替 → ③メモコピー。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-booking.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/calendar.webp" type="image/webp"><img src="assets/calendar.jpg" width="900" height="900" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">予約</span></div><span class="badge">予約</span><h3>簡易予約・受付</h3><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p>①予約追加 → ②来店 → ③完了まで進める。</p><span class="go">デモを開く →</span></a>
         <a class="demo" href="demo-inventory.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">在庫</span></div><span class="badge">在庫</span><h3>在庫・備品</h3><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p>①＋／−で増減 → ②要発注を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
         <a class="demo" href="demo-kondate/"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">献立</span></div><span class="badge">献立</span><h3>わたらぼクッキング</h3><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p>下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
         <a class="demo" href="demo-diet.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">減量</span></div><span class="badge">減量</span><h3>わたらぼダイエットアプリ</h3><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p>①ホーム → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
