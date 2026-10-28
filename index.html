@@ -36,10 +36,31 @@ footer{padding:45px 0}.footerline{display:flex;justify-content:space-between;ali
 a:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
 @media(max-width:850px){.hero{grid-template-columns:1fr;gap:65px;padding-top:55px;min-height:0}.visual{width:100%;max-width:550px;margin:auto}.grid4{grid-template-columns:repeat(2,1fr)}.grid3,.demos{grid-template-columns:1fr}.contact{padding:45px}}
 @media(max-width:550px){nav,.wrap{padding-left:20px;padding-right:20px}.logo{font-size:22px}.navlinks a:not(.chip){display:none}.chip{padding:9px 13px;font-size:11px}h1{font-size:clamp(38px,10vw,55px);letter-spacing:-2px}.hero{gap:48px;padding-bottom:77px}.visual{min-height:330px;box-shadow:10px 12px #e5eee8}.mock{height:224px}.inside{padding:19px}.inside strong{font-size:23px}.shape{height:60px;width:71px;font-size:30px}.sticker{font-size:12px;bottom:17px}.section{padding:65px 0}.grid4{grid-template-columns:1fr}.service{min-height:0}.contact{padding:37px 27px}.footerline{flex-direction:column;align-items:start}}
+
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.price-card{background:var(--cream);border:1px solid #ebede7;border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;min-height:100%;transition:.2s}.price-card:hover{transform:translateY(-4px)}
+.price-card .badge{display:inline-block;align-self:flex-start;background:var(--teal);border-radius:99px;padding:5px 12px;font-size:11px;font-weight:800;margin-bottom:14px}
+.price-card:nth-child(2) .badge{background:#ffe5d5}
+.price-card:nth-child(3) .badge{background:#e7e7fa}
+.price-card h3{font-size:18px;margin:0 0 16px;line-height:1.45}
+.price-compare{display:grid;gap:12px;margin-bottom:16px}
+.price-row{border-radius:14px;padding:14px 16px}
+.price-row.market{background:#f3f5f1;border:1px solid #e8ebe6}
+.price-row.ours{background:#eef7f3;border:1px solid #c9ded5}
+.price-row .label{display:block;font-size:11px;font-weight:800;letter-spacing:.4px;color:var(--muted);margin-bottom:4px}
+.price-row.ours .label{color:#3d7a68}
+.price-row .amount{font-size:20px;font-weight:900;letter-spacing:-.5px;line-height:1.3}
+.price-row.ours .amount{color:#1f5c4a}
+.price-row .hint{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.price-card .blurb{font-size:13px;color:var(--muted);margin:0;flex:1}
+.price-note{margin-top:22px;font-size:13px;color:var(--muted);background:var(--cream);border:1px solid #ebede7;border-radius:14px;padding:16px 18px}
+.price-note ul{margin:8px 0 0;padding-left:1.2em}
+.price-note li{margin-bottom:4px}
+@media(max-width:850px){.price-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header><nav aria-label="メインメニュー"><a href="#top" class="logo">WATA <span>LAB.</span><small>ワタラボ</small></a><div class="navlinks"><a href="#services">できること</a><a href="#demos">サンプル</a><a href="#examples">相談の例</a><a href="#flow">制作の流れ</a><a class="chip" href="#contact">相談する ↗</a></div></nav></header>
+<header><nav aria-label="メインメニュー"><a href="#top" class="logo">WATA <span>LAB.</span><small>ワタラボ</small></a><div class="navlinks"><a href="#services">できること</a><a href="#demos">サンプル</a><a href="#pricing">料金</a><a href="#examples">相談の例</a><a href="#flow">制作の流れ</a><a class="chip" href="#contact">相談する ↗</a></div></nav></header>
 <main id="top">
 <div class="wrap hero"><div><span class="tag">あなたの身近な、ものづくり相談室。</span><h1>「つくりたい」を、<br><em>いっしょに形に。</em></h1><p class="lead">ホームページも、ちょっと便利な仕組みも、あったら楽しいゲームも。<br>あなたの「こんなの作れたらいいな」を、じっくり聞かせてください。</p><div class="actions"><a class="btn" href="#contact">まずは相談してみる ↗</a><a class="btn secondary" href="#demos">サンプルを見る ↓</a></div></div><div class="visual" role="img" aria-label="ウェブサイトとアプリの制作をイメージしたイラスト"><div class="mock"><div class="bar"><i></i><i></i><i></i></div><div class="inside"><small>HELLO FROM WATA LAB</small><strong>アイデアが、<br>動き出す。</strong><div class="line"></div><div class="line short"></div><div class="shape">✦</div></div></div><div class="sticker">できた！</div></div></div>
 <section id="services" class="section white"><div class="wrap"><div class="intro"><span class="eyebrow">WHAT WE MAKE</span><h2>こんなことが、できます。</h2><p>難しい専門用語は必要ありません。「今の仕事をもう少しラクにしたい」「お店のサイトがほしい」など、普段の言葉で大丈夫です。もちろんパソコンでも使えるアプリです。スマホ・PCどちらからでも同じ画面で操作できます。</p></div><div class="grid4"><article class="service"><div class="icon" aria-hidden="true">▤</div><h3>ホームページ制作</h3><p>個人の活動、お店、教室などを紹介する、スマホでも見やすいホームページ。</p></article><article class="service"><div class="icon" aria-hidden="true">⚙</div><h3>業務の仕組みづくり</h3><p>表への入力、集計、記録の整理など、毎日の面倒を減らす小さな仕組み。</p></article><article class="service"><div class="icon" aria-hidden="true">▣</div><h3>アプリ制作</h3><p>予約・管理・記録など、使う人に合わせたシンプルで便利なアプリ。</p></article><article class="service"><div class="icon" aria-hidden="true">✦</div><h3>ゲーム制作</h3><p>みんなで楽しめるミニゲームや、イベントで使うオリジナルゲーム。</p></article></div></div></section>
@@ -58,7 +79,15 @@ a:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-of
 </div></section>
 <section id="examples" class="section white"><div class="wrap"><div class="intro"><span class="eyebrow">LET'S TALK</span><h2>たとえば、こんなご相談。</h2><p>ご依頼内容がまだ決まっていなくても大丈夫。やりたいことを一緒に整理していきます。</p></div><div class="grid3"><article class="case"><small>CASE 01</small><h3>お店や活動を紹介したい</h3><p>メニュー、営業時間、活動内容がすぐに伝わるホームページを考えます。</p></article><article class="case"><small>CASE 02</small><h3>毎月の集計をラクにしたい</h3><p>表の入力や転記など、繰り返し作業の手間を減らす方法を探します。</p></article><article class="case"><small>CASE 03</small><h3>オリジナルのものを作りたい</h3><p>「こんなアプリ、ゲームがあったら面白い」を小さく試すところから。</p></article></div></div></section>
 <section id="flow" class="section"><div class="wrap"><div class="intro"><span class="eyebrow">HOW IT WORKS</span><h2>ご相談から完成まで。</h2><p>初めての方も安心してお話しください。</p></div><div class="grid3"><div class="step"><small>STEP 01</small><h3>気軽に相談</h3><p>どんなものを作りたいか、困っていることを聞かせてください。</p></div><div class="step"><small>STEP 02</small><h3>内容と費用の確認</h3><p>できること、必要な期間、費用を確認してから進めます。</p></div><div class="step"><small>STEP 03</small><h3>制作・お渡し</h3><p>途中で仕上がりを確認いただきながら、一緒に完成を目指します。</p></div></div></div></section>
-<section class="section white"><div class="wrap faq"><div class="intro"><span class="eyebrow">FAQ</span><h2>よくあるご質問</h2></div><details><summary>まだイメージが固まっていないのですが？</summary><p>もちろん大丈夫です。どんなことで困っているか、まずはお聞かせください。</p></details><details><summary>小さな修正だけでもお願いできますか？</summary><p>内容によりますが、小さなご相談も歓迎です。対応可能かどうかお話を伺って確認します。</p></details><details><summary>費用はいくらかかりますか？</summary><p>内容や必要な作業によって異なります。制作を始める前に内容と費用をご案内します。</p></details></div></section>
+<section id="pricing" class="section white"><div class="wrap"><div class="intro"><span class="eyebrow">PRICING</span><h2>料金の目安</h2><p>個人のお店や、小さな現場向けの料金です。内容やページ数、必要な機能で変わるので、正式なお見積もりはご相談のあとにお伝えします。「よくある制作会社の目安」と「うちの目安」を並べてみました。</p></div>
+<div class="price-grid">
+<article class="price-card"><span class="badge">ホームページ</span><h3>お店・活動の紹介サイト</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">15〜40万円前後</span><span class="hint">ページ数や写真・デザインの作り込み次第</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">3〜8万円</span><span class="hint">ページ数・写真の量などで前後します</span></div></div><p class="blurb">メニューや営業時間、活動内容が伝わるシンプルなホームページ。スマホでも見やすく整えます。</p></article>
+<article class="price-card"><span class="badge">業務の仕組み</span><h3>給与計算・日報・予約など</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">20〜80万円前後</span><span class="hint">オーダーメイドの業務システムイメージ</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">5〜15万円</span><span class="hint">範囲による／表計算の代わりになる簡易アプリ</span></div></div><p class="blurb">毎日の入力・集計・記録をラクにする小さな仕組み。まずは必要なところだけ、小さく始められます。</p></article>
+<article class="price-card"><span class="badge">くらし・ゲーム</span><h3>くらし向けアプリ・ミニゲーム</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">数十万円〜</span><span class="hint">アプリやゲームの開発会社のイメージ</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">要相談</span><span class="hint">サンプルあり／小さく試すところから</span></div></div><p class="blurb">献立や記録アプリ、軽いパズルなど。「あったら嬉しい」を小さく形にします。内容を聞いてからご案内します。</p></article>
+</div>
+<div class="price-note"><strong>ご案内</strong><ul><li>表示はいずれも<strong>税別</strong>の目安です。</li><li>追加の改修や機能追加は、内容に応じて別途ご案内します。</li><li>相談だけでも大丈夫です。まずは気軽にお話しください（見積のご案内まで費用はかかりません）。</li></ul></div>
+</div></section>
+<section class="section white"><div class="wrap faq"><div class="intro"><span class="eyebrow">FAQ</span><h2>よくあるご質問</h2></div><details><summary>まだイメージが固まっていないのですが？</summary><p>もちろん大丈夫です。どんなことで困っているか、まずはお聞かせください。</p></details><details><summary>小さな修正だけでもお願いできますか？</summary><p>内容によりますが、小さなご相談も歓迎です。対応可能かどうかお話を伺って確認します。</p></details><details><summary>費用はいくらかかりますか？</summary><p>内容や必要な作業によって異なります。<a href="#pricing" style="color:#c46e51;font-weight:800;text-decoration:underline">料金の目安</a>もご覧ください。制作を始める前に、内容と費用をご案内します。</p></details></div></section>
 <section id="contact" class="section"><div class="wrap"><div class="contact"><span class="eyebrow">CONTACT</span><h2>まずは、話してみませんか？</h2><p>ちょっとしたアイデアでも、相談だけでも大歓迎。<br><strong>渡辺に気軽にご相談ください。</strong></p></div><p class="contact-note">※ お問い合わせ方法は公開前に設定します。現在は試作段階のため、連絡フォームを設けていません。</p></div></section>
 </main>
 <footer><div class="wrap footerline"><div><a href="#top" class="logo">WATA <span>LAB.</span><small>ワタラボ</small></a><p>あなたの身近な、ものづくり相談室。</p></div><small>© 2026 WATA LAB. All rights reserved.</small></div></footer>
