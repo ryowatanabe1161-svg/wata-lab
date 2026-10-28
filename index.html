@@ -6,118 +6,534 @@
 <meta name="description" content="WATA LAB（ワタラボ）は、個人・個人経営・小さな店や施設向けのものづくり相談室。ホームページ・業務の仕組み・アプリを、分かりやすい料金で。">
 <title>WATA LAB | つくりたいを、いっしょに形に。</title>
 <style>
-:root{--navy:#172b3e;--teal:#d7ebe5;--orange:#f58c65;--cream:#f7f6ef;--muted:#586677;--line:#e4e7e3}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--navy);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;line-height:1.8}a{text-decoration:none;color:inherit}
-.wrap{max-width:1120px;padding:0 26px;margin:auto}.eyebrow{font-size:12px;font-weight:800;color:#c46e51;letter-spacing:2.8px}
-header{position:sticky;top:0;z-index:9;background:#f7f6efec;border-bottom:1px solid #e9ebe6;backdrop-filter:blur(10px)}
-nav{max-width:1120px;margin:auto;padding:17px 26px;display:flex;justify-content:space-between;align-items:center;gap:18px}
-.logo{font-size:26px;line-height:1;font-weight:900;letter-spacing:-1.7px}.logo span{color:var(--orange)}.logo small{display:block;font-size:9px;letter-spacing:3px;margin-top:8px}
-.navlinks{display:flex;gap:25px;align-items:center;font-size:13px;font-weight:800}.navlinks a:hover{color:#c36d50}.chip{background:var(--navy);color:white!important;border-radius:50px;padding:11px 20px}
-.hero{display:grid;grid-template-columns:1fr .94fr;align-items:center;gap:60px;padding-top:75px;padding-bottom:100px;min-height:650px}
-.tag{display:inline-block;background:var(--teal);border-radius:99px;padding:7px 17px;font-size:12px;font-weight:800;letter-spacing:.6px}
-h1{font-size:clamp(41px,5.2vw,72px);letter-spacing:-3px;line-height:1.42;margin:24px 0 20px}h1 em{font-style:normal;position:relative;white-space:nowrap}h1 em:after{content:"";position:absolute;bottom:0;left:0;right:0;height:13px;background:#ffe0ab;z-index:-1}
-.lead{font-size:16px;color:var(--muted);max-width:500px}.actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:36px}
-.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:13px;padding:15px 25px;font-weight:900;font-size:14px;background:var(--orange);box-shadow:0 6px 0 #d97957;transition:.2s}.btn:hover{transform:translateY(3px);box-shadow:0 3px 0 #d97957}.btn.secondary{background:#fff;border:1px solid var(--line);box-shadow:none}
-.visual{min-height:440px;border-radius:28px;background:#cce7df;display:grid;place-items:center;position:relative;box-shadow:20px 22px 0 #e5eee8;overflow:hidden}.visual:before{content:"";position:absolute;right:-45px;top:-55px;width:170px;height:170px;background:#ffdea1;border-radius:50%}
-.mock{width:77%;height:280px;background:white;border:7px solid var(--navy);border-radius:16px;transform:rotate(-5deg);box-shadow:16px 16px #172b3e20;overflow:hidden}.bar{height:24px;background:var(--navy);display:flex;align-items:center;padding-left:12px;gap:5px}.bar i{display:block;width:7px;height:7px;border-radius:50%;background:#fff}.inside{padding:28px 24px}.inside small{font-weight:900;letter-spacing:1px}.inside strong{display:block;font-size:30px;line-height:1.45;margin:12px 0 18px}.line{height:8px;background:#d7e3de;border-radius:20px;width:73%;margin-bottom:10px}.line.short{width:55%}.shape{position:absolute;bottom:26px;right:27px;background:#ffdfab;width:92px;height:82px;border-radius:12px;display:grid;place-items:center;font-size:40px}.sticker{position:absolute;right:0;bottom:30px;background:var(--orange);border:4px solid white;border-radius:12px;padding:9px 15px;transform:rotate(7deg);font-weight:900}
-.section{padding:95px 0}.white{background:#fff}.intro{max-width:770px;margin-bottom:40px}.intro h2{font-size:clamp(31px,3.6vw,45px);line-height:1.4;letter-spacing:-1.4px;margin:10px 0 17px}.intro p{font-size:15px;color:var(--muted)}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.service{background:var(--cream);border:1px solid #ebede7;border-radius:18px;padding:27px 23px;min-height:270px;transition:.2s}.service:hover{transform:translateY(-5px)}.icon{width:60px;height:60px;border-radius:17px;background:var(--teal);display:grid;place-items:center;font-size:29px}.service:nth-child(2) .icon{background:#ffe5d5}.service:nth-child(3) .icon{background:#e7e7fa}.service:nth-child(4) .icon{background:#ffebbc}.service h3{font-size:18px;margin:22px 0 10px}.service p{font-size:13px;color:var(--muted);margin:0}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.case{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;min-height:205px}.case small{color:#c67559;font-weight:900;letter-spacing:2px}.case h3{font-size:19px;line-height:1.5}.case p{font-size:14px;color:var(--muted)}
-.demos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.demo{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 22px;min-height:180px;box-shadow:0 1px 0 #edf0eb;transition:.2s}.demo:hover{transform:translateY(-4px);border-color:#c9ded5}
-.demo .badge{display:inline-block;align-self:flex-start;background:var(--teal);border-radius:99px;padding:5px 12px;font-size:11px;font-weight:800;margin-bottom:14px}
-.demo:nth-child(2) .badge{background:#ffe5d5}.demo:nth-child(3) .badge{background:#e7e7fa}.demo:nth-child(4) .badge{background:#ffebbc}.demo:nth-child(5) .badge{background:#d9ebe3}.demo:nth-child(6) .badge{background:#ffe5d5}.demo:nth-child(7) .badge{background:#e7e7fa}.demo:nth-child(8) .badge{background:#ffebbc}
-.demo h3{font-size:18px;margin:0 0 10px}.demo p{font-size:13px;color:var(--muted);margin:0 0 18px;flex:1}.demo .go{font-size:13px;font-weight:900;color:#c46e51}
-.demo-note{margin-top:22px;font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-.step{border-top:3px solid #c9ded5;padding:22px 5px}.step small{font-weight:900;color:#c67559}.step h3{font-size:21px;margin:7px 0}.step p{color:var(--muted);font-size:14px}
-.faq{max-width:830px}.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;padding:17px 21px}.faq summary{cursor:pointer;font-weight:800}.faq p{font-size:14px;color:var(--muted)}
-.contact{background:var(--navy);border-radius:26px;color:#fff;padding:65px 70px}.contact h2{font-size:clamp(31px,4.3vw,48px);letter-spacing:-1.2px;line-height:1.4;margin:13px 0}.contact p{color:#d1dae0;font-size:15px}.contact strong{color:#fff}.contact .eyebrow{color:#ffb89a}.contact-note{font-size:12px;color:var(--muted);margin-top:13px}.line-box{display:flex;flex-wrap:wrap;align-items:center;gap:28px;margin-top:30px}.line-btn{display:inline-block;background:#ff7a45;color:#fff;font-weight:700;font-size:16px;padding:16px 28px;border-radius:999px;text-decoration:none;box-shadow:0 6px 0 #c9542a}.line-btn:hover{background:#ff8c5c}.qr-card{background:#fff;border-radius:18px;padding:14px;text-align:center;color:#333}.qr-card img{display:block;width:160px;height:160px}.qr-card small{display:block;margin-top:8px;font-size:11px;color:#555;max-width:160px}
-footer{padding:45px 0}.footerline{display:flex;justify-content:space-between;align-items:end;border-top:1px solid #dce1dc;padding-top:27px;gap:24px}footer p,footer small{font-size:12px;color:var(--muted)}
-a:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
-@media(max-width:850px){.hero{grid-template-columns:1fr;gap:65px;padding-top:55px;min-height:0}.visual{width:100%;max-width:550px;margin:auto}.grid4{grid-template-columns:repeat(2,1fr)}.grid3,.demos{grid-template-columns:1fr}.contact{padding:45px}}
-@media(max-width:550px){nav,.wrap{padding-left:20px;padding-right:20px}.logo{font-size:22px}.navlinks a:not(.chip){display:none}.chip{padding:9px 13px;font-size:11px}h1{font-size:clamp(38px,10vw,55px);letter-spacing:-2px}.hero{gap:48px;padding-bottom:77px}.visual{min-height:330px;box-shadow:10px 12px #e5eee8}.mock{height:224px}.inside{padding:19px}.inside strong{font-size:23px}.shape{height:60px;width:71px;font-size:30px}.sticker{font-size:12px;bottom:17px}.section{padding:65px 0}.grid4{grid-template-columns:1fr}.service{min-height:0}.contact{padding:37px 27px}.footerline{flex-direction:column;align-items:start}}
+:root{
+  --navy:#172b3e;
+  --teal:#d7ebe5;
+  --orange:#f58c65;
+  --cream:#f7f6ef;
+  --muted:#586677;
+  --line:#e4e7e3;
+  --soft:#edf0eb;
+  --card-shadow:0 1px 0 #edf0eb, 0 8px 24px -18px rgba(23,43,62,.28);
+  --card-shadow-hover:0 14px 28px -16px rgba(23,43,62,.22);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--navy);
+  font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1120px;padding:0 26px;margin:auto}
+.eyebrow{
+  font-size:11px;
+  font-weight:800;
+  color:#c46e51;
+  letter-spacing:2.6px;
+  display:inline-block;
+}
+header{
+  position:sticky;top:0;z-index:9;
+  background:rgba(247,246,239,.92);
+  border-bottom:1px solid #e9ebe6;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+nav{
+  max-width:1120px;margin:auto;
+  padding:15px 26px;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+.logo{font-size:25px;line-height:1;font-weight:900;letter-spacing:-1.5px}
+.logo span{color:var(--orange)}
+.logo small{display:block;font-size:9px;letter-spacing:3px;margin-top:7px;color:var(--muted);font-weight:800}
+.navlinks{display:flex;gap:18px;align-items:center;font-size:13px;font-weight:800;flex-wrap:wrap;justify-content:flex-end}
+.navlinks a{opacity:.92;transition:color .15s,opacity .15s}
+.navlinks a:hover{color:#c36d50;opacity:1}
+.chip{
+  background:var(--navy);color:white!important;border-radius:50px;
+  padding:10px 18px;opacity:1!important;
+  box-shadow:0 4px 0 #0f1c29;transition:transform .15s,box-shadow .15s;
+}
+.chip:hover{color:#fff!important;transform:translateY(2px);box-shadow:0 2px 0 #0f1c29}
 
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.price-card{background:var(--cream);border:1px solid #ebede7;border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;min-height:100%;transition:.2s}.price-card:hover{transform:translateY(-4px)}
-.price-card .badge{display:inline-block;align-self:flex-start;background:var(--teal);border-radius:99px;padding:5px 12px;font-size:11px;font-weight:800;margin-bottom:14px}
-.price-card:nth-child(2) .badge{background:#ffe5d5}
-.price-card:nth-child(3) .badge{background:#e7e7fa}
-.price-card h3{font-size:18px;margin:0 0 16px;line-height:1.45}
-.price-compare{display:grid;gap:12px;margin-bottom:16px}
-.price-row{border-radius:14px;padding:14px 16px}
-.price-row.market{background:#f3f5f1;border:1px solid #e8ebe6}
-.price-row.ours{background:#eef7f3;border:1px solid #c9ded5}
-.price-row .label{display:block;font-size:11px;font-weight:800;letter-spacing:.4px;color:var(--muted);margin-bottom:4px}
-.price-row.ours .label{color:#3d7a68}
-.price-row .amount{font-size:20px;font-weight:900;letter-spacing:-.5px;line-height:1.3}
-.price-row.ours .amount{color:#1f5c4a}
-.price-row .hint{display:block;font-size:12px;color:var(--muted);margin-top:4px}
-.price-card .blurb{font-size:13px;color:var(--muted);margin:0;flex:1}
-.price-note{margin-top:22px;font-size:13px;color:var(--muted);background:var(--cream);border:1px solid #ebede7;border-radius:14px;padding:16px 18px}
-.price-note ul{margin:8px 0 0;padding-left:1.2em}
-.price-note li{margin-bottom:4px}
+/* Hero */
+.hero{
+  display:grid;grid-template-columns:1.05fr .95fr;align-items:center;
+  gap:56px;padding-top:72px;padding-bottom:96px;min-height:640px;
+}
+.tag{
+  display:inline-block;background:var(--teal);border-radius:99px;
+  padding:8px 16px;font-size:12px;font-weight:800;letter-spacing:.5px;
+  border:1px solid #c9ded5;
+}
+h1{
+  font-size:clamp(40px,5vw,68px);
+  letter-spacing:-2.6px;line-height:1.38;
+  margin:22px 0 18px;
+}
+h1 em{font-style:normal;position:relative;white-space:nowrap}
+h1 em:after{
+  content:"";position:absolute;bottom:2px;left:-2px;right:-2px;
+  height:12px;background:#ffe0ab;z-index:-1;border-radius:4px;
+}
+.lead{font-size:16px;color:var(--muted);max-width:520px;line-height:1.85}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:14px;padding:15px 24px;font-weight:900;font-size:14px;
+  background:var(--orange);box-shadow:0 6px 0 #d97957;transition:.18s;
+}
+.btn:hover{transform:translateY(3px);box-shadow:0 3px 0 #d97957}
+.btn.secondary{
+  background:#fff;border:1px solid var(--line);box-shadow:0 4px 0 #e4e7e3;
+}
+.btn.secondary:hover{box-shadow:0 2px 0 #e4e7e3}
 
-.demo .for{font-size:12px;font-weight:800;color:#3d7a68;background:#eef7f3;border:1px solid #c9ded5;border-radius:10px;padding:8px 10px;margin:0 0 12px;line-height:1.45}
-.demo p{margin-bottom:12px}
-.price-card .incl{list-style:none;margin:14px 0 0;padding:0;font-size:12px;color:var(--muted);border-top:1px dashed #dce3de;padding-top:12px}
-.price-card .incl li{margin-bottom:6px;line-height:1.5}
-.price-card .incl strong{color:var(--navy)}
-@media(max-width:850px){.price-grid{grid-template-columns:1fr}}
+.visual{
+  min-height:430px;border-radius:28px;background:linear-gradient(160deg,#cce7df 0%,#d9efe8 55%,#c5e2d8 100%);
+  display:grid;place-items:center;position:relative;
+  box-shadow:18px 20px 0 #e5eee8;overflow:hidden;
+}
+.visual:before{
+  content:"";position:absolute;right:-40px;top:-50px;
+  width:160px;height:160px;background:#ffdea1;border-radius:50%;
+  opacity:.95;
+}
+.visual:after{
+  content:"";position:absolute;left:-30px;bottom:-40px;
+  width:110px;height:110px;background:#fff6;border-radius:50%;
+}
+.mock{
+  width:76%;height:278px;background:white;
+  border:6px solid var(--navy);border-radius:16px;
+  transform:rotate(-4.5deg);
+  box-shadow:14px 16px rgba(23,43,62,.12);
+  overflow:hidden;position:relative;z-index:1;
+}
+.bar{height:24px;background:var(--navy);display:flex;align-items:center;padding-left:12px;gap:5px}
+.bar i{display:block;width:7px;height:7px;border-radius:50%;background:#fff;opacity:.9}
+.inside{padding:26px 24px}
+.inside small{font-weight:900;letter-spacing:1.2px;font-size:11px;color:var(--muted)}
+.inside strong{display:block;font-size:28px;line-height:1.4;margin:12px 0 16px;letter-spacing:-.8px}
+.line{height:8px;background:#d7e3de;border-radius:20px;width:73%;margin-bottom:10px}
+.line.short{width:52%}
+.shape{
+  position:absolute;bottom:24px;right:24px;background:#ffdfab;
+  width:88px;height:78px;border-radius:14px;display:grid;place-items:center;
+  font-size:36px;box-shadow:0 4px 0 #efc98a;
+}
+.sticker{
+  position:absolute;right:14px;bottom:28px;z-index:2;
+  background:var(--orange);color:#fff;border:4px solid white;border-radius:14px;
+  padding:10px 16px;transform:rotate(6deg);font-weight:900;font-size:14px;
+  box-shadow:0 8px 18px -10px rgba(23,43,62,.45);
+}
 
+/* Sections */
+.section{padding:88px 0}
+.white{background:#fff}
+.intro{max-width:760px;margin-bottom:36px}
+.intro h2{
+  font-size:clamp(30px,3.5vw,42px);line-height:1.38;
+  letter-spacing:-1.2px;margin:10px 0 14px;
+}
+.intro p{font-size:15px;color:var(--muted);margin:0;line-height:1.85}
+
+/* Shared cards */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.service{
+  background:var(--cream);border:1px solid #ebede7;border-radius:var(--radius);
+  padding:26px 22px;min-height:260px;
+  box-shadow:var(--card-shadow);transition:transform .18s,box-shadow .18s,border-color .18s;
+}
+.service:hover{transform:translateY(-4px);box-shadow:var(--card-shadow-hover);border-color:#d5e4de}
+.icon{
+  width:56px;height:56px;border-radius:16px;background:var(--teal);
+  display:grid;place-items:center;font-size:26px;
+}
+.service:nth-child(2) .icon{background:#ffe5d5}
+.service:nth-child(3) .icon{background:#e7e7fa}
+.service:nth-child(4) .icon{background:#ffebbc}
+.service h3{font-size:17px;margin:18px 0 8px;letter-spacing:-.2px}
+.service p{font-size:13px;color:var(--muted);margin:0;line-height:1.7}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.case{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 24px;min-height:200px;
+  box-shadow:var(--card-shadow);transition:transform .18s,box-shadow .18s;
+}
+.case:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-hover)}
+.case small{color:#c67559;font-weight:900;letter-spacing:2px;font-size:11px}
+.case h3{font-size:18px;line-height:1.45;margin:10px 0 8px;letter-spacing:-.2px}
+.case p{font-size:14px;color:var(--muted);margin:0;line-height:1.75}
+
+/* Experience */
 .exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.exp{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 20px;display:flex;flex-direction:column;min-height:0;box-shadow:0 1px 0 #edf0eb}
-.exp .badge{display:inline-block;align-self:flex-start;border-radius:99px;padding:5px 12px;font-size:11px;font-weight:800;margin-bottom:12px;background:var(--teal)}
+.exp{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 20px;display:flex;flex-direction:column;min-height:0;
+  box-shadow:var(--card-shadow);transition:transform .18s,box-shadow .18s,border-color .18s;
+}
+.exp:hover{transform:translateY(-4px);box-shadow:var(--card-shadow-hover);border-color:#c9ded5}
+.exp .badge,.demo .badge,.price-card .badge{
+  display:inline-block;align-self:flex-start;border-radius:99px;
+  padding:5px 12px;font-size:11px;font-weight:800;margin-bottom:12px;background:var(--teal);
+}
 .exp:nth-child(2) .badge{background:#d9ebe3}
 .exp:nth-child(3) .badge{background:#ffe5d5}
 .exp:nth-child(4) .badge{background:#e7e7fa}
-.exp h3{font-size:17px;margin:0 0 10px;line-height:1.45}
+.exp h3{font-size:16px;margin:0 0 8px;line-height:1.45;letter-spacing:-.2px}
 .exp p{font-size:13px;color:var(--muted);margin:0;flex:1;line-height:1.7}
-.exp-note{margin-top:20px;font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-@media(max-width:850px){.exp-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:550px){.exp-grid{grid-template-columns:1fr}}
+.exp-note,.demo-note,.price-note{
+  margin-top:20px;font-size:13px;color:var(--muted);
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 17px;line-height:1.7;
+}
+.section.white .price-note,.section.white .demo-note{background:var(--cream);border-color:#ebede7}
+.linkish{color:#c46e51;font-weight:800;text-decoration:underline;text-underline-offset:2px}
+
+/* Demos */
+.demos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.demo{
+  display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px 20px;min-height:178px;
+  box-shadow:var(--card-shadow);transition:transform .18s,box-shadow .18s,border-color .18s;
+}
+.demo:hover{transform:translateY(-4px);box-shadow:var(--card-shadow-hover);border-color:#c9ded5}
+.demo:nth-child(2) .badge{background:#ffe5d5}
+.demo:nth-child(3) .badge{background:#e7e7fa}
+.demo:nth-child(4) .badge{background:#ffebbc}
+.demo:nth-child(5) .badge{background:#d9ebe3}
+.demo:nth-child(6) .badge{background:#ffe5d5}
+.demo:nth-child(7) .badge{background:#e7e7fa}
+.demo:nth-child(8) .badge{background:#ffebbc}
+.demo:nth-child(9) .badge{background:#d9ebe3}
+.demo h3{font-size:17px;margin:0 0 8px;letter-spacing:-.2px}
+.demo .for{
+  font-size:12px;font-weight:800;color:#3d7a68;background:#eef7f3;
+  border:1px solid #c9ded5;border-radius:10px;padding:8px 10px;margin:0 0 10px;line-height:1.45;
+}
+.demo p{font-size:13px;color:var(--muted);margin:0 0 14px;flex:1;line-height:1.65}
+.demo .go{font-size:13px;font-weight:900;color:#c46e51}
+
+/* Flow */
+.step{
+  border-top:3px solid #c9ded5;padding:20px 4px 8px;
+  transition:border-color .18s;
+}
+.step:hover{border-top-color:var(--orange)}
+.step small{font-weight:900;color:#c67559;font-size:11px;letter-spacing:1px}
+.step h3{font-size:20px;margin:6px 0 8px;letter-spacing:-.3px}
+.step p{color:var(--muted);font-size:14px;margin:0;line-height:1.75}
+
+/* Pricing */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.price-card{
+  background:var(--cream);border:1px solid #ebede7;border-radius:var(--radius);
+  padding:26px 22px;display:flex;flex-direction:column;min-height:100%;
+  box-shadow:var(--card-shadow);transition:transform .18s,box-shadow .18s;
+}
+.price-card:hover{transform:translateY(-4px);box-shadow:var(--card-shadow-hover)}
+.price-card:nth-child(2) .badge{background:#ffe5d5}
+.price-card:nth-child(3) .badge{background:#e7e7fa}
+.price-card h3{font-size:17px;margin:0 0 14px;line-height:1.45;letter-spacing:-.2px}
+.price-compare{display:grid;gap:10px;margin-bottom:14px}
+.price-row{border-radius:14px;padding:13px 15px}
+.price-row.market{background:#f3f5f1;border:1px solid #e8ebe6}
+.price-row.ours{background:#eef7f3;border:1px solid #c9ded5}
+.price-row .label{display:block;font-size:11px;font-weight:800;letter-spacing:.4px;color:var(--muted);margin-bottom:3px}
+.price-row.ours .label{color:#3d7a68}
+.price-row .amount{font-size:20px;font-weight:900;letter-spacing:-.5px;line-height:1.3}
+.price-row.ours .amount{color:#1f5c4a}
+.price-row .hint{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+.price-card .blurb{font-size:13px;color:var(--muted);margin:0;flex:1;line-height:1.7}
+.price-note ul{margin:8px 0 0;padding-left:1.2em}
+.price-note li{margin-bottom:4px}
+.price-card .incl{
+  list-style:none;margin:14px 0 0;padding:0;font-size:12px;color:var(--muted);
+  border-top:1px dashed #dce3de;padding-top:12px;
+}
+.price-card .incl li{margin-bottom:6px;line-height:1.5}
+.price-card .incl strong{color:var(--navy)}
+
+/* FAQ */
+.faq{max-width:830px}
+.faq details{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin-bottom:10px;padding:16px 20px;
+  box-shadow:var(--card-shadow);transition:border-color .15s;
+}
+.faq details[open]{border-color:#c9ded5}
+.faq summary{cursor:pointer;font-weight:800;line-height:1.5}
+.faq p{font-size:14px;color:var(--muted);margin:10px 0 0;line-height:1.75}
+.section.white .faq details{background:var(--cream);border-color:#ebede7}
+
+/* Contact */
+.contact{
+  background:linear-gradient(155deg,#172b3e 0%,#1d364c 55%,#203a4f 100%);
+  border-radius:26px;color:#fff;padding:56px 60px;
+  box-shadow:0 18px 40px -28px rgba(23,43,62,.55);
+}
+.contact h2{
+  font-size:clamp(28px,4vw,44px);letter-spacing:-1px;line-height:1.35;margin:12px 0 12px;
+}
+.contact p{color:#d1dae0;font-size:15px;margin:0;line-height:1.8}
+.contact strong{color:#fff}
+.contact .eyebrow{color:#ffb89a}
+.contact-note{font-size:12px;color:var(--muted);margin-top:14px}
+.line-box{display:flex;flex-wrap:wrap;align-items:center;gap:24px;margin-top:28px}
+.line-btn{
+  display:inline-block;background:#ff7a45;color:#fff;font-weight:800;font-size:15px;
+  padding:15px 26px;border-radius:999px;text-decoration:none;
+  box-shadow:0 6px 0 #c9542a;transition:transform .15s,box-shadow .15s,background .15s;
+}
+.line-btn:hover{background:#ff8c5c;transform:translateY(2px);box-shadow:0 4px 0 #c9542a}
+.qr-card{
+  background:#fff;border-radius:16px;padding:12px;text-align:center;color:#333;
+  box-shadow:0 8px 20px -14px rgba(0,0,0,.35);
+}
+.qr-card img{display:block;width:148px;height:148px;border-radius:8px}
+.qr-card small{display:block;margin-top:8px;font-size:11px;color:#555;max-width:148px;line-height:1.45;margin-left:auto;margin-right:auto}
+.contact-hint{display:inline-block;margin-top:10px;color:#ffb89a;font-weight:800}
+
+footer{padding:40px 0 48px}
+.footerline{
+  display:flex;justify-content:space-between;align-items:end;
+  border-top:1px solid #dce1dc;padding-top:24px;gap:24px;
+}
+footer p,footer small{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.6}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
+
+@media(max-width:980px){
+  .navlinks a.nav-hide{display:none}
+  .navlinks{gap:14px}
+}
+@media(max-width:850px){
+  .hero{grid-template-columns:1fr;gap:48px;padding-top:48px;min-height:0;padding-bottom:72px}
+  .visual{width:100%;max-width:520px;margin:auto}
+  .grid4{grid-template-columns:repeat(2,1fr)}
+  .grid3,.demos,.price-grid{grid-template-columns:1fr}
+  .exp-grid{grid-template-columns:repeat(2,1fr)}
+  .contact{padding:40px 32px}
+  .section{padding:72px 0}
+}
+@media(max-width:550px){
+  nav,.wrap{padding-left:18px;padding-right:18px}
+  nav{padding-top:13px;padding-bottom:13px}
+  .logo{font-size:21px}
+  .navlinks a:not(.chip){display:none}
+  .chip{padding:9px 14px;font-size:12px}
+  h1{font-size:clamp(34px,9.5vw,48px);letter-spacing:-1.8px}
+  .hero{gap:40px;padding-bottom:64px;padding-top:40px}
+  .visual{min-height:300px;box-shadow:10px 12px #e5eee8;border-radius:22px}
+  .mock{height:210px;width:82%}
+  .inside{padding:18px}
+  .inside strong{font-size:22px}
+  .shape{height:58px;width:68px;font-size:28px;bottom:18px;right:18px}
+  .sticker{font-size:12px;bottom:16px;right:10px;padding:8px 12px}
+  .section{padding:56px 0}
+  .intro{margin-bottom:28px}
+  .grid4,.exp-grid{grid-template-columns:1fr}
+  .service,.case,.demo,.exp,.price-card{min-height:0}
+  .contact{padding:32px 22px;border-radius:22px}
+  .line-box{gap:18px}
+  .footerline{flex-direction:column;align-items:flex-start}
+}
+
+.section.white .demo,.section.white .exp{background:var(--cream);border-color:#ebede7}
+.section.white .demo-note,.section.white .exp-note{background:var(--cream);border-color:#ebede7}
 </style>
 </head>
 <body>
-<header><nav aria-label="メインメニュー"><a href="#top" class="logo">WATA <span>LAB.</span><small>ワタラボ</small></a><div class="navlinks"><a href="#services">できること</a><a href="#experience">制作経験</a><a href="#demos">サンプル</a><a href="#pricing">料金</a><a href="#examples">こんな相談</a><a href="#flow">制作の流れ</a><a class="chip" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINE ↗</a></div></nav></header>
+<header>
+  <nav aria-label="メインメニュー">
+    <a href="#top" class="logo">WATA <span>LAB.</span><small>ワタラボ</small></a>
+    <div class="navlinks">
+      <a href="#services">できること</a>
+      <a href="#experience">制作経験</a>
+      <a href="#demos">サンプル</a>
+      <a href="#pricing">料金</a>
+      <a class="nav-hide" href="#examples">こんな相談</a>
+      <a class="nav-hide" href="#flow">制作の流れ</a>
+      <a class="chip" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINE ↗</a>
+    </div>
+  </nav>
+</header>
 <main id="top">
-<div class="wrap hero"><div><span class="tag">個人・個人経営・小さな店や施設向け</span><h1>「つくりたい」を、<br><em>いっしょに形に。</em></h1><p class="lead">美容院・教室・飲食など、ひとりや少人数でやっているお店・施設の手助けになります。<br>ホームページも、毎日の集計・予約・シフトも。「こんなのあったらいいな」を、分かりやすい料金で形にします。</p><div class="actions"><a class="btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する ↗</a><a class="btn secondary" href="#demos">サンプルを見る ↓</a></div></div><div class="visual" role="img" aria-label="ウェブサイトとアプリの制作をイメージしたイラスト"><div class="mock"><div class="bar"><i></i><i></i><i></i></div><div class="inside"><small>HELLO FROM WATA LAB</small><strong>アイデアが、<br>動き出す。</strong><div class="line"></div><div class="line short"></div><div class="shape">✦</div></div></div><div class="sticker">できた！</div></div></div>
-<section id="services" class="section white"><div class="wrap"><div class="intro"><span class="eyebrow">WHAT WE MAKE</span><h2>こんなことが、できます。</h2><p>対象は、個人・個人経営・小さな教室やお店・施設です。難しい専門用語は不要。「サイトがほしい」「予約や給与の手間を減らしたい」など、普段の言葉で大丈夫。スマホでもPCでも同じ画面で使えます。</p></div><div class="grid4"><article class="service"><div class="icon" aria-hidden="true">▤</div><h3>ホームページ制作</h3><p>個人店・教室・小さな施設の紹介サイト。メニュー・営業時間・予約導線まで、スマホで見やすく。</p></article><article class="service"><div class="icon" aria-hidden="true">⚙</div><h3>業務の仕組みづくり</h3><p>日報や月報、記録の管理、予定表、Excelの集計や変換など。現場の流れを大切にしながら、小さな仕組みに。</p></article><article class="service"><div class="icon" aria-hidden="true">▣</div><h3>アプリ制作</h3><p>予約受付・店舗チャット・記録アプリなど。少人数の現場で毎日使えるシンプルな形に。</p></article><article class="service"><div class="icon" aria-hidden="true">✦</div><h3>ゲーム制作</h3><p>待ち時間やイベント向けのミニゲーム。説明なしで触れる、軽く遊べるものを。</p></article></div></div></section>
+  <div class="wrap hero">
+    <div>
+      <span class="tag">個人・個人経営・小さな店や施設向け</span>
+      <h1>「つくりたい」を、<br><em>いっしょに形に。</em></h1>
+      <p class="lead">美容院・教室・飲食など、ひとりや少人数でやっているお店・施設の手助けになります。<br>ホームページも、毎日の集計・予約・シフトも。「こんなのあったらいいな」を、分かりやすい料金で形にします。</p>
+      <div class="actions">
+        <a class="btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する ↗</a>
+        <a class="btn secondary" href="#demos">サンプルを見る ↓</a>
+      </div>
+    </div>
+    <div class="visual" role="img" aria-label="ウェブサイトとアプリの制作をイメージしたイラスト">
+      <div class="mock">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div class="inside">
+          <small>HELLO FROM WATA LAB</small>
+          <strong>アイデアが、<br>動き出す。</strong>
+          <div class="line"></div>
+          <div class="line short"></div>
+          <div class="shape">✦</div>
+        </div>
+      </div>
+      <div class="sticker">できた！</div>
+    </div>
+  </div>
 
-<section id="experience" class="section"><div class="wrap"><div class="intro"><span class="eyebrow">EXPERIENCE</span><h2>制作経験</h2><p>毎日の仕事に合った、小さな仕組みづくり。現場で使う業務の流れを大切にしながら、使いやすい形を一緒に考えます。</p></div>
-<div class="exp-grid">
-<article class="exp"><span class="badge">実用化済み</span><h3>日報・月報の仕組み</h3><p>毎日の記録を月ごとのまとめ・報告につなぐ仕組み。現場で実用化。</p></article>
-<article class="exp"><span class="badge">実用化済み</span><h3>利用・活動記録の管理</h3><p>来所・帰宅・活動内容を入力・確認できるブラウザ型。現場で実用化（改修継続中）。</p></article>
-<article class="exp"><span class="badge">ほぼ完成</span><h3>予定・業務管理</h3><p>予定・担当・案内をまとめる業務手帳型。</p></article>
-<article class="exp"><span class="badge">開発・検証</span><h3>Excel日報の変換</h3><p>既存のExcelから記録を読み取り、テキスト化するツール。</p></article>
-</div>
-<p class="exp-note">いずれも<strong>現場での制作経験</strong>です。外部への納品社数の表記ではありません。触ってみられる見本は<a href="#demos" style="color:#c46e51;font-weight:800;text-decoration:underline">サンプル</a>へ。</p>
-</div></section>
-<section id="demos" class="section"><div class="wrap"><div class="intro"><span class="eyebrow">TRY THE DEMOS</span><h2>触ってみられるサンプル。</h2><p>個人店・教室・小さな施設を想定した見本です。各カードに「誰向け・何の困りごと」を書いてあります。開いたら上の案内どおりに触るとすぐ分かります。</p></div>
-<div class="demos">
-<a class="demo" href="part-time-payroll-demo.html"><span class="badge">給与</span><h3>パート給与の計算</h3><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p>①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
-<a class="demo" href="demo-daily-report.html"><span class="badge">日報</span><h3>日報・作業報告</h3><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p>①スタッフ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
-<a class="demo" href="demo-shift.html"><span class="badge">シフト</span><h3>シフト・希望休</h3><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p>①週を選ぶ → ②タップで切替 → ③メモコピー。</p><span class="go">デモを開く →</span></a>
-<a class="demo" href="demo-booking.html"><span class="badge">予約</span><h3>簡易予約・受付</h3><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p>①予約追加 → ②来店 → ③完了まで進める。</p><span class="go">デモを開く →</span></a>
-<a class="demo" href="demo-inventory.html"><span class="badge">在庫</span><h3>在庫・備品</h3><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p>①＋／−で増減 → ②要発注を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
-<a class="demo" href="demo-kondate/"><span class="badge">献立</span><h3>わたらぼクッキング</h3><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p>下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
-<a class="demo" href="demo-diet.html"><span class="badge">減量</span><h3>わたらぼダイエットアプリ</h3><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p>①ホーム → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
-<a class="demo" href="demo-smash.html"><span class="badge">ゲーム</span><h3>わたらぼスマッシュ</h3><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p>タップで壊す。コンボ・ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
-<a class="demo" href="demo-chatbot.html"><span class="badge">チャット</span><h3>店舗チャットボット見本</h3><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p>架空カフェ。①ボタン → ②返事。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
-</div>
-<p class="demo-note">各カードからデモが開けます。一覧は <a href="demo-index.html" style="color:#c46e51;font-weight:800;text-decoration:underline">サンプル一覧</a> からもどうぞ。</p>
-</div></section>
-<section id="examples" class="section white"><div class="wrap"><div class="intro"><span class="eyebrow">LET'S TALK</span><h2>こんな相談から、大丈夫です。</h2><p>個人店・教室・小さな施設の「ちょっと困っている」で構いません。内容がまだ決まっていなくても、一緒に整理します。</p></div><div class="grid3"><article class="case"><small>CASE 01</small><h3>お店のホームページがほしい</h3><p>美容院・教室・飲食など。メニュー・営業時間・アクセスがスマホですぐ伝わるページを。</p></article><article class="case"><small>CASE 02</small><h3>予約・給与・シフトが面倒</h3><p>電話メモや表計算、LINEのやり取りを、小さな仕組みにまとめたい、という相談が多いです。</p></article><article class="case"><small>CASE 03</small><h3>問い合わせ対応を減らしたい</h3><p>営業時間やメニューの定番質問に答えるチャットや、待ち時間向けのミニゲームなども。</p></article></div></div></section>
-<section id="flow" class="section"><div class="wrap"><div class="intro"><span class="eyebrow">HOW IT WORKS</span><h2>ご相談から完成まで。</h2><p>初めての方も安心してお話しください。</p></div><div class="grid3"><div class="step"><small>STEP 01</small><h3>気軽に相談</h3><p>どんなものを作りたいか、困っていることを聞かせてください。</p></div><div class="step"><small>STEP 02</small><h3>内容と費用の確認</h3><p>できること、必要な期間、費用を確認してから進めます。</p></div><div class="step"><small>STEP 03</small><h3>制作・お渡し</h3><p>途中で仕上がりを確認いただきながら、一緒に完成を目指します。</p></div></div></div></section>
-<section id="pricing" class="section white"><div class="wrap"><div class="intro"><span class="eyebrow">PRICING</span><h2>料金の目安</h2><p>個人店・教室・小さな施設向けの料金です。下は「よくある制作会社の目安」と「うちの目安」の比較。正式な金額は、内容を聞いたあとに見積でお伝えします（相談・見積までは無料）。</p></div>
-<div class="price-grid">
-<article class="price-card"><span class="badge">ホームページ</span><h3>お店・活動の紹介サイト</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">15〜40万円前後</span><span class="hint">ページ数や写真・デザインの作り込み次第</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">3〜8万円</span><span class="hint">ページ数・写真の量などで前後</span></div></div><p class="blurb">メニュー・営業時間・アクセスが伝わるシンプルなHP。スマホ対応つき。</p><ul class="incl"><li><strong>含む例</strong>：相談・構成・スマホ対応・公開まで・軽い文言修正</li><li><strong>含まない例</strong>：写真撮影・ドメイン／サーバー代・大幅な追加ページ</li></ul></article>
-<article class="price-card"><span class="badge">業務の仕組み</span><h3>給与・日報・予約など</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">20〜80万円前後</span><span class="hint">オーダーメイドの業務システムイメージ</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">5〜15万円</span><span class="hint">範囲による／表計算の代わりになる簡易アプリ</span></div></div><p class="blurb">毎日の入力・集計・記録をラクにする小さな仕組み。必要なところだけ小さく始められます。</p><ul class="incl"><li><strong>含む例</strong>：相談・画面づくり・使い方の簡単な案内・軽い修正</li><li><strong>含まない例</strong>：既存システムとの複雑な連携・大規模な会計ソフト接続</li></ul></article>
-<article class="price-card"><span class="badge">くらし・ゲーム</span><h3>くらし向けアプリ・ミニゲーム</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">数十万円〜</span><span class="hint">アプリやゲームの開発会社のイメージ</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">要相談</span><span class="hint">サンプルあり／小さく試すところから</span></div></div><p class="blurb">献立・記録アプリ、待ち時間向けミニゲームなど。内容を聞いてからご案内します。</p><ul class="incl"><li><strong>含む例</strong>：相談・試作の確認・公開しやすい形でのお渡し</li><li><strong>含まない例</strong>：アプリストア申請代行・大規模な課金機能（要相談）</li></ul></article>
-</div>
-<div class="price-note"><strong>見積の流れ・ご案内</strong><ul><li><strong>①相談（無料）</strong> → <strong>②範囲の確認</strong> → <strong>③見積（無料）</strong> → 合意してから制作。</li><li>表示はいずれも<strong>税別</strong>の目安です。正式金額は内容を聞いたあとに提示します。</li><li><strong>含む／含まない</strong>は上の例が基本。追加の改修や機能は別途ご案内します。</li><li>相談だけ・見積だけでも大丈夫です。<a href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener" style="color:#c46e51;font-weight:800;text-decoration:underline">公式LINE</a>へどうぞ。</li></ul></div>
-</div></section>
-<section id="faq" class="section white"><div class="wrap faq"><div class="intro"><span class="eyebrow">FAQ</span><h2>よくあるご質問</h2></div><details><summary>どんな人が相談していますか？</summary><p>個人・個人経営・小さな教室やお店・施設の方が中心です。美容院、飲食、教室、サロンなど。「大掛かりな会社向けシステム」より、現場で毎日使う小さな仕組みのご相談が多いです。</p></details><details><summary>まだイメージが固まっていないのですが？</summary><p>大丈夫です。「サイトがほしい」「予約が面倒」「給与計算がつらい」など、困りごとだけでも構いません。一緒に整理します。</p></details><details><summary>費用はいくらかかりますか？</summary><p><a href="#pricing" style="color:#c46e51;font-weight:800;text-decoration:underline">料金の目安</a>をご覧ください。相談・見積までは無料。制作に入る前に、含むもの／含まないものと金額をはっきりお伝えします。</p></details><details><summary>小さな修正だけでもお願いできますか？</summary><p>内容によりますが、小さなご相談も歓迎です。対応できるかはお話を聞いて確認します。</p></details><details><summary>職場で使ってきた仕組みですか？</summary><p>はい。現場での制作経験です。外部への納品社数の表記ではありません。</p></details><details><summary>サンプルと同じものを作れますか？</summary><p>見本をベースに、お店のやり方に合わせて作れます。まったく同じではなく、必要なところだけに絞ることもできます。</p></details></div></section>
-<section id="contact" class="section"><div class="wrap"><div class="contact"><span class="eyebrow">CONTACT</span><h2>個人店・教室の「ちょっと困った」から。</h2><p>相談だけ・見積だけでも大歓迎。サンプルを見て「うちでも使えそう」と思ったら、そのままどうぞ。<br><strong>渡辺に気軽にご相談ください。</strong><br><span style="display:inline-block;margin-top:10px;color:#ffb89a;font-weight:800">📩 連絡先は公式LINEです（相談・見積無料）</span></p><div class="line-box"><a class="line-btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する ↗</a><div class="qr-card"><img src="line-qr.png" alt="WATA LAB 公式LINEのQRコード" width="160" height="160" loading="lazy"><small>スマホならボタン、PCならQRでもOK</small></div></div></div><p class="contact-note">※ ご相談・お問い合わせは公式LINEで受け付けています。</p></div></section>
+  <section id="services" class="section white">
+    <div class="wrap">
+      <div class="intro">
+        <span class="eyebrow">WHAT WE MAKE</span>
+        <h2>こんなことが、できます。</h2>
+        <p>対象は、個人・個人経営・小さな教室やお店・施設です。難しい専門用語は不要。「サイトがほしい」「予約や給与の手間を減らしたい」など、普段の言葉で大丈夫。スマホでもPCでも同じ画面で使えます。</p>
+      </div>
+      <div class="grid4">
+        <article class="service"><div class="icon" aria-hidden="true">▤</div><h3>ホームページ制作</h3><p>個人店・教室・小さな施設の紹介サイト。メニュー・営業時間・予約導線まで、スマホで見やすく。</p></article>
+        <article class="service"><div class="icon" aria-hidden="true">⚙</div><h3>業務の仕組みづくり</h3><p>日報や月報、記録の管理、予定表、Excelの集計や変換など。現場の流れを大切にしながら、小さな仕組みに。</p></article>
+        <article class="service"><div class="icon" aria-hidden="true">▣</div><h3>アプリ制作</h3><p>予約受付・店舗チャット・記録アプリなど。少人数の現場で毎日使えるシンプルな形に。</p></article>
+        <article class="service"><div class="icon" aria-hidden="true">✦</div><h3>ゲーム制作</h3><p>待ち時間やイベント向けのミニゲーム。説明なしで触れる、軽く遊べるものを。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <div class="wrap">
+      <div class="intro">
+        <span class="eyebrow">EXPERIENCE</span>
+        <h2>制作経験</h2>
+        <p>毎日の仕事に合った、小さな仕組みづくり。現場で使う業務の流れを大切にしながら、使いやすい形を一緒に考えます。</p>
+      </div>
+      <div class="exp-grid">
+        <article class="exp"><span class="badge">実用化済み</span><h3>日報・月報の仕組み</h3><p>毎日の記録を月ごとのまとめ・報告につなぐ仕組み。現場で実用化。</p></article>
+        <article class="exp"><span class="badge">実用化済み</span><h3>利用・活動記録の管理</h3><p>来所・帰宅・活動内容を入力・確認できるブラウザ型。現場で実用化（改修継続中）。</p></article>
+        <article class="exp"><span class="badge">ほぼ完成</span><h3>予定・業務管理</h3><p>予定・担当・案内をまとめる業務手帳型。</p></article>
+        <article class="exp"><span class="badge">開発・検証</span><h3>Excel日報の変換</h3><p>既存のExcelから記録を読み取り、テキスト化するツール。</p></article>
+      </div>
+      <p class="exp-note">いずれも<strong>現場での制作経験</strong>です。外部への納品社数の表記ではありません。触ってみられる見本は<a class="linkish" href="#demos">サンプル</a>へ。</p>
+    </div>
+  </section>
+
+  <section id="demos" class="section white">
+    <div class="wrap">
+      <div class="intro">
+        <span class="eyebrow">TRY THE DEMOS</span>
+        <h2>触ってみられるサンプル。</h2>
+        <p>個人店・教室・小さな施設を想定した見本です。各カードに「誰向け・何の困りごと」を書いてあります。開いたら上の案内どおりに触るとすぐ分かります。</p>
+      </div>
+      <div class="demos">
+        <a class="demo" href="part-time-payroll-demo.html"><span class="badge">給与</span><h3>パート給与の計算</h3><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p>①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-daily-report.html"><span class="badge">日報</span><h3>日報・作業報告</h3><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p>①スタッフ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-shift.html"><span class="badge">シフト</span><h3>シフト・希望休</h3><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p>①週を選ぶ → ②タップで切替 → ③メモコピー。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-booking.html"><span class="badge">予約</span><h3>簡易予約・受付</h3><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p>①予約追加 → ②来店 → ③完了まで進める。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-inventory.html"><span class="badge">在庫</span><h3>在庫・備品</h3><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p>①＋／−で増減 → ②要発注を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-kondate/"><span class="badge">献立</span><h3>わたらぼクッキング</h3><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p>下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-diet.html"><span class="badge">減量</span><h3>わたらぼダイエットアプリ</h3><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p>①ホーム → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-smash.html"><span class="badge">ゲーム</span><h3>わたらぼスマッシュ</h3><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p>タップで壊す。コンボ・ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-chatbot.html"><span class="badge">チャット</span><h3>店舗チャットボット見本</h3><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p>架空カフェ。①ボタン → ②返事。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
+      </div>
+      <p class="demo-note">各カードからデモが開けます。一覧は <a class="linkish" href="demo-index.html">サンプル一覧</a> からもどうぞ。</p>
+    </div>
+  </section>
+
+  <section id="examples" class="section">
+    <div class="wrap">
+      <div class="intro">
+        <span class="eyebrow">LET'S TALK</span>
+        <h2>こんな相談から、大丈夫です。</h2>
+        <p>個人店・教室・小さな施設の「ちょっと困っている」で構いません。内容がまだ決まっていなくても、一緒に整理します。</p>
+      </div>
+      <div class="grid3">
+        <article class="case"><small>CASE 01</small><h3>お店のホームページがほしい</h3><p>美容院・教室・飲食など。メニュー・営業時間・アクセスがスマホですぐ伝わるページを。</p></article>
+        <article class="case"><small>CASE 02</small><h3>予約・給与・シフトが面倒</h3><p>電話メモや表計算、LINEのやり取りを、小さな仕組みにまとめたい、という相談が多いです。</p></article>
+        <article class="case"><small>CASE 03</small><h3>問い合わせ対応を減らしたい</h3><p>営業時間やメニューの定番質問に答えるチャットや、待ち時間向けのミニゲームなども。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="flow" class="section white">
+    <div class="wrap">
+      <div class="intro">
+        <span class="eyebrow">HOW IT WORKS</span>
+        <h2>ご相談から完成まで。</h2>
+        <p>初めての方も安心してお話しください。</p>
+      </div>
+      <div class="grid3">
+        <div class="step"><small>STEP 01</small><h3>気軽に相談</h3><p>どんなものを作りたいか、困っていることを聞かせてください。</p></div>
+        <div class="step"><small>STEP 02</small><h3>内容と費用の確認</h3><p>できること、必要な期間、費用を確認してから進めます。</p></div>
+        <div class="step"><small>STEP 03</small><h3>制作・お渡し</h3><p>途中で仕上がりを確認いただきながら、一緒に完成を目指します。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section white">
+    <div class="wrap">
+      <div class="intro">
+        <span class="eyebrow">PRICING</span>
+        <h2>料金の目安</h2>
+        <p>個人店・教室・小さな施設向けの料金です。下は「よくある制作会社の目安」と「うちの目安」の比較。正式な金額は、内容を聞いたあとに見積でお伝えします（相談・見積までは無料）。</p>
+      </div>
+      <div class="price-grid">
+        <article class="price-card"><span class="badge">ホームページ</span><h3>お店・活動の紹介サイト</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">15〜40万円前後</span><span class="hint">ページ数や写真・デザインの作り込み次第</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">3〜8万円</span><span class="hint">ページ数・写真の量などで前後</span></div></div><p class="blurb">メニュー・営業時間・アクセスが伝わるシンプルなHP。スマホ対応つき。</p><ul class="incl"><li><strong>含む例</strong>：相談・構成・スマホ対応・公開まで・軽い文言修正</li><li><strong>含まない例</strong>：写真撮影・ドメイン／サーバー代・大幅な追加ページ</li></ul></article>
+        <article class="price-card"><span class="badge">業務の仕組み</span><h3>給与・日報・予約など</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">20〜80万円前後</span><span class="hint">オーダーメイドの業務システムイメージ</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">5〜15万円</span><span class="hint">範囲による／表計算の代わりになる簡易アプリ</span></div></div><p class="blurb">毎日の入力・集計・記録をラクにする小さな仕組み。必要なところだけ小さく始められます。</p><ul class="incl"><li><strong>含む例</strong>：相談・画面づくり・使い方の簡単な案内・軽い修正</li><li><strong>含まない例</strong>：既存システムとの複雑な連携・大規模な会計ソフト接続</li></ul></article>
+        <article class="price-card"><span class="badge">くらし・ゲーム</span><h3>くらし向けアプリ・ミニゲーム</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">数十万円〜</span><span class="hint">アプリやゲームの開発会社のイメージ</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">要相談</span><span class="hint">サンプルあり／小さく試すところから</span></div></div><p class="blurb">献立・記録アプリ、待ち時間向けミニゲームなど。内容を聞いてからご案内します。</p><ul class="incl"><li><strong>含む例</strong>：相談・試作の確認・公開しやすい形でのお渡し</li><li><strong>含まない例</strong>：アプリストア申請代行・大規模な課金機能（要相談）</li></ul></article>
+      </div>
+      <div class="price-note"><strong>見積の流れ・ご案内</strong><ul><li><strong>①相談（無料）</strong> → <strong>②範囲の確認</strong> → <strong>③見積（無料）</strong> → 合意してから制作。</li><li>表示はいずれも<strong>税別</strong>の目安です。正式金額は内容を聞いたあとに提示します。</li><li><strong>含む／含まない</strong>は上の例が基本。追加の改修や機能は別途ご案内します。</li><li>相談だけ・見積だけでも大丈夫です。<a class="linkish" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINE</a>へどうぞ。</li></ul></div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="wrap faq">
+      <div class="intro">
+        <span class="eyebrow">FAQ</span>
+        <h2>よくあるご質問</h2>
+      </div>
+      <details><summary>どんな人が相談していますか？</summary><p>個人・個人経営・小さな教室やお店・施設の方が中心です。美容院、飲食、教室、サロンなど。「大掛かりな会社向けシステム」より、現場で毎日使う小さな仕組みのご相談が多いです。</p></details>
+      <details><summary>まだイメージが固まっていないのですが？</summary><p>大丈夫です。「サイトがほしい」「予約が面倒」「給与計算がつらい」など、困りごとだけでも構いません。一緒に整理します。</p></details>
+      <details><summary>費用はいくらかかりますか？</summary><p><a class="linkish" href="#pricing">料金の目安</a>をご覧ください。相談・見積までは無料。制作に入る前に、含むもの／含まないものと金額をはっきりお伝えします。</p></details>
+      <details><summary>小さな修正だけでもお願いできますか？</summary><p>内容によりますが、小さなご相談も歓迎です。対応できるかはお話を聞いて確認します。</p></details>
+      <details><summary>職場で使ってきた仕組みですか？</summary><p>はい。現場での制作経験です。外部への納品社数の表記ではありません。</p></details>
+      <details><summary>サンプルと同じものを作れますか？</summary><p>見本をベースに、お店のやり方に合わせて作れます。まったく同じではなく、必要なところだけに絞ることもできます。</p></details>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="wrap">
+      <div class="contact">
+        <span class="eyebrow">CONTACT</span>
+        <h2>個人店・教室の「ちょっと困った」から。</h2>
+        <p>相談だけ・見積だけでも大歓迎。サンプルを見て「うちでも使えそう」と思ったら、そのままどうぞ。<br><strong>渡辺に気軽にご相談ください。</strong><br><span class="contact-hint">📩 連絡先は公式LINEです（相談・見積無料）</span></p>
+        <div class="line-box">
+          <a class="line-btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する ↗</a>
+          <div class="qr-card">
+            <img src="line-qr.png" alt="WATA LAB 公式LINEのQRコード" width="160" height="160" loading="lazy">
+            <small>スマホならボタン、PCならQRでもOK</small>
+          </div>
+        </div>
+      </div>
+      <p class="contact-note">※ ご相談・お問い合わせは公式LINEで受け付けています。</p>
+    </div>
+  </section>
 </main>
-<footer><div class="wrap footerline"><div><a href="#top" class="logo">WATA <span>LAB.</span><small>ワタラボ</small></a><p>個人・個人経営・小さな店や施設向けのものづくり相談室。</p></div><small>© 2026 WATA LAB. All rights reserved.</small></div></footer>
-</body></html>
+<footer>
+  <div class="wrap footerline">
+    <div>
+      <a href="#top" class="logo">WATA <span>LAB.</span><small>ワタラボ</small></a>
+      <p>個人・個人経営・小さな店や施設向けのものづくり相談室。</p>
+    </div>
+    <small>© 2026 WATA LAB. All rights reserved.</small>
+  </div>
+</footer>
+</body>
+</html>
