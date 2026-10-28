@@ -583,6 +583,13 @@ body.wl-coach-open{
 .wl-coach h2{margin-bottom:10px!important}
 .wl-coach p{margin-bottom:4px!important}
 
+
+/* BUG-003: hide play hint while pause modal is open */
+body:has(#pauseOv.show) .hint-float,
+#pauseOv.show ~ * .hint-float{opacity:0!important;visibility:hidden;pointer-events:none;z-index:0}
+.stage-wrap:has(+ .controls + #pauseOv.show) .hint-float,
+body.pause-open .hint-float{opacity:0!important;visibility:hidden;z-index:0!important}
+
 </style>
 </head>
 <body class="wl-game">
@@ -834,6 +841,8 @@ body.wl-coach-open{
   }
 
   function startGame(){
+    document.body.classList.remove('pause-open');
+    pauseOv.classList.remove('show');
     resetGame();
     state = 'play';
     startOv.classList.remove('show');
@@ -1067,23 +1076,34 @@ body.wl-coach-open{
   stage.addEventListener('pointerdown', onPointer, {passive:false});
   stage.addEventListener('touchstart', onPointer, {passive:false});
 
-  document.getElementById('btnStart').onclick = startGame;
-  document.getElementById('btnAgain').onclick = startGame;
-  document.getElementById('btnRestart').onclick = ()=>{
-    if (state === 'menu'){ startGame(); return; }
+  let restartLock = false; // BUG-004
+  function safeStartGame(){
+    if (restartLock) return;
+    restartLock = true;
     startGame();
+    setTimeout(function(){ restartLock = false; }, 450);
+  }
+  document.getElementById('btnStart').onclick = startGame;
+  document.getElementById('btnAgain').onclick = safeStartGame;
+  document.getElementById('btnRestart').onclick = ()=>{
+    safeStartGame();
   };
   document.getElementById('btnPause').onclick = ()=>{
     if (state !== 'play') return;
     state = 'pause';
     pauseOv.classList.add('show');
+    document.body.classList.add('pause-open'); // BUG-003
+    hint.classList.add('hide');
   };
   document.getElementById('btnResume').onclick = ()=>{
     pauseOv.classList.remove('show');
+    document.body.classList.remove('pause-open'); // BUG-003
     state = 'play';
     lastTs = performance.now();
+    // restore hint only if never dismissed this round
+    if (hintShown) hint.classList.remove('hide');
   };
-  document.getElementById('btnPauseRestart').onclick = startGame;
+  document.getElementById('btnPauseRestart').onclick = ()=>{ document.body.classList.remove('pause-open'); safeStartGame(); };
 
   // menu preview: a few floating blocks
   function ensureMenuBlocks(){

@@ -657,6 +657,27 @@ input:focus,select:focus,textarea:focus{
   .btn,.btn-primary{min-height:46px}
 }
 
+
+/* BUG-005: keep bottom notes clear of sticky LINE bar */
+:root{ --fixed-bar-h: 88px; }
+body.wl-has-linebar{
+  --fixed-bar-h: 96px;
+  padding-bottom: calc(var(--fixed-bar-h) + 28px + env(safe-area-inset-bottom,0px)) !important;
+}
+body.wl-has-linebar .footer-note,
+body.wl-has-linebar .footnote,
+body.wl-has-linebar aside.footnote{
+  margin-bottom: calc(var(--fixed-bar-h) + 12px) !important;
+  padding-bottom: 1.25rem !important;
+}
+body.wl-has-linebar .wrap{
+  padding-bottom: calc(var(--fixed-bar-h) + 2.5rem) !important;
+}
+@media(min-width:640px){
+  :root{ --fixed-bar-h: 72px; }
+  body.wl-has-linebar{ --fixed-bar-h: 80px; }
+}
+
 </style>
 </head>
 <body>
