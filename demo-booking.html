@@ -1119,6 +1119,23 @@ input:focus,select:focus,textarea:focus{
   .btn,.btn-primary{min-height:46px}
 }
 
+
+/* demo hero art v8 */
+.wl-demo-hero{
+  margin:0.85rem auto 0.35rem;width:min(100% - 1.5rem, 920px);
+  border-radius:22px;overflow:hidden;border:1px solid #e8e4dc;
+  box-shadow:0 1px 0 rgba(255,255,255,.95), 0 16px 36px -22px rgba(26,43,74,.28);
+  background:#f7f4ef;
+}
+.wl-demo-hero picture,.wl-demo-hero img{
+  display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:center;
+}
+.wl-demo-hero.square picture,.wl-demo-hero.square img{aspect-ratio:1/1;object-fit:cover}
+@media(max-width:550px){
+  .wl-demo-hero{border-radius:16px;margin:0.7rem auto 0.25rem;width:min(100% - 1.1rem, 920px)}
+}
+.wl-demo-hero.in-wrap{width:100%;margin:0.85rem 0 1rem}
+
 </style>
 </head>
 <body>
@@ -1149,6 +1166,14 @@ input:focus,select:focus,textarea:focus{
         <span>③ 完了</span>
       </div>
     </section>
+
+    <figure class="wl-demo-hero square in-wrap" aria-hidden="true">
+      <picture>
+        <source srcset="assets/calendar-desk.webp" type="image/webp">
+        <img src="assets/calendar-desk.jpg" width="1100" height="1100" alt="" loading="lazy" decoding="async">
+      </picture>
+    </figure>
+
 
     <div class="hero-bar" aria-live="polite">
       <div class="hero-inner">
