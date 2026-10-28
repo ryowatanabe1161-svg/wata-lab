@@ -26,7 +26,7 @@ h1{font-size:clamp(41px,5.2vw,72px);letter-spacing:-3px;line-height:1.42;margin:
 .demos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .demo{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 22px;min-height:180px;box-shadow:0 1px 0 #edf0eb;transition:.2s}.demo:hover{transform:translateY(-4px);border-color:#c9ded5}
 .demo .badge{display:inline-block;align-self:flex-start;background:var(--teal);border-radius:99px;padding:5px 12px;font-size:11px;font-weight:800;margin-bottom:14px}
-.demo:nth-child(2) .badge{background:#ffe5d5}.demo:nth-child(3) .badge{background:#e7e7fa}.demo:nth-child(4) .badge{background:#ffebbc}.demo:nth-child(5) .badge{background:#d9ebe3}
+.demo:nth-child(2) .badge{background:#ffe5d5}.demo:nth-child(3) .badge{background:#e7e7fa}.demo:nth-child(4) .badge{background:#ffebbc}.demo:nth-child(5) .badge{background:#d9ebe3}.demo:nth-child(6) .badge{background:#ffe5d5}.demo:nth-child(7) .badge{background:#e7e7fa}
 .demo h3{font-size:18px;margin:0 0 10px}.demo p{font-size:13px;color:var(--muted);margin:0 0 18px;flex:1}.demo .go{font-size:13px;font-weight:900;color:#c46e51}
 .demo-note{margin-top:22px;font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
 .step{border-top:3px solid #c9ded5;padding:22px 5px}.step small{font-weight:900;color:#c67559}.step h3{font-size:21px;margin:7px 0}.step p{color:var(--muted);font-size:14px}
@@ -43,13 +43,15 @@ a:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-of
 <main id="top">
 <div class="wrap hero"><div><span class="tag">あなたの身近な、ものづくり相談室。</span><h1>「つくりたい」を、<br><em>いっしょに形に。</em></h1><p class="lead">ホームページも、ちょっと便利な仕組みも、あったら楽しいゲームも。<br>あなたの「こんなの作れたらいいな」を、じっくり聞かせてください。</p><div class="actions"><a class="btn" href="#contact">まずは相談してみる ↗</a><a class="btn secondary" href="#demos">サンプルを見る ↓</a></div></div><div class="visual" role="img" aria-label="ウェブサイトとアプリの制作をイメージしたイラスト"><div class="mock"><div class="bar"><i></i><i></i><i></i></div><div class="inside"><small>HELLO FROM WATA LAB</small><strong>アイデアが、<br>動き出す。</strong><div class="line"></div><div class="line short"></div><div class="shape">✦</div></div></div><div class="sticker">できた！</div></div></div>
 <section id="services" class="section white"><div class="wrap"><div class="intro"><span class="eyebrow">WHAT WE MAKE</span><h2>こんなことが、できます。</h2><p>難しい専門用語は必要ありません。「今の仕事をもう少しラクにしたい」「お店のサイトがほしい」など、普段の言葉で大丈夫です。もちろんパソコンでも使えるアプリです。スマホ・PCどちらからでも同じ画面で操作できます。</p></div><div class="grid4"><article class="service"><div class="icon" aria-hidden="true">▤</div><h3>ホームページ制作</h3><p>個人の活動、お店、教室などを紹介する、スマホでも見やすいホームページ。</p></article><article class="service"><div class="icon" aria-hidden="true">⚙</div><h3>業務の仕組みづくり</h3><p>表への入力、集計、記録の整理など、毎日の面倒を減らす小さな仕組み。</p></article><article class="service"><div class="icon" aria-hidden="true">▣</div><h3>アプリ制作</h3><p>予約・管理・記録など、使う人に合わせたシンプルで便利なアプリ。</p></article><article class="service"><div class="icon" aria-hidden="true">✦</div><h3>ゲーム制作</h3><p>みんなで楽しめるミニゲームや、イベントで使うオリジナルゲーム。</p></article></div></div></section>
-<section id="demos" class="section"><div class="wrap"><div class="intro"><span class="eyebrow">TRY THE DEMOS</span><h2>触ってみられるサンプル。</h2><p>美容院・歯科医院・福祉施設・カフェなど、小さな現場向けの業務アプリ例です。</p></div>
+<section id="demos" class="section"><div class="wrap"><div class="intro"><span class="eyebrow">TRY THE DEMOS</span><h2>触ってみられるサンプル。</h2><p>美容院・歯科医院・福祉施設・カフェなど、小さな現場向けの業務アプリ例に加え、献立や減量などくらし向けのアプリもあります。</p></div>
 <div class="demos">
 <a class="demo" href="part-time-payroll-demo.html"><span class="badge">給与</span><h3>パート時給・月次給与</h3><p>勤務時間と時給から月次を計算。明細・振込用CSVのイメージ。</p><span class="go">デモを開く →</span></a>
 <a class="demo" href="demo-daily-report.html"><span class="badge">日報</span><h3>日報・作業報告</h3><p>スタッフ切替、チェック項目、写真ダミー、報告一覧。</p><span class="go">デモを開く →</span></a>
 <a class="demo" href="demo-shift.html"><span class="badge">シフト</span><h3>シフト・希望休</h3><p>週ビューのタップ切替と、公開用メモのコピー。</p><span class="go">デモを開く →</span></a>
 <a class="demo" href="demo-booking.html"><span class="badge">予約</span><h3>簡易予約・受付</h3><p>予約の追加、ステータス変更、本日一覧。</p><span class="go">デモを開く →</span></a>
 <a class="demo" href="demo-inventory.html"><span class="badge">在庫</span><h3>在庫・備品</h3><p>発注点アラート、入出庫、ログコピー。</p><span class="go">デモを開く →</span></a>
+<a class="demo" href="demo-kondate/"><span class="badge">献立</span><h3>毎日の献立・買い物</h3><p>今日の献立・1週間・買い物リスト・冷蔵庫までまとめて使えるアプリ。</p><span class="go">デモを開く →</span></a>
+<a class="demo" href="demo-diet.html"><span class="badge">減量</span><h3>体重・減量記録</h3><p>体重記録と減量の進捗を残すシンプルなアプリ。</p><span class="go">デモを開く →</span></a>
 </div>
 <p class="demo-note">各カードからデモが開けます。一覧は <a href="demo-index.html" style="color:#c46e51;font-weight:800;text-decoration:underline">サンプル一覧</a> からもどうぞ。</p>
 </div></section>
