@@ -634,13 +634,14 @@ section[id],#top{scroll-margin-top:84px}
 }
 
 /* ===== quality v6 — sales-grade ===== */
-.hero-studio{position:relative;width:100%;max-width:460px;height:420px;margin:0 auto;z-index:1}
-.hero-studio svg{width:100%;height:100%;display:block;filter:drop-shadow(0 22px 40px rgba(23,43,62,.22))}
-.hero-studio .orbit{
-  position:absolute;inset:-8% -6%;border-radius:40px;pointer-events:none;
-  background:
-    radial-gradient(circle at 18% 22%,rgba(255,224,171,.55),transparent 28%),
-    radial-gradient(circle at 88% 78%,rgba(47,107,90,.12),transparent 32%);
+.hero-art{
+  position:relative;width:100%;max-width:520px;margin:0 auto;z-index:1;
+}
+.hero-art picture,.hero-art img{
+  display:block;width:100%;height:auto;
+  border-radius:22px;
+  box-shadow:0 22px 40px rgba(23,43,62,.22), 0 0 0 1px rgba(255,255,255,.35);
+  object-fit:cover;aspect-ratio:1600 / 711;background:#d9efe8;
 }
 .demo-preview{
   height:92px;border-radius:14px;margin:-2px 0 14px;border:1px solid #e2e6e0;
@@ -728,17 +729,51 @@ section[id],#top{scroll-margin-top:84px}
     radial-gradient(circle at 92% 8%,#ffdea1 0 28%,transparent 29%),
     radial-gradient(circle at 6% 92%,rgba(255,255,255,.75) 0 18%,transparent 19%),
     linear-gradient(155deg,#b9e0d4 0%,#d9efe8 45%,#a8d5c8 100%);
-  min-height:520px;padding:20px 16px;
+  min-height:0;padding:22px 18px 28px;
+  align-content:center;
 }
 @media(max-width:850px){
   .price-scan,.trust-strip{grid-template-columns:1fr}
-  .hero-studio{height:340px}
-  .visual.v6{min-height:380px}
+  .visual.v6{min-height:0;padding:16px 14px 20px;max-width:560px;width:100%}
+  .hero-art{max-width:100%}
+  .float-card{font-size:11px;padding:8px 10px}
 }
 @media(max-width:550px){
-  .hero-studio{height:280px}
   .solution-bridge a{width:100%;text-align:center}
   .price-scan{grid-template-columns:1fr}
+  .visual.v6{padding:12px 10px 16px;border-radius:26px;box-shadow:12px 14px 0 #dfeae4, var(--shadow-lg)}
+  .hero-art img{border-radius:16px;box-shadow:0 12px 24px rgba(23,43,62,.18)}
+  .float-card.a{top:8px;left:6px}
+  .float-card.b{top:auto;bottom:10px;right:6px}
+  .float-card.c{display:none}
+}
+
+
+/* Studio atmosphere (v1 art) */
+.studio{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;
+}
+.studio-copy .eyebrow{display:inline-block}
+.studio-copy h2{margin:10px 0 14px;font-size:clamp(26px,3vw,36px);letter-spacing:-1px;line-height:1.35}
+.studio-copy p{margin:0;color:#4a5a6a;line-height:1.9;font-size:15.5px;max-width:480px}
+.studio-copy ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.studio-copy li{
+  display:flex;gap:10px;align-items:flex-start;font-size:13.5px;font-weight:800;color:var(--navy);
+}
+.studio-copy li:before{content:"✓";color:var(--teal-deep);font-weight:900;flex-shrink:0}
+.studio-art{
+  position:relative;border-radius:28px;overflow:hidden;
+  box-shadow:16px 18px 0 #dfeae4, var(--shadow-lg);
+  background:linear-gradient(155deg,#c5e5db,#d9efe8);
+  padding:14px;
+}
+.studio-art picture,.studio-art img{
+  display:block;width:100%;height:auto;border-radius:18px;
+  aspect-ratio:1400 / 700;object-fit:cover;background:#d9efe8;
+}
+@media(max-width:850px){
+  .studio{grid-template-columns:1fr;gap:28px}
+  .studio-art{max-width:560px;margin:0 auto;box-shadow:12px 14px 0 #dfeae4, var(--shadow-lg)}
 }
 
 </style>
@@ -780,61 +815,20 @@ section[id],#top{scroll-margin-top:84px}
         <span><b>✓</b> 触って試せる</span>
       </div>
     </div>
-    <div class="visual v6 reveal in reveal-delay-1" role="img" aria-label="ウェブサイトと業務アプリの制作スタジオのイメージ">
+    <div class="visual v6 reveal in reveal-delay-1">
       <div class="float-card a"><span>SAMPLE</span>触って試せる</div>
       <div class="float-card b"><span>PRICE</span>HP 3〜8万〜</div>
       <div class="float-card c"><span>LINE</span>相談・見積無料</div>
-      <div class="hero-studio">
-        <div class="orbit" aria-hidden="true"></div>
-        <svg viewBox="0 0 460 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f3faf7"/></linearGradient>
-            <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#172b3e"/><stop offset="1" stop-color="#1a4550"/></linearGradient>
-            <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#172b3e" flood-opacity=".18"/></filter>
-          </defs>
-          <!-- desk -->
-          <rect x="40" y="330" width="380" height="18" rx="9" fill="#2f6b5a" opacity=".25"/>
-          <!-- main laptop -->
-          <g filter="url(#sh)" transform="translate(48 78) rotate(-4)">
-            <rect width="280" height="198" rx="18" fill="#172b3e"/>
-            <rect x="10" y="10" width="260" height="156" rx="10" fill="url(#g1)"/>
-            <rect x="22" y="24" width="90" height="10" rx="5" fill="#d7ebe5"/>
-            <rect x="22" y="42" width="150" height="16" rx="6" fill="#172b3e" opacity=".85"/>
-            <rect x="22" y="66" width="120" height="8" rx="4" fill="#c9ded5"/>
-            <rect x="22" y="82" width="170" height="8" rx="4" fill="#e8ebe6"/>
-            <g transform="translate(22 104)">
-              <rect width="72" height="42" rx="8" fill="#eef7f3" stroke="#c9ded5"/>
-              <rect x="80" width="72" height="42" rx="8" fill="#fff8ef" stroke="#f0e0c8"/>
-              <rect x="160" width="72" height="42" rx="8" fill="#e7e7fa" stroke="#d4d4ef"/>
-              <text x="12" y="26" font-size="11" font-weight="800" fill="#2f6b5a" font-family="system-ui,sans-serif">日報</text>
-              <text x="92" y="26" font-size="11" font-weight="800" fill="#c46e51" font-family="system-ui,sans-serif">予約</text>
-              <text x="172" y="26" font-size="11" font-weight="800" fill="#5b5bb0" font-family="system-ui,sans-serif">給与</text>
-            </g>
-            <rect x="70" y="176" width="140" height="10" rx="5" fill="#0f1c29"/>
-          </g>
-          <!-- phone -->
-          <g filter="url(#sh)" transform="translate(300 140) rotate(8)">
-            <rect width="108" height="198" rx="22" fill="url(#g2)"/>
-            <rect x="8" y="18" width="92" height="162" rx="12" fill="#fffdf9"/>
-            <circle cx="54" cy="12" r="3" fill="#5a7a8c"/>
-            <rect x="18" y="30" width="72" height="10" rx="5" fill="#ffe0ab"/>
-            <rect x="18" y="48" width="56" height="8" rx="4" fill="#e8ddd3"/>
-            <rect x="18" y="64" width="72" height="36" rx="10" fill="#f5e4d6"/>
-            <rect x="18" y="108" width="72" height="22" rx="11" fill="#c4784a"/>
-            <text x="36" y="123" font-size="9" font-weight="800" fill="#fff" font-family="system-ui,sans-serif">LINE</text>
-            <rect x="40" y="188" width="28" height="4" rx="2" fill="#5a7a8c"/>
-          </g>
-          <!-- badge -->
-          <g transform="translate(70 300)">
-            <rect width="120" height="36" rx="12" fill="#f58c65" stroke="#fff" stroke-width="3"/>
-            <text x="22" y="23" font-size="13" font-weight="900" fill="#fff" font-family="system-ui,sans-serif">できた！</text>
-          </g>
-        </svg>
+      <div class="hero-art">
+        <picture>
+          <source srcset="assets/hero-desk.webp" type="image/webp">
+          <img src="assets/hero-desk.jpg" width="1600" height="711" alt="WATA LABの制作イメージイラスト" decoding="async" fetchpriority="high">
+        </picture>
       </div>
     </div>
   </div>
 
-  <section id="pains"<section id="pains" class="section white">
+  <section id="pains" class="section white">
     <div class="wrap">
       <div class="intro">
         <span class="eyebrow">PAIN POINTS</span>
@@ -1005,6 +999,28 @@ section[id],#top{scroll-margin-top:84px}
       <details><summary>職場で使ってきた仕組みですか？</summary><p>はい。現場での制作経験です。外部への納品社数の表記ではありません。</p></details>
       <details><summary>サンプルと同じものを作れますか？</summary><p>見本をベースに、お店のやり方に合わせて作れます。まったく同じではなく、必要なところだけに絞ることもできます。</p></details>
       <details><summary>相談や見積に費用はかかりますか？</summary><p>かかりません。相談・見積は無料です。相談だけで終わっても大丈夫です。</p></details>
+    </div>
+  </section>
+
+
+  <section id="studio" class="section white soft">
+    <div class="wrap studio reveal">
+      <div class="studio-copy">
+        <span class="eyebrow">STUDIO</span>
+        <h2>つくる場所の、あたたかい雰囲気。</h2>
+        <p>大きなオフィスではなく、机ひとつから始まるものづくり。現場の困りごとを聞きながら、ホームページや小さな業務の仕組みを、無理のないサイズで形にしていきます。</p>
+        <ul>
+          <li>個人・小さな店や施設の相談が中心</li>
+          <li>触れるサンプルと、分かりやすい料金</li>
+          <li>公式LINEで、気軽に一歩目</li>
+        </ul>
+      </div>
+      <div class="studio-art">
+        <picture>
+          <source srcset="assets/hero-desk-alt.webp" type="image/webp">
+          <img src="assets/hero-desk-alt.jpg" width="1400" height="700" alt="WATA LABの作業デスクの雰囲気イラスト" loading="lazy" decoding="async">
+        </picture>
+      </div>
     </div>
   </section>
 
