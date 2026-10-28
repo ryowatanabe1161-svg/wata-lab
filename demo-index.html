@@ -5,245 +5,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>サンプルデモ一覧｜WATA LAB</title>
 <meta name="description" content="個人店・教室・小さな施設向けの業務アプリ・くらし・ゲームの触れるサンプル一覧。">
+<meta name="theme-color" content="#172b3e">
 <style>
-  :root {
-    --bg: #f3f6f4;
-    --surface: #ffffff;
-    --surface-2: #f8fbfb;
-    --ink: #172b3e;
-    --ink-muted: #586677;
-    --line: #e2e8e4;
-    --line-strong: #c9d5cf;
-    --accent: #0d9488;
-    --accent-hover: #0f766e;
-    --accent-soft: #d7ebe5;
-    --accent-ink: #115e59;
-    --radius: 16px;
-    --radius-sm: 10px;
-    --shadow: 0 1px 0 rgba(23, 43, 62, 0.04), 0 10px 28px -18px rgba(23, 43, 62, 0.22);
-    --shadow-sm: 0 1px 2px rgba(26, 43, 46, 0.05);
-    --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "Yu Gothic", Meiryo, system-ui, -apple-system, sans-serif;
-    --max: 920px;
-  }
-  *, *::before, *::after { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    font-family: var(--font);
-    color: var(--ink);
-    background: var(--bg);
-    line-height: 1.55;
-    font-size: 15px;
-  }
-  h1, h2 { margin: 0; line-height: 1.3; font-weight: 700; letter-spacing: -0.02em; }
-  p { margin: 0; }
-  a { color: inherit; text-decoration: none; }
-  .wrap {
-    width: min(100% - 1.5rem, var(--max));
-    margin-inline: auto;
-    padding-bottom: 3rem;
-  }
-  .banner {
-    background: linear-gradient(135deg, #0f766e 0%, #0d9488 55%, #14b8a6 100%);
-    color: #fff;
-    padding: 1.1rem 0 1.25rem;
-  }
-  .banner .wrap { padding-bottom: 0; }
-  .banner-kicker {
-    display: inline-flex;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    opacity: 0.92;
-    background: rgba(255,255,255,0.16);
-    border: 1px solid rgba(255,255,255,0.22);
-    padding: 0.25rem 0.6rem;
-    border-radius: 999px;
-    margin-bottom: 0.65rem;
-  }
-  .banner h1 {
-    font-size: clamp(1.25rem, 4vw, 1.65rem);
-    font-weight: 800;
-    margin-bottom: 0.4rem;
-  }
-  .banner p { font-size: 0.92rem; opacity: 0.92; max-width: 38rem; }
-  .banner-note {
-    margin-top: 0.7rem;
-    display: inline-block;
-    font-size: 0.8rem;
-    background: rgba(0,0,0,0.18);
-    padding: 0.3rem 0.65rem;
-    border-radius: 8px;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-    margin-top: 1.25rem;
-  }
-  @media (min-width: 640px) {
-    .grid { grid-template-columns: 1fr 1fr; }
-  }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 1.1rem 1.15rem;
-    transition: border-color 0.15s, transform 0.1s, box-shadow 0.15s;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-    min-height: 100%;
-  }
-  a.card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 4px 20px rgba(13, 148, 136, 0.12);
-    transform: translateY(-1px);
-  }
-  a.card:active { transform: translateY(0); }
-  .tag {
-    display: inline-flex;
-    align-self: flex-start;
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: var(--accent-ink);
-    background: var(--accent-soft);
-    border-radius: 999px;
-    padding: 0.2rem 0.55rem;
-  }
-  .card h2 { font-size: 1.05rem; }
-  .card p { font-size: 0.86rem; color: var(--ink-muted); }
-  .card .for { font-size: 0.78rem; font-weight: 700; color: var(--accent-ink); background: var(--accent-soft); border-radius: 10px; padding: 0.45rem 0.6rem; line-height: 1.45; }
-  .card .how { flex: 1; }
-  .go {
-    font-size: 0.84rem;
-    font-weight: 700;
-    color: var(--accent);
-  }
-  .footnote {
-    margin-top: 1.5rem;
-    padding: 1rem 1.1rem;
-    border: 1px dashed var(--line-strong);
-    border-radius: var(--radius);
-    background: var(--surface);
-    font-size: 0.82rem;
-    color: var(--ink-muted);
-  }
-  .footnote h3 {
-    font-size: 0.88rem;
-    color: var(--ink);
-    margin: 0 0 0.4rem;
-  }
-
-/* WATA LAB quality polish v2 */
-.banner {
-  background: linear-gradient(145deg, #172b3e 0%, #1d4e4a 45%, #0d9488 100%);
-  padding: 1.25rem 0 1.5rem;
+:root{
+  --bg:#f3f6f4;--surface:#fff;--ink:#172b3e;--muted:#586677;
+  --line:#e2e8e4;--accent:#0d9488;--accent-ink:#115e59;--accent-soft:#d7ebe5;
+  --orange:#c46e51;--radius:18px;
+  --shadow:0 1px 0 rgba(23,43,62,.04),0 14px 34px -18px rgba(23,43,62,.28);
+  --font:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,system-ui,sans-serif;
 }
-.banner h1 { letter-spacing: -0.03em; font-weight: 800; }
-.card {
-  border-radius: 16px;
-  padding: 1.2rem 1.2rem;
-  box-shadow: var(--shadow);
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.55;font-size:15px;-webkit-font-smoothing:antialiased}
+h1,h2{margin:0;line-height:1.3;font-weight:800;letter-spacing:-.02em}
+p{margin:0}a{color:inherit;text-decoration:none}
+.wrap{width:min(100% - 1.5rem,960px);margin-inline:auto;padding-bottom:3.5rem}
+.banner{
+  background:linear-gradient(145deg,#172b3e 0%,#1a4550 42%,#0d9488 100%);
+  color:#fff;padding:1.25rem 0 1.55rem;box-shadow:0 12px 28px -18px rgba(23,43,62,.45);
 }
-a.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 32px -16px rgba(23, 43, 62, 0.22);
-  border-color: #b7e5d8;
+.banner .wrap{padding-bottom:0}
+.back{
+  display:inline-flex;align-items:center;min-height:40px;margin-bottom:.85rem;
+  color:#fff;font-size:.82rem;font-weight:800;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.28);padding:.45rem .85rem;border-radius:999px;
 }
-.card .go {
-  font-weight: 900;
-  color: #c46e51;
+.kicker{
+  display:inline-flex;font-size:.72rem;font-weight:800;letter-spacing:.08em;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);
+  padding:.28rem .65rem;border-radius:999px;margin-bottom:.7rem;
 }
-.wrap { padding-bottom: 3.5rem; }
+.banner h1{font-size:clamp(1.35rem,4vw,1.8rem);margin-bottom:.45rem}
+.banner p{font-size:.92rem;opacity:.92;max-width:40rem}
+.note{
+  margin-top:.75rem;display:inline-block;font-size:.8rem;
+  background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.14);
+  padding:.35rem .75rem;border-radius:10px;
+}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:1.2rem 0 .2rem}
+.filters span{
+  font-size:.75rem;font-weight:800;color:var(--accent-ink);background:var(--accent-soft);
+  border:1px solid #b7e5d8;border-radius:999px;padding:.35rem .7rem;
+}
+.grid{display:grid;grid-template-columns:1fr;gap:.9rem;margin-top:1rem}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:1.15rem 1.15rem 1.05rem;
+  display:flex;flex-direction:column;gap:.55rem;min-height:100%;
+  transition:transform .18s cubic-bezier(.22,.7,.25,1),box-shadow .18s,border-color .18s;
+  position:relative;overflow:hidden;
+}
+.card:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#b7e5d8,#ffe0ab)}
+a.card:hover{transform:translateY(-3px);border-color:#b7e5d8;box-shadow:0 18px 40px -16px rgba(23,43,62,.26)}
+.tag{
+  display:inline-flex;align-self:flex-start;font-size:.72rem;font-weight:800;
+  color:var(--accent-ink);background:var(--accent-soft);border-radius:999px;padding:.22rem .55rem;
+}
+.card h2{font-size:1.05rem}
+.card .for{font-size:.78rem;font-weight:700;color:var(--accent-ink);background:#eef7f3;border:1px solid #c9ded5;border-radius:12px;padding:.5rem .65rem;line-height:1.45}
+.card .how{flex:1;font-size:.86rem;color:var(--muted)}
+.go{font-size:.84rem;font-weight:900;color:var(--orange)}
+.footnote{
+  margin-top:1.6rem;padding:1.1rem 1.15rem;border:1px dashed #c9d5cf;border-radius:var(--radius);
+  background:var(--surface);font-size:.82rem;color:var(--muted);box-shadow:var(--shadow);
+}
+.footnote h3{font-size:.9rem;color:var(--ink);margin:0 0 .4rem}
+a:focus-visible{outline:3px solid #f58c65;outline-offset:3px}
 </style>
 </head>
 <body>
-  <header class="banner">
-    <div class="wrap">
-      <div class="demo-nav" style="margin-bottom:0.75rem;">
-        <a href="index.html#demos" style="color:#fff;text-decoration:none;font-size:0.82rem;font-weight:700;background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.28);padding:0.45rem 0.85rem;border-radius:999px;min-height:40px;display:inline-flex;align-items:center;">← WATA LABへ戻る</a>
-      </div>
-      <div class="banner-kicker">サンプル一覧</div>
-      <h1>触って試せるデモ</h1>
-      <p>個人店・教室・小さな施設向けの見本です。各カードに「誰向け・何の困りごと」あり。開いたら上の案内から。</p>
-      <div class="banner-note">※ ブラウザ内のデモです。サーバーには送りません。</div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <div class="grid">
-      <a class="card" href="part-time-payroll-demo.html">
-        <span class="tag">給与</span>
-        <h2>パート給与の計算</h2>
-        <p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p>
-        <p class="how">①勤怠を入れる → ②明細が自動 → ③振込CSV。</p>
-        <span class="go">デモを開く →</span>
-      </a>
-      <a class="card" href="demo-daily-report.html">
-        <span class="tag">日報</span>
-        <h2>日報・作業報告</h2>
-        <p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p>
-        <p class="how">①スタッフを選ぶ → ②書いて追加 → ③一覧で確認。</p>
-        <span class="go">デモを開く →</span>
-      </a>
-      <a class="card" href="demo-shift.html">
-        <span class="tag">シフト</span>
-        <h2>シフト・希望休</h2>
-        <p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p>
-        <p class="how">①週を選ぶ → ②マスをタップで切替 → ③メモをコピー。</p>
-        <span class="go">デモを開く →</span>
-      </a>
-      <a class="card" href="demo-booking.html">
-        <span class="tag">予約</span>
-        <h2>簡易予約・受付</h2>
-        <p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p>
-        <p class="how">①予約を追加 → ②来店に変更 → ③完了まで進めます。</p>
-        <span class="go">デモを開く →</span>
-      </a>
-      <a class="card" href="demo-inventory.html">
-        <span class="tag">在庫</span>
-        <h2>在庫・備品管理</h2>
-        <p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p>
-        <p class="how">①＋／−で増減 → ②要発注（オレンジ）を確認 → ③品目追加。</p>
-        <span class="go">デモを開く →</span>
-      </a>
-      <a class="card" href="demo-kondate/">
-        <span class="tag">献立</span>
-        <h2>わたらぼクッキング</h2>
-        <p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p>
-        <p class="how">下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p>
-        <span class="go">デモを開く →</span>
-      </a>
-      <a class="card" href="demo-diet.html">
-        <span class="tag">減量</span>
-        <h2>わたらぼダイエットアプリ</h2>
-        <p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p>
-        <p class="how">①ホームで状況 → ②食事・運動を記録 → ③体重を残す。</p>
-        <span class="go">デモを開く →</span>
-      </a>
-      <a class="card" href="demo-smash.html">
-        <span class="tag">ゲーム</span>
-        <h2>わたらぼスマッシュ</h2>
-        <p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p>
-        <p class="how">タップで壊す。コンボで得点アップ。ライフ3・⭐金・💣爆発あり。</p>
-        <span class="go">デモを開く →</span>
-      </a>
-      <a class="card" href="demo-chatbot.html">
-        <span class="tag">チャット</span>
-        <h2>店舗チャットボット見本</h2>
-        <p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p>
-        <p class="how">架空カフェ。①ボタンを押す → ②返事を見る。サンプル／架空です。</p>
-        <span class="go">デモを開く →</span>
-      </a>
-    </div>
-
-    <aside class="footnote">
-      <h3>この一覧について</h3>
-      <p>個人・個人経営・小さな店や施設を想定した業務アプリと、くらし向け・ミニゲームの見本です。どれも単体のHTMLで開けます。</p>
-    </aside>
-  </main>
+<header class="banner">
+  <div class="wrap">
+    <a class="back" href="index.html#demos">← WATA LABへ戻る</a>
+    <div class="kicker">SAMPLE DEMOS</div>
+    <h1>触って試せるデモ</h1>
+    <p>個人店・教室・小さな施設向けの見本です。各カードに「誰向け・困りごと」あり。開いたら上の案内から。</p>
+    <div class="note">※ ブラウザ内のデモです。サーバーには送りません。</div>
+  </div>
+</header>
+<main class="wrap">
+  <div class="filters" aria-label="カテゴリ">
+    <span>業務</span><span>くらし</span><span>ゲーム</span><span>チャット</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="part-time-payroll-demo.html"><span class="tag">給与</span><h2>パート給与の計算</h2><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p class="how">①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-daily-report.html"><span class="tag">日報</span><h2>日報・作業報告</h2><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p class="how">①スタッフを選ぶ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-shift.html"><span class="tag">シフト</span><h2>シフト・希望休</h2><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p class="how">①週を選ぶ → ②マスをタップで切替 → ③メモをコピー。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-booking.html"><span class="tag">予約</span><h2>簡易予約・受付</h2><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p class="how">①予約を追加 → ②来店に変更 → ③完了まで進めます。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-inventory.html"><span class="tag">在庫</span><h2>在庫・備品管理</h2><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p class="how">①＋／−で増減 → ②要発注（オレンジ）を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-kondate/"><span class="tag">献立</span><h2>わたらぼクッキング</h2><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p class="how">下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-diet.html"><span class="tag">減量</span><h2>わたらぼダイエットアプリ</h2><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p class="how">①ホームで状況 → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-smash.html"><span class="tag">ゲーム</span><h2>わたらぼスマッシュ</h2><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p class="how">タップで壊す。コンボで得点アップ。ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
+    <a class="card" href="demo-chatbot.html"><span class="tag">チャット</span><h2>店舗チャットボット見本</h2><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p class="how">架空カフェ。①ボタンを押す → ②返事を見る。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
+  </div>
+  <aside class="footnote">
+    <h3>この一覧について</h3>
+    <p>個人・個人経営・小さな店や施設を想定した業務アプリと、くらし向け・ミニゲームの見本です。どれも単体のHTMLで開けます。データは端末内だけ／サーバーには送りません。</p>
+  </aside>
+</main>
 </body>
 </html>
