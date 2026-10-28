@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="WATA LAB（ワタラボ）｜個人・個人経営・小さな店や施設向け。HP 3〜8万円〜、業務の仕組み 5〜15万円。触れるサンプルあり。相談・見積無料。公式LINEで気軽に。">
 <meta name="theme-color" content="#172b3e">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WATA LAB">
+<meta property="og:title" content="WATA LAB｜個人店・教室向けホームページ＆業務の仕組み｜相談無料">
+<meta property="og:description" content="個人・個人経営・小さな店や施設向け。HP 3〜8万円〜、業務の仕組み 5〜15万円。触れるサンプルあり。相談・見積無料。">
+<meta property="og:url" content="https://ryowatanabe1161-svg.github.io/wata-lab/">
+<meta property="og:image" content="https://ryowatanabe1161-svg.github.io/wata-lab/assets/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WATA LAB｜個人店・教室向けホームページ＆業務の仕組み">
+<meta name="twitter:description" content="HP 3〜8万円〜／業務の仕組み 5〜15万円。触れるサンプルあり。相談・見積無料。">
+<meta name="twitter:image" content="https://ryowatanabe1161-svg.github.io/wata-lab/assets/ogp.jpg">
+
 <title>WATA LAB｜個人店・教室向けホームページ＆業務の仕組み｜相談無料</title>
 <style>
 :root{
@@ -962,6 +976,140 @@ header{z-index:60}
   .mid-cta, .cta-band, #contact .contact{scroll-margin-bottom:110px}
 }
 
+
+/* ===== quality polish v8 — homepage ===== */
+:root{
+  --cream:#f7f4ef;
+  --cream-2:#fbfaf6;
+  --navy:#1a2b4a;
+  --teal-mid:#b7e0d4;
+  --teal-deep:#2f6b5a;
+  --orange:#e08a5c;
+  --orange-deep:#c46e51;
+}
+body{
+  background:
+    radial-gradient(ellipse 70% 45% at 100% -8%,rgba(215,235,229,.55),transparent 58%),
+    radial-gradient(ellipse 55% 38% at -8% 18%,rgba(255,232,220,.38),transparent 52%),
+    var(--cream);
+}
+.section{padding:120px 0}
+@media(max-width:850px){.section{padding:88px 0}}
+@media(max-width:550px){.section{padding:72px 0}}
+
+/* Hero under: demo mock strip */
+.hero-demo-strip{
+  margin-top:-28px;margin-bottom:8px;position:relative;z-index:2;
+}
+.hero-demo-strip .inner{
+  background:#fff;border:1px solid var(--line);border-radius:28px;
+  box-shadow:var(--shadow-lg);padding:22px 22px 20px;
+  display:grid;gap:18px;
+}
+@media(min-width:860px){
+  .hero-demo-strip .inner{grid-template-columns:1.15fr .85fr;align-items:center;padding:26px 28px}
+}
+.hero-demo-strip .copy .eyebrow{margin-bottom:6px}
+.hero-demo-strip h2{
+  font-size:clamp(22px,3.2vw,30px);letter-spacing:-.8px;margin:0 0 10px;font-weight:900;line-height:1.35;
+}
+.hero-demo-strip p{margin:0;font-size:14px;color:var(--muted);line-height:1.8}
+.hero-demo-strip .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.hero-demo-strip .cta-row .btn{padding:14px 22px;font-size:13.5px}
+.hero-demo-strip .cta-row .btn.secondary{background:var(--cream);border:1px solid var(--line);box-shadow:0 3px 0 var(--line-2)}
+.phone-mock{
+  position:relative;margin:0 auto;width:min(100%,280px);
+  background:linear-gradient(160deg,#1a2b4a,#243d5c 55%,#2f6b5a);
+  border-radius:28px;padding:12px 12px 16px;
+  box-shadow:16px 18px 0 rgba(215,235,229,.85), var(--shadow-lg);
+}
+.phone-mock .notch{
+  width:72px;height:8px;border-radius:99px;background:rgba(255,255,255,.18);margin:4px auto 12px;
+}
+.phone-mock .screen{
+  background:#f7f4ef;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.2);
+}
+.phone-mock .screen picture,.phone-mock .screen img{
+  display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;
+}
+.phone-mock .caption{
+  margin-top:10px;text-align:center;color:#fff;font-size:11.5px;font-weight:800;opacity:.92;
+}
+.quick-demos{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;
+}
+.quick-demos a{
+  display:block;background:var(--cream);border:1px solid var(--line);border-radius:16px;
+  padding:10px 10px 12px;text-align:center;font-size:11.5px;font-weight:800;
+  box-shadow:var(--shadow);transition:transform .18s var(--ease),border-color .18s;
+}
+.quick-demos a:hover{transform:translateY(-2px);border-color:#c9ded5}
+.quick-demos img,.quick-demos picture{
+  display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;margin-bottom:8px;
+  background:#e8f0ed;
+}
+.quick-demos span{display:block;color:var(--navy);line-height:1.35}
+@media(max-width:550px){
+  .hero-demo-strip{margin-top:8px}
+  .hero-demo-strip .inner{padding:18px 16px;border-radius:22px}
+  .phone-mock{width:min(100%,240px);box-shadow:10px 12px 0 rgba(215,235,229,.85), var(--shadow)}
+  .quick-demos{gap:8px}
+  .quick-demos a{padding:8px;font-size:10.5px;border-radius:12px}
+}
+
+/* Services as 3 blocks */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service.v8{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px 28px;min-height:0;box-shadow:var(--shadow);
+}
+.service.v8:before{width:5px;opacity:.9}
+.service.v8 .icon{width:58px;height:58px;font-size:24px}
+.service.v8 .svc-list{
+  margin:16px 0 0;padding:0;list-style:none;font-size:12.5px;color:var(--muted);
+}
+.service.v8 .svc-list li{
+  padding:7px 0;border-top:1px dashed #e2e6e0;font-weight:700;display:flex;gap:8px;align-items:flex-start;
+}
+.service.v8 .svc-list li:before{content:"·";color:var(--teal-deep);font-weight:900}
+@media(max-width:850px){.grid3{grid-template-columns:1fr}}
+
+/* Demo cards with real thumbs */
+.demo-preview.has-art{
+  height:132px;padding:0;background:#e8f0ed;
+}
+.demo-preview.has-art picture,.demo-preview.has-art img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.demo-preview.has-art .chipmini{
+  background:rgba(26,43,74,.88);backdrop-filter:blur(4px);
+}
+.demo{padding-top:18px}
+.demo .badge{margin-top:2px}
+@media(max-width:550px){
+  .demo-preview.has-art{height:118px}
+}
+
+/* Pricing cards clearer */
+.price-grid{gap:22px}
+.price-card{
+  background:#fff;border:1px solid var(--line);padding:32px 28px;
+}
+.price-card .amount-hero{
+  font-size:28px;font-weight:900;letter-spacing:-.8px;color:var(--teal-deep);margin:4px 0 14px;line-height:1.2;
+}
+.price-card .amount-hero small{font-size:13px;font-weight:800;color:var(--muted);margin-left:4px}
+.price-scan div{background:#fff}
+.price-card.featured{
+  border-color:#c9ded5;
+  box-shadow:0 0 0 2px rgba(47,107,90,.16), var(--shadow-lg);
+}
+
+/* Soft rhythm */
+.intro{max-width:680px;margin-bottom:40px}
+.demos{gap:20px}
+.mid-cta{margin-top:40px}
+
 </style>
 </head>
 <body>
@@ -992,8 +1140,8 @@ header{z-index:60}
         <span>相談・見積 <b>無料</b></span>
       </div>
       <div class="actions">
-        <a class="btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する ↗</a>
-        <a class="btn secondary" href="#demos">触れるサンプルを見る ↓</a>
+        <a class="btn" href="#demos">触れるサンプルを見る ↓</a>
+        <a class="btn secondary" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する ↗</a>
       </div>
       <div class="trust" aria-label="ポイント">
         <span><b>✓</b> 身近な相談相手</span>
@@ -1014,6 +1162,36 @@ header{z-index:60}
       </div>
     </div>
   </div>
+
+
+  <section class="hero-demo-strip wrap reveal in" aria-label="触れるサンプルの入口">
+    <div class="inner">
+      <div class="copy">
+        <span class="eyebrow">TRY FIRST</span>
+        <h2>まずは、画面を触ってみる。</h2>
+        <p>給与・日報・シフト・予約など、個人店向けの見本をブラウザでそのまま開けます。使えそうかを先に確かめてから、相談・見積へ。</p>
+        <div class="cta-row">
+          <a class="btn" href="#demos">サンプル一覧へ ↓</a>
+          <a class="btn secondary" href="demo-booking.html">予約デモを開く →</a>
+        </div>
+        <div class="quick-demos" aria-label="人気のサンプル">
+          <a href="part-time-payroll-demo.html"><picture><source srcset="assets/thumb-payroll.webp" type="image/webp"><img src="assets/thumb-payroll.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span>パート給与</span></a>
+          <a href="demo-shift.html"><picture><source srcset="assets/thumb-shift.webp" type="image/webp"><img src="assets/thumb-shift.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span>シフト</span></a>
+          <a href="demo-booking.html"><picture><source srcset="assets/thumb-booking.webp" type="image/webp"><img src="assets/thumb-booking.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span>予約</span></a>
+        </div>
+      </div>
+      <div class="phone-mock" aria-hidden="true">
+        <div class="notch"></div>
+        <div class="screen">
+          <picture>
+            <source srcset="assets/thumb-booking.webp" type="image/webp">
+            <img src="assets/thumb-booking.jpg" width="900" height="675" alt="" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <p class="caption">スマホでそのまま触れる見本</p>
+      </div>
+    </div>
+  </section>
 
   <section id="pains" class="section white">
     <div class="wrap">
@@ -1117,11 +1295,10 @@ header{z-index:60}
         <h2>こんなことが、できます。</h2>
         <p>対象は、個人・個人経営・小さな教室やお店・施設です。難しい専門用語は不要。「サイトがほしい」「予約や給与の手間を減らしたい」など、普段の言葉で大丈夫。</p>
       </div>
-      <div class="grid4 reveal">
-        <article class="service"><div class="icon" aria-hidden="true">▤</div><h3>ホームページ制作</h3><p>個人店・教室・小さな施設の紹介サイト。メニュー・営業時間・予約導線まで、スマホで見やすく。</p></article>
-        <article class="service"><div class="icon" aria-hidden="true">⚙</div><h3>業務の仕組みづくり</h3><p>日報や月報、記録の管理、予定表、Excelの集計や変換など。現場の流れを大切にしながら、中小規模の仕組みに。</p></article>
-        <article class="service"><div class="icon" aria-hidden="true">▣</div><h3>アプリ制作</h3><p>予約受付・店舗チャット・記録アプリなど。少人数の現場で毎日使えるシンプルな形に。</p></article>
-        <article class="service"><div class="icon" aria-hidden="true">✦</div><h3>ゲーム制作</h3><p>待ち時間やイベント向けのミニゲーム。説明なしで触れる、軽く遊べるものを。</p></article>
+      <div class="grid3 reveal">
+        <article class="service v8"><div class="icon" aria-hidden="true">▤</div><h3>ホームページ</h3><p>個人店・教室・小さな施設の紹介サイト。メニュー・営業時間・予約導線まで、スマホで見やすく。</p><ul class="svc-list"><li>お店・教室の案内ページ</li><li>料金・メニューの見せ方</li><li>スマホ対応・公開まで</li></ul></article>
+        <article class="service v8"><div class="icon" aria-hidden="true">⚙</div><h3>業務の仕組み</h3><p>日報・予約・シフト・給与など。紙やExcelで散らかった毎日を、現場サイズの画面にまとめます。</p><ul class="svc-list"><li>入力・集計・一覧</li><li>予約・シフト・在庫</li><li>必要なところだけ小さく</li></ul></article>
+        <article class="service v8"><div class="icon" aria-hidden="true">▣</div><h3>くらし・ミニゲーム</h3><p>献立や記録アプリ、待ち時間向けの軽いミニゲーム。少人数の現場やイベントでも使いやすい形に。</p><ul class="svc-list"><li>くらし向けの小さなアプリ</li><li>店舗チャット見本</li><li>説明なしで触れるゲーム</li></ul></article>
       </div>
     </div>
   </section>
@@ -1146,20 +1323,20 @@ header{z-index:60}
   <section id="demos" class="section white soft">
     <div class="wrap">
       <div class="intro">
-        <span class="eyebrow">PROOF · 触れる証拠</span>
+        <span class="eyebrow">SAMPLES · 触れる見本</span>
         <h2>触って確かめられるサンプル。</h2>
         <p>「うちでも使えそう」を先に確かめられる見本です。個人店・教室・小さな施設向け。各カードに誰向け・困りごとがあり、開いたら上の案内どおりに触るとすぐ分かります。</p>
       </div>
       <div class="demos reveal">
-        <a class="demo" href="part-time-payroll-demo.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">給与</span></div><span class="badge">給与</span><h3>パート給与の計算</h3><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p>①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-daily-report.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">日報</span></div><span class="badge">日報</span><h3>日報・作業報告</h3><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p>①スタッフ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-shift.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/calendar.webp" type="image/webp"><img src="assets/calendar.jpg" width="900" height="900" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">シフト</span></div><span class="badge">シフト</span><h3>シフト・希望休</h3><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p>①週を選ぶ → ②タップで切替 → ③メモコピー。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-booking.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/calendar-ui.webp" type="image/webp"><img src="assets/calendar-ui.jpg" width="900" height="900" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">予約</span></div><span class="badge">予約</span><h3>簡易予約・受付</h3><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p>①予約追加 → ②来店 → ③完了まで進める。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-inventory.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">在庫</span></div><span class="badge">在庫</span><h3>在庫・備品</h3><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p>①＋／−で増減 → ②要発注を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-kondate/"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">献立</span></div><span class="badge">献立</span><h3>わたらぼクッキング</h3><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p>下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-diet.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">減量</span></div><span class="badge">減量</span><h3>わたらぼダイエットアプリ</h3><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p>①ホーム → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-smash.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">PLAY</span></div><span class="badge">ゲーム</span><h3>わたらぼスマッシュ</h3><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p>タップで壊す。コンボ・ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-chatbot.html"><div class="demo-preview" aria-hidden="true"><div class="win"><div class="rowbar l"></div><div class="rowbar m"></div><div class="rowbar s"></div></div><span class="chipmini">CHAT</span></div><span class="badge">チャット</span><h3>店舗チャットボット見本</h3><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p>架空カフェ。①ボタン → ②返事。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="part-time-payroll-demo.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-payroll.webp" type="image/webp"><img src="assets/thumb-payroll.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">給与</span></div><span class="badge">給与</span><h3>パート給与の計算</h3><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p>①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-daily-report.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-daily-report.webp" type="image/webp"><img src="assets/thumb-daily-report.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">日報</span></div><span class="badge">日報</span><h3>日報・作業報告</h3><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p>①スタッフ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-shift.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-shift.webp" type="image/webp"><img src="assets/thumb-shift.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">シフト</span></div><span class="badge">シフト</span><h3>シフト・希望休</h3><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p>①週を選ぶ → ②タップで切替 → ③メモコピー。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-booking.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-booking.webp" type="image/webp"><img src="assets/thumb-booking.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">予約</span></div><span class="badge">予約</span><h3>簡易予約・受付</h3><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p>①予約追加 → ②来店 → ③完了まで進める。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-inventory.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-inventory.webp" type="image/webp"><img src="assets/thumb-inventory.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">在庫</span></div><span class="badge">在庫</span><h3>在庫・備品</h3><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p>①＋／−で増減 → ②要発注を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-kondate/"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-kondate.webp" type="image/webp"><img src="assets/thumb-kondate.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">献立</span></div><span class="badge">献立</span><h3>わたらぼクッキング</h3><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p>下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-diet.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-diet.webp" type="image/webp"><img src="assets/thumb-diet.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">減量</span></div><span class="badge">減量</span><h3>わたらぼダイエットアプリ</h3><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p>①ホーム → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-smash.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-smash.webp" type="image/webp"><img src="assets/thumb-smash.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">PLAY</span></div><span class="badge">ゲーム</span><h3>わたらぼスマッシュ</h3><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p>タップで壊す。コンボ・ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
+        <a class="demo" href="demo-chatbot.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-chatbot.webp" type="image/webp"><img src="assets/thumb-chatbot.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">CHAT</span></div><span class="badge">チャット</span><h3>店舗チャットボット見本</h3><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p>架空カフェ。①ボタン → ②返事。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
       </div>
       <p class="demo-note">各カードからデモが開けます。一覧は <a class="linkish" href="demo-index.html">サンプル一覧</a> からもどうぞ。</p>
       <div class="mid-cta reveal">

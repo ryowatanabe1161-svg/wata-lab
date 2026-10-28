@@ -205,13 +205,25 @@ a.card:hover .go{background:#f58c65;color:#fff;border-color:#f58c65}
 .card[href*="shift"] .preview.has-art,
 .card[href*="booking"] .preview.has-art{background:#e8f0ed}
 
+
+/* thumb height v8 */
+.preview.has-art{height:132px!important}
+.featured .mock.has-art{
+  height:160px!important;padding:0;overflow:hidden;border-radius:16px;
+  background:#e8f0ed;
+}
+.featured .mock.has-art picture,.featured .mock.has-art img{
+  display:block;width:100%;height:100%;object-fit:cover;
+}
+.featured .mock.has-art:before,.featured .mock.has-art:after{display:none!important}
+
 </style>
 </head>
 <body>
 <header class="banner">
   <div class="wrap">
     <a class="back" href="index.html#demos">← WATA LABへ戻る</a>
-    <div class="kicker">PROOF · SAMPLE DEMOS</div>
+    <div class="kicker">SAMPLES · 触れる見本</div>
     <h1>触って試せるデモ</h1>
     <p>ホームページの説得材料になる見本です。個人店・教室・小さな施設向け。「誰向け・困りごと」を見て、開いたら案内どおりに触ってください。</p>
     <div class="note"><strong>サンプル／架空</strong>　ブラウザ内のデモです。サーバーには送りません。</div>
@@ -228,7 +240,7 @@ a.card:hover .go{background:#f58c65;color:#fff;border-color:#f58c65}
       <p>カフェ・美容院など個人店向け。勤怠を入れると明細と振込CSVまで。紙やExcelの給与計算が面倒なときの見本です。</p>
       <a class="go" href="part-time-payroll-demo.html">このデモを開く →</a>
     </div>
-    <div class="mock" aria-hidden="true"></div>
+    <div class="mock has-art" aria-hidden="true"><picture><source srcset="assets/thumb-payroll.webp" type="image/webp"><img src="assets/thumb-payroll.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture></div>
   </section>
 
   <div class="filters" role="tablist" aria-label="カテゴリで絞り込み">
@@ -240,15 +252,15 @@ a.card:hover .go{background:#f58c65;color:#fff;border-color:#f58c65}
   </div>
 
   <div class="grid" id="grid">
-    <a class="card" data-cat="biz" href="part-time-payroll-demo.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">給与</span></div><span class="tag">給与</span><h2>パート給与の計算</h2><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p class="how">①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
-    <a class="card" data-cat="biz" href="demo-daily-report.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">日報</span></div><span class="tag">日報</span><h2>日報・作業報告</h2><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p class="how">①スタッフを選ぶ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
-    <a class="card" data-cat="biz" href="demo-shift.html"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/calendar.webp" type="image/webp"><img src="assets/calendar.jpg" width="900" height="900" alt="" loading="lazy" decoding="async"></picture><span class="pill">シフト</span></div><span class="tag">シフト</span><h2>シフト・希望休</h2><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p class="how">①週を選ぶ → ②マスをタップで切替 → ③メモをコピー。</p><span class="go">デモを開く →</span></a>
-    <a class="card" data-cat="biz" href="demo-booking.html"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/calendar-ui.webp" type="image/webp"><img src="assets/calendar-ui.jpg" width="900" height="900" alt="" loading="lazy" decoding="async"></picture><span class="pill">予約</span></div><span class="tag">予約</span><h2>簡易予約・受付</h2><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p class="how">①予約を追加 → ②来店に変更 → ③完了まで進めます。</p><span class="go">デモを開く →</span></a>
-    <a class="card" data-cat="biz" href="demo-inventory.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">在庫</span></div><span class="tag">在庫</span><h2>在庫・備品管理</h2><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p class="how">①＋／−で増減 → ②要発注（オレンジ）を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
-    <a class="card" data-cat="life" href="demo-kondate/"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">献立</span></div><span class="tag">献立</span><h2>わたらぼクッキング</h2><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p class="how">下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
-    <a class="card" data-cat="life" href="demo-diet.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">減量</span></div><span class="tag">減量</span><h2>わたらぼダイエットアプリ</h2><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p class="how">①ホームで状況 → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
-    <a class="card" data-cat="game" href="demo-smash.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">PLAY</span></div><span class="tag">ゲーム</span><h2>わたらぼスマッシュ</h2><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p class="how">タップで壊す。コンボで得点アップ。ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
-    <a class="card" data-cat="chat" href="demo-chatbot.html"><div class="preview" aria-hidden="true"><div class="win"><div class="bar l"></div><div class="bar m"></div><div class="bar s"></div></div><span class="pill">CHAT</span></div><span class="tag">チャット</span><h2>店舗チャットボット見本</h2><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p class="how">架空カフェ。①ボタンを押す → ②返事を見る。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="biz" href="part-time-payroll-demo.html"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-payroll.webp" type="image/webp"><img src="assets/thumb-payroll.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="pill">給与</span></div><span class="tag">給与</span><h2>パート給与の計算</h2><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p class="how">①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="biz" href="demo-daily-report.html"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-daily-report.webp" type="image/webp"><img src="assets/thumb-daily-report.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="pill">日報</span></div><span class="tag">日報</span><h2>日報・作業報告</h2><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p class="how">①スタッフを選ぶ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="biz" href="demo-shift.html"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-shift.webp" type="image/webp"><img src="assets/thumb-shift.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="pill">シフト</span></div><span class="tag">シフト</span><h2>シフト・希望休</h2><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p class="how">①週を選ぶ → ②マスをタップで切替 → ③メモをコピー。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="biz" href="demo-booking.html"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-booking.webp" type="image/webp"><img src="assets/thumb-booking.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="pill">予約</span></div><span class="tag">予約</span><h2>簡易予約・受付</h2><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p class="how">①予約を追加 → ②来店に変更 → ③完了まで進めます。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="biz" href="demo-inventory.html"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-inventory.webp" type="image/webp"><img src="assets/thumb-inventory.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="pill">在庫</span></div><span class="tag">在庫</span><h2>在庫・備品管理</h2><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p class="how">①＋／−で増減 → ②要発注（オレンジ）を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="life" href="demo-kondate/"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-kondate.webp" type="image/webp"><img src="assets/thumb-kondate.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="pill">献立</span></div><span class="tag">献立</span><h2>わたらぼクッキング</h2><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p class="how">下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="life" href="demo-diet.html"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-diet.webp" type="image/webp"><img src="assets/thumb-diet.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="pill">減量</span></div><span class="tag">減量</span><h2>わたらぼダイエットアプリ</h2><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p class="how">①ホームで状況 → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="game" href="demo-smash.html"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-smash.webp" type="image/webp"><img src="assets/thumb-smash.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="pill">PLAY</span></div><span class="tag">ゲーム</span><h2>わたらぼスマッシュ</h2><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p class="how">タップで壊す。コンボで得点アップ。ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
+    <a class="card" data-cat="chat" href="demo-chatbot.html"><div class="preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-chatbot.webp" type="image/webp"><img src="assets/thumb-chatbot.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="pill">CHAT</span></div><span class="tag">チャット</span><h2>店舗チャットボット見本</h2><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p class="how">架空カフェ。①ボタンを押す → ②返事を見る。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
   </div>
 
   <aside class="footnote">
