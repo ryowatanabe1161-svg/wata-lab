@@ -658,33 +658,44 @@ input:focus,select:focus,textarea:focus{
 }
 
 
-/* BUG-005: keep bottom notes clear of sticky LINE bar */
-:root{ --fixed-bar-h: 88px; }
+/* BUG-005/009: sticky LINE clearance — keep composer above bar */
+:root{ --fixed-bar-h: 110px; }
 body.wl-has-linebar{
-  --fixed-bar-h: 96px;
-  padding-bottom: calc(var(--fixed-bar-h) + 28px + env(safe-area-inset-bottom,0px)) !important;
+  --fixed-bar-h: 110px;
+  /* Lock shell to viewport; only #chat scrolls. Padding clears fixed LINE bar. */
+  height: 100% !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  overflow: hidden !important;
+  padding-bottom: calc(var(--fixed-bar-h) + env(safe-area-inset-bottom,0px)) !important;
 }
 body.wl-has-linebar .composer{
-  padding-bottom: calc(12px + env(safe-area-inset-bottom,0px)) !important;
+  flex: 0 0 auto;
   position: relative;
-  z-index: 2;
+  z-index: 50;
+  padding-bottom: 10px !important;
+  background: var(--bg, #f7f4ef) !important;
+  box-shadow: 0 -10px 18px -14px rgba(26,43,74,.18);
 }
 body.wl-has-linebar .quick{
+  flex: 0 0 auto;
   position: relative;
-  z-index: 2;
+  z-index: 50;
+  background: var(--bg, #f7f4ef) !important;
 }
 body.wl-has-linebar .footer-note,
 body.wl-has-linebar .footnote,
 body.wl-has-linebar aside.footnote{
-  margin-bottom: calc(var(--fixed-bar-h) + 12px) !important;
-  padding-bottom: 1.25rem !important;
+  /* Body padding already clears LINE — no extra margin (was double-spacing / overflow). */
+  margin-bottom: 0 !important;
+  padding-bottom: 6px !important;
 }
 body.wl-has-linebar .wrap{
   padding-bottom: calc(var(--fixed-bar-h) + 2.5rem) !important;
 }
 @media(min-width:640px){
-  :root{ --fixed-bar-h: 72px; }
-  body.wl-has-linebar{ --fixed-bar-h: 80px; }
+  :root{ --fixed-bar-h: 84px; }
+  body.wl-has-linebar{ --fixed-bar-h: 84px; }
 }
 
 
@@ -806,15 +817,94 @@ input,select,textarea{border-radius:12px!important}
   .howto{margin:0.4rem 0.55rem 0.3rem !important;padding:0.65rem 0.8rem !important}
 }
 main.chat#chat,.chat#chat{
-  flex:1 1 auto;
-  min-height:min(52vh, 420px);
-  min-height:min(52dvh, 420px);
+  /* min-height:0 so flex can shrink; previous 52vh min pushed composer under LINE bar */
+  flex:1 1 0;
+  min-height:0;
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
 }
 body.wl-has-linebar .composer,
 body.wl-has-linebar .quick{
-  background:linear-gradient(180deg,transparent,var(--bg) 28%);
+  background: var(--bg, #f7f4ef) !important;
+}
+
+/* Keep the text field above the fixed LINE bar, including 375×667.
+   Upper blocks may shrink; the composer and note do not. */
+body.wl-has-linebar{
+  --fixed-bar-h:120px;
+  display:flex !important;
+  flex-direction:column !important;
+  height:100dvh !important;
+  max-height:100dvh !important;
+  min-height:0 !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+  padding-bottom:calc(var(--fixed-bar-h) + env(safe-area-inset-bottom,0px)) !important;
+}
+body.wl-has-linebar > .sample-banner,
+body.wl-has-linebar > header.top,
+body.wl-has-linebar > form.composer,
+body.wl-has-linebar > p.footer-note{
+  flex:0 0 auto !important;
+}
+body.wl-has-linebar > .howto{
+  flex:0 1 auto !important;
+  min-height:0 !important;
+  max-height:18dvh !important;
+  overflow:auto !important;
+}
+body.wl-has-linebar > .wl-demo-hero{
+  flex:0 1 92px !important;
+  min-height:0 !important;
+  max-height:92px !important;
+  margin-top:.25rem !important;
+  margin-bottom:0 !important;
+  overflow:hidden !important;
+}
+body.wl-has-linebar > .wl-demo-hero picture,
+body.wl-has-linebar > .wl-demo-hero img{
+  max-height:92px !important;
+  height:92px !important;
+  aspect-ratio:auto !important;
+}
+body.wl-has-linebar > main.chat#chat{
+  flex:1 1 auto !important;
+  min-height:96px !important;
+  overflow-y:auto !important;
+}
+body.wl-has-linebar > .quick{
+  flex:0 1 auto !important;
+  min-height:0 !important;
+  max-height:112px !important;
+  overflow-y:auto !important;
+}
+body.wl-has-linebar > form.composer{
+  position:relative !important;
+  z-index:60 !important;
+  background:var(--bg,#f3ebe3) !important;
+  padding-bottom:8px !important;
+}
+body.wl-has-linebar > p.footer-note{
+  margin:0 !important;
+  padding:0 12px 8px !important;
+  background:var(--bg,#f3ebe3) !important;
+}
+@media (max-height:700px){
+  body.wl-has-linebar > .wl-demo-hero{display:none !important}
+  body.wl-has-linebar > .howto{max-height:96px !important}
+  body.wl-has-linebar > .quick{max-height:78px !important}
+  body.wl-has-linebar > main.chat#chat{min-height:72px !important}
+}
+@media (min-width:640px) and (min-height:701px){
+  body.wl-has-linebar > .wl-demo-hero,
+  body.wl-has-linebar > .wl-demo-hero picture,
+  body.wl-has-linebar > .wl-demo-hero img{
+    flex-basis:140px !important;
+    max-height:140px !important;
+    height:140px !important;
+    display:block !important;
+  }
+  body.wl-has-linebar > .howto{max-height:none !important;overflow:visible !important}
 }
 
 </style>
@@ -1046,7 +1136,7 @@ body.wl-has-linebar .quick{
   renderChips();
   addBubble('bot', '', true,
     'こんにちは！架空カフェ「こみちコーヒー」です。<br><br><strong>①</strong> 下のオレンジのボタンを押す<br><strong>②</strong> 自動で返事が返ってきます<br><strong>③</strong> 「営業時間は？」など自由入力もOK<br><br><span style="font-size:12px;opacity:.85">※ サンプル／架空です。実在しません。サーバーには送りません。</span>');
-  setTimeout(function(){ var c=document.querySelector('.chip.hot'); if(c) c.focus(); }, 400);
+  setTimeout(function(){ var c=document.querySelector('.chip.hot'); if(c) c.focus({preventScroll:true}); }, 400);
 })();
 </script>
 
@@ -1085,6 +1175,17 @@ body.wl-has-linebar .quick{
     });
   }
 
+  function syncLineBarH(){
+    var foot = $('.wl-footer-cta');
+    if(!foot || !document.body.classList.contains('wl-has-linebar')) return;
+    var top = foot.getBoundingClientRect().top;
+    var occupied = Math.ceil(Math.max(0, window.innerHeight - top));
+    if(occupied < 72) occupied = 120;
+    var px = occupied + 'px';
+    document.documentElement.style.setProperty('--fixed-bar-h', px);
+    document.body.style.setProperty('--fixed-bar-h', px);
+    document.documentElement.style.setProperty('--wl-toast-lift', px);
+  }
   function addFooter(){
     if(isGame) return;
     if($('.wl-footer-cta') || location.pathname.includes('demo-index')) return;
@@ -1095,7 +1196,12 @@ body.wl-has-linebar .quick{
       '<a href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談 ↗</a>';
     document.body.appendChild(foot);
     document.body.classList.add('wl-has-linebar');
-    document.documentElement.style.setProperty('--wl-toast-lift', '84px');
+    requestAnimationFrame(function(){ syncLineBarH(); requestAnimationFrame(syncLineBarH); });
+    if(!window.__wlLineBarResize){
+      window.__wlLineBarResize = true;
+      window.addEventListener('resize', syncLineBarH, {passive:true});
+      window.addEventListener('orientationchange', function(){ setTimeout(syncLineBarH, 200); });
+    }
   }
 
   function seen(){ try{ return localStorage.getItem(key)==='1'; }catch(e){ return false; } }
