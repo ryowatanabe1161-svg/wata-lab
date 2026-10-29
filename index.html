@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="WATA LAB（ワタラボ）｜個人・個人経営・小さな店や施設向け。HP 3〜8万円〜、業務の仕組み 5〜15万円。触れるサンプルあり。相談・見積無料。公式LINEで気軽に。">
-<meta name="theme-color" content="#172b3e">
+<meta name="theme-color" content="#1b2740">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="WATA LAB">
 <meta property="og:title" content="WATA LAB｜個人店・教室向けホームページ＆業務の仕組み｜相談無料">
@@ -18,1349 +18,510 @@
 <meta name="twitter:title" content="WATA LAB｜個人店・教室向けホームページ＆業務の仕組み">
 <meta name="twitter:description" content="HP 3〜8万円〜／業務の仕組み 5〜15万円。触れるサンプルあり。相談・見積無料。">
 <meta name="twitter:image" content="https://ryowatanabe1161-svg.github.io/wata-lab/assets/ogp.jpg">
-
 <title>WATA LAB｜個人店・教室向けホームページ＆業務の仕組み｜相談無料</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
 <style>
 :root{
-  --navy:#172b3e;
-  --navy-2:#1f3a52;
-  --teal:#d7ebe5;
-  --teal-mid:#b7e0d4;
-  --teal-deep:#2f6b5a;
-  --orange:#f58c65;
-  --orange-deep:#d97957;
-  --orange-soft:#ffe8dc;
-  --cream:#f7f6ef;
-  --cream-2:#fbfaf5;
-  --muted:#4f5f70;
-  --muted-2:#5f6f80;
-  --line:#e2e6e0;
-  --line-2:#d5dcd6;
-  --soft:#edf0eb;
-  --card:#ffffff;
-  --shadow:0 1px 0 rgba(255,255,255,.85), 0 14px 36px -22px rgba(23,43,62,.34);
-  --shadow-lg:0 28px 56px -30px rgba(23,43,62,.42);
-  --shadow-hover:0 22px 44px -18px rgba(23,43,62,.3);
-  --radius:24px;
-  --radius-sm:16px;
+  --ink:#1b2740;
+  --muted:#4e5d70;
+  --soft:#667588;
+  --navy:#1b2740;
+  --cream:#f4f0e8;
+  --paper:#fffcf8;
+  --line:#e4ddd2;
+  --line-2:#d4cdc2;
+  --teal:#1c6b58;
+  --teal-soft:#e4f3ed;
+  --teal-mid:#cfe7de;
+  --orange:#c4471f;
+  --orange-deep:#a33816;
+  --orange-soft:#fff0e6;
+  --shadow:0 1px 0 rgba(255,255,255,.8), 0 16px 36px -26px rgba(27,39,64,.45);
+  --shadow-lg:0 24px 50px -28px rgba(27,39,64,.42);
+  --radius:22px;
   --ease:cubic-bezier(.22,.7,.25,1);
-  --font:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,system-ui,sans-serif;
-  --max:1120px;
+  --font:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;
+  --header:72px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-::selection{background:#ffe0ab;color:var(--navy)}
 body{
   margin:0;
   background:
-    radial-gradient(ellipse 70% 45% at 100% -8%,rgba(215,235,229,.62),transparent 58%),
-    radial-gradient(ellipse 55% 38% at -8% 18%,rgba(255,232,220,.42),transparent 52%),
+    radial-gradient(ellipse 70% 42% at 100% -10%, rgba(207,231,222,.7), transparent 58%),
+    radial-gradient(ellipse 50% 36% at -8% 8%, rgba(255,228,210,.55), transparent 52%),
     var(--cream);
-  color:var(--navy);
+  color:var(--ink);
   font-family:var(--font);
-  line-height:1.85;
   font-size:16px;
+  line-height:1.75;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
-a{text-decoration:none;color:inherit}
-.wrap{max-width:var(--max);padding:0 32px;margin:auto}
-.eyebrow{
-  font-size:11px;font-weight:800;color:#c46e51;
-  letter-spacing:2.8px;display:inline-flex;align-items:center;gap:8px;
+img{max-width:100%;height:auto}
+picture{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,a,summary{touch-action:manipulation}
+::selection{background:#ffd7bf;color:var(--ink)}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.skip{
+  position:absolute;left:12px;top:12px;z-index:80;
+  background:var(--navy);color:#fff;padding:10px 14px;border-radius:12px;
+  font-weight:800;transform:translateY(-160%);
 }
-.eyebrow:before{content:"";width:18px;height:2px;background:currentColor;border-radius:2px;opacity:.7}
+.skip:focus{transform:none}
+.wrap,nav{width:min(1120px,calc(100% - 40px));margin-inline:auto}
+h1,h2,h3{font-feature-settings:"palt" 1;line-height:1.3;letter-spacing:-.04em}
+h2{text-wrap:balance}
 
-/* Nav */
+/* Header */
 header{
   position:sticky;top:0;z-index:40;
-  background:rgba(247,246,239,.9);
-  border-bottom:1px solid rgba(226,230,224,.9);
-  backdrop-filter:blur(18px) saturate(1.25);
-  -webkit-backdrop-filter:blur(18px) saturate(1.25);
+  background:#f4f0e8;
+  border-bottom:1px solid transparent;
+  transition:box-shadow .25s var(--ease), border-color .25s;
+}
+header.is-scrolled{
+  border-bottom-color:rgba(27,39,64,.08);
+  box-shadow:0 10px 24px -18px rgba(27,39,64,.45);
 }
 nav{
-  max-width:var(--max);margin:auto;
-  padding:15px 32px;
-  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  min-height:var(--header);padding:10px 0;
 }
-.logo{font-size:25px;line-height:1;font-weight:900;letter-spacing:-1.5px}
+.logo{font-weight:900;font-size:22px;letter-spacing:-.06em;line-height:1;white-space:nowrap}
 .logo span{color:var(--orange)}
-.logo small{display:block;font-size:9px;letter-spacing:3.2px;margin-top:6px;color:var(--muted);font-weight:800}
-.navlinks{display:flex;gap:16px;align-items:center;font-size:13px;font-weight:800;flex-wrap:wrap;justify-content:flex-end}
-.navlinks a{opacity:.88;transition:color .15s,opacity .15s}
-.navlinks a:hover{color:#c36d50;opacity:1}
+.logo small{display:block;margin-top:4px;font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--soft)}
+.navlinks{display:flex;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:wrap;font-size:13px;font-weight:700}
+.navlinks a{color:#314056}
+.navlinks a.is-active{color:var(--orange)}
 .chip{
-  background:var(--navy);color:white!important;border-radius:50px;
-  padding:11px 18px;opacity:1!important;
-  box-shadow:0 4px 0 #0f1c29;transition:transform .15s,box-shadow .15s;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--navy);color:#fff!important;border-radius:999px;
+  padding:10px 16px;font-weight:800;box-shadow:0 8px 18px -12px rgba(27,39,64,.8);
+  white-space:nowrap;
 }
-.chip:hover{color:#fff!important;transform:translateY(2px);box-shadow:0 2px 0 #0f1c29}
+.chip:hover{background:#243656}
 
 /* Hero */
 .hero{
-  display:grid;grid-template-columns:1.08fr .92fr;align-items:center;
-  gap:64px;padding-top:84px;padding-bottom:96px;min-height:680px;
-  position:relative;
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:40px;align-items:center;padding:18px 0 10px;
 }
-.hero-copy{position:relative;z-index:1}
 .tag{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(215,235,229,.9);border-radius:99px;
-  padding:9px 15px;font-size:12px;font-weight:800;letter-spacing:.3px;
-  border:1px solid #c9ded5;box-shadow:0 1px 0 #fff,0 8px 20px -16px rgba(47,107,90,.35);
+  display:inline-flex;align-items:center;gap:8px;max-width:100%;
+  background:rgba(228,243,237,.9);border:1px solid #cfe3da;color:var(--teal);
+  border-radius:999px;padding:7px 12px;font-size:12px;font-weight:800;
 }
-.tag i{width:7px;height:7px;border-radius:50%;background:var(--teal-deep);box-shadow:0 0 0 3px rgba(47,107,90,.18)}
-.price-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.price-chips span{
-  display:inline-flex;align-items:center;gap:6px;
-  background:#fff;border:1px solid var(--line);border-radius:999px;
-  padding:7px 13px;font-size:12px;font-weight:800;color:var(--navy);
-  box-shadow:var(--shadow);
+.tag i{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(28,107,88,.16);flex:none}
+h1{font-size:clamp(32px,4.4vw,52px);font-weight:900;margin:12px 0 10px;letter-spacing:-.05em;line-height:1.16}
+h1 em{
+  font-style:normal;
+  background:linear-gradient(#ffd8bf,#ffd8bf) left 78%/100% 34% no-repeat;
 }
-.price-chips b{color:var(--teal-deep);font-weight:900}
-h1{
-  font-size:clamp(42px,5.2vw,72px);
-  letter-spacing:-2.8px;line-height:1.26;
-  margin:22px 0 18px;font-weight:900;
+.lead{margin:0;max-width:38em;color:#3c4c60;font-size:16.5px;line-height:1.8}
+.offer{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  margin-top:20px;background:var(--paper);border:1px solid var(--line);border-radius:18px;
+  box-shadow:var(--shadow);overflow:hidden;
 }
-h1 em{font-style:normal;position:relative;white-space:nowrap}
-h1 em:after{
-  content:"";position:absolute;bottom:6px;left:-4px;right:-4px;
-  height:16px;background:linear-gradient(90deg,#ffe0ab,#ffd08a);z-index:-1;border-radius:6px;
-}
-.lead{font-size:17px;color:#4a5a6a;max-width:540px;line-height:1.95;margin:0}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.offer div{padding:12px 12px 11px;min-width:0}
+.offer div + div{border-left:1px solid var(--line)}
+.offer span{display:block;font-size:11px;font-weight:800;color:var(--soft);letter-spacing:.04em}
+.offer b{display:block;margin-top:2px;font-size:clamp(15px,1.6vw,20px);letter-spacing:-.04em;line-height:1.25;color:var(--teal);font-weight:900}
+.offer div:last-child b{color:var(--orange)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:6px;
-  border-radius:16px;padding:17px 28px;font-weight:900;font-size:14.5px;
-  background:var(--orange);box-shadow:0 6px 0 var(--orange-deep);transition:.18s var(--ease);
+  min-height:50px;padding:12px 20px;border-radius:999px;
+  background:var(--orange);color:#fff;font-weight:800;font-size:15px;
+  box-shadow:0 10px 22px -14px rgba(196,71,31,.9);
+  transition:transform .16s var(--ease), background .16s, box-shadow .16s;
 }
-.btn:hover{transform:translateY(3px);box-shadow:0 3px 0 var(--orange-deep)}
-.btn.secondary{
-  background:#fff;border:1px solid var(--line);box-shadow:0 4px 0 var(--line-2);
-}
-.btn.secondary:hover{box-shadow:0 2px 0 var(--line-2)}
-.trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.trust span{
-  display:inline-flex;align-items:center;gap:7px;
-  background:#fff;border:1px solid var(--line);border-radius:999px;
-  padding:8px 14px;font-size:12px;font-weight:800;color:var(--navy);
+.btn:hover{background:#d4532a;transform:translateY(-1px)}
+.btn:active{transform:translateY(1px);background:var(--orange-deep)}
+.btn-ghost{
+  background:#fff;color:var(--ink);
+  border:1px solid var(--line-2);
   box-shadow:var(--shadow);
 }
-.trust span b{color:var(--teal-deep);font-size:13px}
-
-/* Hero visual */
-.visual{
-  position:relative;min-height:480px;border-radius:36px;
+.btn-ghost:hover{background:#fff;border-color:#c9ddd4;color:var(--teal)}
+.reassure{margin:10px 0 0;font-size:13px;font-weight:700;color:var(--muted)}
+.path{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;padding:0;list-style:none}
+.path li{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,252,248,.75);border:1px solid var(--line);border-radius:999px;
+  padding:5px 10px;font-size:12px;font-weight:800;color:#314056;
+}
+.path li::before{
+  counter-increment:step;
+}
+.path{counter-reset:step}
+.path li::before{
+  content:counter(step);
+  width:18px;height:18px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--teal-soft);color:var(--teal);font-size:11px;
+}
+.hero-visual{min-width:0}
+.hero-frame{
   background:
-    radial-gradient(circle at 88% 12%,#ffdea1 0 36%,transparent 37%),
-    radial-gradient(circle at 8% 90%,rgba(255,255,255,.7) 0 24%,transparent 25%),
-    linear-gradient(155deg,#c5e5db 0%,#d9efe8 48%,#bfe0d5 100%);
-  box-shadow:20px 22px 0 #dfeae4, var(--shadow-lg);
-  overflow:hidden;display:grid;place-items:center;padding:30px 24px;
+    radial-gradient(circle at 92% 8%, #ffe1b8 0 18%, transparent 19%),
+    linear-gradient(155deg,#d7efe6 0%,#f7f1e6 55%,#f3ddcf 100%);
+  border-radius:28px;padding:12px 12px 14px;
+  box-shadow:var(--shadow-lg);
 }
-.visual:before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(circle at 70% 70%,rgba(23,43,62,.04),transparent 45%);
-  pointer-events:none;
+.hero-frame img{
+  display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:86% 46%;
+  border-radius:18px;background:#d7efe6;
 }
-.mock-stack{position:relative;width:100%;max-width:430px;height:350px;z-index:1}
-.mock{
-  position:absolute;background:#fff;border:5px solid var(--navy);border-radius:20px;
-  overflow:hidden;box-shadow:14px 16px rgba(23,43,62,.14);
+.hero-caption{margin:10px 4px 0;text-align:center;font-size:12px;font-weight:800;color:#5d6c7c}
+
+/* Who */
+.who{padding:10px 0 6px}
+.who-bar{
+  display:grid;grid-template-columns:148px minmax(0,1fr);gap:12px;align-items:center;
+  background:rgba(255,252,248,.9);border:1px solid var(--line);border-radius:22px;
+  padding:14px;box-shadow:var(--shadow);
 }
-.mock.main{width:78%;height:258px;left:8%;top:28px;transform:rotate(-3.5deg);z-index:2}
-.mock.side{width:46%;height:172px;right:0;bottom:18px;transform:rotate(7deg);z-index:3;border-width:4px}
-.bar{height:24px;background:var(--navy);display:flex;align-items:center;padding-left:10px;gap:5px}
-.bar i{display:block;width:6px;height:6px;border-radius:50%;background:#fff;opacity:.9}
-.inside{padding:18px 16px}
-.inside small{font-weight:900;letter-spacing:1.2px;font-size:10px;color:var(--muted)}
-.inside strong{display:block;font-size:22px;line-height:1.35;margin:8px 0 12px;letter-spacing:-.6px}
-.skel{height:8px;background:#d7e3de;border-radius:20px;margin-bottom:8px}
-.skel.s{width:58%}.skel.m{width:78%}.skel.l{width:92%}
-.mini-rows{display:grid;gap:7px;margin-top:10px}
-.mini-row{
-  display:flex;align-items:center;gap:8px;background:var(--cream);
-  border-radius:10px;padding:8px 10px;font-size:11px;font-weight:800;
-}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--teal-deep);flex-shrink:0}
-.dot.o{background:var(--orange)}.dot.y{background:#e8b84a}
-.pill{
-  margin-left:auto;font-size:10px;background:var(--teal);color:var(--teal-deep);
-  border-radius:999px;padding:2px 8px;font-weight:900;
-}
-.side .inside{padding:12px}
-.side strong{font-size:15px;margin:4px 0 8px}
-.meter{height:8px;background:#e8efe9;border-radius:99px;overflow:hidden;margin-top:8px}
-.meter span{display:block;height:100%;width:68%;background:linear-gradient(90deg,var(--teal-deep),#5aaa90);border-radius:99px}
-.float-card{
-  position:absolute;z-index:4;background:#fff;border:1px solid var(--line);pointer-events:none;
-  border-radius:14px;padding:10px 12px;font-size:12px;font-weight:800;
-  box-shadow:0 12px 28px -14px rgba(23,43,62,.4);color:var(--navy);
-}
-.float-card.a{left:10px;top:18px;transform:rotate(-7deg)}
-.float-card.b{right:8px;top:92px;transform:rotate(5deg);background:#fff8ef;border-color:#f0e0c8}
-.float-card.c{left:22px;bottom:86px;transform:rotate(3deg);background:#eef7f3;border-color:#c9ded5}
-.float-card span{display:block;font-size:10px;color:var(--muted);font-weight:700;margin-bottom:2px}
-.sticker{
-  position:absolute;left:18px;bottom:22px;z-index:4;
-  background:var(--orange);color:#fff;border:4px solid white;border-radius:14px;
-  padding:10px 14px;transform:rotate(-8deg);font-weight:900;font-size:13px;
-  box-shadow:0 10px 20px -10px rgba(23,43,62,.45);
-}
+.who-label{margin:0;font-size:13px;font-weight:900;letter-spacing:.04em;color:var(--teal)}
+.who-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0;padding:0;list-style:none}
+.who-grid li{background:var(--cream);border-radius:14px;padding:10px 12px;min-width:0}
+.who-grid b{display:block;font-size:14px;letter-spacing:-.03em}
+.who-grid span{display:block;margin-top:2px;font-size:12px;color:var(--muted);line-height:1.45}
 
 /* Sections */
-.section{padding:112px 0;position:relative}
-.white{background:#fff}
-.white.soft{background:linear-gradient(180deg,#fff 0%,var(--cream-2) 100%)}
-.band{background:linear-gradient(180deg,var(--cream-2) 0%,#fff 100%)}
-.intro{max-width:720px;margin-bottom:48px}
-.intro h2{
-  font-size:clamp(30px,3.6vw,44px);line-height:1.32;
-  letter-spacing:-1.35px;margin:12px 0 16px;font-weight:900;
-}
-.intro p{font-size:15.5px;color:var(--muted);margin:0;line-height:1.95}
-
-/* Pain */
-.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.pain{
-  display:flex;gap:16px;align-items:flex-start;
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);
-  padding:22px 22px;box-shadow:var(--shadow);
-  transition:transform .22s var(--ease),box-shadow .22s,border-color .22s;
-}
-.pain:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);border-color:#c9ded5}
-.pain-num{
-  flex-shrink:0;width:36px;height:36px;border-radius:12px;
-  background:var(--orange-soft);color:#c46e51;
-  display:grid;place-items:center;font-size:13px;font-weight:900;
-}
-.pain p{margin:0;font-size:14.5px;font-weight:800;line-height:1.7;color:var(--navy)}
-.pain-foot{
-  margin-top:28px;padding:22px 26px;border-radius:var(--radius);
-  background:linear-gradient(135deg,#eef7f3,#fff8ef);
-  border:1px solid #d7e8e1;box-shadow:var(--shadow);
-  font-size:15px;font-weight:800;line-height:1.75;color:var(--navy);
-}
-.pain-foot span{color:var(--teal-deep)}
-
-/* Why */
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.why{
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-  padding:32px 28px;box-shadow:var(--shadow);position:relative;overflow:hidden;
-  transition:transform .22s var(--ease),box-shadow .22s;
-  min-height:260px;
-}
-.why:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
-.why:before{
-  content:"";position:absolute;left:0;right:0;top:0;height:3px;
-  background:linear-gradient(90deg,var(--teal-mid),var(--orange-soft));
-}
-.why-no{
-  font-size:42px;font-weight:900;letter-spacing:-2px;line-height:1;
-  color:var(--teal);margin-bottom:18px;
-  -webkit-text-stroke:1.5px var(--teal-deep);paint-order:stroke fill;
-}
-.why h3{font-size:19px;margin:0 0 12px;letter-spacing:-.35px;line-height:1.4}
-.why p{margin:0;font-size:14px;color:var(--muted);line-height:1.85}
-.why .proof{
-  margin-top:18px;padding-top:14px;border-top:1px dashed #dce3de;
-  font-size:12.5px;font-weight:800;color:var(--teal-deep);
+.section{padding:84px 0}
+.intro{max-width:40rem;margin-bottom:28px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--orange)}
+.intro h2{font-size:clamp(28px,3.4vw,40px);font-weight:900;margin:8px 0 10px}
+.intro p{margin:0;color:var(--muted);font-size:15.5px}
+.band{background:linear-gradient(180deg,rgba(255,252,248,.55),rgba(244,240,232,0))}
+.paper{
+  background:
+    linear-gradient(180deg,#fffcf8 0%,#f7f4ee 100%);
 }
 
 /* Services */
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.service{
-  background:var(--cream);border:1px solid #ebede7;border-radius:var(--radius);
-  padding:30px 26px 28px;min-height:280px;position:relative;overflow:hidden;
-  box-shadow:var(--shadow);transition:transform .22s var(--ease),box-shadow .22s,border-color .22s;
+.svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.svc{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 20px 20px;box-shadow:var(--shadow);min-width:0;
+  display:flex;flex-direction:column;gap:0;
 }
-.service:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:#d5e4de}
-.service:before{
-  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
-  background:var(--teal-deep);opacity:.4;
-}
-.service:nth-child(2):before{background:var(--orange)}
-.service:nth-child(3):before{background:#7b7bc9}
-.service:nth-child(4):before{background:#e8b84a}
 .icon{
-  width:56px;height:56px;border-radius:16px;background:var(--teal);
-  display:grid;place-items:center;font-size:26px;
-  box-shadow:inset 0 -2px 0 rgba(23,43,62,.06),0 8px 16px -12px rgba(47,107,90,.35);
+  width:52px;height:52px;border-radius:16px;display:grid;place-items:center;
+  background:var(--teal-soft);color:var(--teal);
 }
-.service:nth-child(2) .icon{background:#ffe5d5}
-.service:nth-child(3) .icon{background:#e7e7fa}
-.service:nth-child(4) .icon{background:#ffebbc}
-.service h3{font-size:17.5px;margin:18px 0 10px;letter-spacing:-.25px}
-.service p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.8}
-
-/* Experience */
-.exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.exp{
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-  padding:28px 24px;display:flex;flex-direction:column;
-  box-shadow:var(--shadow);transition:transform .22s var(--ease),box-shadow .22s,border-color .22s;
-  position:relative;overflow:hidden;min-height:220px;
-}
-.exp:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:#c9ded5}
-.exp:before{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:linear-gradient(90deg,var(--teal-mid),transparent)}
-.badge{
-  display:inline-flex;align-items:center;align-self:flex-start;border-radius:99px;
-  padding:6px 12px;font-size:11px;font-weight:800;margin-bottom:14px;background:var(--teal);
-  letter-spacing:.2px;
-}
-.exp:nth-child(2) .badge{background:#d9ebe3}
-.exp:nth-child(3) .badge{background:#ffe5d5}
-.exp:nth-child(4) .badge{background:#e7e7fa}
-.exp h3{font-size:16.5px;margin:0 0 10px;line-height:1.45;letter-spacing:-.25px}
-.exp p{font-size:13.5px;color:var(--muted);margin:0;flex:1;line-height:1.8}
-.exp-note,.demo-note,.price-note{
-  margin-top:28px;font-size:13.5px;color:var(--muted);
-  background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;line-height:1.8;
-  box-shadow:var(--shadow);
-}
-.section.white .price-note,.section.white .demo-note,.section.white .exp-note{background:var(--cream);border-color:#ebede7}
-.linkish{color:#c46e51;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.svc:nth-child(2) .icon{background:#fff0e6;color:var(--orange)}
+.svc:nth-child(3) .icon{background:#efeaf8;color:#5c4d86}
+.icon svg{width:26px;height:26px;display:block}
+.svc h3{margin:14px 0 6px;font-size:20px}
+.svc-price{margin:0 0 8px;font-size:22px;font-weight:900;letter-spacing:-.04em;color:var(--teal);line-height:1.2}
+.svc-price small{display:block;margin-top:2px;font-size:12px;font-weight:700;color:var(--soft);letter-spacing:0}
+.svc p{margin:0;color:var(--muted);font-size:14.5px}
+.svc-list{margin:14px 0 16px;padding:0;list-style:none}
+.svc-list li{display:flex;gap:8px;align-items:flex-start;padding:7px 0;border-top:1px dashed #e5dfd6;font-size:13.5px;font-weight:700}
+.svc-list li::before{content:"";width:8px;height:8px;margin-top:7px;border-radius:50%;background:var(--teal);flex:none}
+.svc .text-link{margin-top:auto}
 
 /* Demos */
-.demos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.demos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .demo{
-  display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
-  border-radius:var(--radius);padding:26px 24px 24px;min-height:220px;
-  box-shadow:var(--shadow);transition:transform .22s var(--ease),box-shadow .22s,border-color .22s;
-  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;min-width:0;
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);
+  transition:transform .2s var(--ease), box-shadow .2s, border-color .2s;
 }
-.demo:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:#c9ded5}
-.demo:after{
-  content:"→";position:absolute;right:20px;bottom:20px;font-size:18px;font-weight:900;
-  color:var(--orange);opacity:0;transform:translateX(-6px);transition:.2s var(--ease);
+.demo-preview{background:#e7f1ec;aspect-ratio:4/3}
+.demo-preview img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;transition:transform .5s var(--ease)}
+.demo-body{display:flex;flex-direction:column;gap:8px;padding:16px 16px 18px;flex:1;min-width:0}
+.badge{
+  align-self:flex-start;background:var(--teal-soft);color:var(--teal);
+  border-radius:999px;padding:4px 10px;font-size:11px;font-weight:800;
 }
-.demo:hover:after{opacity:1;transform:translateX(0)}
-.demo .badge{background:var(--teal);margin-bottom:12px}
-.demo:nth-child(2) .badge{background:#ffe5d5}
-.demo:nth-child(3) .badge{background:#e7e7fa}
-.demo:nth-child(4) .badge{background:#ffebbc}
-.demo:nth-child(5) .badge{background:#d9ebe3}
-.demo:nth-child(6) .badge{background:#ffe5d5}
-.demo:nth-child(7) .badge{background:#e7e7fa}
-.demo:nth-child(8) .badge{background:#ffebbc}
-.demo:nth-child(9) .badge{background:#d9ebe3}
-.demo h3{font-size:17.5px;margin:0 0 10px;letter-spacing:-.25px}
-.demo .for{
-  font-size:12.5px;font-weight:800;color:var(--teal-deep);background:#eef7f3;
-  border:1px solid #c9ded5;border-radius:12px;padding:9px 11px;margin:0 0 12px;line-height:1.55;
+.demo h3{margin:0;font-size:18px;letter-spacing:-.03em}
+.for,.steps{margin:0;font-size:13.5px;line-height:1.6}
+.for{color:#24584b;font-weight:700}
+.steps{color:var(--muted)}
+.go{
+  margin-top:auto;align-self:flex-start;
+  background:var(--orange-soft);color:var(--orange);border-radius:999px;
+  padding:6px 12px;font-size:13px;font-weight:800;
 }
-.demo p{font-size:13.5px;color:var(--muted);margin:0 0 14px;flex:1;line-height:1.75}
-.demo .go{font-size:13.5px;font-weight:900;color:#c46e51}
+.note{
+  margin:18px 0 0;padding:14px 16px;border-radius:16px;
+  background:rgba(255,252,248,.8);border:1px solid var(--line);
+  color:var(--muted);font-size:13.5px;line-height:1.7;
+}
+.text-link{color:var(--orange);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.mid-cta{
+  margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;
+  background:linear-gradient(135deg,#1b2740 0%,#1d3d4a 58%,#1c6b58 140%);
+  color:#fff;border-radius:22px;padding:22px 22px;
+  box-shadow:var(--shadow-lg);
+}
+.mid-cta strong{display:block;font-size:18px;letter-spacing:-.03em;margin-bottom:4px}
+.mid-cta p{margin:0;color:#d5e0e8;font-size:13.5px;line-height:1.65}
+.mid-cta .btn{flex:none}
+
+/* Before after */
+.ba{
+  background:var(--paper);border:1px solid var(--line);border-radius:28px;
+  padding:22px;box-shadow:var(--shadow-lg);
+}
+.ba-head{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:end;margin-bottom:14px}
+.ba-head h2{margin:8px 0 0;font-size:clamp(26px,3vw,34px);font-weight:900}
+.ba-head p{margin:0;max-width:28em;color:var(--muted);font-size:14.5px}
+.ba-art{border-radius:18px;overflow:hidden;background:#f6efe6}
+.ba-art img{display:block;width:100%;height:auto;aspect-ratio:1600/703;object-fit:cover;background:#f6efe6}
+.ba-labels{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.ba-labels span{display:block;text-align:center;border-radius:14px;padding:10px 12px;font-size:13px;font-weight:800}
+.ba-labels .before{background:#fff1e8;color:#8a4324}
+.ba-labels .after{background:var(--teal-soft);color:var(--teal)}
+.ba figcaption{margin:12px 0 0;text-align:center;color:var(--muted);font-size:13px;font-weight:700}
+
+/* Pains */
+.pain-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:22px;align-items:center}
+.pains{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pains li{
+  display:grid;grid-template-columns:42px minmax(0,1fr);gap:10px;align-items:start;
+  background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 14px;
+  box-shadow:var(--shadow);
+}
+.pains li > span{
+  width:36px;height:36px;border-radius:12px;display:grid;place-items:center;
+  background:var(--orange-soft);color:var(--orange);font-size:12px;font-weight:900;
+}
+.pains p{margin:0;font-size:14.5px;font-weight:800;line-height:1.55}
+.pains .sol{margin-top:4px;font-size:12.5px;font-weight:700;color:var(--teal)}
+.sol-art{
+  background:linear-gradient(160deg,#e7f5ef,#fff6ee);border-radius:24px;padding:10px;
+  border:1px solid var(--line);box-shadow:var(--shadow);
+}
+.sol-art img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:16px;background:#e7f5ef}
+.sol-copy{padding:6px 8px 2px}
+.sol-copy h3{margin:6px 0 8px;font-size:clamp(22px,2.4vw,28px);font-weight:900}
+.sol-copy p{margin:0;color:#3c4c60;font-size:14.5px}
+.bridge{
+  margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
+  background:var(--teal-soft);border:1px solid #cfe3da;border-radius:18px;padding:16px 16px;
+}
+.bridge p{margin:0;flex:1 1 220px;min-width:0;font-size:14px;font-weight:700;color:#23483e}
+.bridge .btn{flex:none}
+
+/* Why */
+.why-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.why{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 22px;box-shadow:var(--shadow);min-width:0;
+}
+.why-no{font-size:13px;font-weight:900;letter-spacing:.14em;color:var(--teal)}
+.why h3{margin:10px 0 8px;font-size:22px}
+.why p{margin:0;color:var(--muted);font-size:14.5px}
+.why .proof{margin-top:14px;padding-top:12px;border-top:1px dashed #e4ddd2;font-size:13px;font-weight:800;color:var(--teal)}
 
 /* Flow */
-.flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.step{
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-  padding:26px 22px 24px;box-shadow:var(--shadow);
-  transition:transform .22s var(--ease),box-shadow .22s,border-color .22s;
-  position:relative;min-height:210px;
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.flow li{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 18px;box-shadow:var(--shadow);min-width:0;
 }
-.step:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:#c9ded5}
-.step small{font-weight:900;color:#c67559;font-size:11px;letter-spacing:1.2px}
-.step .time{
-  display:inline-flex;margin-top:10px;margin-bottom:4px;
-  background:var(--teal);color:var(--teal-deep);border-radius:999px;
-  padding:4px 10px;font-size:11px;font-weight:900;
+.flow-n{
+  width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+  background:var(--navy);color:#fff;font-weight:900;font-size:13px;
 }
-.step h3{font-size:19px;margin:10px 0 10px;letter-spacing:-.35px}
-.step p{color:var(--muted);font-size:13.5px;margin:0;line-height:1.8}
+.time{
+  display:inline-flex;margin-top:12px;background:var(--teal-soft);color:var(--teal);
+  border-radius:999px;padding:4px 10px;font-size:12px;font-weight:800;
+}
+.flow h3{margin:8px 0;font-size:18px}
+.flow p{margin:0;color:var(--muted);font-size:14px}
 
 /* Pricing */
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
-.price-card{
-  background:var(--cream);border:1px solid #ebede7;border-radius:var(--radius);
-  padding:30px 26px;display:flex;flex-direction:column;min-height:100%;
-  box-shadow:var(--shadow);transition:transform .22s var(--ease),box-shadow .22s;
-  position:relative;overflow:hidden;
+.scan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:16px}
+.scan div{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 12px;text-align:center;box-shadow:var(--shadow);min-width:0}
+.scan span{display:block;font-size:12px;font-weight:800;color:var(--soft)}
+.scan b{display:block;margin-top:4px;font-size:clamp(18px,2vw,24px);letter-spacing:-.04em;color:var(--teal)}
+.price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.price{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column;min-width:0;
 }
-.price-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
-.price-card.featured{
-  background:#fff;border-color:#c9ded5;
-  box-shadow:0 0 0 2px rgba(47,107,90,.14), var(--shadow-lg);
-  transform:translateY(-8px);
+.price.featured{border-color:#b7ddd0;box-shadow:0 0 0 2px rgba(28,107,88,.14), var(--shadow-lg);background:linear-gradient(180deg,#fff,#f4fbf8)}
+.price h3{margin:10px 0 8px;font-size:18px}
+.yen{margin:4px 0 0;font-size:clamp(28px,3vw,36px);font-weight:900;letter-spacing:-.045em;line-height:1.15;color:var(--teal)}
+.yen-note{margin:4px 0 10px;font-size:12.5px;color:var(--soft);font-weight:700}
+.compare{margin:0 0 12px;background:#f6f3ec;border-radius:12px;padding:10px 12px;font-size:13px;color:var(--muted);font-weight:700}
+.compare b{display:block;margin-top:2px;color:var(--ink);font-size:15px}
+.price .blurb{margin:0 0 12px;color:var(--muted);font-size:14px;flex:1}
+.fit{margin:0 0 16px;padding:12px 0 0;list-style:none;border-top:1px dashed #e4ddd2}
+.fit li{margin:0 0 8px;font-size:13px;color:var(--muted);line-height:1.55}
+.fit b{color:var(--ink);margin-right:6px}
+.price .btn{width:100%}
+
+/* Experience */
+.exp-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.exp{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 16px;box-shadow:var(--shadow);min-width:0;display:flex;flex-direction:column;
 }
-.price-card.featured:hover{transform:translateY(-12px)}
-.price-card.featured .ribbon{
-  position:absolute;top:16px;right:16px;background:var(--navy);color:#fff;
-  font-size:10px;font-weight:900;letter-spacing:.6px;padding:5px 10px;border-radius:999px;
-}
-.price-card .badge{background:var(--teal);margin-bottom:12px}
-.price-card:nth-child(2) .badge{background:#ffe5d5}
-.price-card:nth-child(3) .badge{background:#e7e7fa}
-.price-card h3{font-size:17.5px;margin:0 0 16px;line-height:1.45;letter-spacing:-.25px}
-.price-compare{display:grid;gap:11px;margin-bottom:16px}
-.price-row{border-radius:15px;padding:14px 16px}
-.price-row.market{background:#f3f5f1;border:1px solid #e8ebe6}
-.price-row.ours{background:#eef7f3;border:1px solid #c9ded5}
-.price-row .label{display:block;font-size:11px;font-weight:800;letter-spacing:.4px;color:var(--muted);margin-bottom:4px}
-.price-row.ours .label{color:var(--teal-deep)}
-.price-row .amount{font-size:23px;font-weight:900;letter-spacing:-.55px;line-height:1.3}
-.price-row.ours .amount{color:#1f5c4a}
-.price-row .hint{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
-.price-card .blurb{font-size:13.5px;color:var(--muted);margin:0;flex:1;line-height:1.8}
-.price-note ul{margin:10px 0 0;padding-left:1.2em}
-.price-note li{margin-bottom:6px}
-.price-card .incl{
-  list-style:none;margin:16px 0 0;padding:0;font-size:12.5px;color:var(--muted);
-  border-top:1px dashed #dce3de;padding-top:14px;
-}
-.price-card .incl li{margin-bottom:7px;line-height:1.55}
-.price-card .incl strong{color:var(--navy)}
+.exp.has-art{padding-top:0}
+.exp-art{margin:0 0 12px;border-radius:18px 18px 12px 12px;overflow:hidden;aspect-ratio:16/10;background:#e7f1ec}
+.exp-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.exp h3{margin:8px 0;font-size:16.5px}
+.exp p{margin:0;color:var(--muted);font-size:13.5px;flex:1}
+.exp-meta{margin-top:12px;padding-top:10px;border-top:1px dashed #e4ddd2;font-size:12.5px;font-weight:800;color:var(--teal)}
+.exp-meta span{color:var(--muted);font-weight:700}
 
 /* FAQ */
-.faq{max-width:860px}
+.faq{max-width:820px}
 .faq details{
-  background:#fff;border:1px solid var(--line);border-radius:18px;
-  margin-bottom:12px;padding:18px 24px;
-  box-shadow:var(--shadow);transition:border-color .15s;
+  background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  margin:0 0 10px;padding:14px 16px;box-shadow:var(--shadow);
 }
-.faq details[open]{border-color:#c9ded5}
-.faq summary{cursor:pointer;font-weight:800;line-height:1.5;font-size:15px;list-style:none}
+.faq summary{cursor:pointer;font-weight:800;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center;line-height:1.5}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary:after{content:"+";float:right;color:var(--orange);font-weight:900}
-.faq details[open] summary:after{content:"−"}
-.faq p{font-size:14.5px;color:var(--muted);margin:12px 0 0;line-height:1.85}
-.section.white .faq details{background:var(--cream);border-color:#ebede7}
+.faq summary::after{
+  content:"+";flex:none;width:28px;height:28px;border-radius:50%;
+  display:grid;place-items:center;background:var(--orange-soft);color:var(--orange);font-weight:900;
+}
+.faq details[open] summary::after{content:"−";background:var(--navy);color:#fff}
+.faq details p{margin:10px 0 0;color:var(--muted);font-size:14.5px}
+
+/* Studio */
+.studio{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:center}
+.studio h2{margin:8px 0 10px;font-size:clamp(26px,3vw,36px);font-weight:900}
+.studio p{margin:0;color:#3c4c60}
+.studio ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.studio li{font-weight:800;font-size:14.5px}
+.studio li::before{content:"✓ ";color:var(--teal)}
+.studio-art{background:linear-gradient(155deg,#d7efe6,#f8f1e6);border-radius:24px;padding:10px;box-shadow:var(--shadow-lg);min-width:0}
+.studio-art img{display:block;width:100%;height:auto;aspect-ratio:2/1;object-fit:cover;border-radius:16px;background:#d7efe6}
+.studio-art figcaption{margin:10px 4px 2px;text-align:center;font-size:12.5px;font-weight:800;color:var(--muted)}
 
 /* Contact */
+.trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.trust article{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 14px;box-shadow:var(--shadow);min-width:0}
+.trust h3{margin:0 0 4px;font-size:15px}
+.trust p{margin:0;font-size:13px;color:var(--muted)}
 .contact{
   background:
-    radial-gradient(circle at 90% 10%,rgba(245,140,101,.2),transparent 35%),
-    radial-gradient(circle at 10% 90%,rgba(215,235,229,.12),transparent 40%),
-    linear-gradient(155deg,#172b3e 0%,#1d364c 50%,#1a4250 100%);
-  border-radius:36px;color:#fff;padding:72px 68px;
-  box-shadow:var(--shadow-lg);
-  position:relative;overflow:hidden;
+    radial-gradient(circle at 90% 0%, rgba(255,180,140,.22), transparent 36%),
+    linear-gradient(155deg,#1b2740,#1c3c48 60%,#1a5348);
+  color:#fff;border-radius:28px;padding:36px 32px;box-shadow:var(--shadow-lg);
 }
-.contact:before{
-  content:"";position:absolute;inset:auto -20% -40% auto;width:300px;height:300px;
-  background:radial-gradient(circle,rgba(215,235,229,.16),transparent 70%);
-  pointer-events:none;
-}
-.contact h2{
-  font-size:clamp(30px,4.2vw,48px);letter-spacing:-1.2px;line-height:1.32;margin:14px 0 16px;font-weight:900;
-}
-.contact p{color:#d1dae0;font-size:16px;margin:0;line-height:1.9;position:relative;max-width:560px}
+.contact .eyebrow{color:#ffc2a8}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.7fr);gap:22px;align-items:center}
+.contact h2{margin:8px 0 10px;font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-.04em}
+.contact p{margin:0;color:#d5dee6;max-width:38em}
 .contact strong{color:#fff}
-.contact .eyebrow{color:#ffb89a}
-.contact-note{font-size:12.5px;color:var(--muted);margin-top:18px}
-.line-box{display:flex;flex-wrap:wrap;align-items:center;gap:28px;margin-top:34px;position:relative}
-.line-btn{
-  display:inline-block;background:#ff7a45;color:#fff;font-weight:800;font-size:15.5px;
-  padding:18px 32px;border-radius:999px;text-decoration:none;
-  box-shadow:0 6px 0 #c9542a;transition:transform .15s,box-shadow .15s,background .15s;
-}
-.line-btn:hover{background:#ff8c5c;transform:translateY(2px);box-shadow:0 4px 0 #c9542a}
-.qr-card{
-  background:#fff;border-radius:18px;padding:14px;text-align:center;color:#333;
-  box-shadow:0 10px 24px -14px rgba(0,0,0,.35);
-}
-.qr-card img{display:block;width:152px;height:152px;border-radius:10px}
-.qr-card small{display:block;margin-top:9px;font-size:11px;color:#555;max-width:152px;line-height:1.45;margin-left:auto;margin-right:auto}
-.contact-hint{display:inline-block;margin-top:14px;color:#ffb89a;font-weight:800}
+.line-btn{margin-top:18px}
+.qr-card{background:#fff;color:#333;border-radius:18px;padding:12px;text-align:center;justify-self:end;width:min(100%,188px)}
+.qr-card img{display:block;width:148px;height:148px;margin:0 auto;border-radius:8px}
+.qr-card small{display:block;margin-top:8px;font-size:11px;line-height:1.45;color:#555}
+.contact-note{margin:12px 0 0;font-size:12.5px;color:var(--soft)}
 
-footer{padding:52px 0 60px}
-.footerline{
-  display:flex;justify-content:space-between;align-items:end;
-  border-top:1px solid #dce1dc;padding-top:30px;gap:24px;
-}
-footer p,footer small{font-size:12.5px;color:var(--muted);margin:8px 0 0;line-height:1.65}
-a:focus-visible,summary:focus-visible,button:focus-visible{
-  outline:3px solid var(--orange);outline-offset:3px;
-}
-.section.white .demo,.section.white .exp{background:var(--cream);border-color:#ebede7}
+footer{padding:28px 0 48px}
+.footerline{display:flex;justify-content:space-between;gap:18px;align-items:end;border-top:1px solid #ddd6cb;padding-top:22px}
+footer p{margin:8px 0 0;color:var(--muted);font-size:13px;max-width:36em}
+footer small{color:var(--soft);font-size:12px}
 
-@media(max-width:980px){
-  .navlinks a.nav-hide{display:none}
-  .navlinks{gap:14px}
-  .price-card.featured{transform:none}
-  .price-card.featured:hover{transform:translateY(-5px)}
-  .flow-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:850px){
-  .hero{grid-template-columns:1fr;gap:44px;padding-top:52px;min-height:0;padding-bottom:72px}
-  .visual{width:100%;max-width:520px;margin:auto}
-  .grid4{grid-template-columns:repeat(2,1fr)}
-  .why-grid,.demos,.price-grid{grid-template-columns:1fr}
-  .exp-grid{grid-template-columns:repeat(2,1fr)}
-  .pain-grid{grid-template-columns:1fr}
-  .contact{padding:48px 36px}
-  .section{padding:88px 0}
-}
-@media(max-width:550px){
-  nav,.wrap{padding-left:18px;padding-right:18px}
-  nav{padding-top:12px;padding-bottom:12px}
-  .logo{font-size:22px}
-  .navlinks a:not(.chip){display:none}
-  .chip{padding:9px 14px;font-size:12px}
-  h1{font-size:clamp(34px,9.4vw,48px);letter-spacing:-1.9px}
-  .hero{gap:36px;padding-bottom:56px;padding-top:36px}
-  .visual{min-height:300px;box-shadow:12px 14px #dfeae4;border-radius:26px;padding:18px}
-  .mock-stack{height:260px}
-  .mock.main{height:190px}
-  .mock.side{height:130px}
-  .inside strong{font-size:18px}
-  .float-card{display:none}
-  .section{padding:64px 0}
-  .intro{margin-bottom:32px}
-  .grid4,.exp-grid,.flow-grid{grid-template-columns:1fr}
-  .service,.demo,.exp,.price-card,.step,.why{min-height:0}
-  .contact{padding:36px 22px;border-radius:28px}
-  .line-box{gap:18px}
-  .footerline{flex-direction:column;align-items:flex-start}
-  .demo:after{display:none}
-}
-
-
-.mid-cta{
-  margin-top:36px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;
-  background:linear-gradient(135deg,#172b3e 0%,#1a4550 55%,#2f6b5a 100%);
-  color:#fff;border-radius:24px;padding:26px 28px;box-shadow:var(--shadow-lg);
-}
-.mid-cta strong{display:block;font-size:18px;letter-spacing:-.3px;margin-bottom:6px}
-.mid-cta p{margin:0;font-size:13.5px;color:#d5e0e6;line-height:1.7}
-.mid-cta .btn{background:var(--orange);color:#fff;box-shadow:0 5px 0 var(--orange-deep)}
-.mid-cta .btn:hover{color:#fff}
-@media(max-width:550px){
-  .mid-cta{padding:22px 18px}
-  .mid-cta .btn{width:100%}
-}
-
-/* ===== quality v5 ===== */
-:root{
-  --focus: #e06b42;
-  --header-h: 72px;
-}
-.skip{
-  position:absolute;left:12px;top:12px;z-index:100;
-  background:var(--navy);color:#fff;padding:10px 16px;border-radius:12px;
-  font-weight:900;font-size:13px;transform:translateY(-160%);
-  transition:transform .2s var(--ease);
-}
-.skip:focus{transform:translateY(0);outline:3px solid var(--orange);outline-offset:3px}
-header{
-  transition:box-shadow .25s var(--ease), background .25s, border-color .25s;
-}
-header.is-scrolled{
-  background:rgba(251,250,245,.96);
-  border-bottom-color:rgba(23,43,62,.08);
-  box-shadow:0 10px 28px -18px rgba(23,43,62,.35);
-}
-.navlinks a.is-active{color:#c36d50;opacity:1}
-.navlinks a.is-active:not(.chip){
-  position:relative;
-}
-.navlinks a.is-active:not(.chip):after{
-  content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;
-  background:var(--orange);border-radius:2px;
-}
-section[id],#top{scroll-margin-top:84px}
-.reveal{
-  opacity:0;transform:translateY(18px);
-  transition:opacity .7s var(--ease), transform .7s var(--ease);
-}
-.reveal.in{opacity:1;transform:none}
-.reveal-delay-1{transition-delay:.08s}
-.reveal-delay-2{transition-delay:.16s}
-.reveal-delay-3{transition-delay:.24s}
-.btn,.chip,.line-btn,.demo,.service,.exp,.why,.pain,.step,.price-card{
-  will-change:transform;
-}
-.btn:active,.chip:active,.line-btn:active{transform:translateY(3px)}
-.faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-right:4px}
-.faq summary:after{float:none;flex-shrink:0;width:28px;height:28px;border-radius:50%;
-  background:var(--orange-soft);color:#c46e51;display:grid;place-items:center;font-size:16px;line-height:1}
-.faq details[open] summary:after{background:var(--navy);color:#fff}
-.faq details{transition:border-color .2s, box-shadow .2s, background .2s}
-.faq details:hover{border-color:#c9ded5}
-.contact .line-btn{font-size:16px;padding:19px 34px;letter-spacing:.02em}
-.contact .line-btn:focus-visible{outline-color:#ffe0ab}
+/* Mobile LINE bar */
 .mobile-cta{
-  display:none;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));
-  z-index:50;background:var(--navy);color:#fff;border-radius:18px;
-  padding:14px 16px;font-weight:900;font-size:14px;text-align:center;
-  box-shadow:0 16px 36px -12px rgba(23,43,62,.55);
-  border:1px solid rgba(255,255,255,.12);
-  transition:transform .25s var(--ease), opacity .25s;
+  display:none;position:fixed;left:12px;right:12px;
+  bottom:calc(10px + env(safe-area-inset-bottom,0px));
+  z-index:55;background:var(--navy);color:#fff;border-radius:16px;
+  padding:12px 14px;box-shadow:0 16px 36px -16px rgba(27,39,64,.7);
+  transition:opacity .2s var(--ease), transform .2s var(--ease);
 }
-.mobile-cta span{display:block;font-size:11px;font-weight:700;opacity:.75;margin-bottom:2px}
-.mobile-cta.hide{opacity:0;pointer-events:none;transform:translateY(16px)}
-.mock.main{animation:floatMain 7s ease-in-out infinite}
-.mock.side{animation:floatSide 8.5s ease-in-out infinite}
-.float-card.a{animation:floatA 6s ease-in-out infinite}
-.float-card.b{animation:floatB 7.5s ease-in-out infinite}
-.float-card.c{animation:floatC 6.8s ease-in-out infinite}
-.sticker{animation:floatSticker 5s ease-in-out infinite}
-@keyframes floatMain{0%,100%{transform:rotate(-3.5deg) translateY(0)}50%{transform:rotate(-3.5deg) translateY(-8px)}}
-@keyframes floatSide{0%,100%{transform:rotate(7deg) translateY(0)}50%{transform:rotate(7deg) translateY(-6px)}}
-@keyframes floatA{0%,100%{transform:rotate(-7deg) translateY(0)}50%{transform:rotate(-7deg) translateY(-5px)}}
-@keyframes floatB{0%,100%{transform:rotate(5deg) translateY(0)}50%{transform:rotate(5deg) translateY(-6px)}}
-@keyframes floatC{0%,100%{transform:rotate(3deg) translateY(0)}50%{transform:rotate(3deg) translateY(-5px)}}
-@keyframes floatSticker{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(-4deg) translateY(-3px)}}
-.meter span{animation:fillBar 2.4s var(--ease) .4s both}
-@keyframes fillBar{from{width:0}to{width:68%}}
-.trust span{transition:transform .18s var(--ease), border-color .18s}
-.trust span:hover{transform:translateY(-2px);border-color:#c9ded5}
-.price-chips span{transition:transform .18s var(--ease), border-color .18s}
-.price-chips span:hover{transform:translateY(-2px);border-color:#c9ded5}
-.pain:focus-within,.why:focus-within,.service:focus-within{outline:3px solid var(--orange);outline-offset:3px}
-.lead strong{color:var(--navy);font-weight:800}
-.section .intro h2{position:relative}
-.demo .go{transition:transform .18s var(--ease), letter-spacing .18s}
-.demo:hover .go{transform:translateX(3px);letter-spacing:.02em}
-.exp .badge,.demo .badge,.price-card .badge,.service .badge{
-  box-shadow:0 1px 0 rgba(255,255,255,.6);
+.mobile-cta a{display:block;color:#fff;font-weight:800;line-height:1.35}
+.mobile-cta a span{display:block;font-size:11px;font-weight:700;opacity:.75}
+.mobile-cta.hide{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(14px)}
+
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease), transform .65s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+@media (hover:hover){
+  .demo:hover{transform:translateY(-4px);border-color:#c9ddd4;box-shadow:var(--shadow-lg)}
+  .demo:hover img{transform:scale(1.035)}
+  .svc:hover,.why:hover,.price:hover,.exp:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+  .chip:hover{transform:translateY(-1px)}
 }
-.contact-side{
-  display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;position:relative;
+.svc,.why,.price,.exp{transition:transform .2s var(--ease), box-shadow .2s}
+
+@media (max-width:1000px){
+  .demos,.exp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav-hide{display:none}
 }
-.contact-side .aside-note{
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
-  border-radius:20px;padding:22px 20px;color:#e8eef2;font-size:13.5px;line-height:1.75;
-}
-.contact-side .aside-note strong{color:#fff;display:block;font-size:15px;margin-bottom:8px}
-.contact-side .aside-note li{margin:6px 0}
-.contact-side .aside-note ul{margin:8px 0 0;padding-left:1.1em}
-@media(max-width:850px){
-  .contact-side{grid-template-columns:1fr}
+@media (max-width:900px){
+  .hero,.pain-layout,.studio,.contact-grid,.why-grid,.svc-grid,.price-grid,.flow{grid-template-columns:1fr}
+  .hero{gap:22px;padding-top:22px}
+  .hero-visual{order:2}
+  .section{padding:60px 0}
+  .flow{gap:0}
+  .flow li{
+    display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;align-items:start;
+    background:transparent;border:0;box-shadow:none;border-radius:0;padding:0 0 20px;position:relative;
+  }
+  .flow li:not(:last-child)::before{
+    content:"";position:absolute;left:20px;top:42px;bottom:0;width:2px;background:#d5ebe4;
+  }
+  .flow-n{position:relative;z-index:1}
+  .time{margin-top:0}
+  .qr-card{justify-self:start}
   .mobile-cta{display:block}
-  body{padding-bottom:88px}
+  .exp-grid{grid-template-columns:1fr 1fr}
 }
-@media(max-width:550px){
-  .navlinks a.is-active:not(.chip):after{display:none}
-  section[id],#top{scroll-margin-top:70px}
+@media (max-width:720px){
+  .navlinks a:not(.chip){display:none}
+  .hero{padding-top:12px;gap:16px}
+  h1{margin:8px 0 6px}
+  .lead{font-size:15.5px;line-height:1.65}
+  .offer{margin-top:12px}
+  .offer div{padding:8px 12px}
+  .actions{margin-top:12px}
+  .who-bar{grid-template-columns:1fr;gap:8px}
+  .who-grid{grid-template-columns:1fr 1fr}
+  .demos{grid-template-columns:1fr}
+  .demo{display:grid;grid-template-columns:108px minmax(0,1fr);align-items:stretch}
+  .demo > *{min-width:0}
+  .demo-preview{position:relative;width:108px;max-width:108px;overflow:hidden;min-height:120px;background:#f3efe6}
+  .demo-preview img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 58%}
+  .demo-body{padding:12px 12px 12px 4px}
+  .ba-labels,.scan,.trust{grid-template-columns:1fr}
+  .ba{padding:14px}
+  .contact{padding:26px 18px;border-radius:22px}
+  .footerline{flex-direction:column;align-items:flex-start}
+  .actions{flex-direction:column}
+  .actions .btn,.mid-cta .btn,.bridge .btn{width:100%}
+  .hero-frame{border-radius:22px;padding:8px 8px 10px}
+  .hero-frame img{border-radius:14px;aspect-ratio:4/3;object-position:80% 50%}
 }
-@media (prefers-reduced-motion: reduce){
+@media (max-width:380px){
+  .wrap,nav{width:min(1120px,calc(100% - 28px))}
+  .logo{font-size:20px}
+  .chip{padding:9px 12px;font-size:12px}
+  .offer{grid-template-columns:1fr}
+  .offer div + div{border-left:0;border-top:1px solid var(--line)}
+  .offer div{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:10px 12px}
+  .offer span{font-size:12px}
+  .offer b{margin-top:0;font-size:16px}
+  .who-grid{gap:6px}
+  .who-grid li{padding:8px}
+  .exp-grid{grid-template-columns:1fr}
+  h1{font-size:30px}
+}
+@media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .reveal{opacity:1;transform:none;transition:none}
-  .mock.main,.mock.side,.float-card.a,.float-card.b,.float-card.c,.sticker,.meter span,
-  .demo,.service,.exp,.why,.pain,.step,.price-card,.btn,.chip,.line-btn,.mobile-cta{
-    animation:none!important;transition:none!important;
-  }
-}
-
-/* ===== quality v6 — sales-grade ===== */
-.hero-art{
-  position:relative;width:100%;max-width:520px;margin:0 auto;z-index:1;
-}
-.hero-art picture,.hero-art img{
-  display:block;width:100%;height:auto;
-  border-radius:22px;
-  box-shadow:0 22px 40px rgba(23,43,62,.22), 0 0 0 1px rgba(255,255,255,.35);
-  object-fit:cover;aspect-ratio:1600 / 711;background:#d9efe8;
-}
-.demo-preview{
-  height:92px;border-radius:14px;margin:-2px 0 14px;border:1px solid #e2e6e0;
-  position:relative;overflow:hidden;
-  background:linear-gradient(145deg,#e8f5f1,#fff8ef 55%,#f0f4f1);
-}
-.demo-preview .win{
-  position:absolute;left:10px;top:10px;right:10px;bottom:10px;border-radius:10px;
-  background:#fff;border:1px solid #e8ebe6;box-shadow:0 8px 16px -14px rgba(23,43,62,.35);
-  padding:8px;display:grid;gap:5px;align-content:start;
-}
-.demo-preview .rowbar{height:6px;border-radius:99px;background:#d7ebe5}
-.demo-preview .rowbar.s{width:42%}.demo-preview .rowbar.m{width:68%}.demo-preview .rowbar.l{width:88%}
-.demo-preview .chipmini{
-  position:absolute;right:14px;bottom:14px;background:var(--navy);color:#fff;
-  font-size:9px;font-weight:900;padding:4px 8px;border-radius:999px;
-}
-.demo[href*="payroll"] .demo-preview{background:linear-gradient(145deg,#d9ebe3,#fff8ef)}
-.demo[href*="daily"] .demo-preview{background:linear-gradient(145deg,#e7e7fa,#eef7f3)}
-.demo[href*="shift"] .demo-preview{background:linear-gradient(145deg,#ffe5d5,#eef7f3)}
-.demo[href*="booking"] .demo-preview{background:linear-gradient(145deg,#ffebbc,#e7e7fa)}
-.demo[href*="inventory"] .demo-preview{background:linear-gradient(145deg,#d9ebe3,#ffe5d5)}
-.demo[href*="kondate"] .demo-preview{background:linear-gradient(145deg,#c5e5db,#fff8ef)}
-.demo[href*="diet"] .demo-preview{background:linear-gradient(145deg,#e7e7fa,#d9ebe3)}
-.demo[href*="smash"] .demo-preview{background:linear-gradient(145deg,#172b3e,#0d9488)}
-.demo[href*="chatbot"] .demo-preview{background:linear-gradient(145deg,#5c3d2e,#c4784a)}
-.demo[href*="smash"] .demo-preview .win{background:#0f1f2e;border-color:#1e3a50}
-.demo[href*="smash"] .demo-preview .rowbar{background:#14b8a6}
-.demo[href*="chatbot"] .demo-preview .win{background:#fffdf9;border-color:#e8ddd3}
-.demo[href*="chatbot"] .demo-preview .rowbar{background:#e8ddd3}
-.demo[href*="chatbot"] .demo-preview .chipmini{background:#c4784a}
-
-.pain-sol{
-  margin-top:8px;font-size:12px;font-weight:800;color:var(--teal-deep);
-  display:flex;align-items:flex-start;gap:6px;line-height:1.55;
-}
-.pain-sol:before{content:"→";flex-shrink:0;color:var(--orange);font-weight:900}
-
-.exp .exp-meta{margin-top:14px;padding-top:12px;border-top:1px dashed #dce3de;font-size:12px;font-weight:800;color:var(--teal-deep)}
-.exp .exp-meta span{color:var(--muted);font-weight:700}
-
-.price-card .price-cta{
-  margin-top:16px;display:inline-flex;align-items:center;justify-content:center;
-  background:var(--orange);color:#fff;font-weight:900;font-size:13px;
-  padding:12px 16px;border-radius:14px;box-shadow:0 4px 0 var(--orange-deep);
-  transition:transform .15s,box-shadow .15s;
-}
-.price-card .price-cta:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--orange-deep);color:#fff}
-.price-card.featured .price-cta{width:100%}
-.price-scan{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px;
-}
-.price-scan div{
-  background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;
-  box-shadow:var(--shadow);text-align:center;
-}
-.price-scan b{display:block;font-size:18px;letter-spacing:-.4px;color:var(--teal-deep);margin-top:4px}
-.price-scan span{font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.3px}
-
-.trust-strip{
-  margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
-}
-.trust-strip article{
-  background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 16px;
-  box-shadow:var(--shadow);
-}
-.trust-strip h3{margin:0 0 6px;font-size:14px;letter-spacing:-.2px}
-.trust-strip p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.7}
-
-.solution-bridge{
-  margin-top:22px;padding:20px 22px;border-radius:20px;
-  background:linear-gradient(135deg,#172b3e,#1a4550 60%,#2f6b5a);
-  color:#fff;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
-  box-shadow:var(--shadow-lg);
-}
-.solution-bridge strong{display:block;font-size:16px;margin-bottom:4px}
-.solution-bridge p{margin:0;font-size:13px;color:#d5e0e6;line-height:1.65}
-.solution-bridge a{
-  background:var(--orange);color:#fff;font-weight:900;border-radius:999px;
-  padding:12px 18px;box-shadow:0 4px 0 var(--orange-deep);white-space:nowrap;
-}
-
-.visual.v6{
-  background:
-    radial-gradient(circle at 92% 8%,#ffdea1 0 28%,transparent 29%),
-    radial-gradient(circle at 6% 92%,rgba(255,255,255,.75) 0 18%,transparent 19%),
-    linear-gradient(155deg,#b9e0d4 0%,#d9efe8 45%,#a8d5c8 100%);
-  min-height:0;padding:22px 18px 28px;
-  align-content:center;
-}
-@media(max-width:850px){
-  .price-scan,.trust-strip{grid-template-columns:1fr}
-  .visual.v6{min-height:0;padding:16px 14px 20px;max-width:560px;width:100%}
-  .hero-art{max-width:100%}
-  .float-card{font-size:11px;padding:8px 10px}
-}
-@media(max-width:550px){
-  .solution-bridge a{width:100%;text-align:center}
-  .price-scan{grid-template-columns:1fr}
-  .visual.v6{padding:12px 10px 16px;border-radius:26px;box-shadow:12px 14px 0 #dfeae4, var(--shadow-lg)}
-  .hero-art img{border-radius:16px;box-shadow:0 12px 24px rgba(23,43,62,.18)}
-  .float-card.a{top:8px;left:6px}
-  .float-card.b{top:auto;bottom:10px;right:6px}
-  .float-card.c{display:none}
-}
-
-
-/* Studio atmosphere (v1 art) */
-.studio{
-  display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;
-}
-.studio-copy .eyebrow{display:inline-block}
-.studio-copy h2{margin:10px 0 14px;font-size:clamp(26px,3vw,36px);letter-spacing:-1px;line-height:1.35}
-.studio-copy p{margin:0;color:#4a5a6a;line-height:1.9;font-size:15.5px;max-width:480px}
-.studio-copy ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:10px}
-.studio-copy li{
-  display:flex;gap:10px;align-items:flex-start;font-size:13.5px;font-weight:800;color:var(--navy);
-}
-.studio-copy li:before{content:"✓";color:var(--teal-deep);font-weight:900;flex-shrink:0}
-.studio-art{
-  position:relative;border-radius:28px;overflow:hidden;
-  box-shadow:16px 18px 0 #dfeae4, var(--shadow-lg);
-  background:linear-gradient(155deg,#c5e5db,#d9efe8);
-  padding:14px;
-}
-.studio-art picture,.studio-art img{
-  display:block;width:100%;height:auto;border-radius:18px;
-  aspect-ratio:1400 / 700;object-fit:cover;object-position:center 40%;background:#d9efe8;
-}
-.studio-caption{
-  margin:14px 4px 0;font-size:12.5px;font-weight:800;color:var(--muted);letter-spacing:.2px;line-height:1.6;
-}
-@media(max-width:850px){
-  .studio{grid-template-columns:1fr;gap:28px}
-  .studio-art{max-width:560px;margin:0 auto;box-shadow:12px 14px 0 #dfeae4, var(--shadow-lg);padding:10px}
-  .studio-caption{text-align:center}
-}
-
-/* Solution visual under pains (store → phone) */
-.solution-visual{
-  margin-top:28px;
-  display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;
-  background:#fff;border:1px solid var(--line);border-radius:28px;padding:18px 18px 18px 20px;
-  box-shadow:var(--shadow-lg);
-}
-.solution-visual-art{
-  position:relative;border-radius:22px;overflow:hidden;
-  background:linear-gradient(155deg,#c5e5db,#fff8ef 60%,#d9efe8);
-  padding:10px;
-  box-shadow:10px 12px 0 #e8f0eb;
-}
-.solution-visual-art picture,.solution-visual-art img{
-  display:block;width:100%;height:auto;border-radius:16px;
-  aspect-ratio:1448 / 1086;object-fit:cover;object-position:center;background:#d9efe8;
-}
-.solution-visual-copy{padding:6px 8px 6px 0}
-.solution-visual-copy .eyebrow{display:inline-block;margin-bottom:8px}
-.solution-visual-copy h3{
-  margin:0 0 10px;font-size:clamp(20px,2.4vw,26px);letter-spacing:-.6px;line-height:1.4;color:var(--navy);
-}
-.solution-visual-copy p{
-  margin:0;font-size:14.5px;color:#4a5a6a;line-height:1.85;font-weight:650;
-}
-.solution-visual-copy .caption{
-  margin-top:14px;padding-top:12px;border-top:1px dashed #dce3de;
-  font-size:13px;font-weight:900;color:var(--teal-deep);letter-spacing:.1px;line-height:1.65;
-}
-@media(max-width:850px){
-  .solution-visual{grid-template-columns:1fr;gap:16px;padding:14px}
-  .solution-visual-art{box-shadow:8px 10px 0 #e8f0eb;max-width:520px;margin:0 auto;width:100%}
-  .solution-visual-copy{padding:4px 4px 2px;text-align:center}
-  .solution-visual-copy .caption{border-top:none;padding-top:0;margin-top:10px}
-}
-@media(max-width:550px){
-  .solution-visual{margin-top:22px;border-radius:22px;padding:12px}
-  .solution-visual-art{padding:8px;border-radius:18px}
-  .solution-visual-art img{border-radius:12px}
-  .hero-art{margin-top:4px}
-  .studio-art{padding:8px;border-radius:22px}
-  .studio-art img{border-radius:14px}
-}
-
-/* Image polish: hero + shared frames */
-.hero-art{
-  position:relative;width:100%;max-width:540px;margin:4px auto 0;z-index:1;
-}
-.hero-art picture,.hero-art img{
-  display:block;width:100%;height:auto;
-  border-radius:22px;
-  box-shadow:0 22px 40px rgba(23,43,62,.22), 0 0 0 1px rgba(255,255,255,.35);
-  object-fit:cover;object-position:center 45%;aspect-ratio:1600 / 711;background:#d9efe8;
-}
-.hero-art-caption{
-  margin:12px 2px 0;text-align:center;font-size:11.5px;font-weight:800;color:rgba(23,43,62,.62);letter-spacing:.2px;
-}
-.visual.v6{padding:20px 16px 22px}
-@media(max-width:550px){
-  .hero-art-caption{font-size:11px;margin-top:10px}
-  .visual.v6{padding:12px 10px 14px}
-}
-
-/* Before → After bridge */
-#before-after.section{padding-top:28px;padding-bottom:40px}
-.before-after{
-  background:#fff;border:1px solid var(--line);border-radius:28px;padding:22px 22px 18px;
-  box-shadow:var(--shadow-lg);overflow:hidden;
-}
-.before-after-head{
-  display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between;
-  margin-bottom:16px;
-}
-.before-after-head .eyebrow{display:inline-block}
-.before-after-head h2{
-  margin:8px 0 0;font-size:clamp(22px,2.8vw,30px);letter-spacing:-.7px;line-height:1.35;
-}
-.before-after-head p{
-  margin:0;max-width:380px;font-size:13.5px;color:#4a5a6a;line-height:1.75;font-weight:650;
-}
-.before-after-art{
-  border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#ffe8d6,#e8f5f1);
-  padding:8px;box-shadow:inset 0 0 0 1px rgba(23,43,62,.04);
-}
-.before-after-art picture,.before-after-art img{
-  display:block;width:100%;height:auto;border-radius:14px;
-  aspect-ratio:1600 / 703;object-fit:cover;object-position:center;background:#f3ebe3;
-}
-.before-after-labels{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;
-}
-.before-after-labels span{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  font-size:12.5px;font-weight:900;padding:10px 12px;border-radius:14px;letter-spacing:.2px;
-}
-.before-after-labels .before{
-  background:#fff4ec;color:#9a4e2a;border:1px solid #f0d5c0;
-}
-.before-after-labels .after{
-  background:#e8f5f1;color:var(--teal-deep);border:1px solid #c5e5db;
-}
-.before-after-foot{
-  margin:14px 2px 0;font-size:13px;font-weight:800;color:var(--muted);line-height:1.7;text-align:center;
-}
-@media(max-width:850px){
-  .before-after{padding:16px 14px 14px;border-radius:24px}
-  .before-after-head{margin-bottom:12px}
-  .before-after-head p{max-width:none}
-}
-@media(max-width:550px){
-  #before-after.section{padding-top:12px;padding-bottom:28px}
-  .before-after{padding:12px;border-radius:20px}
-  .before-after-art{padding:6px;border-radius:16px}
-  .before-after-art img{border-radius:12px}
-  .before-after-labels{grid-template-columns:1fr;gap:8px}
-  .before-after-foot{font-size:12.5px;text-align:left}
-}
-
-
-/* strongest sales polish */
-.solution-visual,.before-after,.studio-art,.hero-art img{
-  transition:transform .25s cubic-bezier(.22,.7,.25,1), box-shadow .25s;
-}
-@media(hover:hover){
-  .solution-visual:hover,.before-after:hover{transform:translateY(-2px)}
-}
-#demos .intro h2:after{
-  content:"";display:block;width:56px;height:4px;border-radius:99px;margin-top:10px;
-  background:linear-gradient(90deg,#0d9488,#f58c65);
-}
-.mid-cta,.solution-bridge,.cta-band,.contact{
-  position:relative;
-}
-.price-card.featured{
-  box-shadow:0 22px 48px -20px rgba(23,43,62,.35), 0 0 0 2px rgba(13,148,136,.18)!important;
-}
-.demo .go{
-  display:inline-flex;background:#fff4ec;border:1px solid #f0d5c0;color:#9a4e2a;
-  border-radius:999px;padding:6px 12px;margin-top:4px;width:fit-content;font-size:12.5px;
-}
-a.demo:hover .go{background:#f58c65;color:#fff;border-color:#f58c65}
-.before-after-head h2{position:relative}
-.trust span b{color:#0d9488}
-
-
-
-/* calendar workspace thumbs */
-.demo-preview.has-art{
-  height:118px;padding:0;background:#e8f0ed;
-}
-.demo-preview.has-art picture,.demo-preview.has-art img{
-  display:block;width:100%;height:100%;object-fit:cover;object-position:center 42%;
-}
-.demo-preview.has-art .chipmini{
-  z-index:2;box-shadow:0 4px 10px rgba(23,43,62,.25);
-}
-.demo[href*="shift"] .demo-preview.has-art,
-.demo[href*="booking"] .demo-preview.has-art{background:#e8f0ed}
-.exp.has-art{padding-top:0}
-.exp-art{
-  margin:0 0 16px;border-radius:16px 16px 12px 12px;overflow:hidden;
-  border:1px solid #e2e6e0;aspect-ratio:16/10;background:#e8f0ed;
-}
-.exp-art picture,.exp-art img{
-  display:block;width:100%;height:100%;object-fit:cover;object-position:center 40%;
-}
-.exp.has-art .badge{margin-top:16px}
-@media(max-width:550px){
-  .demo-preview.has-art{height:108px}
-}
-
-
-/* overlap hygiene */
-.hero-art, .solution-visual, .before-after, .studio-art{isolation:isolate}
-.solution-visual-copy, .before-after-head, .before-after-foot, .hero-art-caption{position:relative;z-index:1}
-.mobile-cta{z-index:55}
-:root{--fixed-bar-h:72px}
-@media (max-width:760px){.hero-copy .btn,.hero-demo-strip .cta-row .btn{scroll-margin-bottom:calc(var(--fixed-bar-h) + 24px)}}
-header{z-index:60}
-@media(max-width:850px){
-  body{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
-  .mid-cta, .cta-band, #contact .contact{scroll-margin-bottom:110px}
-}
-
-
-/* ===== quality polish v8 — homepage ===== */
-:root{
-  --cream:#f7f4ef;
-  --cream-2:#fbfaf6;
-  --navy:#1a2b4a;
-  --teal-mid:#b7e0d4;
-  --teal-deep:#2f6b5a;
-  --orange:#e08a5c;
-  --orange-deep:#c46e51;
-}
-body{
-  background:
-    radial-gradient(ellipse 70% 45% at 100% -8%,rgba(215,235,229,.55),transparent 58%),
-    radial-gradient(ellipse 55% 38% at -8% 18%,rgba(255,232,220,.38),transparent 52%),
-    var(--cream);
-}
-.section{padding:120px 0}
-@media(max-width:850px){.section{padding:88px 0}}
-@media(max-width:550px){.section{padding:72px 0}}
-
-/* Hero under: demo mock strip */
-.hero-demo-strip{
-  margin-top:-28px;margin-bottom:8px;position:relative;z-index:2;
-}
-.hero-demo-strip .inner{
-  background:#fff;border:1px solid var(--line);border-radius:28px;
-  box-shadow:var(--shadow-lg);padding:22px 22px 20px;
-  display:grid;gap:18px;
-}
-@media(min-width:860px){
-  .hero-demo-strip .inner{grid-template-columns:1.15fr .85fr;align-items:center;padding:26px 28px}
-}
-.hero-demo-strip .copy .eyebrow{margin-bottom:6px}
-.hero-demo-strip h2{
-  font-size:clamp(22px,3.2vw,30px);letter-spacing:-.8px;margin:0 0 10px;font-weight:900;line-height:1.35;
-}
-.hero-demo-strip p{margin:0;font-size:14px;color:var(--muted);line-height:1.8}
-.hero-demo-strip .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.hero-demo-strip .cta-row .btn{padding:14px 22px;font-size:13.5px}
-.hero-demo-strip .cta-row .btn.secondary{background:var(--cream);border:1px solid var(--line);box-shadow:0 3px 0 var(--line-2)}
-.phone-mock{
-  position:relative;margin:0 auto;width:min(100%,280px);
-  background:linear-gradient(160deg,#1a2b4a,#243d5c 55%,#2f6b5a);
-  border-radius:28px;padding:12px 12px 16px;
-  box-shadow:16px 18px 0 rgba(215,235,229,.85), var(--shadow-lg);
-}
-.phone-mock .notch{
-  width:72px;height:8px;border-radius:99px;background:rgba(255,255,255,.18);margin:4px auto 12px;
-}
-.phone-mock .screen{
-  background:#f7f4ef;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.2);
-}
-.phone-mock .screen picture,.phone-mock .screen img{
-  display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;
-}
-.phone-mock .caption{
-  margin-top:10px;text-align:center;color:#fff;font-size:11.5px;font-weight:800;opacity:.92;
-}
-.quick-demos{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;
-}
-.quick-demos a{
-  display:block;background:var(--cream);border:1px solid var(--line);border-radius:16px;
-  padding:10px 10px 12px;text-align:center;font-size:11.5px;font-weight:800;
-  box-shadow:var(--shadow);transition:transform .18s var(--ease),border-color .18s;
-  text-decoration:none;color:inherit;
-}
-.quick-demos a:hover{transform:translateY(-2px);border-color:#c9ded5}
-.quick-demos img,.quick-demos picture{
-  display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;margin-bottom:8px;
-  background:#e8f0ed;
-}
-.quick-demos span{display:block;color:var(--navy);line-height:1.35}
-.quick-demos .qd-meta{display:none}
-@media(max-width:760px){
-  .hero-demo-strip{margin-top:8px}
-  .hero-demo-strip .inner{padding:18px 16px;border-radius:22px;gap:0}
-  /* Phone mock duplicates the booking preview on mobile and makes the strip very tall */
-  .hero-demo-strip .phone-mock{display:none}
-  .quick-demos{
-    grid-template-columns:1fr;
-    gap:10px;
-    margin-top:16px;
-  }
-  .quick-demos a{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    text-align:left;
-    padding:10px 14px 10px 10px;
-    font-size:14px;
-    border-radius:16px;
-  }
-  .quick-demos a:after{
-    content:"→";
-    color:var(--teal-deep);
-    font-weight:900;
-    font-size:15px;
-    margin-left:auto;
-    flex-shrink:0;
-  }
-  .quick-demos picture{
-    width:92px;flex-shrink:0;margin-bottom:0;border-radius:12px;overflow:hidden;
-  }
-  .quick-demos img{
-    width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:0;border-radius:12px;
-  }
-  .quick-demos .qd-text{flex:1;min-width:0}
-  .quick-demos span{font-size:14.5px;font-weight:800;letter-spacing:-.2px}
-  .quick-demos .qd-meta{
-    display:block;margin-top:3px;font-size:11.5px;font-weight:700;color:var(--muted);line-height:1.4;
-  }
-}
-
-/* Services as 3 blocks */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.service.v8{
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-  padding:32px 28px;min-height:0;box-shadow:var(--shadow);
-}
-.service.v8:before{width:5px;opacity:.9}
-.service.v8 .icon{width:58px;height:58px;font-size:24px}
-.service.v8 .svc-list{
-  margin:16px 0 0;padding:0;list-style:none;font-size:12.5px;color:var(--muted);
-}
-.service.v8 .svc-list li{
-  padding:7px 0;border-top:1px dashed #e2e6e0;font-weight:700;display:flex;gap:8px;align-items:flex-start;
-}
-.service.v8 .svc-list li:before{content:"·";color:var(--teal-deep);font-weight:900}
-@media(max-width:850px){.grid3{grid-template-columns:1fr}}
-
-/* Demo cards with real thumbs */
-.demo-preview.has-art{
-  height:132px;padding:0;background:#e8f0ed;
-}
-.demo-preview.has-art picture,.demo-preview.has-art img{
-  width:100%;height:100%;object-fit:cover;display:block;
-}
-.demo-preview.has-art .chipmini{
-  background:rgba(26,43,74,.88);backdrop-filter:blur(4px);
-}
-.demo{padding-top:18px}
-.demo .badge{margin-top:2px}
-@media(max-width:550px){
-  .demo-preview.has-art{height:118px}
-}
-
-/* Pricing cards clearer */
-.price-grid{gap:22px}
-.price-card{
-  background:#fff;border:1px solid var(--line);padding:32px 28px;
-}
-.price-card .amount-hero{
-  font-size:28px;font-weight:900;letter-spacing:-.8px;color:var(--teal-deep);margin:4px 0 14px;line-height:1.2;
-}
-.price-card .amount-hero small{font-size:13px;font-weight:800;color:var(--muted);margin-left:4px}
-.price-scan div{background:#fff}
-.price-card.featured{
-  border-color:#c9ded5;
-  box-shadow:0 0 0 2px rgba(47,107,90,.16), var(--shadow-lg);
-}
-
-/* Soft rhythm */
-.intro{max-width:680px;margin-bottom:40px}
-.demos{gap:20px}
-.mid-cta{margin-top:40px}
-
-
-/* ===== quality polish v9 — contemporary warm ===== */
-:root{
-  --font:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,-apple-system,"Segoe UI",Meiryo,sans-serif;
-  --shadow:0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(23,43,62,.04), 0 12px 32px -18px rgba(23,43,62,.28);
-  --shadow-lg:0 1px 0 rgba(255,255,255,.7), 0 28px 56px -28px rgba(23,43,62,.38);
-  --shadow-hover:0 1px 0 rgba(255,255,255,.95), 0 18px 40px -16px rgba(23,43,62,.32);
-  --radius:22px;
-  --radius-sm:14px;
-  --ease:cubic-bezier(.22,.7,.25,1);
-}
-body{
-  font-family:var(--font);
-  letter-spacing:.01em;
-  line-height:1.8;
-  background:
-    radial-gradient(ellipse 80% 50% at 110% -10%,rgba(215,235,229,.58),transparent 55%),
-    radial-gradient(ellipse 60% 42% at -12% 12%,rgba(255,232,220,.4),transparent 50%),
-    radial-gradient(ellipse 40% 30% at 50% 0%,rgba(255,255,255,.55),transparent 60%),
-    var(--cream);
-}
-h1,h2,h3,.logo{
-  letter-spacing:-.04em;
-  font-feature-settings:"palt" 1;
-}
-.lead,.intro p,.demo p,.why p,.service p,.exp p,.step p{letter-spacing:.015em}
-.eyebrow{letter-spacing:.22em;font-size:10.5px;opacity:.95}
-.tag{
-  backdrop-filter:blur(10px) saturate(1.2);
-  -webkit-backdrop-filter:blur(10px) saturate(1.2);
-  background:rgba(215,235,229,.78);
-  border-color:rgba(201,222,213,.85);
-}
-header{
-  background:rgba(251,250,245,.78)!important;
-  border-bottom:1px solid rgba(226,230,224,.65)!important;
-  backdrop-filter:blur(22px) saturate(1.35)!important;
-  -webkit-backdrop-filter:blur(22px) saturate(1.35)!important;
-}
-header.is-scrolled{
-  background:rgba(251,250,245,.92)!important;
-  box-shadow:0 8px 28px -20px rgba(23,43,62,.28)!important;
-}
-.logo{letter-spacing:-.06em}
-.logo small{letter-spacing:.28em;opacity:.85}
-.navlinks a{font-size:12.5px;letter-spacing:.02em;font-weight:800}
-.chip{
-  border-radius:999px!important;
-  box-shadow:0 1px 0 rgba(255,255,255,.12), 0 6px 16px -8px rgba(15,28,41,.55), 0 3px 0 #0f1c29!important;
-  padding:10px 16px!important;
-  font-size:12.5px!important;
-  letter-spacing:.02em;
-}
-.chip:hover{box-shadow:0 1px 0 rgba(255,255,255,.12), 0 4px 12px -8px rgba(15,28,41,.5), 0 1px 0 #0f1c29!important}
-h1{
-  font-size:clamp(40px,5vw,68px);
-  letter-spacing:-.055em;
-  line-height:1.18;
-  font-weight:900;
-}
-h1 em:after{
-  height:14px;bottom:4px;border-radius:8px;
-  background:linear-gradient(90deg,rgba(255,224,171,.95),rgba(255,208,138,.85));
-  opacity:.95;
-}
-.lead{font-size:16.5px;line-height:1.9;color:#556677}
-.price-chips span,.trust span{
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  background:rgba(255,255,255,.82);
-  border-color:rgba(226,230,224,.9);
-  box-shadow:var(--shadow);
-}
-.btn{
-  border-radius:14px!important;
-  padding:16px 26px!important;
-  font-size:14px!important;
-  letter-spacing:.01em;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.35) inset,
-    0 6px 0 var(--orange-deep),
-    0 12px 24px -12px rgba(196,110,81,.45)!important;
-  transition:transform .16s var(--ease), box-shadow .16s, filter .16s!important;
-}
-.btn:hover{
-  transform:translateY(2px);
-  filter:brightness(1.03);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.35) inset,
-    0 4px 0 var(--orange-deep),
-    0 10px 20px -12px rgba(196,110,81,.4)!important;
-}
-.btn:active{transform:translateY(4px)!important;filter:brightness(.98)}
-.btn.secondary{
-  background:rgba(255,255,255,.92)!important;
-  backdrop-filter:blur(8px);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.9) inset,
-    0 4px 0 var(--line-2),
-    0 10px 22px -14px rgba(23,43,62,.22)!important;
-}
-.btn.secondary:hover{
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.9) inset,
-    0 2px 0 var(--line-2),
-    0 8px 18px -14px rgba(23,43,62,.2)!important;
-}
-.visual{
-  border-radius:32px;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.55) inset,
-    18px 20px 0 rgba(215,235,229,.75),
-    var(--shadow-lg);
-}
-.hero-art img,.hero-art picture img{
-  border-radius:20px!important;
-  box-shadow:0 20px 40px -18px rgba(23,43,62,.28), 0 0 0 1px rgba(255,255,255,.4)!important;
-}
-.intro h2{
-  font-size:clamp(28px,3.4vw,40px);
-  letter-spacing:-.045em;
-  line-height:1.28;
-}
-.pain,.why,.service,.exp,.demo,.step,.price-card,.faq details,.hero-demo-strip .inner,.before-after,.mid-cta{
-  border-radius:var(--radius)!important;
-}
-.pain,.why,.service.v8,.exp,.demo,.step,.price-card{
-  border:1px solid rgba(226,230,224,.95)!important;
-  box-shadow:var(--shadow)!important;
-  transition:transform .22s var(--ease), box-shadow .22s, border-color .22s, background .22s!important;
-}
-@media(hover:hover){
-  .pain:hover,.why:hover,.service.v8:hover,.exp:hover,.demo:hover,.step:hover,.price-card:hover{
-    transform:translateY(-4px);
-    border-color:#c9ded5!important;
-    box-shadow:var(--shadow-hover)!important;
-  }
-  .price-card.featured:hover{transform:translateY(-10px)}
-  .quick-demos a:hover{transform:translateY(-3px);border-color:#c9ded5;box-shadow:var(--shadow-hover)}
-  .chip:hover,.navlinks a:hover{opacity:1}
-}
-.price-card.featured{
-  box-shadow:0 0 0 1.5px rgba(47,107,90,.18), var(--shadow-lg)!important;
-  background:linear-gradient(180deg,#fff 0%,#fbfaf6 100%)!important;
-}
-.demo .go,.featured .go{
-  transition:transform .16s var(--ease), background .16s, color .16s, border-color .16s!important;
-}
-.hero-demo-strip .inner{
-  background:rgba(255,255,255,.88)!important;
-  backdrop-filter:blur(16px) saturate(1.15);
-  -webkit-backdrop-filter:blur(16px) saturate(1.15);
-  border:1px solid rgba(226,230,224,.85)!important;
-  box-shadow:var(--shadow-lg)!important;
-}
-.hero-demo-strip h2{letter-spacing:-.04em}
-.quick-demos a{
-  background:rgba(247,244,239,.9)!important;
-  border-radius:16px!important;
-  box-shadow:var(--shadow)!important;
-  transition:transform .18s var(--ease), box-shadow .18s, border-color .18s!important;
-}
-.quick-demos a:active{transform:scale(.985)}
-.service.v8{
-  background:rgba(255,255,255,.92)!important;
-  padding:30px 26px!important;
-}
-.service.v8 .icon{
-  border-radius:18px;
-  box-shadow:inset 0 -2px 0 rgba(23,43,62,.05), 0 10px 20px -14px rgba(47,107,90,.35);
-}
-.mid-cta{
-  background:linear-gradient(135deg,#1a2b4a 0%,#1a4550 48%,#2f6b5a 100%)!important;
-  box-shadow:var(--shadow-lg)!important;
-  border:1px solid rgba(255,255,255,.06);
-}
-.contact{
-  border-radius:28px!important;
-  box-shadow:var(--shadow-lg)!important;
-}
-.faq details{
-  background:rgba(255,255,255,.9)!important;
-  box-shadow:var(--shadow)!important;
-  border-radius:16px!important;
-  transition:border-color .2s, box-shadow .2s, transform .2s!important;
-}
-.faq details[open]{box-shadow:var(--shadow-hover)!important;border-color:#c9ded5}
-.section{padding:108px 0}
-@media(max-width:850px){.section{padding:80px 0}}
-@media(max-width:550px){
-  .section{padding:64px 0}
-  h1{font-size:clamp(32px,8.8vw,44px);letter-spacing:-.045em;line-height:1.22}
-  .lead{font-size:15.5px}
-  .btn{width:auto;padding:15px 22px!important}
-  .hero{padding-top:28px;padding-bottom:48px;gap:28px}
-  .visual{border-radius:24px;box-shadow:12px 14px 0 rgba(215,235,229,.8), var(--shadow)}
-  .intro{margin-bottom:28px}
-}
-/* Keep TRY FIRST compact stacked cards (do not regress 87c8ab9) */
-@media(max-width:760px){
-  .hero-demo-strip .phone-mock{display:none!important}
-  .quick-demos{grid-template-columns:1fr!important;gap:10px!important}
-  .quick-demos a{
-    display:flex!important;align-items:center;gap:14px;text-align:left;
-    padding:10px 14px 10px 10px!important;font-size:14px!important;
-  }
-}
-/* Soft press for cards on touch */
-.demo:active,.service.v8:active,.price-card:active{transform:scale(.99)}
-@media (prefers-reduced-motion: reduce){
-  .pain,.why,.service.v8,.exp,.demo,.step,.price-card,.btn,.chip,.quick-demos a{
-    transition:none!important;transform:none!important;
-  }
-}
-
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .demo,.svc,.why,.price,.exp,.btn,.chip,.demo-preview img,.mobile-cta{transition:none!important}
+  .demo:hover,.svc:hover,.why:hover,.price:hover,.exp:hover,.btn:hover{transform:none}
+}
+section[id]{scroll-margin-top:84px}
+.btn,.line-btn,.mid-cta,.bridge{scroll-margin-bottom:calc(var(--fixed-bar-h, 88px) + 12px)}
 </style>
 </head>
 <body>
@@ -1371,419 +532,530 @@ h1 em:after{
     <div class="navlinks">
       <a class="nav-hide" href="#pains">お悩み</a>
       <a href="#services">できること</a>
-      <a href="#experience">制作経験</a>
+      <a class="nav-hide" href="#experience">制作経験</a>
       <a href="#demos">サンプル</a>
       <a href="#pricing">料金</a>
-      <a class="nav-hide" href="#flow">流れ</a>
+      <a href="#flow">流れ</a>
       <a class="chip" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINE ↗</a>
     </div>
   </nav>
 </header>
+
 <main id="top">
   <div class="wrap hero">
-    <div class="hero-copy reveal in">
-      <span class="tag"><i aria-hidden="true"></i>個人・個人経営・小さな店や施設向け</span>
-      <h1>「つくりたい」を、<br><em>いっしょに形に。</em></h1>
-      <p class="lead">美容院・教室・飲食など、ひとりや少人数でやっているお店・施設のための<strong>ものづくり相談室</strong>です。<br>ホームページも、毎日の集計・予約・シフトも。<strong>触れるサンプル</strong>と<strong>分かりやすい料金</strong>から、無理なく始められます。</p>
-      <div class="price-chips" aria-label="料金の一例">
-        <span>HP <b>3〜8万円〜</b></span>
-        <span>業務の仕組み <b>5〜15万円</b></span>
-        <span>相談・見積 <b>無料</b></span>
+    <div class="hero-copy">
+      <p class="tag"><i aria-hidden="true"></i>個人・個人経営・小さな店や施設向け</p>
+      <h1>小さな店の<br>ホームページと<br><em>毎日の仕組み。</em></h1>
+      <p class="lead">美容院・教室・飲食など、ひとりや少人数のお店・施設へ。料金の目安を先に出して、触れるサンプルから始められます。</p>
+      <div class="offer" aria-label="料金の目安">
+        <div><span>ホームページ</span><b>3〜8万円〜</b></div>
+        <div><span>業務の仕組み</span><b>5〜15万円</b></div>
+        <div><span>相談・見積</span><b>無料</b></div>
       </div>
       <div class="actions">
-        <a class="btn" href="#demos">触れるサンプルを見る ↓</a>
-        <a class="btn secondary" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する ↗</a>
+        <a class="btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する</a>
+        <a class="btn btn-ghost" href="#demos">触れるサンプルを見る</a>
       </div>
-      <div class="trust" aria-label="ポイント">
-        <span><b>✓</b> 身近な相談相手</span>
-        <span><b>✓</b> 料金が先に分かる</span>
-        <span><b>✓</b> 触って試せる</span>
-      </div>
+      <p class="reassure">相談だけ・見積だけでも大丈夫です。無理な勧誘はありません。</p>
+      <ol class="path" aria-label="進め方">
+        <li>サンプルを触る</li>
+        <li>LINEで相談</li>
+        <li>見積を見て決める</li>
+      </ol>
     </div>
-    <div class="visual v6 reveal in reveal-delay-1">
-      <div class="float-card a"><span>SAMPLE</span>触って試せる</div>
-      <div class="float-card b"><span>PRICE</span>HP 3〜8万〜</div>
-      <div class="float-card c"><span>LINE</span>相談・見積無料</div>
-      <div class="hero-art">
+    <div class="hero-visual">
+      <div class="hero-frame">
         <picture>
           <source srcset="assets/hero-desk.webp" type="image/webp">
           <img src="assets/hero-desk.jpg" width="1600" height="711" alt="机の上でホームページや小さな仕組みを作っているイメージイラスト" decoding="async" fetchpriority="high">
         </picture>
-        <p class="hero-art-caption">個人店・教室向けの、ものづくり相談室</p>
+        <p class="hero-caption">個人店・教室向けの、ものづくり相談室</p>
       </div>
     </div>
   </div>
 
+  <section class="who" aria-label="向いているお店">
+    <div class="wrap who-bar">
+      <p class="who-label">向いているお店</p>
+      <ul class="who-grid">
+        <li><b>美容院・サロン</b><span>予約、メニュー、紹介ページ</span></li>
+        <li><b>教室・レッスン</b><span>案内、出欠、日報</span></li>
+        <li><b>飲食・カフェ</b><span>メニュー、シフト、在庫</span></li>
+        <li><b>小さな施設</b><span>記録、集計、連絡</span></li>
+      </ul>
+    </div>
+  </section>
 
-  <section class="hero-demo-strip wrap reveal in" aria-label="触れるサンプルの入口">
-    <div class="inner">
-      <div class="copy">
-        <span class="eyebrow">TRY FIRST</span>
-        <h2>まずは、画面を触ってみる。</h2>
-        <p>給与・日報・シフト・予約など、個人店向けの見本をブラウザでそのまま開けます。使えそうかを先に確かめてから、相談・見積へ。</p>
-        <div class="cta-row">
-          <a class="btn" href="#demos">サンプル一覧へ ↓</a>
-          <a class="btn secondary" href="demo-booking.html">予約デモを開く →</a>
-        </div>
-        <div class="quick-demos" aria-label="人気のサンプル">
-          <a href="part-time-payroll-demo.html"><picture><source srcset="assets/thumb-payroll.webp" type="image/webp"><img src="assets/thumb-payroll.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="qd-text"><span>パート給与</span><span class="qd-meta">勤怠から支給額まで</span></span></a>
-          <a href="demo-shift.html"><picture><source srcset="assets/thumb-shift.webp" type="image/webp"><img src="assets/thumb-shift.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="qd-text"><span>シフト</span><span class="qd-meta">週の配置をひと目で</span></span></a>
-          <a href="demo-booking.html"><picture><source srcset="assets/thumb-booking.webp" type="image/webp"><img src="assets/thumb-booking.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="qd-text"><span>予約</span><span class="qd-meta">枠の空きをそのまま確認</span></span></a>
-        </div>
+  <section id="services" class="section">
+    <div class="wrap">
+      <div class="intro">
+        <span class="eyebrow">できること</span>
+        <h2>必要なところだけ、小さなサイズで。</h2>
+        <p>大きなシステムはつくりません。ホームページ、毎日の記録や予約、くらし向けの小さなアプリまで。普段の言葉で相談できます。</p>
       </div>
-      <div class="phone-mock" aria-hidden="true">
-        <div class="notch"></div>
-        <div class="screen">
-          <picture>
-            <source srcset="assets/thumb-booking.webp" type="image/webp">
-            <img src="assets/thumb-booking.jpg" width="900" height="675" alt="" loading="lazy" decoding="async">
-          </picture>
-        </div>
-        <p class="caption">スマホでそのまま触れる見本</p>
+      <div class="svc-grid reveal">
+        <article class="svc">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="24" height="17" rx="3"/><path d="M4 10h24M12 26h8M16 22v4"/></svg></div>
+          <h3>ホームページ</h3>
+          <p class="svc-price">3〜8万円〜<small>税別の目安</small></p>
+          <p>個人店・教室・小さな施設の紹介サイト。メニュー、営業時間、予約までの導線を、スマホで見やすく。</p>
+          <ul class="svc-list"><li>お店・教室の案内ページ</li><li>料金・メニューの見せ方</li><li>スマホ対応、公開まで</li></ul>
+          <a class="text-link" href="#pricing">料金の内訳を見る</a>
+        </article>
+        <article class="svc">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="20" height="24" rx="3"/><path d="M11 12h10M11 17h10M11 22h6"/></svg></div>
+          <h3>業務の仕組み</h3>
+          <p class="svc-price">5〜15万円<small>税別の目安</small></p>
+          <p>日報、予約、シフト、給与。紙や表計算で散らかった毎日を、現場のサイズの画面にまとめます。</p>
+          <ul class="svc-list"><li>入力、集計、一覧</li><li>予約、シフト、在庫</li><li>必要なところだけ小さく</li></ul>
+          <a class="text-link" href="#demos">触れるサンプルを見る</a>
+        </article>
+        <article class="svc">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="10" height="10" rx="2"/><rect x="18" y="4" width="10" height="10" rx="2"/><rect x="4" y="18" width="10" height="10" rx="2"/><rect x="18" y="18" width="10" height="10" rx="2"/></svg></div>
+          <h3>くらし・ミニゲーム</h3>
+          <p class="svc-price">要相談<small>小さく試せます</small></p>
+          <p>献立や記録のアプリ、待ち時間向けの軽いミニゲーム。少人数の現場やイベントでも使いやすい形に。</p>
+          <ul class="svc-list"><li>くらし向けの小さなアプリ</li><li>店舗のチャット見本</li><li>説明なしで触れるゲーム</li></ul>
+          <a class="text-link" href="#demos">見本を触ってみる</a>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="pains" class="section white">
+  <section id="demos" class="section paper">
     <div class="wrap">
       <div class="intro">
-        <span class="eyebrow">PAIN POINTS</span>
-        <h2>こんなお悩み、ありませんか？</h2>
-        <p>美容院・教室・飲食・小さな施設でよく聞く声です。どれかひとつでも当てはまったら、そのまま相談して大丈夫です。</p>
+        <span class="eyebrow">サンプル</span>
+        <h2>契約の前に、画面を触ってみる。</h2>
+        <p>個人店・教室・小さな施設向けの見本です。ブラウザでそのまま開いて、「うちでも使えそうか」を先に確かめられます。</p>
       </div>
-      <div class="pain-grid reveal">
-        <article class="pain"><div class="pain-num">01</div><div><p>ホームページがほしいが、何から頼めばいいか分からない</p><div class="pain-sol">相談から構成まで、渡辺が一緒に整理します</div></div></article>
-        <article class="pain"><div class="pain-num">02</div><div><p>制作会社に見積を頼んだら、想定よりずっと高額だった</p><div class="pain-sol">HP 3〜8万円〜／業務 5〜15万円の目安を先に公開</div></div></article>
-        <article class="pain"><div class="pain-num">03</div><div><p>予約・シフト・給与計算が、紙やLINE・Excelで散らかっている</p><div class="pain-sol"><a class="linkish" href="#demos">サンプル</a>で「うちでも使えそう」を先に確認</div></div></article>
-        <article class="pain"><div class="pain-num">04</div><div><p>日報や集計の転記が毎月つらい。報告書づくりに時間がかかる</p><div class="pain-sol">現場で実用化した日報・月報の制作経験あり</div></div></article>
-        <article class="pain"><div class="pain-num">05</div><div><p>営業時間やメニューの問い合わせ対応を、少し減らしたい</p><div class="pain-sol"><a class="linkish" href="demo-chatbot.html">店舗チャットボット見本</a>を先に触れます</div></div></article>
-        <article class="pain"><div class="pain-num">06</div><div><p>大きなシステムは要らない。現場で毎日使える小さな仕組みがほしい</p><div class="pain-sol">中小規模・無理のない仕組みが専門です</div></div></article>
+      <div class="demos reveal">
+        <a class="demo" href="part-time-payroll-demo.html">
+          <div class="demo-preview"><picture><source srcset="assets/thumb-payroll.webp" type="image/webp"><img src="assets/thumb-payroll.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture></div>
+          <div class="demo-body"><span class="badge">給与</span><h3>パート給与の計算</h3><p class="for">カフェ・美容院など個人店向け。パートの給与計算と振込表が面倒。</p><p class="steps">①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く</span></div>
+        </a>
+        <a class="demo" href="demo-daily-report.html">
+          <div class="demo-preview"><picture><source srcset="assets/thumb-daily-report.webp" type="image/webp"><img src="assets/thumb-daily-report.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture></div>
+          <div class="demo-body"><span class="badge">日報</span><h3>日報・作業報告</h3><p class="for">教室・店舗向け。紙やLINEの報告がバラバラで振り返れない。</p><p class="steps">①スタッフ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く</span></div>
+        </a>
+        <a class="demo" href="demo-shift.html">
+          <div class="demo-preview"><picture><source srcset="assets/thumb-shift.webp" type="image/webp"><img src="assets/thumb-shift.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture></div>
+          <div class="demo-body"><span class="badge">シフト</span><h3>シフト・希望休</h3><p class="for">少人数の店・教室向け。シフトと希望休のやり取りが散らかる。</p><p class="steps">①週を選ぶ → ②タップで切替 → ③メモをコピー。</p><span class="go">デモを開く</span></div>
+        </a>
+        <a class="demo" href="demo-booking.html">
+          <div class="demo-preview"><picture><source srcset="assets/thumb-booking.webp" type="image/webp"><img src="assets/thumb-booking.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture></div>
+          <div class="demo-body"><span class="badge">予約</span><h3>簡易予約・受付</h3><p class="for">美容院・整体・個人サロン向け。電話予約のメモが取りこぼしやすい。</p><p class="steps">①予約を追加 → ②来店 → ③完了まで進める。</p><span class="go">デモを開く</span></div>
+        </a>
+        <a class="demo" href="demo-inventory.html">
+          <div class="demo-preview"><picture><source srcset="assets/thumb-inventory.webp" type="image/webp"><img src="assets/thumb-inventory.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture></div>
+          <div class="demo-body"><span class="badge">在庫</span><h3>在庫・備品</h3><p class="for">飲食・サロン・小さな施設向け。備品の残りが分からず、急な買い足しになる。</p><p class="steps">①＋／−で増減 → ②要発注を確認 → ③品目を追加。</p><span class="go">デモを開く</span></div>
+        </a>
+        <a class="demo" href="demo-kondate/">
+          <div class="demo-preview"><picture><source srcset="assets/thumb-kondate.webp" type="image/webp"><img src="assets/thumb-kondate.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture></div>
+          <div class="demo-body"><span class="badge">献立</span><h3>わたらぼクッキング</h3><p class="for">個人・家庭向け。毎日の献立と買い物リストをまとめたい。</p><p class="steps">下のタブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く</span></div>
+        </a>
+        <a class="demo" href="demo-diet.html">
+          <div class="demo-preview"><picture><source srcset="assets/thumb-diet.webp" type="image/webp"><img src="assets/thumb-diet.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture></div>
+          <div class="demo-body"><span class="badge">減量</span><h3>わたらぼダイエットアプリ</h3><p class="for">個人向け。食事・運動・体重をひとつの画面で残したい。</p><p class="steps">①ホーム → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く</span></div>
+        </a>
+        <a class="demo" href="demo-smash.html">
+          <div class="demo-preview"><picture><source srcset="assets/thumb-smash.webp" type="image/webp"><img src="assets/thumb-smash.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture></div>
+          <div class="demo-body"><span class="badge">ゲーム</span><h3>わたらぼスマッシュ</h3><p class="for">イベントやお店の待ち時間向け。説明なしでサッと遊べるミニゲーム。</p><p class="steps">タップで壊す。コンボ、ライフ3、金の星、爆弾あり。</p><span class="go">デモを開く</span></div>
+        </a>
+        <a class="demo" href="demo-chatbot.html">
+          <div class="demo-preview"><picture><source srcset="assets/thumb-chatbot.webp" type="image/webp"><img src="assets/thumb-chatbot.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture></div>
+          <div class="demo-body"><span class="badge">チャット</span><h3>店舗チャットボット見本</h3><p class="for">カフェ・小規模店舗向け。営業時間やメニューの問い合わせを少し減らしたい。</p><p class="steps">架空のカフェです。①ボタン → ②返事。サンプルです。</p><span class="go">デモを開く</span></div>
+        </a>
       </div>
-      <div class="pain-foot">その悩み、<span>身近なサイズで・分かりやすい料金で・触れるサンプルから</span>、一緒にほどけます。</div>
-      <figure class="solution-visual reveal">
-        <div class="solution-visual-art">
+      <p class="note">各カードからデモが開けます。まとめて見るなら <a class="text-link" href="demo-index.html">サンプル一覧</a> もどうぞ。</p>
+      <div class="mid-cta reveal">
+        <div>
+          <strong>触ってみて、使えそうだったら。</strong>
+          <p>相談だけ、見積だけでも大丈夫です。内容が固まっていなくても話せます。</p>
+        </div>
+        <a class="btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="before-after" class="section">
+    <div class="wrap">
+      <figure class="ba reveal">
+        <div class="ba-head">
+          <div>
+            <span class="eyebrow">変わること</span>
+            <h2>紙とメモの毎日を、ひとつの画面に。</h2>
+          </div>
+          <p>散らかった紙、表計算、メモを、毎日使うサイズの画面へ。大掛かりにはしません。</p>
+        </div>
+        <div class="ba-art">
+          <picture>
+            <source srcset="assets/before-after.webp" type="image/webp">
+            <img src="assets/before-after.jpg" width="1600" height="703" alt="紙や表計算が散らかった状態から、整理された画面へ変わるイメージイラスト" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="ba-labels">
+          <span class="before">いま：紙・表計算・メモが散らばる</span>
+          <span class="after">あと：ひとつの画面で確認、入力</span>
+        </div>
+        <figcaption>イメージです。実際の画面は、お店のやり方に合わせて作ります。<a class="text-link" href="#demos">触れるサンプル</a>で雰囲気を確認できます。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="pains" class="section paper">
+    <div class="wrap">
+      <div class="intro">
+        <span class="eyebrow">お悩み</span>
+        <h2>こんなことで、手が止まっていませんか。</h2>
+        <p>美容院、教室、飲食、小さな施設でよく聞く声です。ひとつでも当てはまったら、そのまま相談して大丈夫です。</p>
+      </div>
+      <div class="pain-layout">
+        <ul class="pains reveal">
+          <li><span>01</span><div><p>ホームページがほしいが、何から頼めばいいか分からない</p><p class="sol">相談から構成まで、一緒に整理します</p></div></li>
+          <li><span>02</span><div><p>見積を頼んだら、想定よりずっと高かった</p><p class="sol">HP 3〜8万円〜、業務の仕組み 5〜15万円の目安を先に公開</p></div></li>
+          <li><span>03</span><div><p>予約、シフト、給与が、紙やメッセージ、表計算で散らかっている</p><p class="sol"><a class="text-link" href="#demos">サンプル</a>で「使えそうか」を先に確認</p></div></li>
+          <li><span>04</span><div><p>日報や集計の転記が毎月つらい</p><p class="sol">現場で使った日報・月報の制作経験があります</p></div></li>
+          <li><span>05</span><div><p>営業時間やメニューの問い合わせを、少し減らしたい</p><p class="sol"><a class="text-link" href="demo-chatbot.html">店舗チャットボット見本</a>を先に触れます</p></div></li>
+          <li><span>06</span><div><p>大きなシステムは要らない。毎日使える小さな仕組みがほしい</p><p class="sol">中小規模で、無理のない仕組みが専門です</p></div></li>
+        </ul>
+        <figure class="sol-art reveal">
           <picture>
             <source srcset="assets/store-phone.webp" type="image/webp">
             <img src="assets/store-phone.jpg" width="1448" height="1086" alt="小さな店の困りごとが、スマホで使える仕組みにつながるイメージイラスト" loading="lazy" decoding="async">
           </picture>
-        </div>
-        <figcaption class="solution-visual-copy">
-          <span class="eyebrow">SOLUTION</span>
-          <h3>小さな店の困りごとを、<br>スマホで使える仕組みに。</h3>
-          <p>紙やExcel・電話メモで散らかった毎日を、現場の流れに合った小さな画面へ。まずは見本を触って、「うちでも使えそう」を確かめてから相談できます。</p>
-          <p class="caption">個人・個人経営・小さな教室やお店向け。大掛かりなシステムではなく、毎日使うサイズで。</p>
-        </figcaption>
-      </figure>
-      <div class="solution-bridge reveal">
-        <div>
-          <strong>悩み → 見本 → 相談、の順で大丈夫。</strong>
-          <p>いきなり契約しなくてOK。サンプルを触って、使えそうなら公式LINEへ。</p>
-        </div>
-        <a href="#demos">触れるサンプルへ ↓</a>
+          <figcaption class="sol-copy">
+            <span class="eyebrow">小さな仕組みに</span>
+            <h3>店の困りごとを、スマホの画面へ。</h3>
+            <p>紙や表計算、電話メモの毎日を、現場の流れに合った小さな画面にします。まず見本を触ってから、相談できます。</p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="bridge">
+        <p><b>悩みが一つでも当てはまったら、そのままで大丈夫。</b>やりたいことが固まっていなくても話せます。</p>
+        <a class="btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する</a>
       </div>
     </div>
   </section>
 
-  <section id="before-after" class="section white">
-    <div class="wrap">
-      <figure class="before-after reveal">
-        <div class="before-after-head">
-          <div>
-            <span class="eyebrow">BEFORE → AFTER</span>
-            <h2>現場の手間を、小さな仕組みに。</h2>
-          </div>
-          <p>散らかった紙・Excel・メモが、ひとつにまとまった画面へ。大掛かりにせず、毎日使うサイズで整えます。</p>
-        </div>
-        <div class="before-after-art">
-          <picture>
-            <source srcset="assets/before-after.webp" type="image/webp">
-            <img src="assets/before-after.jpg" width="1600" height="703" alt="紙やExcelが散らかった状態から、整理されたダッシュボードへ変わるイメージイラスト" loading="lazy" decoding="async">
-          </picture>
-        </div>
-        <div class="before-after-labels" aria-hidden="true">
-          <span class="before">BEFORE · 紙・Excel・メモが散らばる</span>
-          <span class="after">AFTER · ひとつの画面で確認・入力</span>
-        </div>
-        <figcaption class="before-after-foot">イメージです。実際の画面はお店のやり方に合わせて作ります。<a class="linkish" href="#demos">触れるサンプル</a>で雰囲気を確認できます。</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section id="why" class="section band">
+  <section id="why" class="section">
     <div class="wrap">
       <div class="intro">
-        <span class="eyebrow">WHY WATA LAB</span>
-        <h2>WATA LABが向いている理由</h2>
-        <p>大きな制作会社でも、テンプレート販売でもない。個人店・教室・小さな施設のための選択肢です。</p>
+        <span class="eyebrow">向いている理由</span>
+        <h2>大きな制作会社でも、既製品でもない。</h2>
+        <p>個人店、教室、小さな施設のための選択肢です。窓口と制作は分かれません。</p>
       </div>
       <div class="why-grid reveal">
         <article class="why">
           <div class="why-no">01</div>
           <h3>身近な相談相手</h3>
-          <p>窓口と制作が分かれません。普段の言葉で「困っていること」を話してもらえれば、そこから一緒に形にします。</p>
-          <div class="proof">渡辺に直接相談できます</div>
+          <p>普段の言葉で「困っていること」を話してもらえれば、そこから一緒に形にします。担当が途中で代わって、話が最初に戻ることはありません。</p>
+          <p class="proof">相談は渡辺に直接</p>
         </article>
         <article class="why">
           <div class="why-no">02</div>
           <h3>分かりやすい料金</h3>
-          <p>HPは3〜8万円〜、業務の仕組みは5〜15万円が目安。含むもの／含まないものを先に示し、相談・見積は無料です。</p>
-          <div class="proof">金額の理由を、事前に説明します</div>
+          <p>ホームページは3〜8万円〜、業務の仕組みは5〜15万円が目安です。含むもの、含まないものを先に示します。相談と見積は無料です。</p>
+          <p class="proof">金額の理由を、事前に説明します</p>
         </article>
         <article class="why">
           <div class="why-no">03</div>
-          <h3>触って試せるサンプル</h3>
-          <p>給与・日報・シフト・予約・在庫・チャットなど、架空の見本を先に触れます。「うちでも使えそう」を実感してから進められます。</p>
-          <div class="proof">デモはブラウザでそのまま開きます</div>
+          <h3>触ってから決められる</h3>
+          <p>給与、日報、シフト、予約、在庫、チャットなど、架空の見本を先に触れます。使えそうかを実感してから進められます。</p>
+          <p class="proof">デモはブラウザでそのまま開きます</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="services" class="section white">
+  <section id="flow" class="section paper">
     <div class="wrap">
       <div class="intro">
-        <span class="eyebrow">WHAT WE MAKE</span>
-        <h2>こんなことが、できます。</h2>
-        <p>対象は、個人・個人経営・小さな教室やお店・施設です。難しい専門用語は不要。「サイトがほしい」「予約や給与の手間を減らしたい」など、普段の言葉で大丈夫。</p>
+        <span class="eyebrow">進め方</span>
+        <h2>相談して、見積を見てから作る。</h2>
+        <p>期間は内容で前後します。下は目安です。合意する前に制作へ進むことはありません。</p>
       </div>
-      <div class="grid3 reveal">
-        <article class="service v8"><div class="icon" aria-hidden="true">▤</div><h3>ホームページ</h3><p>個人店・教室・小さな施設の紹介サイト。メニュー・営業時間・予約導線まで、スマホで見やすく。</p><ul class="svc-list"><li>お店・教室の案内ページ</li><li>料金・メニューの見せ方</li><li>スマホ対応・公開まで</li></ul></article>
-        <article class="service v8"><div class="icon" aria-hidden="true">⚙</div><h3>業務の仕組み</h3><p>日報・予約・シフト・給与など。紙やExcelで散らかった毎日を、現場サイズの画面にまとめます。</p><ul class="svc-list"><li>入力・集計・一覧</li><li>予約・シフト・在庫</li><li>必要なところだけ小さく</li></ul></article>
-        <article class="service v8"><div class="icon" aria-hidden="true">▣</div><h3>くらし・ミニゲーム</h3><p>献立や記録アプリ、待ち時間向けの軽いミニゲーム。少人数の現場やイベントでも使いやすい形に。</p><ul class="svc-list"><li>くらし向けの小さなアプリ</li><li>店舗チャット見本</li><li>説明なしで触れるゲーム</li></ul></article>
-      </div>
+      <ol class="flow reveal">
+        <li>
+          <div class="flow-n">1</div>
+          <div>
+            <span class="time">目安 1〜3日</span>
+            <h3>気軽に相談</h3>
+            <p>公式LINEで、作りたいものや困りごとを聞かせてください。固まっていなくても大丈夫です。</p>
+          </div>
+        </li>
+        <li>
+          <div class="flow-n">2</div>
+          <div>
+            <span class="time">目安 3〜7日</span>
+            <h3>内容と費用の確認</h3>
+            <p>できること、期間、含むもの、含まないものを整理して、見積をお渡しします。</p>
+          </div>
+        </li>
+        <li>
+          <div class="flow-n">3</div>
+          <div>
+            <span class="time">目安 1〜4週間</span>
+            <h3>制作して、確認する</h3>
+            <p>途中の仕上がりを見ながら進めます。ホームページは短め、業務の仕組みは範囲で変わります。</p>
+          </div>
+        </li>
+        <li>
+          <div class="flow-n">4</div>
+          <div>
+            <span class="time">お渡し後も</span>
+            <h3>お渡しと、軽い修正</h3>
+            <p>公開と、使い方の簡単な案内まで。お渡し直後の軽い文言修正にも対応します。</p>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <section id="experience" class="section">
+  <section id="pricing" class="section">
     <div class="wrap">
       <div class="intro">
-        <span class="eyebrow">EXPERIENCE</span>
-        <h2>制作経験</h2>
-        <p>毎日の仕事に合った、小さな仕組みづくり。現場で使う業務の流れを大切にしながら、使いやすい形を一緒に考えます。</p>
+        <span class="eyebrow">料金</span>
+        <h2>先に、だいたいの金額。</h2>
+        <p>個人店・教室・小さな施設向けの目安です。正式な金額は内容をうかがってから見積でお伝えします。相談と見積までは無料です。</p>
       </div>
-      <div class="exp-grid reveal">
-        <article class="exp"><span class="badge">実用化済み</span><h3>日報・月報の仕組み</h3><p>転記・集計・提出が負担だった現場で、毎日の記録を月ごとのまとめ・報告用帳票につなぐ流れを実用化。</p><div class="exp-meta">扱ったこと <span>入力・集計・印刷</span></div></article>
-        <article class="exp"><span class="badge">実用化済み</span><h3>利用・活動記録の管理</h3><p>来所・帰宅・利用時間・活動内容を、職員が入力・検索できるブラウザ型。現場で実用化（改修継続中）。</p><div class="exp-meta">扱ったこと <span>保存・履歴・複数端末</span></div></article>
-        <article class="exp has-art"><div class="exp-art" aria-hidden="true"><picture><source srcset="assets/calendar-desk.webp" type="image/webp"><img src="assets/calendar-desk.jpg" width="1000" height="1000" alt="" loading="lazy" decoding="async"></picture></div><span class="badge">ほぼ完成</span><h3>予定・業務管理</h3><p>予定・担当・シフト・案内がファイルで散らばる状態を、業務手帳感覚のひとつにまとめるアプリ。</p><div class="exp-meta">状態 <span>ほぼ完成・改善継続</span></div></article>
-        <article class="exp"><span class="badge">開発・検証</span><h3>Excel日報の変換</h3><p>様式の違う既存Excelを壊さず読み取り、扱いやすいテキストへ変換するツールを開発・検証。</p><div class="exp-meta">状態 <span>開発・検証事例</span></div></article>
-      </div>
-      <p class="exp-note">いずれも<strong>現場での制作経験</strong>です。外部への納品社数の表記ではありません。画面の実名・固有名称は出していません。触ってみられる見本は<a class="linkish" href="#demos">サンプル</a>へ。</p>
-    </div>
-  </section>
-
-  <section id="demos" class="section white soft">
-    <div class="wrap">
-      <div class="intro">
-        <span class="eyebrow">SAMPLES · 触れる見本</span>
-        <h2>触って確かめられるサンプル。</h2>
-        <p>「うちでも使えそう」を先に確かめられる見本です。個人店・教室・小さな施設向け。各カードに誰向け・困りごとがあり、開いたら上の案内どおりに触るとすぐ分かります。</p>
-      </div>
-      <div class="demos reveal">
-        <a class="demo" href="part-time-payroll-demo.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-payroll.webp" type="image/webp"><img src="assets/thumb-payroll.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">給与</span></div><span class="badge">給与</span><h3>パート給与の計算</h3><p class="for">カフェ・美容院など個人店向け／パートの給与計算と振込表が面倒</p><p>①勤怠を入れる → ②明細が自動 → ③振込CSV。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-daily-report.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-daily-report.webp" type="image/webp"><img src="assets/thumb-daily-report.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">日報</span></div><span class="badge">日報</span><h3>日報・作業報告</h3><p class="for">教室・福祉・店舗向け／紙やLINEの報告がバラバラで振り返れない</p><p>①スタッフ → ②書いて追加 → ③一覧で確認。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-shift.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-shift.webp" type="image/webp"><img src="assets/thumb-shift.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">シフト</span></div><span class="badge">シフト</span><h3>シフト・希望休</h3><p class="for">少人数の店・教室向け／シフトと希望休のやり取りが散らかる</p><p>①週を選ぶ → ②タップで切替 → ③メモコピー。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-booking.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-booking.webp" type="image/webp"><img src="assets/thumb-booking.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">予約</span></div><span class="badge">予約</span><h3>簡易予約・受付</h3><p class="for">美容院・整体・個人サロン向け／電話予約のメモが取りこぼしやすい</p><p>①予約追加 → ②来店 → ③完了まで進める。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-inventory.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-inventory.webp" type="image/webp"><img src="assets/thumb-inventory.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">在庫</span></div><span class="badge">在庫</span><h3>在庫・備品</h3><p class="for">飲食・サロン・小さな施設向け／備品の残りが分からず急な買い足しになる</p><p>①＋／−で増減 → ②要発注を確認 → ③品目追加。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-kondate/"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-kondate.webp" type="image/webp"><img src="assets/thumb-kondate.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">献立</span></div><span class="badge">献立</span><h3>わたらぼクッキング</h3><p class="for">個人・家庭向け／毎日の献立と買い物リストをまとめたい</p><p>下タブで切替。今日 → 1週間 → 買い物 → 冷蔵庫。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-diet.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-diet.webp" type="image/webp"><img src="assets/thumb-diet.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">減量</span></div><span class="badge">減量</span><h3>わたらぼダイエットアプリ</h3><p class="for">個人向け／食事・運動・体重をひとつの画面で残したい</p><p>①ホーム → ②食事・運動を記録 → ③体重を残す。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-smash.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-smash.webp" type="image/webp"><img src="assets/thumb-smash.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">PLAY</span></div><span class="badge">ゲーム</span><h3>わたらぼスマッシュ</h3><p class="for">イベント・お店の待ち時間向け／説明なしでサッと遊べるミニゲームがほしい</p><p>タップで壊す。コンボ・ライフ3・⭐金・💣爆発あり。</p><span class="go">デモを開く →</span></a>
-        <a class="demo" href="demo-chatbot.html"><div class="demo-preview has-art" aria-hidden="true"><picture><source srcset="assets/thumb-chatbot.webp" type="image/webp"><img src="assets/thumb-chatbot.jpg" width="900" height="675" alt="" loading="lazy" decoding="async"></picture><span class="chipmini">CHAT</span></div><span class="badge">チャット</span><h3>店舗チャットボット見本</h3><p class="for">カフェ・小規模店舗向け／営業時間やメニューの問い合わせ対応を減らしたい</p><p>架空カフェ。①ボタン → ②返事。サンプル／架空です。</p><span class="go">デモを開く →</span></a>
-      </div>
-      <p class="demo-note">各カードからデモが開けます。一覧は <a class="linkish" href="demo-index.html">サンプル一覧</a> からもどうぞ。</p>
-      <div class="mid-cta reveal">
-        <div>
-          <strong>サンプルを触ってみて、使えそうだったら。</strong>
-          <p>相談だけ・見積だけでも大丈夫です。無理な勧誘はありません。</p>
-        </div>
-        <a class="btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する ↗</a>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="flow" class="section">
-    <div class="wrap">
-      <div class="intro">
-        <span class="eyebrow">HOW IT WORKS</span>
-        <h2>ご相談から完成まで。</h2>
-        <p>初めての方も安心してお話しください。目安の期間つきです（内容で前後します）。</p>
-      </div>
-      <div class="flow-grid reveal">
-        <div class="step"><small>STEP 01</small><div class="time">目安 1〜3日</div><h3>気軽に相談</h3><p>公式LINEで、作りたいものや困りごとを聞かせてください。固まっていなくても大丈夫。</p></div>
-        <div class="step"><small>STEP 02</small><div class="time">目安 3〜7日</div><h3>内容と費用の確認</h3><p>できること・期間・含む／含まないを整理し、見積をお渡しします。合意してから着手。</p></div>
-        <div class="step"><small>STEP 03</small><div class="time">目安 1〜4週間</div><h3>制作・確認</h3><p>途中の仕上がりを見ながら進めます。HPは短め、業務の仕組みは範囲で変わります。</p></div>
-        <div class="step"><small>STEP 04</small><div class="time">お渡し後も</div><h3>お渡し・軽い修正</h3><p>公開・使い方の簡単な案内まで。納品直後の軽い文言修正にも対応します。</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing" class="section white soft">
-    <div class="wrap">
-      <div class="intro">
-        <span class="eyebrow">PRICING</span>
-        <h2>料金の目安</h2>
-        <p>個人店・教室・小さな施設向けの料金です。「よくある制作会社の目安」と「うちの目安」を並べています。正式な金額は、内容を聞いたあとに見積でお伝えします（相談・見積までは無料）。</p>
-      </div>
-      <div class="price-scan reveal" aria-label="料金サマリー">
+      <div class="scan" aria-label="料金のまとめ">
         <div><span>ホームページ</span><b>3〜8万円〜</b></div>
         <div><span>業務の仕組み</span><b>5〜15万円</b></div>
         <div><span>相談・見積</span><b>無料</b></div>
       </div>
       <div class="price-grid reveal">
-        <article class="price-card"><span class="badge">ホームページ</span><h3>お店・活動の紹介サイト</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">15〜40万円前後</span><span class="hint">ページ数や写真・デザインの作り込み次第</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">3〜8万円</span><span class="hint">ページ数・写真の量などで前後</span></div></div><p class="blurb">メニュー・営業時間・アクセスが伝わるシンプルなHP。スマホ対応つき。</p><ul class="incl"><li><strong>含む例</strong>：相談・構成・スマホ対応・公開まで・軽い文言修正</li><li><strong>含まない例</strong>：写真撮影・ドメイン／サーバー代・大幅な追加ページ</li></ul></article>
-        <article class="price-card featured"><span class="ribbon">よく相談</span><span class="badge">業務の仕組み</span><h3>給与・日報・予約など</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">20〜80万円前後</span><span class="hint">オーダーメイドの業務システムイメージ</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">5〜15万円</span><span class="hint">範囲による／表計算の代わりになる簡易アプリ</span></div></div><p class="blurb">毎日の入力・集計・記録をラクにする小さな仕組み。必要なところだけ小さく始められます。</p><ul class="incl"><li><strong>含む例</strong>：相談・画面づくり・使い方の簡単な案内・軽い修正</li><li><strong>含まない例</strong>：既存システムとの複雑な連携・大規模な会計ソフト接続</li></ul><a class="price-cta" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">この料金で相談する ↗</a></article>
-        <article class="price-card"><span class="badge">くらし・ゲーム</span><h3>くらし向けアプリ・ミニゲーム</h3><div class="price-compare"><div class="price-row market"><span class="label">よくある制作会社の目安</span><span class="amount">数十万円〜</span><span class="hint">アプリやゲームの開発会社のイメージ</span></div><div class="price-row ours"><span class="label">うちの目安（WATA LAB）</span><span class="amount">要相談</span><span class="hint">サンプルあり／小さく試すところから</span></div></div><p class="blurb">献立・記録アプリ、待ち時間向けミニゲームなど。内容を聞いてからご案内します。</p><ul class="incl"><li><strong>含む例</strong>：相談・試作の確認・公開しやすい形でのお渡し</li><li><strong>含まない例</strong>：アプリストア申請代行・大規模な課金機能（要相談）</li></ul></article>
+        <article class="price">
+          <span class="badge">ホームページ</span>
+          <h3>お店・活動の紹介サイト</h3>
+          <p class="yen">3〜8万円〜</p>
+          <p class="yen-note">税別の目安。ページ数や写真の量で前後します。</p>
+          <p class="compare"><span>よくある制作会社の目安</span><b>15〜40万円前後</b></p>
+          <p class="blurb">メニュー、営業時間、アクセスが伝わるシンプルなホームページ。スマホ対応つきです。</p>
+          <ul class="fit">
+            <li><b>含む</b>相談、構成、スマホ対応、公開、軽い文言修正</li>
+            <li><b>含まない</b>写真撮影、ドメインやサーバーの費用、大幅な追加ページ</li>
+          </ul>
+          <a class="btn btn-ghost" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">この内容で相談する</a>
+        </article>
+        <article class="price featured">
+          <span class="badge">業務の仕組み・よく相談される</span>
+          <h3>給与、日報、予約など</h3>
+          <p class="yen">5〜15万円</p>
+          <p class="yen-note">税別の目安。範囲によります。表計算の代わりになる小さな仕組みです。</p>
+          <p class="compare"><span>よくある制作会社の目安</span><b>20〜80万円前後</b></p>
+          <p class="blurb">毎日の入力、集計、記録を楽にする小さな仕組み。必要なところだけ、小さく始められます。</p>
+          <ul class="fit">
+            <li><b>含む</b>相談、画面づくり、使い方の簡単な案内、軽い修正</li>
+            <li><b>含まない</b>既存システムとの複雑な連携、大規模な会計ソフトとの接続</li>
+          </ul>
+          <a class="btn price-cta" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">この料金で相談する</a>
+        </article>
+        <article class="price">
+          <span class="badge">くらし・ゲーム</span>
+          <h3>くらし向けアプリ、ミニゲーム</h3>
+          <p class="yen">要相談</p>
+          <p class="yen-note">見本があります。小さく試すところから一緒に決めます。</p>
+          <p class="compare"><span>よくある制作会社の目安</span><b>数十万円〜</b></p>
+          <p class="blurb">献立や記録のアプリ、待ち時間向けのミニゲームなど。内容を聞いてからご案内します。</p>
+          <ul class="fit">
+            <li><b>含む</b>相談、試作の確認、公開しやすい形でのお渡し</li>
+            <li><b>含まない</b>ストアの申請代行、大きな課金の仕組み（別途相談）</li>
+          </ul>
+          <a class="btn btn-ghost" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">この内容で相談する</a>
+        </article>
       </div>
-      <div class="price-note"><strong>見積の流れ・ご案内</strong><ul><li><strong>①相談（無料）</strong> → <strong>②範囲の確認</strong> → <strong>③見積（無料）</strong> → 合意してから制作。</li><li>表示はいずれも<strong>税別</strong>の目安です。正式金額は内容を聞いたあとに提示します。</li><li><strong>含む／含まない</strong>は上の例が基本。追加の改修や機能は別途ご案内します。</li><li>相談だけ・見積だけでも大丈夫です。<a class="linkish" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINE</a>へどうぞ。</li></ul></div>
+      <div class="note">
+        <b>見積までの流れ。</b> ①相談（無料） → ②範囲の確認 → ③見積（無料） → 合意してから制作。表示は税別の目安です。追加の改修や機能は別途ご案内します。相談だけ、見積だけでも大丈夫です。
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section paper">
+    <div class="wrap">
+      <div class="intro">
+        <span class="eyebrow">制作経験</span>
+        <h2>現場の流れに合わせて作ってきました。</h2>
+        <p>毎日の仕事に合う、小さな仕組みです。納品した社数の話ではなく、現場で作って使ってきた経験です。</p>
+      </div>
+      <div class="exp-grid reveal">
+        <article class="exp"><span class="badge">実用化済み</span><h3>日報・月報の仕組み</h3><p>転記や集計、提出が負担だった現場で、毎日の記録を月ごとのまとめと報告用の帳票につなぐ流れを実用化しました。</p><p class="exp-meta">扱ったこと <span>入力、集計、印刷</span></p></article>
+        <article class="exp"><span class="badge">実用化済み</span><h3>利用・活動記録の管理</h3><p>来所、帰宅、利用時間、活動内容を、職員が入力して検索できるブラウザ型。現場で実用化しています（改修は継続中）。</p><p class="exp-meta">扱ったこと <span>保存、履歴、複数の端末</span></p></article>
+        <article class="exp has-art">
+          <div class="exp-art" aria-hidden="true"><picture><source srcset="assets/calendar-desk.webp" type="image/webp"><img src="assets/calendar-desk.jpg" width="1000" height="1000" alt="" loading="lazy" decoding="async"></picture></div>
+          <span class="badge">ほぼ完成</span><h3>予定・業務管理</h3><p>予定、担当、シフト、案内がファイルで散らばる状態を、業務手帳のようなひとつにまとめるアプリです。</p><p class="exp-meta">状態 <span>ほぼ完成。改善は継続</span></p>
+        </article>
+        <article class="exp"><span class="badge">開発・検証</span><h3>表計算の日報を変換</h3><p>様式の違う既存の表計算ファイルを壊さず読み取り、扱いやすいテキストへ変換する道具を開発、検証しました。</p><p class="exp-meta">状態 <span>開発・検証の事例</span></p></article>
+      </div>
+      <p class="note">いずれも<b>現場での制作経験</b>です。外部へ納品した社数の表記ではありません。画面の実名や固有の名称は出していません。触ってみられる見本は<a class="text-link" href="#demos">サンプル</a>へ。</p>
     </div>
   </section>
 
   <section id="faq" class="section">
     <div class="wrap faq">
       <div class="intro">
-        <span class="eyebrow">FAQ</span>
+        <span class="eyebrow">質問</span>
         <h2>よくあるご質問</h2>
       </div>
-      <details><summary>どんな人が相談していますか？</summary><p>個人・個人経営・小さな教室やお店・施設の方が中心です。美容院、飲食、教室、サロンなど。「大掛かりな会社向けシステム」より、現場で毎日使う小さな仕組みのご相談が多いです。</p></details>
-      <details><summary>まだイメージが固まっていないのですが？</summary><p>大丈夫です。「サイトがほしい」「予約が面倒」「給与計算がつらい」など、困りごとだけでも構いません。一緒に整理します。</p></details>
-      <details><summary>費用はいくらかかりますか？</summary><p><a class="linkish" href="#pricing">料金の目安</a>をご覧ください。HPは税別3〜8万円〜、業務の仕組みは税別5〜15万円が目安です。相談・見積までは無料。制作に入る前に、含むもの／含まないものと金額をはっきりお伝えします。</p></details>
-      <details><summary>できるだけ費用を抑えたいのですが？</summary><p>はい、対応を検討できます。ページ数や機能を最初に絞り、「必要なところだけ」から始めると抑えやすいです。ご予算をうかがったうえで、実現できる範囲をご提案します。</p></details>
-      <details><summary>制作期間はどのくらいですか？</summary><p>目安として、シンプルなHPは1〜3週間、業務の小さな仕組みは2〜6週間程度です。内容や素材の状況で変わりますので、見積のときに現実的なスケジュールをお伝えします。</p></details>
-      <details><summary>小さな修正・小さなサイトだけでもお願いできますか？</summary><p>はい、小規模なご依頼も歓迎です。対応できるかはお話を聞いて確認します。</p></details>
-      <details><summary>職場で使ってきた仕組みですか？</summary><p>はい。現場での制作経験です。外部への納品社数の表記ではありません。</p></details>
-      <details><summary>サンプルと同じものを作れますか？</summary><p>見本をベースに、お店のやり方に合わせて作れます。まったく同じではなく、必要なところだけに絞ることもできます。</p></details>
-      <details><summary>相談や見積に費用はかかりますか？</summary><p>かかりません。相談・見積は無料です。相談だけで終わっても大丈夫です。</p></details>
+      <details>
+        <summary>どんな人が相談していますか？</summary>
+        <p>個人、個人経営、小さな教室やお店、施設の方が中心です。美容院、飲食、教室、サロンなど。大掛かりな会社向けシステムより、現場で毎日使う小さな仕組みのご相談が中心です。</p>
+      </details>
+      <details>
+        <summary>まだイメージが固まっていません。</summary>
+        <p>大丈夫です。「サイトがほしい」「予約が面倒」「給与計算がつらい」など、困りごとだけでも構いません。一緒に整理します。</p>
+      </details>
+      <details>
+        <summary>費用はいくらかかりますか？</summary>
+        <p><a class="text-link" href="#pricing">料金の目安</a>をご覧ください。ホームページは税別3〜8万円〜、業務の仕組みは税別5〜15万円が目安です。相談と見積までは無料です。制作に入る前に、含むもの、含まないもの、金額をはっきりお伝えします。</p>
+      </details>
+      <details>
+        <summary>できるだけ費用を抑えたいです。</summary>
+        <p>ページ数や機能を最初に絞り、必要なところだけから始めると抑えやすいです。予算をうかがったうえで、実現できる範囲をご提案します。</p>
+      </details>
+      <details>
+        <summary>制作期間はどのくらいですか？</summary>
+        <p>目安として、シンプルなホームページは1〜3週間、業務の小さな仕組みは2〜6週間程度です。内容や素材の状況で変わります。見積のときに、現実的なスケジュールをお伝えします。</p>
+      </details>
+      <details>
+        <summary>小さな修正だけでもお願いできますか？</summary>
+        <p>はい。小規模なご依頼も歓迎です。対応できるかは、お話を聞いて確認します。</p>
+      </details>
+      <details>
+        <summary>サンプルと同じものを作れますか？</summary>
+        <p>見本を土台に、お店のやり方に合わせて作れます。まったく同じにはせず、必要なところだけに絞ることもできます。</p>
+      </details>
+      <details>
+        <summary>相談や見積に費用はかかりますか？</summary>
+        <p>かかりません。相談と見積は無料です。相談だけで終わっても大丈夫です。</p>
+      </details>
     </div>
   </section>
 
-
-  <section id="studio" class="section white soft">
+  <section id="studio" class="section paper">
     <div class="wrap studio reveal">
-      <div class="studio-copy">
-        <span class="eyebrow">STUDIO</span>
-        <h2>つくる場所の、あたたかい雰囲気。</h2>
-        <p>大きなオフィスではなく、机ひとつから始まるものづくり。現場の困りごとを聞きながら、ホームページや小さな業務の仕組みを、無理のないサイズで形にしていきます。</p>
+      <div>
+        <span class="eyebrow">仕事場</span>
+        <h2>机ひとつから、はじめられます。</h2>
+        <p>大きなオフィスの窓口ではありません。困りごとを聞きながら、ホームページや小さな業務の仕組みを、無理のないサイズで形にします。</p>
         <ul>
-          <li>個人・小さな店や施設の相談が中心</li>
+          <li>個人、小さな店や施設の相談が中心</li>
           <li>触れるサンプルと、分かりやすい料金</li>
-          <li>公式LINEで、気軽に一歩目</li>
+          <li>公式LINEから、気軽に一歩目</li>
         </ul>
       </div>
-      <div class="studio-art">
+      <figure class="studio-art">
         <picture>
           <source srcset="assets/hero-desk-alt.webp" type="image/webp">
           <img src="assets/hero-desk-alt.jpg" width="1400" height="700" alt="ノートPCとコーヒーのある作業デスクの雰囲気イラスト" loading="lazy" decoding="async">
         </picture>
-        <p class="studio-caption">机ひとつから始まる、あたたかいものづくりの場所。</p>
-      </div>
+        <figcaption>あたたかい机のうえで、小さな仕組みを考える。</figcaption>
+      </figure>
     </div>
   </section>
 
   <section id="contact" class="section">
     <div class="wrap">
-      <div class="trust-strip reveal" aria-label="安心して相談できる理由">
-        <article><h3>含むものが先に分かる</h3><p>相談・構成・使い方の案内・軽い文言修正まで。含まない例も料金カードに明記。</p></article>
-        <article><h3>契約前に触れる</h3><p>サンプルはブラウザでそのまま。サーバー送信なし。使えそうかを先に確かめられます。</p></article>
-        <article><h3>渡辺に気軽に</h3><p>窓口と制作が分かれません。相談だけ・見積だけでも歓迎。無理な勧誘はありません。</p></article>
+      <div class="trust" aria-label="相談の前に分かること">
+        <article><h3>含むものが先に分かる</h3><p>相談、構成、使い方の案内、軽い文言修正まで。含まない例も料金の欄に書いてあります。</p></article>
+        <article><h3>契約の前に触れる</h3><p>サンプルはブラウザでそのまま開きます。使えそうかを、先に確かめられます。</p></article>
+        <article><h3>相談だけでも歓迎</h3><p>見積だけでも大丈夫です。窓口と制作は分かれません。無理な勧誘はありません。</p></article>
       </div>
-      <div class="contact" style="margin-top:28px">
-        <span class="eyebrow">CONTACT</span>
-        <h2>まずは公式LINEで、気軽に話してみてください。</h2>
-        <p>相談だけ・見積だけでも大歓迎。サンプルを見て「うちでも使えそう」と思ったら、そのままどうぞ。<br><strong>渡辺に気軽にご相談ください。</strong><br><span class="contact-hint">📩 連絡先は公式LINEです（相談・見積無料）</span></p>
-        <div class="line-box">
-          <a class="line-btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する ↗</a>
+      <div class="contact">
+        <div class="contact-grid">
+          <div>
+            <span class="eyebrow">相談する</span>
+            <h2>まずは公式LINEで、気軽に話してみてください。</h2>
+            <p>サンプルを見て「うちでも使えそう」と思ったら、そのままどうぞ。<strong>連絡先は公式LINEです。相談・見積は無料です。</strong></p>
+            <a class="btn line-btn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談する</a>
+          </div>
           <div class="qr-card">
             <img src="line-qr.png" alt="WATA LAB 公式LINEのQRコード" width="160" height="160" loading="lazy">
-            <small>スマホならボタン、PCならQRでもOK</small>
+            <small>スマホはボタンから。パソコンはQRでも開けます。</small>
           </div>
         </div>
       </div>
-      <p class="contact-note">※ ご相談・お問い合わせは公式LINEで受け付けています。</p>
+      <p class="contact-note">ご相談、お問い合わせは公式LINEで受け付けています。</p>
     </div>
   </section>
 </main>
+
 <footer>
   <div class="wrap footerline">
     <div>
       <a href="#top" class="logo">WATA <span>LAB.</span><small>ワタラボ</small></a>
-      <p>個人・個人経営・小さな店や施設向けのものづくり相談室。身近・リーズナブル・中小規模の仕組み。</p>
+      <p>個人・個人経営・小さな店や施設向けのものづくり相談室。身近で、料金が分かりやすく、中小規模の仕組みを作ります。</p>
     </div>
     <small>© 2026 WATA LAB. All rights reserved.</small>
   </div>
 </footer>
 
-<div class="mobile-cta" id="mobileCta"><a href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener"><span>相談・見積無料</span>公式LINEで相談する ↗</a></div>
+<div class="mobile-cta" id="mobileCta"><a href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener"><span>相談・見積無料</span>公式LINEで相談する</a></div>
 <script>
 (function(){
-  var header = document.querySelector('header');
-  var cta = document.getElementById('mobileCta');
-  var contact = document.getElementById('contact');
+  var header = document.querySelector("header");
+  var cta = document.getElementById("mobileCta");
+  var contact = document.getElementById("contact");
   var links = Array.prototype.slice.call(document.querySelectorAll('.navlinks a[href^="#"]'));
-  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute("href")); }).filter(Boolean);
+
   function onScroll(){
-    if(header){ header.classList.toggle('is-scrolled', window.scrollY > 12); }
-    if(cta && document.body.classList.contains('wl-linebar-closed')){
-      cta.classList.add('hide');
-      document.documentElement.style.setProperty('--fixed-bar-h', '0px');
-    } else if(cta){
-      /* measure bar while visible so height is accurate */
-      var wasHidden = cta.classList.contains('hide');
-      if(wasHidden){ cta.classList.remove('hide'); }
-      var barH = Math.max(cta.offsetHeight || 0, 56) + 20;
-      if(wasHidden){ cta.classList.add('hide'); }
-      document.documentElement.style.setProperty('--fixed-bar-h', barH + 'px');
-      var near = false;
-      var vh = window.innerHeight || 0;
-      var bandTop = vh - barH - 28; /* generous bottom band */
-      /* BUG-006: while hero LINE CTA is on screen at/near top, hide bottom bar */
-      var heroLine = document.querySelector('.hero-copy .actions .btn.secondary, .hero-copy .btn.secondary');
-      var heroActions = document.querySelector('.hero-copy .actions');
-      if(window.innerWidth <= 850){
-        var probe = heroActions || heroLine;
-        if(probe){
-          var hr = probe.getBoundingClientRect();
-          var inView = hr.bottom > 0 && hr.top < vh;
-          /* any pixel of hero CTA row intersecting the bottom band → hide */
-          if(inView && hr.bottom > bandTop - 8) near = true;
-          /* also: still in upper page with hero CTA visible → keep bar away */
-          if(!near && window.scrollY < 24 && inView && hr.bottom > vh * 0.55) near = true;
-        }
-      }
-      if(contact){
-        var rect = contact.getBoundingClientRect();
-        if(rect.top < vh - 80) near = true;
-      }
-      if(!near){
-        document.querySelectorAll('.mid-cta, .cta-band, .contact .line-btn, .solution-bridge a, a.line-btn, .hero-copy .btn, .hero-demo-strip .cta-row .btn').forEach(function(el){
-          var r = el.getBoundingClientRect();
-          /* any overlap with bottom band (1px is enough) */
-          if(r.bottom > bandTop && r.top < vh - 4) near = true;
-        });
-      }
-      cta.classList.toggle('hide', near);
+    if(header) header.classList.toggle("is-scrolled", window.scrollY > 8);
+    if(!cta) return;
+    if(document.body.classList.contains("wl-linebar-closed") || window.innerWidth > 900){
+      cta.classList.remove("hide");
+      return;
     }
-    var y = window.scrollY + 100;
+    var barH = Math.max(cta.offsetHeight || 0, 56) + 18;
+    document.documentElement.style.setProperty("--fixed-bar-h", barH + "px");
+    var vh = window.innerHeight || 0;
+    var bandTop = vh - barH - 6;
+    var near = false;
+    function hitsBar(el){
+      if(!el || cta.contains(el)) return false;
+      var r = el.getBoundingClientRect();
+      if(r.width < 8 || r.height < 8) return false;
+      return r.bottom > bandTop && r.top < vh - 2;
+    }
+    var hero = document.querySelector(".hero");
+    if(hitsBar(hero)) near = true;
+    if(!near && contact && hitsBar(contact)) near = true;
+    if(!near){
+      var nodes = document.querySelectorAll("a, button, summary, input, textarea, select, p, h2, h3, li, figcaption, .offer, .scan div, .price, .demo, .svc, .mid-cta, .bridge, .flow li, .pains li, .why, .exp, .ba, .who-bar, .trust article, .faq details, .qr-card, .note");
+      for(var i = 0; i < nodes.length; i++){
+        if(header && header.contains(nodes[i])) continue;
+        if(hitsBar(nodes[i])){ near = true; break; }
+      }
+    }
+    cta.classList.toggle("hide", near);
+
+    var y = window.scrollY + 96;
     var current = null;
-    sections.forEach(function(sec){
-      if(sec.offsetTop <= y) current = sec.id;
-    });
+    sections.forEach(function(sec){ if(sec.offsetTop <= y) current = sec.id; });
     links.forEach(function(a){
-      a.classList.toggle('is-active', a.getAttribute('href') === '#' + current);
+      var on = a.getAttribute("href") === "#" + current;
+      a.classList.toggle("is-active", on);
+      if(on) a.setAttribute("aria-current", "true");
+      else a.removeAttribute("aria-current");
     });
   }
-  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener("scroll", onScroll, {passive:true});
+  window.addEventListener("resize", onScroll, {passive:true});
   onScroll();
-  if('IntersectionObserver' in window){
+
+  if("IntersectionObserver" in window){
     var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in'); });
-    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
-    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, {threshold:0.02, rootMargin:"0px 0px 8% 0px"});
+    document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+    setTimeout(function(){
+      document.querySelectorAll(".reveal:not(.in)").forEach(function(el){ el.classList.add("in"); });
+    }, 1600);
   } else {
-    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); });
   }
 })();
 </script>
-
 <script src="assets/wl-linebar.js"></script>
 </body>
 </html>
