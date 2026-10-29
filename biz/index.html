@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WATA LAB｜小さなお店の「めんどう」を、小さなしくみで楽に</title>
+<meta name="description" content="個人・小さなお店・教室向けに、よくある質問の自動返信チャット、スプレッドシートの自動計算、ホームページを作ります。料金は事前にわかりやすく。相談無料。">
+<meta property="og:title" content="WATA LAB｜小さなお店向けのしくみづくり">
+<meta property="og:image" content="../assets/ogp.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1b2740;--muted:#4e5d70;--cream:#f4f0e8;--paper:#fffcf8;--line:#e4ddd2;--teal:#1c6b58;--teal-soft:#e4f3ed;--orange:#c4471f;--orange-deep:#a33816;--orange-soft:#fff0e6;--shadow:0 16px 36px -26px rgba(27,39,64,.45);--r:22px;--font:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--font);color:var(--ink);background:var(--cream);line-height:1.8;font-size:16px;padding-bottom:88px}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:rgba(244,240,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:900;letter-spacing:.08em;text-decoration:none;font-size:18px}
+.logo span{color:var(--teal)}
+.hbtn{font-size:13px;font-weight:700;text-decoration:none;background:var(--teal);color:#fff;padding:8px 14px;border-radius:999px}
+section{padding:56px 0}
+.eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--teal);background:var(--teal-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px}
+h1{font-size:clamp(28px,7.4vw,46px);line-height:1.35;font-weight:900;letter-spacing:.01em}
+h1 em{font-style:normal;color:var(--orange);background:linear-gradient(transparent 68%,var(--orange-soft) 68%)}
+h2{font-size:clamp(23px,5.6vw,32px);line-height:1.45;font-weight:900;margin-bottom:10px}
+.lead{color:var(--muted);margin-top:14px}
+.hero{padding-top:36px}
+.hero-grid{display:grid;gap:28px}
+.hero img{border-radius:var(--r);box-shadow:var(--shadow);aspect-ratio:4/3;object-fit:cover;width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
+.chips li{list-style:none;font-size:13px;font-weight:700;background:var(--paper);border:1px solid var(--line);padding:5px 12px;border-radius:999px}
+.chips{padding:0}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:900;text-decoration:none;border-radius:14px;padding:15px 20px;font-size:16px}
+.btn-line{background:var(--orange);color:#fff;box-shadow:0 10px 22px -12px var(--orange)}
+.btn-line:hover{background:var(--orange-deep)}
+.btn-sub{background:var(--paper);border:1.5px solid var(--ink);margin-top:10px}
+.small{font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
+.alt{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.worries{display:grid;gap:12px;margin-top:22px;padding:0}
+.worries li{list-style:none;background:var(--cream);border-radius:16px;padding:14px 16px 14px 46px;position:relative;font-weight:500}
+.worries li::before{content:"";position:absolute;left:16px;top:19px;width:18px;height:18px;border-radius:50%;background:var(--orange-soft);border:2px solid var(--orange)}
+.arrow{text-align:center;margin-top:22px;font-weight:900;color:var(--teal)}
+.cards{display:grid;gap:18px;margin-top:26px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card img{aspect-ratio:16/10;object-fit:cover;width:100%;border-bottom:1px solid var(--line)}
+.card .body{padding:20px;display:flex;flex-direction:column;flex:1}
+.tag{font-size:12px;font-weight:700;color:var(--orange)}
+.card h3{font-size:19px;line-height:1.5;margin:4px 0 8px}
+.card p{color:var(--muted);font-size:15px}
+.price{margin-top:14px;font-size:15px}
+.price b{font-size:26px;font-weight:900;color:var(--ink)}
+.card ul{margin:10px 0 0;padding-left:1.2em;color:var(--muted);font-size:14px}
+.demo{margin-top:auto;padding-top:16px;font-weight:700;color:var(--teal);font-size:14px;text-decoration:none}
+.demo::after{content:" →"}
+table{width:100%;border-collapse:collapse;margin-top:22px;background:var(--paper);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+th,td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;font-size:15px;vertical-align:top}
+th{width:52%;font-weight:700}
+td{font-weight:900;white-space:nowrap}
+td small{display:block;font-weight:500;color:var(--muted);white-space:normal}
+tr:last-child th,tr:last-child td{border-bottom:0}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+.steps{display:grid;gap:14px;margin-top:24px;padding:0;counter-reset:s}
+.steps li{list-style:none;background:var(--cream);border-radius:18px;padding:18px 18px 18px 70px;position:relative;counter-increment:s}
+.steps li::before{content:counter(s);position:absolute;left:18px;top:18px;width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;font-weight:900;display:grid;place-items:center}
+.steps b{display:block;font-size:17px}
+.steps span{color:var(--muted);font-size:14px}
+.points{display:grid;gap:14px;margin-top:22px}
+.point{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px}
+.point b{display:block;font-size:17px;color:var(--teal);margin-bottom:4px}
+.point p{font-size:14px;color:var(--muted)}
+details{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-top:10px;padding:0 18px}
+summary{cursor:pointer;font-weight:700;padding:16px 0;list-style:none;position:relative;padding-right:28px}
+summary::after{content:"＋";position:absolute;right:0;color:var(--teal)}
+details[open] summary::after{content:"－"}
+details p{padding-bottom:16px;color:var(--muted);font-size:15px}
+.final{background:var(--ink);color:#fff;text-align:center;border-radius:28px;padding:40px 22px}
+.final p{color:#cfd6e2;margin:10px 0 22px}
+footer{text-align:center;font-size:12px;color:var(--muted);padding:30px 0 10px}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,252,248,.96);border-top:1px solid var(--line);transition:transform .3s}
+.bar.hide{transform:translateY(110%)}
+.bar .btn{max-width:520px;margin:0 auto;padding:12px}
+.bar .x{position:absolute;right:8px;top:-14px;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--paper);font-size:14px;cursor:pointer}
+@media(min-width:760px){
+ section{padding:84px 0}
+ .hero-grid{grid-template-columns:1.05fr .95fr;align-items:center}
+ .hero .btns{display:flex;gap:12px}.hero .btns .btn{flex:1}.btn-sub{margin-top:0}
+ .worries{grid-template-columns:1fr 1fr}
+ .cards{grid-template-columns:repeat(3,1fr)}
+ .steps{grid-template-columns:repeat(4,1fr)}.steps li{padding:70px 18px 18px}
+ .points{grid-template-columns:repeat(3,1fr)}
+ .center{text-align:center}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./">WATA <span>LAB</span></a><a class="hbtn" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">無料で相談</a></div></header>
+
+<main>
+<section class="hero"><div class="wrap hero-grid">
+ <div>
+  <span class="eyebrow">個人・小さなお店・教室のみなさまへ</span>
+  <h1>毎日の<em>「めんどう」</em>を、<br>小さなしくみで楽にします。</h1>
+  <p class="lead">よくある質問への自動返信、手作業の計算や集計、お店のホームページ。大きなシステムではなく、必要なところだけを、わかりやすい料金で作ります。</p>
+  <ul class="chips"><li>💬 自動返信 20,000円</li><li>📊 集計お試し 5,000円〜</li><li>🗓 納期 目安1週間</li><li>🤝 相談無料</li></ul>
+  <div class="btns">
+   <a class="btn btn-line" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで無料相談</a>
+   <a class="btn btn-sub" href="#menu">メニューと料金を見る</a>
+  </div>
+ </div>
+ <img src="../assets/store-phone.jpg" alt="スマホでお店の情報を確認しているイメージ" width="800" height="600">
+</div></section>
+
+<section class="alt"><div class="wrap">
+ <span class="eyebrow">こんなこと、ありませんか？</span>
+ <h2>小さなお店ほど、<br>細かい手間がたまりがち。</h2>
+ <ul class="worries">
+  <li>「営業時間は？」「駐車場ある？」と同じ質問に何度も答えている</li>
+  <li>営業中は電話やメッセージにすぐ返せない</li>
+  <li>パートさんの時給計算や月末の集計を、毎回手で打っている</li>
+  <li>ホームページがない、あっても古いまま</li>
+ </ul>
+ <p class="arrow">▼ その手間、小さく自動にできます</p>
+</div></section>
+
+<section id="menu"><div class="wrap">
+ <span class="eyebrow">メニュー</span>
+ <h2>できること</h2>
+ <p class="lead">どれも実際に動く見本があります。スマホでそのまま触ってみてください。</p>
+ <div class="cards">
+  <article class="card">
+   <img src="../assets/thumb-chatbot.jpg" alt="チャットの見本画面" loading="lazy">
+   <div class="body">
+    <span class="tag">いちばん人気の入口</span>
+    <h3>よくある質問の自動返信チャット</h3>
+    <p>営業時間・料金・行き方・予約方法などに、ホームページ上で24時間自動で答えます。答えられない質問は公式LINEや電話へご案内。</p>
+    <p class="price"><b>20,000</b>円</p>
+    <ul><li>よくある質問10個まで</li><li>追加は10個ごとに＋5,000円</li></ul>
+    <a class="demo" href="../demo-chatbot.html">チャットの見本を試す</a>
+   </div>
+  </article>
+  <article class="card">
+   <img src="../assets/thumb-payroll.jpg" alt="時給計算の見本画面" loading="lazy">
+   <div class="body">
+    <span class="tag">まずはお試し</span>
+    <h3>スプレッドシートの計算・集計</h3>
+    <p>時給や勤務時間の計算、売上・来店数の月ごとの集計など、手で打っている作業を自動にします。</p>
+    <p class="price"><b>5,000</b>円〜</p>
+    <ul><li>かんたんな計算や集計1つ</li><li>大きいものは無料でお見積もり</li></ul>
+    <a class="demo" href="../part-time-payroll-demo.html">時給計算の見本を見る</a>
+   </div>
+  </article>
+  <article class="card">
+   <img src="../assets/thumb-booking.jpg" alt="予約の見本画面" loading="lazy">
+   <div class="body">
+    <span class="tag">しっかり作るなら</span>
+    <h3>ホームページ・業務ツール</h3>
+    <p>お店のホームページや、予約・シフト・在庫の管理など、お店に合わせた小さなしくみを作ります。</p>
+    <p class="price"><b>5〜10</b>万円〜</p>
+    <ul><li>ホームページ：5〜10万円〜</li><li>業務ツール：8〜20万円</li></ul>
+    <a class="demo" href="../demo-booking.html">予約の見本を見る</a>
+   </div>
+  </article>
+ </div>
+ <p class="note">そのほかの見本：<a href="../demo-shift.html">シフト表</a> ／ <a href="../demo-inventory.html">在庫管理</a></p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+ <span class="eyebrow">料金</span>
+ <h2>料金は、先にはっきり。</h2>
+ <p class="lead">作り始める前に金額をお伝えします。あとから増えることはありません（内容の追加をご希望の場合は、事前にご相談します）。</p>
+ <table>
+  <tr><th>よくある質問の自動返信チャット</th><td>20,000円<small>質問10個まで／追加10個ごと＋5,000円</small></td></tr>
+  <tr><th>業務ツールお試し<br><small style="font-weight:500;color:var(--muted)">スプレッドシートの計算・集計1つ</small></th><td>5,000円〜</td></tr>
+  <tr><th>ホームページ制作</th><td>5〜10万円〜</td></tr>
+  <tr><th>業務ツール（本格）</th><td>8〜20万円</td></tr>
+  <tr><th>ご相談・お見積もり</th><td>無料</td></tr>
+ </table>
+ <p class="note">納期は目安1週間です（内容が決まってから）。大きめのものは、ご相談のうえで決めます。</p>
+</div></section>
+
+<section><div class="wrap">
+ <span class="eyebrow">ご依頼の流れ</span>
+ <h2>4ステップで完成します</h2>
+ <ol class="steps">
+  <li><b>相談</b><span>困っていることを、そのまま教えてください。箇条書きや画面の写真でもOK。</span></li>
+  <li><b>見本</b><span>どう楽にできるか、実際に動く見本を作ってお見せします。</span></li>
+  <li><b>修正</b><span>使ってみて気になるところを直します。2回まで無料です。</span></li>
+  <li><b>完成</b><span>使い方と一緒にお渡しします。目安は1週間です。</span></li>
+ </ol>
+</div></section>
+
+<section class="alt"><div class="wrap">
+ <span class="eyebrow">大事にしていること</span>
+ <h2>WATA LABの3つの約束</h2>
+ <div class="points">
+  <div class="point"><b>気軽に相談できる</b><p>専門用語は使いません。「これってできる？」くらいのざっくりした相談で大丈夫です。</p></div>
+  <div class="point"><b>必要なところだけ、小さく</b><p>大きなシステムは作りません。お店の規模に合ったものを、必要な分だけ作ります。</p></div>
+  <div class="point"><b>料金がわかりやすい</b><p>金額は作る前にお伝えします。無理なおすすめや、勝手な追加料金はありません。</p></div>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <span class="eyebrow">よくある質問</span>
+ <h2>ご依頼の前に</h2>
+ <details><summary>パソコンやITにくわしくなくても大丈夫？</summary><p>大丈夫です。使い方はスマホの画面に合わせてかんたんにお伝えします。</p></details>
+ <details><summary>相談だけでもいいですか？</summary><p>もちろんです。相談とお見積もりは無料で、依頼しなくても費用はかかりません。</p></details>
+ <details><summary>今使っているスプレッドシートを直してもらえますか？</summary><p>はい。今のシートを見せていただければ、そのまま活かして楽にする方法をご提案します。</p></details>
+ <details><summary>どんなお店が対象ですか？</summary><p>美容院・サロン、教室、カフェや飲食店、整体など、個人や小さなお店・施設のみなさまです。</p></details>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+ <div class="final">
+  <h2>まずは、気軽にひと言どうぞ。</h2>
+  <p>「うちの店でも使える？」だけでも大丈夫です。<br>相談・お見積もりは無料です。</p>
+  <a class="btn btn-line" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで無料相談</a>
+ </div>
+</div></section>
+</main>
+
+<footer>© WATA LAB　小さなお店のための、小さなしくみづくり</footer>
+
+<div class="bar" id="bar"><button class="x" aria-label="閉じる" onclick="document.getElementById('bar').remove();try{sessionStorage.setItem('bizBarOff','1')}catch(e){}">✕</button><a class="btn btn-line" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで無料相談する</a></div>
+<script>
+(function(){var b=document.getElementById('bar');try{if(sessionStorage.getItem('bizBarOff')){b.remove();document.body.style.paddingBottom='0';return}}catch(e){}
+var y=scrollY;addEventListener('scroll',function(){var n=scrollY;if(n>y+8)b.classList.add('hide');else if(n<y-8)b.classList.remove('hide');y=n},{passive:true});})();
+</script>
+</body>
+</html>
