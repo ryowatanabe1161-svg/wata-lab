@@ -433,6 +433,7 @@ input,select,textarea{border-radius:12px!important}
 
 <script>
 (function(){
+  try{ if(sessionStorage.getItem('wl-linebar-dismissed')==='1') return; }catch(e){}
   if(document.querySelector('.wl-footer-cta')) return;
   var f=document.createElement('div'); f.className='wl-footer-cta';
   f.innerHTML='<div><strong>使えそうだったら、公式LINEへ。</strong></div><a href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで相談 ↗</a>';
@@ -440,5 +441,6 @@ input,select,textarea{border-radius:12px!important}
 })();
 </script>
 
+<script src="../assets/wl-linebar.js"></script>
 </body>
 </html>

@@ -1567,6 +1567,12 @@ input,select,textarea{border-radius:12px!important}
   }
 
   function syncLineBarClearance(){
+    if(document.body.classList.contains('wl-linebar-closed')){
+      document.documentElement.style.setProperty('--fixed-bar-h', '0px');
+      var footClosed = $('.wl-footer-cta');
+      if(footClosed) footClosed.classList.add('wl-bar-away');
+      return;
+    }
     var foot = $('.wl-footer-cta');
     if(!foot || !document.body.classList.contains('wl-has-linebar')) return;
     if(document.body.classList.contains('wl-coach-open')) { foot.classList.add('wl-bar-away'); return; }
@@ -1587,6 +1593,7 @@ input,select,textarea{border-radius:12px!important}
   }
   function addFooter(){
     if(isGame) return;
+    try{ if(sessionStorage.getItem('wl-linebar-dismissed')==='1') return; }catch(e){}
     if($('.wl-footer-cta') || location.pathname.includes('demo-index')) return;
     var foot=document.createElement('div');
     foot.className='wl-footer-cta';
@@ -1672,5 +1679,6 @@ input,select,textarea{border-radius:12px!important}
   else buildCoach();
 })();
 </script>
+<script src="assets/wl-linebar.js"></script>
 </body>
 </html>

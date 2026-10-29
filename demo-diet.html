@@ -1687,6 +1687,7 @@ var rt,lastW=window.innerWidth;window.addEventListener('resize',function(){if(wi
 
   function addFooter(){
     if(isGame) return;
+    try{ if(sessionStorage.getItem('wl-linebar-dismissed')==='1') return; }catch(e){}
     if($('.wl-footer-cta') || location.pathname.includes('demo-index')) return;
     var foot=document.createElement('div');
     foot.className='wl-footer-cta';
@@ -1766,5 +1767,6 @@ var rt,lastW=window.innerWidth;window.addEventListener('resize',function(){if(wi
   else buildCoach();
 })();
 </script>
+<script src="assets/wl-linebar.js"></script>
 </body>
 </html>

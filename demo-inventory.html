@@ -1540,6 +1540,7 @@ input,select,textarea{border-radius:12px!important}
 
   function addFooter(){
     if(isGame) return;
+    try{ if(sessionStorage.getItem('wl-linebar-dismissed')==='1') return; }catch(e){}
     if($('.wl-footer-cta') || location.pathname.includes('demo-index')) return;
     var foot=document.createElement('div');
     foot.className='wl-footer-cta';
@@ -1619,5 +1620,6 @@ input,select,textarea{border-radius:12px!important}
   else buildCoach();
 })();
 </script>
+<script src="assets/wl-linebar.js"></script>
 </body>
 </html>

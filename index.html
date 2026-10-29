@@ -1712,7 +1712,7 @@ h1 em:after{
   </div>
 </footer>
 
-<a class="mobile-cta" id="mobileCta" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener"><span>相談・見積無料</span>公式LINEで相談する ↗</a>
+<div class="mobile-cta" id="mobileCta"><a href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener"><span>相談・見積無料</span>公式LINEで相談する ↗</a></div>
 <script>
 (function(){
   var header = document.querySelector('header');
@@ -1722,7 +1722,10 @@ h1 em:after{
   var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
   function onScroll(){
     if(header){ header.classList.toggle('is-scrolled', window.scrollY > 12); }
-    if(cta){
+    if(cta && document.body.classList.contains('wl-linebar-closed')){
+      cta.classList.add('hide');
+      document.documentElement.style.setProperty('--fixed-bar-h', '0px');
+    } else if(cta){
       /* measure bar while visible so height is accurate */
       var wasHidden = cta.classList.contains('hide');
       if(wasHidden){ cta.classList.remove('hide'); }
@@ -1781,5 +1784,6 @@ h1 em:after{
 })();
 </script>
 
+<script src="assets/wl-linebar.js"></script>
 </body>
 </html>
