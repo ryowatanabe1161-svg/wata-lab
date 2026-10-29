@@ -228,5 +228,16 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:30px 0 10px}
 (function(){var b=document.getElementById('bar');try{if(sessionStorage.getItem('bizBarOff')){b.remove();document.body.style.paddingBottom='0';return}}catch(e){}
 var y=scrollY;addEventListener('scroll',function(){var n=scrollY;if(n>y+8)b.classList.add('hide');else if(n<y-8)b.classList.remove('hide');y=n},{passive:true});})();
 </script>
+<script>
+window.WL_CHAT={hello:"こんにちは！WATA LABです。\n下のボタンか入力で、気になることを聞いてください。",
+fallback:"すみません、うまくお答えできませんでした。\n<a href='https://lin.ee/n3TOIyU' target='_blank' rel='noopener'>公式LINE</a> で気軽に聞いてください（相談・お見積もりは無料です）。",
+items:[
+{label:"料金は？",keys:["料金","値段","いくら","費用","価格","円"],a:"・よくある質問の自動返信チャット：20,000円（質問10個まで、追加10個ごと＋5,000円）\n・業務ツールお試し（計算・集計1つ）：5,000円〜\n・ホームページ：5〜10万円〜\n・業務ツール：8〜20万円\n・相談・見積：無料"},
+{label:"何が作れる？",keys:["作れ","できる","何","サンプル","見本"],a:"お店のホームページや、予約・シフト・在庫・時給計算などの業務ツールを作ります。<a href=\"#menu\">見本</a>はこのページから触れます。納期は目安1週間です。"},
+{label:"相談は無料？",keys:["無料","相談","見積"],a:"はい、相談と見積は無料です。相談だけで終わっても大丈夫です。"},
+{label:"どう頼むの？",keys:["頼","依頼","流れ","申し込","連絡"],a:"相談→見本→修正（2回まで無料）→完成、の流れです。まずは<a href='https://lin.ee/n3TOIyU' target='_blank' rel='noopener'>公式LINE</a> からどうぞ。"},
+{label:"LINEで相談",keys:["LINE","ライン"],a:"こちらからどうぞ👉 <a href='https://lin.ee/n3TOIyU' target='_blank' rel='noopener'>公式LINE</a>"}]};
+</script>
+<script src="../assets/wl-chat.js"></script>
 </body>
 </html>
