@@ -24,3 +24,24 @@ btn.onclick=function(){box.classList.add('open');btn.style.display='none';docume
 box.querySelector('header button').onclick=function(){box.classList.remove('open');btn.style.display='';document.body.classList.remove('wl-chat-open')};
 box.querySelector('form').onsubmit=function(e){e.preventDefault();var q=inp.value.trim();if(!q)return;inp.value='';add(q,'wlc-u');answer(q)};
 })();
+/* LINE link opener: works even inside sandboxed previews / in-app WebViews. */
+(function(){
+if(window.__wlLineNav)return;window.__wlLineNav=true;
+var URL_='https://lin.ee/n3TOIyU',ID='@667eqabz',QR='https://ryowatanabe1161-svg.github.io/wata-lab/line-qr.png';
+function css(){if(document.getElementById('wl-ln-style'))return;var s=document.createElement('style');s.id='wl-ln-style';
+s.textContent='#wl-ln{position:fixed;left:12px;right:12px;bottom:12px;z-index:2147483000;max-width:380px;margin:0 auto;background:#fffcf8;color:#1b2740;border:1px solid #e4ddd2;border-radius:18px;box-shadow:0 20px 44px -16px rgba(27,39,64,.55);padding:16px;font:500 14px/1.7 "Zen Kaku Gothic New","Hiragino Sans",sans-serif}#wl-ln b{display:block;font-size:15px;margin-bottom:4px}#wl-ln .row{display:flex;gap:12px;align-items:center;margin-top:10px}#wl-ln img{width:84px;height:84px;border-radius:8px;border:1px solid #e4ddd2;flex:none}#wl-ln code{font:900 18px/1.4 monospace;user-select:all;-webkit-user-select:all}#wl-ln button{border:0;border-radius:10px;padding:9px 12px;font-weight:800;cursor:pointer}#wl-ln .cp{background:#06c755;color:#fff}#wl-ln .x{position:absolute;top:8px;right:8px;background:none;font-size:18px;padding:4px 8px}#wl-ln a{color:#1c6b58;font-weight:800;word-break:break-all}';document.head.appendChild(s)}
+function help(){css();var o=document.getElementById('wl-ln');if(o)o.remove();var d=document.createElement('div');d.id='wl-ln';d.setAttribute('role','dialog');
+d.innerHTML='<button class="x" aria-label="閉じる">✕</button><b>LINEが開かないときは</b>LINEアプリの「友だち追加」→「検索」で、IDを検索してください。<div class="row"><img src="'+QR+'" alt="公式LINEのQRコード" onerror="this.remove()"><div>ID：<code>'+ID+'</code><br><button class="cp" type="button">IDをコピー</button></div></div><div style="margin-top:8px;font-size:12px">リンク：<a href="'+URL_+'" target="_top" rel="noopener">'+URL_+'</a></div>';
+document.body.appendChild(d);d.querySelector('.x').onclick=function(){d.remove()};
+d.querySelector('.cp').onclick=function(){var b=this,c=d.querySelector('code');function sel(){var r=document.createRange();r.selectNodeContents(c);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました。長押しでコピー'}
+try{navigator.clipboard.writeText(ID).then(function(){b.textContent='コピーしました ✓'},sel)}catch(e){sel()}}}
+function open(){var w=null,framed=false;
+try{framed=window.top!==window.self}catch(e){framed=true}
+try{w=window.open(URL_,'_blank');if(w)try{w.opener=null}catch(e){}}catch(e){w=null}
+if(w)return;
+if(framed){try{window.top.location.href=URL_}catch(e){}}else{try{location.href=URL_}catch(e){}}
+setTimeout(function(){if(document.visibilityState==='visible')help()},800)}
+window.wlOpenLine=open;window.wlLineHelp=help;
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="lin.ee/n3TOIyU"]');if(!a||a.closest('#wl-ln'))return;
+if(e.defaultPrevented||e.button>0||e.metaKey||e.ctrlKey||e.shiftKey)return;e.preventDefault();open()},true);
+})();
