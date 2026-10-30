@@ -46,6 +46,7 @@
       'body.wl-linebar-closed .wl-footer-cta,body.wl-linebar-closed #mobileCta,body.wl-linebar-closed .mobile-cta,.wl-footer-cta.wl-linebar-dismissed,#mobileCta.wl-linebar-dismissed{display:none !important}',
       'body.wl-linebar-closed.wl-has-linebar .wrap{padding-bottom:1.25rem !important}',
       'body.wl-linebar-closed.wl-has-linebar .footer-note,body.wl-linebar-closed.wl-has-linebar .footnote,body.wl-linebar-closed.wl-has-linebar aside.footnote{margin-bottom:0 !important;padding-bottom:.75rem !important}',
+      'body.wl-chat-open .wl-footer-cta,body.wl-chat-open #mobileCta,body.wl-chat-open .mobile-cta{opacity:0 !important;visibility:hidden !important;pointer-events:none !important}',
       '@media (prefers-reduced-motion: reduce){.wl-footer-cta,.mobile-cta,.wl-linebar-close{transition:none !important}}'
     ].join('');
     document.documentElement.appendChild(style);
@@ -163,33 +164,12 @@
     return false;
   }
 
-  var lastTop = new WeakMap();
+  /* Robust scroll-away: rAF-throttled, 40px accumulated threshold, ignores
+     overscroll/bounce and resize, hidden while the FAQ chat panel is open. */
+  var THRESH = 40, EDGE = 60;
   var scrolledAway = false;
-  var lockUntil = 0;
-  var userIntentUntil = 0;
-
-  function markUserIntent() {
-    userIntentUntil = Date.now() + 700;
-  }
-  var touchStartY = null;
-  window.addEventListener('touchstart', function (e) {
-    if (e.touches && e.touches[0]) touchStartY = e.touches[0].clientY;
-  }, { passive: true, capture: true });
-  window.addEventListener('wheel', function (e) {
-    markUserIntent();
-    if (e.deltaY > 8) setScrolled(true);
-    else if (e.deltaY < -8) setScrolled(false);
-  }, { passive: true, capture: true });
-  window.addEventListener('touchmove', function (e) {
-    markUserIntent();
-    if (touchStartY == null || !e.touches || !e.touches[0]) return;
-    var dy = touchStartY - e.touches[0].clientY;
-    if (dy > 12) setScrolled(true);
-    else if (dy < -12) setScrolled(false);
-  }, { passive: true, capture: true });
-  window.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'PageDown' || e.key === 'PageUp' || e.key === 'Home' || e.key === 'End' || e.key === ' ') markUserIntent();
-  }, true);
+  var lastY = new WeakMap(), acc = new WeakMap();
+  var pending = null, ticking = false;
 
   function setScrolled(on) {
     if (dismissed()) return;
@@ -200,28 +180,34 @@
     document.querySelectorAll('.wl-footer-cta, #mobileCta').forEach(function (el) {
       el.classList.toggle('wl-linebar-scrolled', on);
     });
-    lockUntil = Date.now() + 220;
+  }
+
+  function evaluate(node) {
+    if (document.body.classList.contains('wl-chat-open')) return;
+    var max = Math.max(0, node.scrollHeight - node.clientHeight);
+    var y = node === (document.scrollingElement || document.documentElement) ? (window.scrollY || node.scrollTop || 0) : node.scrollTop;
+    y = Math.min(Math.max(y, 0), max); /* ignore iOS bounce/overscroll */
+    var prev = lastY.has(node) ? lastY.get(node) : y;
+    lastY.set(node, y);
+    var dy = y - prev;
+    if (dy === 0) return;
+    var a = acc.get(node) || 0;
+    if ((dy > 0) !== (a > 0)) a = 0; /* direction changed: restart */
+    a += dy; acc.set(node, a);
+    if (y <= EDGE || max - y <= EDGE) { if (y <= EDGE) setScrolled(false); return; }
+    if (a > THRESH) { setScrolled(true); acc.set(node, 0); }
+    else if (a < -THRESH) { setScrolled(false); acc.set(node, 0); }
   }
 
   function onScroll(e) {
     if (dismissed()) return;
-    if (Date.now() > userIntentUntil) return;
-    if (Date.now() < lockUntil) return;
     var target = e.target === window ? document : e.target;
     if (!isPageScroller(target)) return;
-    var node = (target === document || target === document.documentElement || target === document.body)
-      ? document.scrollingElement || document.documentElement
-      : target;
-    var y = node.scrollTop || window.scrollY || 0;
-    var prev = lastTop.has(node) ? lastTop.get(node) : 0;
-    lastTop.set(node, y);
-    var dy = y - prev;
-    if (y <= SCROLL_SHOW_AT) {
-      setScrolled(false);
-      return;
-    }
-    if (dy > 6 && y > SCROLL_HIDE_AFTER) setScrolled(true);
-    else if (dy < -6) setScrolled(false);
+    pending = (target === document || target === document.documentElement || target === document.body)
+      ? (document.scrollingElement || document.documentElement) : target;
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { ticking = false; if (pending) evaluate(pending); });
   }
 
   injectStyle();
@@ -233,7 +219,6 @@
     mo.observe(document.documentElement, { childList: true, subtree: true });
     document.addEventListener('scroll', onScroll, { passive: true, capture: true });
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', syncPad, { passive: true });
     window.addEventListener('load', scan);
   }
 

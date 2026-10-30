@@ -81,7 +81,7 @@ details p{padding-bottom:16px;color:var(--muted);font-size:15px}
 .final p{color:#cfd6e2;margin:10px 0 22px}
 footer{text-align:center;font-size:12px;color:var(--muted);padding:30px 0 10px}
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,252,248,.96);border-top:1px solid var(--line);transition:transform .3s}
-.bar.hide{transform:translateY(110%)}
+body.wl-chat-open .bar{display:none}.bar.hide{transform:translateY(110%)}
 .bar .btn{max-width:520px;margin:0 auto;padding:12px}
 .bar .x{position:absolute;right:8px;top:-14px;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--paper);font-size:14px;cursor:pointer}
 @media(min-width:760px){
@@ -226,7 +226,8 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:30px 0 10px}
 <div class="bar" id="bar"><button class="x" aria-label="閉じる" onclick="document.getElementById('bar').remove();try{sessionStorage.setItem('bizBarOff','1')}catch(e){}">✕</button><a class="btn btn-line" href="https://lin.ee/n3TOIyU" target="_blank" rel="noopener">公式LINEで無料相談する</a></div>
 <script>
 (function(){var b=document.getElementById('bar');try{if(sessionStorage.getItem('bizBarOff')){b.remove();document.body.style.paddingBottom='0';return}}catch(e){}
-var y=scrollY;addEventListener('scroll',function(){var n=scrollY;if(n>y+8)b.classList.add('hide');else if(n<y-8)b.classList.remove('hide');y=n},{passive:true});})();
+var last=Math.max(0,scrollY),acc=0,tick=false;function ev(){tick=false;if(document.body.classList.contains('wl-chat-open'))return;var max=Math.max(0,document.documentElement.scrollHeight-innerHeight),y=Math.min(Math.max(scrollY,0),max),dy=y-last;last=y;if(!dy)return;if((dy>0)!==(acc>0))acc=0;acc+=dy;if(y<=60){b.classList.remove('hide');return}if(max-y<=60)return;if(acc>40){b.classList.add('hide');acc=0}else if(acc<-40){b.classList.remove('hide');acc=0}}
+addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(ev)}},{passive:true});})();
 </script>
 <script>
 window.WL_CHAT={hello:"こんにちは！WATA LABです。\n下のボタンか入力で、気になることを聞いてください。",
@@ -236,7 +237,7 @@ items:[
 {label:"何が作れる？",keys:["作れ","できる","何","サンプル","見本"],a:"お店のホームページや、予約・シフト・在庫・時給計算などの業務ツールを作ります。<a href=\"#menu\">見本</a>はこのページから触れます。納期は目安1週間です。"},
 {label:"相談は無料？",keys:["無料","相談","見積"],a:"はい、相談と見積は無料です。相談だけで終わっても大丈夫です。"},
 {label:"どう頼むの？",keys:["頼","依頼","流れ","申し込","連絡"],a:"相談→見本→修正（2回まで無料）→完成、の流れです。まずは<a href='https://lin.ee/n3TOIyU' target='_blank' rel='noopener'>公式LINE</a> からどうぞ。"},
-{label:"LINEで相談",keys:["LINE","ライン"],a:"こちらからどうぞ👉 <a href='https://lin.ee/n3TOIyU' target='_blank' rel='noopener'>公式LINE</a>"}]};
+{label:"LINEで相談",href:"https://lin.ee/n3TOIyU",keys:["LINE","ライン"],a:"こちらからどうぞ👉 <a href='https://lin.ee/n3TOIyU' target='_blank' rel='noopener'>公式LINE</a>"}]};
 </script>
 <script src="../assets/wl-chat.js"></script>
 </body>

@@ -1017,6 +1017,7 @@ section[id]{scroll-margin-top:84px}
       if(r.width < 8 || r.height < 8) return false;
       return r.bottom > bandTop && r.top < vh - 2;
     }
+    if(false){
     var hero = document.querySelector(".hero");
     if(hitsBar(hero)) near = true;
     if(!near && contact && hitsBar(contact)) near = true;
@@ -1027,7 +1028,8 @@ section[id]{scroll-margin-top:84px}
         if(hitsBar(nodes[i])){ near = true; break; }
       }
     }
-    cta.classList.toggle("hide", near);
+    }
+    cta.classList.remove("hide"); /* show/hide handled by assets/wl-linebar.js */
 
     var y = window.scrollY + 96;
     var current = null;
@@ -1065,7 +1067,7 @@ items:[
 {label:"何が作れる？",keys:["作れ","できる","何","サンプル","見本"],a:"お店のホームページや、予約・シフト・在庫・時給計算などの業務の仕組みを作ります。<a href=\"#demos\">サンプル</a>はこのページで触れます。"},
 {label:"相談は無料？",keys:["無料","相談","見積"],a:"はい、相談と見積は無料です。相談だけで終わっても大丈夫です。"},
 {label:"どう頼むの？",keys:["頼","依頼","流れ","申し込","連絡"],a:"①相談（無料）→②範囲の確認→③見積（無料）→合意してから制作、の流れです。まずは<a href='https://lin.ee/n3TOIyU' target='_blank' rel='noopener'>公式LINE</a> からどうぞ。"},
-{label:"LINEで相談",keys:["LINE","ライン"],a:"こちらからどうぞ👉 <a href='https://lin.ee/n3TOIyU' target='_blank' rel='noopener'>公式LINE</a>"}]};
+{label:"LINEで相談",href:"https://lin.ee/n3TOIyU",keys:["LINE","ライン"],a:"こちらからどうぞ👉 <a href='https://lin.ee/n3TOIyU' target='_blank' rel='noopener'>公式LINE</a>"}]};
 </script>
 <script src="assets/wl-chat.js"></script>
 </body>
